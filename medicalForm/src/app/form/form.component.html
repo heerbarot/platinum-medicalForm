@@ -1,0 +1,918 @@
+<form class="induction_pack_component">
+    <div id="accordion">
+
+        <!-- MEDICAL QUESTIONNAIRE AND CONSENT FORM Start Here -->
+        <div class="single_accordion">
+            <div class="single_accordion_title" id="headingOne" data-toggle="collapse" data-target="#collapseOne"
+                aria-expanded="true" aria-controls="collapseOne">
+                MEDICAL QUESTIONNAIRE AND CONSENT FORM
+            </div>
+            <div id="collapseOne" class="collapse single_accordion_content show" aria-labelledby="headingOne"
+                data-parent="#accordion">
+                <div class="single_accordion_content_inner">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <!-- <label>First name</label> -->
+                            <mat-form-field class="">
+                                <input [ngModelOptions]="{standalone: true}" matInput placeholder="First name"
+                                    [(ngModel)]="firstName">
+                            </mat-form-field>
+                        </div>
+                        <div class="col-md-6">
+                            <!-- <label>First name</label> -->
+                            <mat-form-field>
+                                <input [ngModelOptions]="{standalone: true}" matInput placeholder="Surname"
+                                    [(ngModel)]="surName">
+                            </mat-form-field>
+
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <mat-form-field>
+                                <input matInput [matDatepicker]="picker" [ngModelOptions]="{standalone: true}"
+                                    placeholder="Date Of Birth" [(ngModel)]="dateOfBirth">
+                                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                                <mat-datepicker #picker></mat-datepicker>
+                            </mat-form-field>
+                        </div>
+
+                        <div class="col-md-6">
+                            <mat-form-field>
+                                <input matInput type="number" [ngModelOptions]="{standalone: true}"
+                                    placeholder="Telephone Number" [(ngModel)]="telNumber">
+                            </mat-form-field>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <!-- <label>First name</label> -->
+                            <mat-form-field class="">
+                                <input [ngModelOptions]="{standalone: true}" matInput placeholder="Sponsor's Name"
+                                    [(ngModel)]="sponsorName">
+                            </mat-form-field>
+                        </div>
+
+                        <div class="col-md-6">
+                            <!-- <label>First name</label> -->
+                            <mat-form-field class="">
+                                <input [ngModelOptions]="{standalone: true}" matInput placeholder="Job Title"
+                                    [(ngModel)]="jobTitle">
+                            </mat-form-field>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <mat-form-field>
+                                <textarea matInput placeholder="Home Address" [ngModelOptions]="{standalone: true}"
+                                    [(ngModel)]="homeAdd"></textarea>
+                            </mat-form-field>
+                        </div>
+
+                        <div class="col-md-6">
+                            <mat-form-field>
+                                <textarea matInput placeholder="GP's Address" [ngModelOptions]="{standalone: true}"
+                                    [(ngModel)]="gpAdd"></textarea>
+                            </mat-form-field>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- EMPLOYMENT HISTORY -->
+        <div class="single_accordion">
+            <div class="single_accordion_title collapsed" id="headingTwo" data-toggle="collapse"
+                data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+                Employment History
+            </div>
+            <div id="collapseTwo" class="collapse single_accordion_content" aria-labelledby="headingTwo"
+            data-parent="#accordion">
+                <div class="single_accordion_content_inner">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="col-12">
+                                Have you been absent from work due to sickness during the last two years?
+                            </div>
+                            <div class="col-12">
+                                <mat-radio-group [ngModelOptions]="{standalone: true}"
+                                    [ngModelOptions]="{standalone: true}" [(ngModel)]="absentSickness"
+                                    aria-label="Select an option">
+                                    <mat-radio-button class="mr-3" value="Yes">Yes</mat-radio-button>
+                                    <mat-radio-button class="mr-3" value="No">No</mat-radio-button>
+                                </mat-radio-group>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+
+                            If yes - please record details
+                            <mat-form-field>
+                                <textarea matInput placeholder="Details" [ngModelOptions]="{standalone: true}"
+                                    [(ngModel)]="absentSicknessDetails"></textarea>
+                            </mat-form-field>
+
+
+                        </div>
+
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="col-12">
+                                Have you ever left, or been denied a job for health reasons?
+                            </div>
+                            <div class="col-12">
+
+
+                                <mat-radio-group [ngModelOptions]="{standalone: true}"
+                                    [ngModelOptions]="{standalone: true}" [(ngModel)]="deniedJob"
+                                    aria-label="Select an option">
+                                    <mat-radio-button class="mr-3" value="Yes">Yes</mat-radio-button>
+                                    <mat-radio-button class="mr-3" value="No">No</mat-radio-button>
+                                </mat-radio-group>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+
+                            If yes - please record details
+                            <mat-form-field>
+                                <textarea matInput placeholder="Details" [ngModelOptions]="{standalone: true}"
+                                    [(ngModel)]="deniedJobDetails"></textarea>
+                            </mat-form-field>
+
+
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="col-12">
+                                Have you ever had an illness caused by your work?
+                            </div>
+                            <div class="col-12">
+                                <mat-radio-group [ngModelOptions]="{standalone: true}"
+                                    [ngModelOptions]="{standalone: true}" [(ngModel)]="illnessByWork"
+                                    aria-label="Select an option">
+                                    <mat-radio-button class="mr-3" value="Yes">Yes</mat-radio-button>
+                                    <mat-radio-button class="mr-3" value="No">No</mat-radio-button>
+                                </mat-radio-group>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+
+                            If yes - please record details
+                            <mat-form-field>
+                                <textarea matInput placeholder="Details" [ngModelOptions]="{standalone: true}"
+                                    [(ngModel)]="illnessByWorkDetails"></textarea>
+                            </mat-form-field>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="single_accordion">
+                <div class="single_accordion_title collapsed" id="headingThree" data-toggle="collapse"
+                data-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
+                    MEDICAL HISTORY
+                    <div id="collapseThree" class="collapse single_accordion_content" aria-labelledby="headingThree"
+                    data-parent="#accordion">
+                    <div class="single_accordion_content_inner">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="col-12">
+                                    Have you ever had or suffered from:Heart Disease or circulatory condition?
+                                    E.g. angina, arrythmia, heart attack, high blood pressure, stroke or aneurysm.
+                                </div>
+                                <div class="col-12">
+                                    <mat-radio-group [ngModelOptions]="{standalone: true}"
+                                        [ngModelOptions]="{standalone: true}" [(ngModel)]="heartNcirculatoryCon"
+                                        aria-label="Select an option">
+                                        <mat-radio-button class="mr-3" value="Yes">Yes</mat-radio-button>
+                                        <mat-radio-button class="mr-3" value="No">No</mat-radio-button>
+                                    </mat-radio-group>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+
+                                If yes - please record details
+                                <mat-form-field>
+                                    <textarea matInput placeholder="Details" [ngModelOptions]="{standalone: true}"
+                                        [(ngModel)]="heartNcirculatoryConDetails"></textarea>
+                                </mat-form-field>
+<!-- class="single_accordion" -->
+                            </div>
+
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="col-12">
+                                    Respiratory Disease or Lung Condition?
+                                    E.g. Asthma, COPD or breathing problems
+                                </div>
+                                <div class="col-12">
+                                    <mat-radio-group [ngModelOptions]="{standalone: true}"
+                                        [ngModelOptions]="{standalone: true}" [(ngModel)]="respiratoryNlungCon"
+                                        aria-label="Select an option">
+                                        <mat-radio-button class="mr-3" value="Yes">Yes</mat-radio-button>
+                                        <mat-radio-button class="mr-3" value="No">No</mat-radio-button>
+                                    </mat-radio-group>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+
+                                If yes - please record details
+                                <mat-form-field>
+                                    <textarea matInput placeholder="Details" [ngModelOptions]="{standalone: true}"
+                                        [(ngModel)]="respiratoryNlungConDetails"></textarea>
+                                </mat-form-field>
+
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="col-12">
+                                    Neurological Condition?
+                                    E.g. MS, Parkinson’s, Epilepsy, Migraine, Brain Injury or surgery.
+                                </div>
+                                <div class="col-12">
+                                    <mat-radio-group [ngModelOptions]="{standalone: true}"
+                                        [ngModelOptions]="{standalone: true}" [(ngModel)]="neurologicalCon"
+                                        aria-label="Select an option">
+                                        <mat-radio-button class="mr-3" value="Yes">Yes</mat-radio-button>
+                                        <mat-radio-button class="mr-3" value="No">No</mat-radio-button>
+                                    </mat-radio-group>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+
+                                If yes - please record details
+                                <mat-form-field>
+                                    <textarea matInput placeholder="Details" [ngModelOptions]="{standalone: true}"
+                                        [(ngModel)]="neurologicalConDetails"></textarea>
+                                </mat-form-field>
+
+                            </div>
+                        </div>
+
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="col-12">
+                                    Weakness, numbness, tremor, clumsiness, poor balance, fits or fainting?
+                                </div>
+                                <div class="col-12">
+                                    <mat-radio-group [ngModelOptions]="{standalone: true}"
+                                        [ngModelOptions]="{standalone: true}" [(ngModel)]="weeknessCon"
+                                        aria-label="Select an option">
+                                        <mat-radio-button class="mr-3" value="Yes">Yes</mat-radio-button>
+                                        <mat-radio-button class="mr-3" value="No">No</mat-radio-button>
+                                    </mat-radio-group>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+
+                                If yes - please record details
+                                <mat-form-field>
+                                    <textarea matInput placeholder="Details" [ngModelOptions]="{standalone: true}"
+                                        [(ngModel)]="weeknessConDetails"></textarea>
+                                </mat-form-field>
+
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="col-12">
+                                    Mental Health Illness?
+                                    E.g. Depression, anxiety, bipolar disorder, schizophrenia, deliberate self-harm.
+                                </div>
+                                <div class="col-12">
+                                    <mat-radio-group [ngModelOptions]="{standalone: true}"
+                                        [ngModelOptions]="{standalone: true}" [(ngModel)]="mentalHealthCon"
+                                        aria-label="Select an option">
+                                        <mat-radio-button class="mr-3" value="Yes">Yes</mat-radio-button>
+                                        <mat-radio-button class="mr-3" value="No">No</mat-radio-button>
+                                    </mat-radio-group>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+
+                                If yes - please record details
+                                <mat-form-field>
+                                    <textarea matInput placeholder="Details" [ngModelOptions]="{standalone: true}"
+                                        [(ngModel)]="mentalHealthConDetails"></textarea>
+                                </mat-form-field>
+
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="col-12">
+                                    Musculoskeletal Condition?
+                                    E.g. Injury, arthritis, problems with bones, tendons or joints.
+                                </div>
+                                <div class="col-12">
+                                    <mat-radio-group [ngModelOptions]="{standalone: true}"
+                                        [ngModelOptions]="{standalone: true}" [(ngModel)]="musculoskeletalCon"
+                                        aria-label="Select an option">
+                                        <mat-radio-button class="mr-3" value="Yes">Yes</mat-radio-button>
+                                        <mat-radio-button class="mr-3" value="No">No</mat-radio-button>
+                                    </mat-radio-group>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+
+                                If yes - please record details
+                                <mat-form-field>
+                                    <textarea matInput placeholder="Details" [ngModelOptions]="{standalone: true}"
+                                        [(ngModel)]="musculoskeletalConDetails"></textarea>
+                                </mat-form-field>
+
+                            </div>
+                        </div>
+
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="col-12">
+                                    Sleep Disorders or Excessive Fatigue?
+                                    E.g. Sleep apnoea, Chronic Fatigue Syndrome or Narcolepsy
+                                </div>
+                                <div class="col-12">
+                                    <mat-radio-group [ngModelOptions]="{standalone: true}"
+                                        [ngModelOptions]="{standalone: true}" [(ngModel)]="sleepDisordersCon"
+                                        aria-label="Select an option">
+                                        <mat-radio-button class="mr-3" value="Yes">Yes</mat-radio-button>
+                                        <mat-radio-button class="mr-3" value="No">No</mat-radio-button>
+                                    </mat-radio-group>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+
+                                If yes - please record details
+                                <mat-form-field>
+                                    <textarea matInput placeholder="Details" [ngModelOptions]="{standalone: true}"
+                                        [(ngModel)]="sleepDisordersConDetails"></textarea>
+                                </mat-form-field>
+
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="col-12">
+                                    Endocrine Disorder?
+                                    E.g. Diabetes, thyroid Disease, Adrenal Disease
+
+                                </div>
+                                <div class="col-12">
+                                    <mat-radio-group [ngModelOptions]="{standalone: true}"
+                                        [ngModelOptions]="{standalone: true}" [(ngModel)]="endocrineDisordersCon"
+                                        aria-label="Select an option">
+                                        <mat-radio-button class="mr-3" value="Yes">Yes</mat-radio-button>
+                                        <mat-radio-button class="mr-3" value="No">No</mat-radio-button>
+                                    </mat-radio-group>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+
+                                If yes - please record details
+                                <mat-form-field>
+                                    <textarea matInput placeholder="Details" [ngModelOptions]="{standalone: true}"
+                                        [(ngModel)]="endocrineDisordersConDetails"></textarea>
+                                </mat-form-field>
+
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="col-12">
+                                    Behavioural or Developmental Disorder that could affect your assessment of Risk?
+                                    E.g. Asperger’s or ADHD
+
+                                </div>
+                                <div class="col-12">
+                                    <mat-radio-group [ngModelOptions]="{standalone: true}"
+                                        [ngModelOptions]="{standalone: true}" [(ngModel)]="behaviouralDisordersCon"
+                                        aria-label="Select an option">
+                                        <mat-radio-button class="mr-3" value="Yes">Yes</mat-radio-button>
+                                        <mat-radio-button class="mr-3" value="No">No</mat-radio-button>
+                                    </mat-radio-group>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+
+                                If yes - please record details
+                                <mat-form-field>
+                                    <textarea matInput placeholder="Details" [ngModelOptions]="{standalone: true}"
+                                        [(ngModel)]="behaviouralDisordersConDetails"></textarea>
+                                </mat-form-field>
+
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="col-12">
+                                    Visual impairment needing glasses or lenses or other eye issues?
+                                    E.g. Laser Eye Surgery, Colour Blindness
+
+                                </div>
+                                <div class="col-12">
+                                    <mat-radio-group [ngModelOptions]="{standalone: true}"
+                                        [ngModelOptions]="{standalone: true}" [(ngModel)]="visualCon"
+                                        aria-label="Select an option">
+                                        <mat-radio-button class="mr-3" value="Yes">Yes</mat-radio-button>
+                                        <mat-radio-button class="mr-3" value="No">No</mat-radio-button>
+                                    </mat-radio-group>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+
+                                If yes - please record details
+                                <mat-form-field>
+                                    <textarea matInput placeholder="Details" [ngModelOptions]="{standalone: true}"
+                                        [(ngModel)]="visualConDetails"></textarea>
+                                </mat-form-field>
+
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="col-12">
+                                    Difficulties with Hearing or problems with the ears?
+                                </div>
+                                <div class="col-12">
+                                    <mat-radio-group [ngModelOptions]="{standalone: true}"
+                                        [ngModelOptions]="{standalone: true}" [(ngModel)]="hearingCon"
+                                        aria-label="Select an option">
+                                        <mat-radio-button class="mr-3" value="Yes">Yes</mat-radio-button>
+                                        <mat-radio-button class="mr-3" value="No">No</mat-radio-button>
+                                    </mat-radio-group>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+
+                                If yes - please record details
+                                <mat-form-field>
+                                    <textarea matInput placeholder="Details" [ngModelOptions]="{standalone: true}"
+                                        [(ngModel)]="hearingConDetails"></textarea>
+                                </mat-form-field>
+
+                            </div>
+                        </div>
+
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="col-12">
+                                    Speech Impediment?
+                                </div>
+                                <div class="col-12">
+                                    <mat-radio-group [ngModelOptions]="{standalone: true}"
+                                        [ngModelOptions]="{standalone: true}" [(ngModel)]="speechCon"
+                                        aria-label="Select an option">
+                                        <mat-radio-button class="mr-3" value="Yes">Yes</mat-radio-button>
+                                        <mat-radio-button class="mr-3" value="No">No</mat-radio-button>
+                                    </mat-radio-group>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+
+                                If yes - please record details
+                                <mat-form-field>
+                                    <textarea matInput placeholder="Details" [ngModelOptions]="{standalone: true}"
+                                        [(ngModel)]="speechConDetails"></textarea>
+                                </mat-form-field>
+
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="col-12">
+                                    Bowel Disorder?
+                                </div>
+                                <div class="col-12">
+                                    <mat-radio-group [ngModelOptions]="{standalone: true}"
+                                        [ngModelOptions]="{standalone: true}" [(ngModel)]="bowelCon"
+                                        aria-label="Select an option">
+                                        <mat-radio-button class="mr-3" value="Yes">Yes</mat-radio-button>
+                                        <mat-radio-button class="mr-3" value="No">No</mat-radio-button>
+                                    </mat-radio-group>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+
+                                If yes - please record details
+                                <mat-form-field>
+                                    <textarea matInput placeholder="Details" [ngModelOptions]="{standalone: true}"
+                                        [(ngModel)]="bowelConDetails"></textarea>
+                                </mat-form-field>
+
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="col-12">
+                                    Disease of the Kidney?
+                                </div>
+                                <div class="col-12">
+                                    <mat-radio-group [ngModelOptions]="{standalone: true}"
+                                        [ngModelOptions]="{standalone: true}" [(ngModel)]="kidneyCon"
+                                        aria-label="Select an option">
+                                        <mat-radio-button class="mr-3" value="Yes">Yes</mat-radio-button>
+                                        <mat-radio-button class="mr-3" value="No">No</mat-radio-button>
+                                    </mat-radio-group>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+
+                                If yes - please record details
+                                <mat-form-field>
+                                    <textarea matInput placeholder="Details" [ngModelOptions]="{standalone: true}"
+                                        [(ngModel)]="kidneyConDetails"></textarea>
+                                </mat-form-field>
+
+                            </div>
+                        </div>
+
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="col-12">
+                                    Disease of the Liver?
+                                </div>
+                                <div class="col-12">
+                                    <mat-radio-group [ngModelOptions]="{standalone: true}"
+                                        [ngModelOptions]="{standalone: true}" [(ngModel)]="liverCon"
+                                        aria-label="Select an option">
+                                        <mat-radio-button class="mr-3" value="Yes">Yes</mat-radio-button>
+                                        <mat-radio-button class="mr-3" value="No">No</mat-radio-button>
+                                    </mat-radio-group>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+
+                                If yes - please record details
+                                <mat-form-field>
+                                    <textarea matInput placeholder="Details" [ngModelOptions]="{standalone: true}"
+                                        [(ngModel)]="liverConDetails"></textarea>
+                                </mat-form-field>
+
+                            </div>
+                        </div>
+
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="col-12">
+                                    Allergies or Hayfever?
+                                </div>
+                                <div class="col-12">
+                                    <mat-radio-group [ngModelOptions]="{standalone: true}"
+                                        [ngModelOptions]="{standalone: true}" [(ngModel)]="allergiesCon"
+                                        aria-label="Select an option">
+                                        <mat-radio-button class="mr-3" value="Yes">Yes</mat-radio-button>
+                                        <mat-radio-button class="mr-3" value="No">No</mat-radio-button>
+                                    </mat-radio-group>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+
+                                If yes - please record details
+                                <mat-form-field>
+                                    <textarea matInput placeholder="Details" [ngModelOptions]="{standalone: true}"
+                                        [(ngModel)]="allergiesConDetails"></textarea>
+                                </mat-form-field>
+
+                            </div>
+                        </div>
+
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="col-12">
+                                    Do you have problems sleeping or ever been observed stopping breathing whilst
+                                    sleeping?
+                                </div>
+                                <div class="col-12">
+                                    <mat-radio-group [ngModelOptions]="{standalone: true}"
+                                        [ngModelOptions]="{standalone: true}" [(ngModel)]="sleepingCon"
+                                        aria-label="Select an option">
+                                        <mat-radio-button class="mr-3" value="Yes">Yes</mat-radio-button>
+                                        <mat-radio-button class="mr-3" value="No">No</mat-radio-button>
+                                    </mat-radio-group>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+
+                                If yes - please record details
+                                <mat-form-field>
+                                    <textarea matInput placeholder="Details" [ngModelOptions]="{standalone: true}"
+                                        [(ngModel)]="sleepingConDetails"></textarea>
+                                </mat-form-field>
+
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="col-12">
+                                    Are you taking any medication either over the counter or prescribed?
+                                </div>
+                                <div class="col-12">
+                                    <mat-radio-group [ngModelOptions]="{standalone: true}"
+                                        [ngModelOptions]="{standalone: true}" [(ngModel)]="medication"
+                                        aria-label="Select an option">
+                                        <mat-radio-button class="mr-3" value="Yes">Yes</mat-radio-button>
+                                        <mat-radio-button class="mr-3" value="No">No</mat-radio-button>
+                                    </mat-radio-group>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+
+                                If yes - please record details
+                                <mat-form-field>
+                                    <textarea matInput placeholder="Details" [ngModelOptions]="{standalone: true}"
+                                        [(ngModel)]="medicationDetails"></textarea>
+                                </mat-form-field>
+
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="col-12">
+                                    Are you receiving medical treatment?
+                                </div>
+                                <div class="col-12">
+                                    <mat-radio-group [ngModelOptions]="{standalone: true}"
+                                        [ngModelOptions]="{standalone: true}" [(ngModel)]="medicalTreatment"
+                                        aria-label="Select an option">
+                                        <mat-radio-button class="mr-3" value="Yes">Yes</mat-radio-button>
+                                        <mat-radio-button class="mr-3" value="No">No</mat-radio-button>
+                                    </mat-radio-group>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+
+                                If yes - please record details
+                                <mat-form-field>
+                                    <textarea matInput placeholder="Details" [ngModelOptions]="{standalone: true}"
+                                        [(ngModel)]="medicalTreatmentDetails"></textarea>
+                                </mat-form-field>
+
+                            </div>
+                        </div>
+
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="col-12">
+                                    Have you ever had tests or treatment at a hospital or clinic (including operations)?
+                                </div>
+                                <div class="col-12">
+                                    <mat-radio-group [ngModelOptions]="{standalone: true}"
+                                        [ngModelOptions]="{standalone: true}" [(ngModel)]="tests"
+                                        aria-label="Select an option">
+                                        <mat-radio-button class="mr-3" value="Yes">Yes</mat-radio-button>
+                                        <mat-radio-button class="mr-3" value="No">No</mat-radio-button>
+                                    </mat-radio-group>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+
+                                If yes - please record details
+                                <mat-form-field>
+                                    <textarea matInput placeholder="Details" [ngModelOptions]="{standalone: true}"
+                                        [(ngModel)]="testsDetails"></textarea>
+                                </mat-form-field>
+
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="col-12">
+                                    Are there any aspects of your health which you think are relevant to your proposed
+                                    work?
+                                </div>
+                                <div class="col-12">
+                                    <mat-radio-group [ngModelOptions]="{standalone: true}"
+                                        [ngModelOptions]="{standalone: true}" [(ngModel)]="otherHealthAspects"
+                                        aria-label="Select an option">
+                                        <mat-radio-button class="mr-3" value="Yes">Yes</mat-radio-button>
+                                        <mat-radio-button class="mr-3" value="No">No</mat-radio-button>
+                                    </mat-radio-group>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+
+                                If yes - please record details
+                                <mat-form-field>
+                                    <textarea matInput placeholder="Details" [ngModelOptions]="{standalone: true}"
+                                        [(ngModel)]="otherHealthAspectsDetails"></textarea>
+                                </mat-form-field>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+
+            <div class="single_accordion">
+                <div class="single_accordion_title collapsed" id="headingFour" data-toggle="collapse"
+                data-target="#collapseFour" aria-expanded="true" aria-controls="collapseFour">
+                    LIFE STYLE
+                    <div id="collapseFour" class="collapse single_accordion_content" aria-labelledby="headingFour"
+                    data-parent="#accordion">
+                    <div class="single_accordion_content_inner">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="col-12">
+                                    Do you take exercise at least three times a week, lasting 20 minutes or more and
+                                    vigorous enough to make you breathless and sweaty?
+                                </div>
+                                <div class="col-12">
+                                    <mat-radio-group [ngModelOptions]="{standalone: true}"
+                                        [ngModelOptions]="{standalone: true}" [(ngModel)]="exercise"
+                                        aria-label="Select an option">
+                                        <mat-radio-button class="mr-3" value="Yes">Yes</mat-radio-button>
+                                        <mat-radio-button class="mr-3" value="No">No</mat-radio-button>
+                                    </mat-radio-group>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+
+                                If yes - please record details
+                                <mat-form-field>
+                                    <textarea matInput placeholder="Details" [ngModelOptions]="{standalone: true}"
+                                        [(ngModel)]="exerciseDetails"></textarea>
+                                </mat-form-field>
+
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="row">
+                                <div class="col-md-6">
+                                    <div class="col-12">
+                                            Have you ever smoked as long as a year? If so, how much?
+                                    </div>
+                                    <div class="col-12">
+                                        <mat-radio-group [ngModelOptions]="{standalone: true}"
+                                            [ngModelOptions]="{standalone: true}" [(ngModel)]="smoke"
+                                            aria-label="Select an option">
+                                            <mat-radio-button class="mr-3" value="Yes">Yes</mat-radio-button>
+                                            <mat-radio-button class="mr-3" value="No">No</mat-radio-button>
+                                        </mat-radio-group>
+                                    </div>
+                                </div>
+    
+                                <div class="col-md-6">
+    
+                                    If yes - please record details
+                                    <mat-form-field>
+                                        <textarea matInput placeholder="Details" [ngModelOptions]="{standalone: true}"
+                                            [(ngModel)]="smokeDetails"></textarea>
+                                    </mat-form-field>
+    
+    
+                                </div>
+    
+                            </div>
+
+                            <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="col-12">
+                                                Are you an ex-smoker, if so, how long is it since you stopped?
+                                        </div>
+                                        <div class="col-12">
+                                            <mat-radio-group [ngModelOptions]="{standalone: true}"
+                                                [ngModelOptions]="{standalone: true}" [(ngModel)]="exsmoker"
+                                                aria-label="Select an option">
+                                                <mat-radio-button class="mr-3" value="Yes">Yes</mat-radio-button>
+                                                <mat-radio-button class="mr-3" value="No">No</mat-radio-button>
+                                            </mat-radio-group>
+                                        </div>
+                                    </div>
+        
+                                    <div class="col-md-6" >
+        
+                                        If yes - please record details
+                                        <div class="d-flex">
+                                        <div class="col-md-6 pl-0">
+                                                <mat-form-field>
+                                                        <input matInput type="number" [ngModelOptions]="{standalone: true}"
+                                                        placeholder="Years" [(ngModel)]="exsmokerYears">
+                                                    
+                                                </mat-form-field>
+                                        </div>
+                                        
+                                        <div class="col-md-6 pr-0">
+                                        <mat-form-field>
+                                                <input matInput type="number" [ngModelOptions]="{standalone: true}"
+                                                placeholder="Months" [(ngModel)]="exsmokerMonths">
+                                        </mat-form-field>
+                                        </div>
+                                    </div>
+                                    </div>
+        
+                                </div>
+
+                                <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="col-12">
+                                                    Do you regularly consume alcohol? If so,  How many units of alcohol do you consume on average each week?
+                                            </div>
+                                            <div class="col-12">
+                                                <mat-radio-group [ngModelOptions]="{standalone: true}"
+                                                    [ngModelOptions]="{standalone: true}" [(ngModel)]="alcohol"
+                                                    aria-label="Select an option">
+                                                    <mat-radio-button class="mr-3" value="Yes">Yes</mat-radio-button>
+                                                    <mat-radio-button class="mr-3" value="No">No</mat-radio-button>
+                                                </mat-radio-group>
+                                            </div>
+                                        </div>
+            
+                                        <div class="col-md-6">
+            
+                                            If yes - please record details
+                                            <mat-form-field>
+                                                    <textarea matInput placeholder="One unit is half a pint of beer, a small glass of wine or a single shot" [ngModelOptions]="{standalone: true}"
+                                                    [(ngModel)]="alcoholDetails"></textarea>
+
+                                            </mat-form-field>
+                                            
+                                            
+            
+                                        </div>
+            
+                                    </div>
+                    </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="single_accordion">
+                <div class="single_accordion_title collapsed" id="headingFive" data-toggle="collapse"
+                data-target="#collapseFive" aria-expanded="true" aria-controls="collapseFive">
+                    CONFIRMATION
+                    <div id="collapseFive" class="collapse single_accordion_content" aria-labelledby="headingFive"
+                    data-parent="#accordion">
+                    <div class="single_accordion_content_inner">
+                        <div class="row">
+                                <div class="col-md-6">
+                                        <mat-form-field>
+                                                <input matInput type="number" [ngModelOptions]="{standalone: true}"
+                                                placeholder="Employer/Primary Sponsor" [(ngModel)]="empSponsor">
+                                        </mat-form-field>
+                                        </div>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <button mat-flat-button (click)="submit()">Submit</button>
+</form>

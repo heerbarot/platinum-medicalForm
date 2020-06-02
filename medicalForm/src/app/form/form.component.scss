@@ -1,0 +1,60 @@
+.single_accordion_title,
+.single_accordion_title.collapsed:hover {
+  background: #fff;
+  color: #111;
+  margin-top: 15px;
+  cursor: pointer;
+  padding: 15px 20px;
+  font-size: 16px;
+  font-weight: 700;
+  border: 2px solid #111;
+  border-bottom-color: transparent;
+}
+
+.single_accordion_title.collapsed:hover {
+  border-bottom-color: #111;
+}
+
+.single_accordion_title.collapsed {
+  background: #111423;
+  color: #838d9d;
+  border-bottom-color: #111;
+}
+
+.single_accordion_content {
+  border: 2px solid #111;
+  margin: -2px 0px 0px;
+  border-top: none;
+}
+
+.single_accordion_content_inner {
+  padding: 0px 30px 15px;
+}
+
+.single_accordion_content_inner label {
+  width: 100%;
+  font-weight: 700;
+}
+
+mat-form-field {
+  width: 100%;
+}
+
+.submit-button {
+  margin-top: 15px;
+}
+
+.signature-img {
+  height: 60px;
+  width: 200px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  overflow: hidden;
+  img {
+    min-width: 100%;
+    min-height: 100%;
+    max-height: 100%;
+    object-fit: cover;
+    max-width: 100%;
+  }
+}
