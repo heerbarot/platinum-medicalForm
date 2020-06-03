@@ -9,6 +9,9 @@ import {MatRadioModule} from '@angular/material/radio';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
+import { SignaturePadModule } from 'angular2-signaturepad';
+import {MatButtonModule} from '@angular/material/button';
+import { HttpClientModule, HttpErrorResponse, HttpParams } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -25,15 +28,17 @@ import { AccordionModule } from 'ngx-bootstrap/accordion';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
     FormsModule,
     NgbModule,
-    MatInputModule,
+    MatInputModule,MatButtonModule,
     MatFormFieldModule,MatRadioModule,
     MatDatepickerModule,MatNativeDateModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
     AccordionModule.forRoot(),
-    MDBBootstrapModule.forRoot()
+    MDBBootstrapModule.forRoot(),
+    SignaturePadModule
   ],
   providers: [MatDatepickerModule],
   bootstrap: [AppComponent],
