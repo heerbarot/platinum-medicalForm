@@ -2,6 +2,10 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { SignaturePad } from 'angular2-signaturepad/signature-pad';
 import { MedicalFormService } from '../services/medical-form.service';
 import { saveAs } from "file-saver";
+import { Router, ActivatedRoute } from '@angular/router';
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { SignCanvasComponent } from '../sign-canvas/sign-canvas.component';
+import { Observable } from 'rxjs';
 
 
 @Component({
@@ -19,7 +23,7 @@ export class FormComponent implements OnInit {
     'canvasHeight': 300
   };
 
-  constructor(public _medicalFormService: MedicalFormService) { }
+  constructor(public _medicalFormService: MedicalFormService, public router: Router, public activatedRoute: ActivatedRoute, public dialog: MatDialog) { }
 
   data;
   imgData;
@@ -103,7 +107,7 @@ export class FormComponent implements OnInit {
   }
 
   submit(){
-    if(this.signaturePad.isEmpty() || this.firstName == undefined || this.firstName == "" || this.surName == undefined || this.surName == ""
+    if(this.imgData == undefined || this.imgData == null || this.firstName == undefined || this.firstName == "" || this.surName == undefined || this.surName == ""
      || this.dateOfBirth == undefined || this.dateOfBirth == ""){
       alert("Details missing")
     }
@@ -204,26 +208,21 @@ export class FormComponent implements OnInit {
     saveAs(blob, 'medical-consent');
     // this.loading = false;
   }
-  ngAfterViewInit() {
-    // this.signaturePad is now available
-    this.signaturePad.set('minWidth', 5); // set szimek/signature_pad options at runtime
-    this.signaturePad.clear(); // invoke functions from szimek/signature_pad API
-  }
- 
-  drawComplete() {
-    // will be notified of szimek/signature_pad's onEnd event
-    this.imgData = this.signaturePad.toDataURL()
-    console.log(this.signaturePad.toDataURL());
+
+  redirect(){
+    // this.router.navigateByUrl('/signature')
+    this.openDialog(SignCanvasComponent).subscribe(data=>{
+      console.log("data from signature", data)
+      this.imgData = data
+    })
   }
 
-  clear(){
-    this.imgData = null
-    this.signaturePad.clear();
+  openDialog(someComponent, data = {}): Observable<any> {
+    console.log("OPENDIALOG", "DATA = ", data);
+    const dialogRef = this.dialog.open(someComponent, { data,maxWidth: '100vw',
+    maxHeight: '100vh',
+    height: '100%',
+    width: '100%' });
+    return dialogRef.afterClosed();
   }
- 
-  drawStart() {
-    // will be notified of szimek/signature_pad's onBegin event
-    console.log('begin drawing');
-  }
-
 }

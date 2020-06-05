@@ -1,0 +1,884 @@
+<div class="main container-fluid">
+    <div class="row">
+        <div class="col-md-6 heading">
+            <div class="">
+                <img src="../../assets/full_logo.png" class="logo">
+            </div>
+        </div>
+        <div class="col-md-6 headingText">
+            <h2>Platinum Rail Services - Medical Assessment Form</h2>
+        </div>
+    </div>
+
+    <div id="accordion">
+        <div class="single_accordion">
+            <div class="single_accordion_title" id="heading" data-toggle="collapse" data-target="#collapse"
+                aria-expanded="true" aria-controls="collapse">
+                MEDICAL ASSESSMENT RECORD - NETWORK RAIL
+            </div>
+            <div id="collapse" class="collapse single_accordion_content show" aria-labelledby="heading"
+                data-parent="#accordion">
+                <div class="single_accordion_content_inner">
+                    <form class="induction_pack_component" [formGroup]="form1">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <mat-form-field>
+                                    <input formControlName="name" matInput placeholder="First name">
+                                </mat-form-field>
+                            </div>
+
+                            <div class="col-md-6">
+                                <mat-form-field>
+                                    <mat-select formControlName="idConfirmed" placeholder="ID Confirmed"
+                                        (selectionChange)="idChanged($event)" multiple>
+                                        <mat-option *ngFor="let item of idConfirmList" [value]="item">{{item}}
+                                        </mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+                            <div class="col-12" *ngIf="showSpecifyOthers">
+                                <mat-form-field>
+                                    <input formControlName="idConfirmOther" matInput
+                                        placeholder="Please Specify the ID confirmed">
+                                </mat-form-field>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <mat-form-field>
+                                    <input matInput [matDatepicker]="picker" formControlName="dob"
+                                        placeholder="Choose a date">
+                                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                                    <mat-datepicker #picker></mat-datepicker>
+                                </mat-form-field>
+                            </div>
+                            <div class="col-md-6">
+                                <mat-form-field>
+                                    <mat-select formControlName="currentSenCard" placeholder="Current Sentinal Card?">
+                                        <mat-option *ngFor="let item of yesNo" [value]="item">{{item}}
+                                        </mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <mat-form-field>
+                                    <input formControlName="natInstNo" matInput placeholder="Nat. Inst. No.">
+                                </mat-form-field>
+                            </div>
+
+                            <div class="col-md-6">
+                                <mat-form-field>
+                                    <input formControlName="sentinalNo" matInput placeholder="Sentinal No.">
+                                </mat-form-field>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="single_accordion">
+            <div class="single_accordion_title collapsed" id="headingOne" data-toggle="collapse"
+                data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                GENERAL HEALTH
+            </div>
+            <form [formGroup]="generalHealth">
+                <div id="collapseOne" class="collapse single_accordion_content" aria-labelledby="headingOne"
+                    data-parent="#accordion">
+                    <div class="single_accordion_content_inner">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <mat-form-field>
+                                    <input formControlName="bp1" (blur)="bpBlurred($event)" matInput
+                                        placeholder="Blood Pressure - First Reading (mm/Hg)">
+                                </mat-form-field>
+                            </div>
+
+                            <div class="col-md-6">
+                                <mat-form-field>
+                                    <mat-select formControlName="pulse1" placeholder="Pulse - First Reading">
+                                        <mat-option *ngFor="let item of pulseList" [value]="item">{{item}}
+                                        </mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12 text-center bgColor">
+                                <b>Repeat if BP > 160/95 (mm/Hg) Pulse range 60-100</b>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <mat-form-field>
+                                    <input formControlName="bp2" (blur)="bpBlurred($event)" matInput
+                                        placeholder="Blood Pressure - Second Reading (mm/Hg)">
+                                </mat-form-field>
+                            </div>
+
+                            <div class="col-md-6">
+                                <mat-form-field>
+                                    <mat-select formControlName="pulse2" placeholder="Pulse - Second Reading">
+                                        <mat-option *ngFor="let item of pulseList" [value]="item">{{item}}
+                                        </mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <mat-form-field>
+                                    <input formControlName="bp3" (blur)="bpBlurred($event)" matInput
+                                        placeholder="Blood Pressure - Third Reading (mm/Hg)">
+                                </mat-form-field>
+                            </div>
+
+                            <div class="col-md-6">
+                                <mat-form-field>
+                                    <mat-select formControlName="pulse3" placeholder="Pulse - Third Reading">
+                                        <mat-option *ngFor="let item of pulseList" [value]="item">{{item}}
+                                        </mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <mat-form-field>
+                                    <mat-select formControlName="height" placeholder="Height"
+                                        (selectionChange)="calcBmi($event)">
+                                        <mat-option *ngFor="let item of heightList" [value]="item">{{item}} cm
+                                        </mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+
+                            <div class="col-md-4">
+                                <mat-form-field>
+                                    <mat-select formControlName="weight" placeholder="Weight"
+                                        (selectionChange)="calcBmi($event)">
+                                        <mat-option *ngFor="let item of weightList" [value]="item">{{item}} kg
+                                        </mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+                            <div class="col-md-4">
+                                <mat-form-field>
+                                    <input formControlName="bmi" value="{{bmi}}" matInput placeholder="BMI">
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <div class="row" *ngIf="bmi && bmi > 33">
+                            <div class="col-md-6">
+                                <mat-form-field>
+                                    <mat-select formControlName="mobility" placeholder="Mobility">
+                                        <mat-option *ngFor="let item of satisfactory" [value]="item">{{item}}
+                                        </mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+                            <div class="col-md-6">
+                                <mat-form-field>
+                                    <mat-select formControlName="fitness" placeholder="Fitness">
+                                        <mat-option [value]="'Good'">Good</mat-option>
+                                        <mat-option [value]="'Poor'">Poor</mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <mat-form-field>
+                                    <mat-select formControlName="pulseRhythm" placeholder="Pulse Rhythm">
+                                        <mat-option *ngFor="let item of normality" [value]="item">{{item}}
+                                        </mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+                            <div class="col-md-4">
+                                <mat-form-field>
+                                    <mat-select formControlName="glucose" placeholder="Urin Analysis - Glucose">
+                                        <mat-option *ngFor="let item of urinanalysis" [value]="item">{{item}}
+                                        </mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+                            <div class="col-md-4">
+                                <mat-form-field>
+                                    <mat-select formControlName="protein" placeholder="Urin Analysis - Protein">
+                                        <mat-option *ngFor="let item of urinanalysis" [value]="item">{{item}}
+                                        </mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="col-12 text-center bgColor">
+                                    <b>Blood Pressure</b>
+                                </div>
+                                <div class="d-flex">
+                                    <div class="col-4 d-flex justify-content-center">
+                                        <table>
+                                            <tr>
+                                                <td>90/60 - 140/90</td>
+                                            </tr>
+                                            <tr>
+                                                <td>140/90 - 160/95</td>
+                                            </tr>
+                                            <tr>
+                                                <td>140/90 - 160/95</td>
+                                            </tr>
+                                            <tr>
+                                                <td>>180/100</td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                    <div class="col-8 d-flex justify-content-center">
+                                        <table>
+                                            <tr *ngFor="let data of bpArray; let i=index">
+                                                <td>
+                                                    <input type="checkbox" name="checkButton"
+                                                        [attr.checked]="data.checked" [value]="data.value"
+                                                        (change)="onCheckboxChange($event)" />
+                                                    {{data.value}}
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class='row'>
+                            <div class="col-md-12">
+                                <div class="col-12 text-center bgColor">
+                                    <b>Passed Assessment For</b>
+                                </div>
+                                <!-- <div class="col-12 d-flex"> -->
+                                    <div class="col-md-12">
+                                        <label>Balance, Mobility and Co-ordination?</label>
+                                        <mat-form-field>
+                                            <mat-select formControlName="balanceNMobility" placeholder="Select">
+                                                <mat-option *ngFor="let item of yesNo" [value]="item">{{item}}
+                                                </mat-option>
+                                            </mat-select>
+                                        </mat-form-field>
+                                    </div>
+
+                                    <div class="col-md-12">
+                                        <label>Alertness & Psychological Wellbeing?</label>
+                                        <mat-form-field>
+                                            <mat-select formControlName="alertnessNwellbeing" placeholder="Select">
+                                                <mat-option *ngFor="let item of yesNo" [value]="item">{{item}}
+                                                </mat-option>
+                                            </mat-select>
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <label>Speech and Ability to Communicate?</label>
+                                        <mat-form-field>
+                                            <mat-select formControlName="speech" placeholder="Select">
+                                                <mat-option *ngFor="let item of yesNo" [value]="item">{{item}}
+                                                </mat-option>
+                                            </mat-select>
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                            <!-- </div> -->
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 ">
+                                <div class="col-12 bgColor text-center">
+                                    <b>Advice Given</b>
+                                </div>
+                                <div class="col-12">
+                                    <mat-form-field>
+                                        <mat-select formControlName="adviceGiven"
+                                            (selectionChange)="adviceGivenChanged($event)" placeholder="Select">
+                                            <mat-option *ngFor="let item of yesNo" [value]="item">{{item}}
+                                            </mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-12" *ngIf="showAdviceYes">
+                                    <mat-form-field>
+                                        <mat-select formControlName="adviceGivenYes" placeholder="Select" multiple>
+                                            <mat-option *ngFor="let item of ifYes" [value]="item">{{item}}
+                                            </mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </div>
+
+                            </div>
+                            <div class="col-md-6 ">
+                                <div class="col-12 bgColor text-center">
+                                    <b>Letters Issued</b>
+                                </div>
+                                <div class="col-12">
+                                    <mat-form-field>
+                                        <mat-select formControlName="lettersIssued"
+                                            (selectionChange)="lettersIssuedChanged($event)" placeholder="Select">
+                                            <mat-option *ngFor="let item of yesNo" [value]="item">{{item}}
+                                            </mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-12" *ngIf="showlettersIssuedYes">
+                                    <mat-form-field>
+                                        <mat-select formControlName="lettersIssuedYes" placeholder="Select" multiple>
+                                            <mat-option *ngFor="let item of ifYes" [value]="item">{{item}}
+                                            </mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <div class="single_accordion">
+            <div class="single_accordion_title collapsed" id="headingTwo" data-toggle="collapse"
+                data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+                VISION ASSESSMENT
+            </div>
+            <form [formGroup]="visionAssessment">
+                <div id="collapseTwo" class="collapse single_accordion_content" aria-labelledby="headingTwo"
+                    data-parent="#accordion">
+                    <div class="single_accordion_content_inner">
+                        <div class="row">
+                            <div class="col-12 bgColor text-center">
+                                <b>Distance Vision</b>
+                            </div>
+                            <div class="col-md-6">
+                                <mat-form-field>
+                                    <mat-select formControlName="dvlUnaided" placeholder="Left(Unaided)">
+                                        <mat-option *ngFor="let item of distanceVisionList" [value]="item">6/{{item}}
+                                        </mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+                            <div class="col-md-6">
+                                <mat-form-field>
+                                    <mat-select formControlName="dvrUnaided" placeholder="Right(Unaided)">
+                                        <mat-option *ngFor="let item of distanceVisionList" [value]="item">6/{{item}}
+                                        </mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <mat-form-field>
+                                    <mat-select formControlName="dvlCorrected" placeholder="Left(Corrected)">
+                                        <mat-option *ngFor="let item of distanceVisionList" [value]="item">6/{{item}}
+                                        </mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+                            <div class="col-md-6">
+                                <mat-form-field>
+                                    <mat-select formControlName="dvlCorrected" placeholder="Right(Corrected)">
+                                        <mat-option *ngFor="let item of distanceVisionList" [value]="item">6/{{item}}
+                                        </mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12 bgColor text-center">
+                                <b>
+                                    Vision Standard
+                                    6/9 in better eye and 6/12 in the other eye
+                                </b>
+                            </div>
+                            <div class="col-md-6">
+                                <mat-form-field>
+                                    <mat-select formControlName="glassesWorn" placeholder="Glasses Worn">
+                                        <mat-option *ngFor="let item of yesNo" [value]="item">{{item}}
+                                        </mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+                            <div class="col-md-6">
+                                <mat-form-field>
+                                    <mat-select formControlName="lensesWorn" placeholder="Lenses Worn">
+                                        <mat-option *ngFor="let item of yesNo" [value]="item">{{item}}
+                                        </mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <mat-form-field>
+                                    <mat-select formControlName="visualFields" placeholder="Visual Fields">
+                                        <mat-option *ngFor="let item of normality" [value]="item">{{item}}
+                                        </mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+                            <div class="col-md-6">
+                                <mat-form-field>
+                                    <mat-select formControlName="colorVision" placeholder="Colour Vision">
+                                        <mat-option *ngFor="let item of normality" [value]="item">{{item}}
+                                        </mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 bgColor d-flex justify-content-center align-items-center">
+                                Normal Colour Vision
+                                17 of 21 plates read correctly
+                            </div>
+                            <div class="col-md-6">
+                                <mat-form-field>
+                                    <mat-select formControlName="plates" placeholder="No. of plates read correctly">
+                                        <mat-option *ngFor="let item of platesList" [value]="item">{{item}}
+                                        </mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <div class="single_accordion">
+            <div class="single_accordion_title collapsed" id="headingThree" data-toggle="collapse"
+                data-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
+                FITNESS ASSESSMENT SUMMARY
+            </div>
+            <form [formGroup]="fitnessGrp">
+                <div id="collapseThree" class="collapse single_accordion_content" aria-labelledby="headingThree"
+                    data-parent="#accordion">
+                    <div class="single_accordion_content_inner">
+                        <div class="row">
+                            <div class="col-12">
+                                <mat-form-field>
+                                    <textarea formControlName="addInfo" placeholder="Additional Information"
+                                        matInput></textarea>
+                                </mat-form-field>
+                            </div>
+                            <div class="col-md-6">
+                                <mat-form-field>
+                                    <mat-select formControlName="generalHealth" placeholder="General Health">
+                                        <mat-option *ngFor="let item of satisfactory" [value]="item">{{item}}
+                                        </mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+                            <div class="col-md-6">
+                                <mat-form-field>
+                                    <mat-select formControlName="visual" placeholder="Visual Acuity">
+                                        <mat-option *ngFor="let item of satisfactory" [value]="item">{{item}}
+                                        </mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <mat-form-field>
+                                    <mat-select formControlName="colorVision" placeholder="Colour Vision">
+                                        <mat-option *ngFor="let item of satisfactory" [value]="item">{{item}}
+                                        </mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+                            <div class="col-md-6">
+                                <mat-form-field>
+                                    <mat-select formControlName="hearing" placeholder="Hearing">
+                                        <mat-option *ngFor="let item of satisfactory" [value]="item">{{item}}
+                                        </mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-12 bgColor text-center">
+                                <b>Left Ear</b>
+                            </div>
+                            <div class="col-md-3">
+                                <mat-form-field>
+                                    <mat-select formControlName="leftEar500"
+                                        (selectionChange)="leftEarChange($event, 500)" placeholder="500">
+                                        <mat-option *ngFor="let item of hearingList" [value]="item">{{item}}
+                                        </mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+                            <div class="col-md-3">
+                                <mat-form-field>
+                                    <mat-select formControlName="leftEar1000"
+                                        (selectionChange)="leftEarChange($event, 1000)" placeholder="1000">
+                                        <mat-option *ngFor="let item of hearingList" [value]="item">{{item}}
+                                        </mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+                            <div class="col-md-3">
+                                <mat-form-field>
+                                    <mat-select formControlName="leftEar2000"
+                                        (selectionChange)="leftEarChange($event, 2000)" placeholder="2000">
+                                        <mat-option *ngFor="let item of hearingList" [value]="item">{{item}}
+                                        </mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+                            <div class="col-md-3">
+                                <mat-form-field>
+                                    <mat-select formControlName="leftEar3000" placeholder="3000">
+                                        <mat-option *ngFor="let item of hearingList" [value]="item">{{item}}
+                                        </mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+                            <div class="col-12 d-flex p-0">
+                                <div class="col-md-3">
+                                    <mat-form-field>
+                                        <mat-select formControlName="leftEar4000" placeholder="4000">
+                                            <mat-option *ngFor="let item of hearingList" [value]="item">{{item}}
+                                            </mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-md-3">
+                                    <mat-form-field>
+                                        <mat-select formControlName="leftEar6000" placeholder="6000">
+                                            <mat-option *ngFor="let item of hearingList" [value]="item">{{item}}
+                                            </mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-md-3">
+                                    <mat-form-field>
+                                        <mat-select formControlName="leftEar8000" placeholder="8000">
+                                            <mat-option *ngFor="let item of hearingList" [value]="item">{{item}}
+                                            </mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-12 bgColor text-center">
+                               <b> Right Ear </b>
+                            </div>
+                            <div class="col-md-3">
+                                <mat-form-field>
+                                    <mat-select formControlName="rightEar500"
+                                        (selectionChange)="rightEarChange($event, 500)" placeholder="500">
+                                        <mat-option *ngFor="let item of hearingList" [value]="item">{{item}}
+                                        </mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+                            <div class="col-md-3">
+                                <mat-form-field>
+                                    <mat-select formControlName="rightEar1000"
+                                        (selectionChange)="rightEarChange($event, 1000)" placeholder="1000">
+                                        <mat-option *ngFor="let item of hearingList" [value]="item">{{item}}
+                                        </mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+                            <div class="col-md-3">
+                                <mat-form-field>
+                                    <mat-select formControlName="rightEar2000"
+                                        (selectionChange)="rightEarChange($event, 2000)" placeholder="2000">
+                                        <mat-option *ngFor="let item of hearingList" [value]="item">{{item}}
+                                        </mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+                            <div class="col-md-3">
+                                <mat-form-field>
+                                    <mat-select formControlName="rightEar3000" placeholder="3000">
+                                        <mat-option *ngFor="let item of hearingList" [value]="item">{{item}}
+                                        </mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+                            <div class="col-12 d-flex p-0">
+                                <div class="col-md-3">
+                                    <mat-form-field>
+                                        <mat-select formControlName="rightEar4000" placeholder="4000">
+                                            <mat-option *ngFor="let item of hearingList" [value]="item">{{item}}
+                                            </mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-md-3">
+                                    <mat-form-field>
+                                        <mat-select formControlName="rightEar6000" placeholder="6000">
+                                            <mat-option *ngFor="let item of hearingList" [value]="item">{{item}}
+                                            </mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-md-3">
+                                    <mat-form-field>
+                                        <mat-select formControlName="rightEar8000" placeholder="8000">
+                                            <mat-option *ngFor="let item of hearingList" [value]="item">{{item}}
+                                            </mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12">
+                                <mat-form-field>
+                                    <mat-select formControlName="earWax" placeholder="Are the ears clear of wax?">
+                                        <mat-option *ngFor="let item of yesNo" [value]="item">{{item}}
+                                        </mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-3">
+                                <mat-form-field>
+                                    <input matInput placeholder="Left ear 500" value="{{lear500}}" disabled>
+                                </mat-form-field>
+                            </div>
+                            <div class="col-md-3">
+                                <mat-form-field>
+                                    <input matInput placeholder="Left ear 1000" value="{{lear1000}}" disabled>
+                                </mat-form-field>
+                            </div>
+                            <div class="col-md-3">
+                                <mat-form-field>
+                                    <input matInput placeholder="Left ear 2000" value="{{lear2000}}" disabled>
+                                </mat-form-field>
+                            </div>
+                            <div class="col-md-3">
+                                <mat-form-field>
+                                    <input matInput placeholder="Left ear total" value="{{learTotal}}" disabled>
+                                </mat-form-field>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-3">
+                                <mat-form-field>
+                                    <input matInput placeholder="Right ear 500" value="{{rear500}}" disabled>
+                                </mat-form-field>
+                            </div>
+                            <div class="col-md-3">
+                                <mat-form-field>
+                                    <input matInput placeholder="Right ear 1000" value="{{rear1000}}" disabled>
+                                </mat-form-field>
+                            </div>
+                            <div class="col-md-3">
+                                <mat-form-field>
+                                    <input matInput placeholder="Right ear 2000" value="{{rear2000}}" disabled>
+                                </mat-form-field>
+                            </div>
+                            <div class="col-md-3">
+                                <mat-form-field>
+                                    <input matInput placeholder="Right ear total" value="{{rearTotal}}" disabled>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <div class="single_accordion">
+            <div class="single_accordion_title collapsed" id="headingFour" data-toggle="collapse"
+                data-target="#collapseFour" aria-expanded="true" aria-controls="collapseFour">
+                MEDICAL EXAMINARS RECOMMENDATION
+            </div>
+            <form [formGroup]="medicalAssess">
+                <div id="collapseFour" class="collapse single_accordion_content" aria-labelledby="headingFour"
+                    data-parent="#accordion">
+                    <div class="single_accordion_content_inner">
+                        <div class="row">
+                            <!-- <div class="col-12"> -->
+                            <div class="col-12">
+                                <!-- <table> -->
+                                    <!-- <tr> -->
+                                        <!-- <td class="col-md-6 col-12"> -->
+                                            <div class="col-md-6">
+                                                    <input type="checkbox" name="fit" [attr.checked]="" [value]="Fit"
+                                                    (change)="fit($event)" />
+                                                Fit
+                                            </div>
+                                            
+                                        <!-- </td> -->
+                                        <!-- <td class="col-md-6 col-12"> -->
+                                            <div class="col-md-12">
+                                            <mat-form-field>
+                                                <mat-select formControlName="level" placeholder="Select">
+                                                    <mat-option [value]="'level1'">Level 1</mat-option>
+                                                    <mat-option [value]="'level3'">Level 3</mat-option>
+                                                </mat-select>
+                                            </mat-form-field>
+                                            </div>
+                                        <!-- </td> -->
+                                    <!-- </tr> -->
+                                    <!-- <tr> -->
+                                        <!-- <td class="col-md-6 "> -->
+                                            <div class="col-md-6">
+                                            <input type="checkbox" name="letterToGp" [attr.checked]="" [value]="letterToGp"
+                                                (change)="letterToGp($event)" />
+                                            Letter To GP
+                                        </div>
+                                        <!-- </td> -->
+                                        <!-- <td class="col-md-6 "> -->
+                                            <div class='col-md-12'>
+                                            <mat-form-field>
+                                                <input matInput placeholder="Reason" formControlName="reason">
+                                            </mat-form-field>
+                                        </div>
+                                        <!-- </td> -->
+                                    <!-- </tr> -->
+                                    <!-- <tr> -->
+                                        <!-- <td class="col-md-6 "> -->
+                                            <div class="col-md-6">
+                                            <input type="checkbox" name="certificate" [attr.checked]="" [value]="MonthsCertificate"
+                                                (change)="sixMonth($event)" />
+                                            6 Months Certificate
+                                        </div>
+                                        <!-- </td> -->
+                                        <!-- <td class="col-md-6 "> -->
+                                            <div class="col-md-6">
+                                            (Blood pressure 165/95-180/100)
+                                        </div>
+                                        <!-- </td> -->
+                                    <!-- </tr> -->
+                                    <!-- <tr> -->
+                                        <!-- <td class="col-md-6 "> -->
+                                            <div class="col-md-6">
+                                                    <input type="checkbox" name="referToOH" [attr.checked]="" [value]="referToOH"
+                                                    (change)="referToOH($event)" />
+                                                Refer To OH Physician
+                                            </div>
+                                            
+                                        <!-- </td> -->
+                                    <!-- </tr> -->
+                                <!-- </table> -->
+                            </div>
+                            <!-- </div> -->
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <mat-form-field>
+                                    <input formControlName="examinerName" matInput
+                                        placeholder="Medical Examinar's Name">
+                                </mat-form-field>
+                            </div>
+                            <div class="col-md-6">
+                                <mat-form-field>
+                                    <input matInput [matDatepicker]="picker1" formControlName="examinerDate"
+                                        placeholder="Choose a date">
+                                    <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                                    <mat-datepicker #picker1></mat-datepicker>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>SIGNATURE</label>
+                                <div class="signCanvas" *ngIf="!examinarSign" (click)="redirect('examinar')">
+                                    Click to sign
+                                </div>
+
+                                <div class="signCanvas" *ngIf="examinarSign" (click)="redirect('examinar')">
+                                    Signature attached.
+                                    <!-- <img src="{{imgData}}"> -->
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12">
+                                <mat-form-field>
+                                    <textarea matInput formControlName="reasonForReferral" placeholder="Reason for referral"></textarea>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <mat-form-field>
+                                    <input formControlName="checkedBy" matInput placeholder="Checked By">
+                                </mat-form-field>
+                            </div>
+                            <div class="col-md-6">
+                                <mat-form-field>
+                                    <input matInput [matDatepicker]="picker2" formControlName="checkedByDate"
+                                        placeholder="Choose a date">
+                                    <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+                                    <mat-datepicker #picker2></mat-datepicker>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>SIGNATURE</label>
+                                <div class="signCanvas" *ngIf="!checkedBy" (click)="redirect('checkedby')">
+                                    Click to sign
+                                </div>
+
+                                <div class="signCanvas" *ngIf="checkedBy" (click)="redirect('checkedby')">
+                                    Signature attached.
+                                    <!-- <img src="{{imgData}}"> -->
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row mt-2">
+                            <div class="col-12 bgColor text-center">
+                                Occupational Health Physician’s Decision
+                            </div>
+                            <div class="col-md-4">
+                                Level
+                            </div>
+                            <div class="col-md-8">
+                                <input type="checkbox" disabled>Level 1
+                                <input type="checkbox" disabled>Level 2
+                                <input type="checkbox" disabled>Level 3
+                                <input type="checkbox" disabled>Level 4
+                                <input type="checkbox" disabled>No Level
+                            </div>
+                        </div>
+                        <div class="row mt-2">
+                            <div class="col-md-4">
+                                Risk Assessment Required
+                            </div>
+                            <div class="col-md-4">
+                                    Y/N
+                            </div>
+                            <div class="col-md-4">
+                                    Reason:
+                            </div>
+                        </div>
+                        <div class="row mt-2">
+                            <div class="col-md-6">
+                                Signature
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="mt-3">
+            <button mat-raised-button color="primary" (click)="submit()">Submit</button>
+    </div>
+</div>

@@ -994,13 +994,22 @@
                             <div class="row">
                                 <div class="col-md-6">
                                         <label>SIGNATURE</label>
-                                        <div class="">
+                                        <div class="signCanvas" *ngIf="!imgData" (click)="redirect()">
+                                            Click to sign
+                                        </div>
+
+                                        <div class="signCanvas" *ngIf="imgData" (click)="redirect()">
+                                            Signature attached.
+                                            <!-- <img src="{{imgData}}"> -->
+                                        </div>
+                                        <!-- <app-sign-canvas></app-sign-canvas> -->
+                                        <!-- <div class="">
                                                 <signature-pad [options]="signaturePadOptions" (onBeginEvent)="drawStart()"
                                                 (onEndEvent)="drawComplete()"></signature-pad>
                                         </div>
                                         <div class="col-12 mt-1">
                                             <button mat-raised-button color="warn" (click)="clear()">Clear</button>
-                                        </div>
+                                        </div> -->
                                 </div>                                
                                 
                             </div>

@@ -1,0 +1,16 @@
+// signature-app{
+//     width: 100vh;
+//     height: 100vh;
+// }
+.space{
+    display: flex;
+    justify-content: center;
+    // width: 100%;
+    // height: 85%;
+    // background-color: #dfffff;
+}
+.btnRow{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}

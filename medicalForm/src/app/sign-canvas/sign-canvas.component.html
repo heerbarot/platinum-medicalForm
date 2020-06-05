@@ -1,0 +1,18 @@
+    <h2>
+        Please Sign in the shaded region.
+    </h2>
+    
+    <h4>
+            Top
+    </h4>
+    <div class="space" id="mainDiv">
+        <signature-pad [options]="signaturePadOptions" id="signature-pad" (onBeginEvent)="drawStart()"
+        (onEndEvent)="drawComplete()"></signature-pad>
+    </div>
+    <h4>
+            Bottom
+    </h4>
+<div class="col-12 mt-1 btnRow">
+<button mat-raised-button color="warn" (click)="clear()">Clear</button>
+<button mat-raised-button color="primary" (click)="submit()">Submit</button>
+</div>
