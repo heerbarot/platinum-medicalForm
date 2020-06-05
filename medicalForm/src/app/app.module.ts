@@ -19,7 +19,6 @@ import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { FormComponent } from './form/form.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatNativeDateModule } from '@angular/material/core';
 import { AccordionModule } from 'ngx-bootstrap/accordion';
@@ -29,7 +28,6 @@ import { NewFormComponent } from './new-form/new-form.component';
 @NgModule({
   declarations: [
     AppComponent,
-    FormComponent,
     SignCanvasComponent,
     NewFormComponent
   ],
