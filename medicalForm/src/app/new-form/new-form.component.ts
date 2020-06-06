@@ -285,6 +285,9 @@ export class NewFormComponent implements OnInit {
     }
     else{
       this.showAdviceYes = false
+      this.generalHealth.patchValue({
+        adviceGivenYes: ''
+      })
     }
   }
   lettersIssuedChanged(event){
@@ -293,6 +296,9 @@ export class NewFormComponent implements OnInit {
     }
     else{
       this.showlettersIssuedYes = false
+      this.generalHealth.patchValue({
+        lettersIssuedYes: ''
+      })
     }
   }
 
