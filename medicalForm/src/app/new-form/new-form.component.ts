@@ -226,10 +226,10 @@ export class NewFormComponent implements OnInit {
     reason: new FormControl(''),
     examinerName: new FormControl(''),
     examinerDate: new FormControl(''),
-    examinarSignature: new FormControl(''),
+    examinarSignature: new FormControl('', Validators.required),
     checkedBy: new FormControl(''),
     checkedByDate: new FormControl(''),
-    checkedSign: new FormControl(''),
+    checkedSign: new FormControl('', Validators.required),
     reasonForReferral: new FormControl('')
   })
 
@@ -419,8 +419,11 @@ export class NewFormComponent implements OnInit {
       this.lear2000 = event.value
     }
 
-    if (this.lear500 && this.lear1000 && this.lear2000) {
-      this.learTotal = Number(this.lear500) + Number(this.lear1000) + Number(this.lear2000)
+    console.log("EVENT", this.lear500, this.lear1000, this.lear2000)
+
+    if (this.lear500 != undefined && this.lear1000 != undefined && this.lear2000 != undefined) {
+      let leftEarTotal = Number(this.lear500) + Number(this.lear1000) + Number(this.lear2000)
+      this.learTotal = leftEarTotal
       this.hearingGrp.patchValue({
         leTotal: this.learTotal
       })
@@ -438,8 +441,9 @@ export class NewFormComponent implements OnInit {
       this.rear2000 = event.value
     }
 
-    if (this.rear500 && this.rear1000 && this.rear2000) {
-      this.rearTotal = Number(this.rear500) + Number(this.rear1000) + Number(this.rear2000)
+    if (this.rear500 != undefined && this.rear1000 != undefined && this.rear2000 != undefined) {
+      let rightEarTotal = Number(this.rear500) + Number(this.rear1000) + Number(this.rear2000)
+      this.rearTotal = rightEarTotal
       this.hearingGrp.patchValue({
         reTotal: this.rearTotal
       })
@@ -588,12 +592,16 @@ export class NewFormComponent implements OnInit {
 
     console.log("temp", temp, this.form1.value)
 
+    if (this.form1.valid && this.medicalAssess.valid) {
+      this._medicalFormService.generatePdf(data).subscribe(res => {
+        console.log("RES", res)
+        this.saveToFileSystem(res);
+      })
+    }
+    else {
+      alert('Name and signature are required')
+    }
 
-
-    this._medicalFormService.generatePdf(data).subscribe(res => {
-      console.log("RES", res)
-      this.saveToFileSystem(res);
-    })
     let checked = $('input[name="checkButton"]:checked').val();
     console.log("checkedcheckedchecked", checked)
     // console.log("FORM", this.generalHealth)
