@@ -65,9 +65,10 @@ export class NewFormComponent implements OnInit {
   examinarSign;
   checkedBy: any;
   secondTestChecked: boolean = true;
-  secondTestDisabled: boolean = false;
   submitDisabled: boolean = true;
   showSecondOption: boolean = false;
+  secondTestDisabled: boolean = true;
+  thirdTestDisabled: boolean = true;
 
   constructor(private fb: FormBuilder, public dialog: MatDialog, public _medicalFormService: MedicalFormService) {
     this.pulseList = this.generateRange(40, 180)
@@ -250,8 +251,16 @@ export class NewFormComponent implements OnInit {
     } else {
       this.secondTestDisabled = true;
     }
-    console.log('secondTestDisabled===>', this.secondTestDisabled);
   }
+
+  checkboxChange2(event) {
+    if (event.checked == true) {
+      this.thirdTestDisabled = false;
+    } else {
+      this.thirdTestDisabled = true;
+    }
+  }
+
   onCheckboxChange(e) {
     // const checkArray: FormArray = this.generalHealth.get('bpCheckBox') as FormArray;
 
@@ -358,14 +367,14 @@ export class NewFormComponent implements OnInit {
     let healthForm = this.generalHealth.value;
     let temp = healthForm.bp1.split('/')
 
-    if ((Number(temp[0]) > 160 && Number(temp[1]) > 95)) {
-      console.log('Inside range');
-      this.showSecondOption = true;
-      this.secondTestDisabled = false;
-    } else {
-      this.showSecondOption = false;
-      this.secondTestDisabled = true;
-    }
+    // if ((Number(temp[0]) > 160 && Number(temp[1]) > 95)) {
+    //   console.log('Inside range');
+    //   this.showSecondOption = true;
+    //   this.secondTestDisabled = false;
+    // } else {
+    //   this.showSecondOption = false;
+    //   this.secondTestDisabled = true;
+    // }
   }
 
   adviceGivenChanged(event) {
