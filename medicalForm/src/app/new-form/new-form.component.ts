@@ -69,6 +69,9 @@ export class NewFormComponent implements OnInit {
   showSecondOption: boolean = false;
   secondTestDisabled: boolean = true;
   thirdTestDisabled: boolean = true;
+  showSecond: boolean;
+  // showSecond: boolean;
+  showThird: boolean;
 
   constructor(private fb: FormBuilder, public dialog: MatDialog, public _medicalFormService: MedicalFormService) {
     this.pulseList = this.generateRange(40, 180)
@@ -248,16 +251,20 @@ export class NewFormComponent implements OnInit {
   checkboxChange(event) {
     if (event.checked == true) {
       this.secondTestDisabled = false;
+      this.showSecond = true
     } else {
       this.secondTestDisabled = true;
+      this.showSecond = false
     }
   }
 
   checkboxChange2(event) {
     if (event.checked == true) {
       this.thirdTestDisabled = false;
+      this.showThird = true
     } else {
       this.thirdTestDisabled = true;
+      this.showThird = false
     }
   }
 

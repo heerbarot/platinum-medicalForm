@@ -113,10 +113,17 @@
                             </div>
                         </div>
 
-                        <div class="row">
-                            <div class="col-12 text-center bgColor text-danger mb-3">
+                        <div class="row bgColor checkRow">
+                            <div class="col-md-6 col-12 text-center  text-danger mb-3">
                                 <b>Please enter 2nd and 3rd reading if Blood Pressure > 160/95 (mm/Hg)</b>
                             </div>
+                            <div class="col-md-3 col-6 ">
+                                <mat-checkbox (change)="checkboxChange($event)">2nd Test</mat-checkbox>
+                            </div>
+                            <div class="col-md-3 col-6 ">
+                                <mat-checkbox (change)="checkboxChange2($event)">3rd Test</mat-checkbox>
+                            </div>
+                            
                         </div>
 
                         <!-- <div class="row">
@@ -126,15 +133,15 @@
                         </div> -->
 
 
-                        <div class="row">
+                        <div class="row" *ngIf="showSecond">
 
-                            <div class="col-md-4 d-flex align-items-center">
+                            <!-- <div class="col-md-4 d-flex align-items-center">
                                 <mat-checkbox (change)="checkboxChange($event)">2nd Test
                                     Required
                                 </mat-checkbox>
-                            </div>
+                            </div> -->
 
-                            <div class="col-md-4">
+                            <div class="col-md-6">
                                 <mat-form-field>
                                     <input [readonly]="secondTestDisabled" formControlName="bp2"
                                         (blur)="bpBlurred($event)" matInput
@@ -142,7 +149,7 @@
                                 </mat-form-field>
                             </div>
 
-                            <div class="col-md-4">
+                            <div class="col-md-6">
                                 <mat-form-field>
                                     <mat-select formControlName="pulse2" placeholder="Pulse - Second Reading">
                                         <mat-option [disabled]="secondTestDisabled" *ngFor="let item of pulseList"
@@ -154,18 +161,18 @@
                             </div>
                         </div>
 
-                        <div class="row">
+                        <div class="row" *ngIf="showThird">
 
-                            <div class="col-md-4 d-flex align-items-center">
+                            <!-- <div class="col-md-4 d-flex align-items-center">
 
                                 <mat-checkbox (change)="checkboxChange2($event)">3rd
                                     Test
                                     Required
                                 </mat-checkbox>
 
-                            </div>
+                            </div> -->
 
-                            <div class="col-md-4">
+                            <div class="col-md-6">
                                 <mat-form-field>
                                     <input [readonly]="thirdTestDisabled" formControlName="bp3"
                                         (blur)="bpBlurred($event)" matInput
@@ -173,7 +180,7 @@
                                 </mat-form-field>
                             </div>
 
-                            <div class="col-md-4">
+                            <div class="col-md-6">
                                 <mat-form-field>
                                     <mat-select formControlName="pulse3" placeholder="Pulse - Third Reading">
                                         <mat-option [disabled]="thirdTestDisabled" *ngFor="let item of pulseList"

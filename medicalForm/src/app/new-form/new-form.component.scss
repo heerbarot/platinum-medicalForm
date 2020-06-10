@@ -31,6 +31,7 @@
   padding: 0px 30px 15px;
 }
 
+
 .single_accordion_content_inner label {
   width: 100%;
   font-weight: 700;
@@ -100,4 +101,11 @@ mat-form-field {
 }
 .bgColor{
   background: aliceblue;
+}
+
+.checkRow{
+  @media(max-width: 768px){
+    display: flex;
+    // flex-direction: column-reverse;
+  }
 }
