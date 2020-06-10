@@ -67,7 +67,7 @@
 
                             <div class="col-md-6">
                                 <mat-form-field>
-                                    <mat-select formControlName="currentSenCard" placeholder="Current Sentinal Card?">
+                                    <mat-select formControlName="currentSenCard" placeholder="Current Sentinel Card?">
                                         <mat-option *ngFor="let item of yesNo" [value]="item">{{item}}
                                         </mat-option>
                                     </mat-select>
@@ -76,7 +76,7 @@
 
                             <div class="col-md-6">
                                 <mat-form-field>
-                                    <input formControlName="sentinalNo" matInput placeholder="Sentinal No.">
+                                    <input formControlName="sentinalNo" matInput placeholder="Sentinel No.">
                                 </mat-form-field>
                             </div>
                         </div>
@@ -110,6 +110,12 @@
                                         </mat-option>
                                     </mat-select>
                                 </mat-form-field>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-12 text-left text-danger">
+                                <span>Note : 2nd Reading Appear When BP > 160/95 (mm/Hg)</span>
                             </div>
                         </div>
 

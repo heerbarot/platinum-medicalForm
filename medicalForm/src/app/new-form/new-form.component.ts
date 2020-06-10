@@ -16,7 +16,7 @@ declare var $: any;
 })
 export class NewFormComponent implements OnInit {
 
-  idConfirmList = ['Sentinal Card', 'Driving Licence', 'Passport', 'Company ID', 'Other'];
+  idConfirmList = ['Sentinel Card', 'Driving Licence', 'Passport', 'Company ID', 'Other'];
   yesNo = ['Yes', 'No']
   satisfactory = ['Satisfactory', 'Not Satisfactory']
   normality = ['Normal', 'Abnormal']
@@ -358,7 +358,7 @@ export class NewFormComponent implements OnInit {
     let healthForm = this.generalHealth.value;
     let temp = healthForm.bp1.split('/')
 
-    if ((Number(temp[0]) > 160 && Number(temp[1]) > 95) && (Number(healthForm.pulse1) >= 60 && Number(healthForm.pulse1) <= 100)) {
+    if ((Number(temp[0]) > 160 && Number(temp[1]) > 95)) {
       console.log('Inside range');
       this.showSecondOption = true;
       this.secondTestDisabled = false;
@@ -498,8 +498,8 @@ export class NewFormComponent implements OnInit {
     let temp = this.form1.controls.idConfirmed.value
     if (temp) {
       temp.forEach(el => {
-        if (el == "Sentinal Card") {
-          this.form1.value['sCard'] = "Sentinal Card"
+        if (el == "Sentinel Card") {
+          this.form1.value['sCard'] = "Sentinel Card"
         } else if (el == 'Driving Licence') {
           this.form1.value['driving'] = "Driving Licence"
         } else if (el == 'Passport') {
@@ -591,6 +591,7 @@ export class NewFormComponent implements OnInit {
     }
 
     console.log("temp", temp, this.form1.value)
+
 
     if (this.form1.valid && this.medicalAssess.valid) {
       this._medicalFormService.generatePdf(data).subscribe(res => {
