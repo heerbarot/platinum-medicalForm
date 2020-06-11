@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, Output, EventEmitter } from '@angular/core';
 import { SignaturePad } from 'angular2-signaturepad/signature-pad';
 import { MedicalFormService } from '../services/medical-form.service';
 import { saveAs } from "file-saver";
@@ -17,7 +17,9 @@ export class OldFormComponent implements OnInit {
     'canvasWidth': 500,
     'canvasHeight': 300
   };
+
   @ViewChild(SignaturePad, { static: true }) signaturePad: SignaturePad;
+  @Output() oldData = new EventEmitter();
 
   constructor(public _medicalFormService: MedicalFormService, public dialog: MatDialog) { }
   data;
@@ -97,6 +99,8 @@ export class OldFormComponent implements OnInit {
 
   empSponsor;
   confirmDate;
+
+  hideFirstForm: boolean = false;
 
   ngOnInit() {
   }
@@ -188,6 +192,10 @@ export class OldFormComponent implements OnInit {
         }
       }
       console.log("this.data", this.data)
+      this.hideFirstForm = true;
+      localStorage.setItem('formone', JSON.stringify(this.data));
+
+      this.oldData.emit(this.data);
 
       // this._medicalFormService.generatePdf(this.data).subscribe(res => {
       //   console.log("RES", res)
@@ -213,7 +221,7 @@ export class OldFormComponent implements OnInit {
         this.imgData = data
       }
       console.log('the form is')
-      this.submit()
+      // this.submit()
     })
   }
   openDialog(someComponent, data = {}): Observable<any> {

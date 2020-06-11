@@ -10,13 +10,16 @@
         </div>
     </div>
     <!-- <div class=""> -->
-        <app-old-form></app-old-form>
+
+    <div class="form-one" [hidden]="hideFirstForm">
+        <app-old-form (oldData)="newOldData($event)"></app-old-form>
+    </div>
     <!-- </div> -->
-    
-    <div id="accordianNew">
+
+    <div id="accordianNew" [hidden]="hideSecondForm">
         <div class="single_accordion">
-            <div class="single_accordion_title collapsed" id="headingNew" data-toggle="collapse" data-target="#collapseNew"
-                aria-expanded="true" aria-controls="collapse">
+            <div class="single_accordion_title collapsed" id="headingNew" data-toggle="collapse"
+                data-target="#collapseNew" aria-expanded="true" aria-controls="collapse">
                 MEDICAL ASSESSMENT RECORD - NETWORK RAIL
             </div>
             <div id="collapseNew" class="collapse single_accordion_content" aria-labelledby="headingNew"
@@ -126,7 +129,7 @@
                             <div class="col-md-3 col-6 d-flex align-items-center">
                                 <mat-checkbox (change)="checkboxChange2($event)">3rd Test</mat-checkbox>
                             </div>
-                            
+
                         </div>
 
 
@@ -476,7 +479,6 @@
             </form>
         </div>
 
-
         <div class="single_accordion">
             <div class="single_accordion_title collapsed" id="Hearing" data-toggle="collapse" data-target="#hearing"
                 aria-expanded="true" aria-controls="hearing">
@@ -749,9 +751,9 @@
                     data-parent="#accordianNew">
                     <div class="single_accordion_content_inner">
                         <div class="row">
-                            
+
                             <div class="col-12">
-                            
+
                                 <div class="col-md-6">
                                     <input type="checkbox" name="fit" [attr.checked]="" value="Fit"
                                         (change)="fit($event)" />
@@ -896,7 +898,14 @@
             </form>
         </div>
     </div>
-    <div class="mt-3">
+    <div class="mt-3" [hidden]="hideSecondForm">
         <button [disabled]="submitDisabled" mat-raised-button color="primary" (click)="submit()">Submit</button>
+    </div>
+</div>
+
+
+<div *ngIf="loading == true">
+    <div id="loader-wrapper">
+        <div class="lds-dual-ring"></div>
     </div>
 </div>

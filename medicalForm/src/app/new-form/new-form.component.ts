@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormBuilder, FormArray } from '@angular/forms';
 import * as _ from 'lodash';
 import { SignCanvasComponent } from '../sign-canvas/sign-canvas.component';
@@ -7,6 +7,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { MedicalFormService } from '../services/medical-form.service';
 import { saveAs } from "file-saver";
 import { formatNumber } from '@angular/common';
+import { OldFormComponent } from '../old-form/old-form.component'
 declare var $: any;
 
 @Component({
@@ -72,6 +73,10 @@ export class NewFormComponent implements OnInit {
   showSecond: boolean;
   // showSecond: boolean;
   showThird: boolean;
+  hideSecondForm;
+  oldForm;
+  loading;
+  hideFirstForm;
 
   constructor(private fb: FormBuilder, public dialog: MatDialog, public _medicalFormService: MedicalFormService) {
     this.pulseList = this.generateRange(40, 180)
@@ -82,14 +87,47 @@ export class NewFormComponent implements OnInit {
     this.hearingList = this.generateHearingRange(-10, 80)
   }
 
+
   ngOnInit() {
 
+    // this.generalHealth.disable();
+    // this.visionAssessment.disable();
+    // this.hearingGrp.disable();
+    // this.fitnessGrp.disable();
+    // this.medicalAssess.disable();
+
+    this.disableNewForm();
+
+    if (localStorage.getItem("formone") !== null) {
+      let itemData = JSON.parse(localStorage.getItem("formone"));
+      console.log('itemData======>', itemData);
+      this.oldForm = itemData;
+      this.hideFirstForm = true;
+      this.hideSecondForm = false;
+      this.enableNewForm();
+    } else {
+      this.hideFirstForm = false;
+      this.hideSecondForm = true;
+    }
+
+  }
+
+  enableNewForm() {
+    this.form1.enable();
+    this.generalHealth.enable();
+    this.visionAssessment.enable();
+    this.hearingGrp.enable();
+    this.fitnessGrp.enable();
+    this.medicalAssess.enable();
+  }
+
+  disableNewForm() {
+    this.form1.disable();
     this.generalHealth.disable();
     this.visionAssessment.disable();
     this.hearingGrp.disable();
     this.fitnessGrp.disable();
     this.medicalAssess.disable();
-
   }
 
   onValueChange() {
@@ -113,7 +151,6 @@ export class NewFormComponent implements OnInit {
       this.hearingGrp.disable();
       this.fitnessGrp.disable();
       this.medicalAssess.disable();
-
     }
   }
 
@@ -236,6 +273,14 @@ export class NewFormComponent implements OnInit {
     checkedSign: new FormControl('', Validators.required),
     reasonForReferral: new FormControl('')
   })
+
+  newOldData(event) {
+    this.oldForm = event;
+    console.log('Old Form Data Here', this.oldForm);
+    this.enableNewForm();
+    this.hideFirstForm = true;
+    this.hideSecondForm = false;
+  }
 
   idChanged(event) {
     console.log("Id confirm changed", event)
@@ -597,24 +642,35 @@ export class NewFormComponent implements OnInit {
         }
       })
     }
+
     let data = {
       form1: this.form1.value,
       generalHealth: this.generalHealth.value,
       vision: this.visionAssessment.value,
       hearing: this.hearingGrp.value,
       fitness: this.fitnessGrp.value,
-      recom: this.medicalAssess.value
+      recom: this.medicalAssess.value,
+      medicalQuestionnaire: this.oldForm.medicalQuestionnaire,
+      empHistory: this.oldForm.empHistory,
+      medHistory: this.oldForm.medHistory,
+      lifeStyle: this.oldForm.lifeStyle,
+      confirmation: this.oldForm.confirmation
     }
 
-    console.log("temp", temp, this.form1.value)
+    console.log('Final Data to submit', data);
 
 
     if (this.form1.valid && this.medicalAssess.valid) {
+      this.loading = true;
       this._medicalFormService.generatePdf(data).subscribe(res => {
         console.log("RES", res)
+        localStorage.removeItem("formone");
+        this.loading = false;
+        window.location.reload();
         this.saveToFileSystem(res);
       })
     }
+
     else {
       alert('Name and signature are required')
     }

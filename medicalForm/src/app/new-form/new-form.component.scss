@@ -31,7 +31,6 @@
   padding: 0px 30px 15px;
 }
 
-
 .single_accordion_content_inner label {
   width: 100%;
   font-weight: 700;
@@ -74,38 +73,82 @@ mat-form-field {
   // margin-bottom: 20px;
   overflow: hidden;
 }
-.border{
+.border {
   border: 1px solid black;
 }
-.heading{
+.heading {
   display: flex;
   align-items: center;
-  @media(max-width: 768px){
+  @media (max-width: 768px) {
     justify-content: center;
   }
 }
-.headingText{
+.headingText {
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  @media(max-width: 768px){
+  @media (max-width: 768px) {
     margin-top: 70px;
     justify-content: center;
   }
 }
 
-.signCanvas{
+.signCanvas {
   // height: 100px;
   // width: 400px;
   background: #e2e7ff;
 }
-.bgColor{
+.bgColor {
   background: aliceblue;
 }
 
-.checkRow{
-  @media(max-width: 768px){
+.checkRow {
+  @media (max-width: 768px) {
     display: flex;
     // flex-direction: column-reverse;
+  }
+}
+
+.disabled-accordion {
+  pointer-events: none;
+}
+
+#loader-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 99;
+  background-color: rgba(9, 9, 9, 0.75);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.lds-dual-ring {
+  display: inline-block;
+  width: 80px;
+  height: 80px;
+}
+.lds-dual-ring:after {
+  content: " ";
+  display: block;
+  width: 64px;
+  height: 64px;
+  margin: 8px;
+  border-radius: 50%;
+  border: 6px solid #fff;
+  border-color: #fff transparent #fff transparent;
+  animation: lds-dual-ring 1.2s linear infinite;
+}
+@keyframes lds-dual-ring {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
   }
 }
