@@ -101,6 +101,9 @@ export class NewFormComponent implements OnInit {
     if (localStorage.getItem("formone") !== null) {
       let itemData = JSON.parse(localStorage.getItem("formone"));
       console.log('itemData======>', itemData);
+      let name = itemData.medicalQuestionnaire.firstName + ' ' + itemData.medicalQuestionnaire.surName
+      this.form1.controls['name'].setValue(name);
+      this.form1.controls['dob'].setValue(itemData.medicalQuestionnaire.dob);
       this.oldForm = itemData;
       this.hideFirstForm = true;
       this.hideSecondForm = false;
@@ -277,6 +280,20 @@ export class NewFormComponent implements OnInit {
   newOldData(event) {
     this.oldForm = event;
     console.log('Old Form Data Here', this.oldForm);
+
+    if (this.oldForm.medicalQuestionnaire && this.oldForm.medicalQuestionnaire.dob) {
+      this.form1.controls['dob'].setValue(this.oldForm.medicalQuestionnaire.dob);
+    }
+
+
+    if (this.oldForm.medicalQuestionnaire && this.oldForm.medicalQuestionnaire.firstName && this.oldForm.medicalQuestionnaire.surName) {
+      let name = this.oldForm.medicalQuestionnaire.firstName + ' ' + this.oldForm.medicalQuestionnaire.surName
+      this.form1.controls['name'].setValue(name);
+    }
+
+
+
+
     this.enableNewForm();
     this.hideFirstForm = true;
     this.hideSecondForm = false;
@@ -552,6 +569,7 @@ export class NewFormComponent implements OnInit {
     var byteArray = new Uint8Array(response.data);
     var blob = new Blob([byteArray], { type: 'application/pdf' });
     saveAs(blob, 'medical-consent');
+    window.location.reload();
     // this.loading = false;
   }
 
@@ -666,7 +684,6 @@ export class NewFormComponent implements OnInit {
         console.log("RES", res)
         localStorage.removeItem("formone");
         this.loading = false;
-        window.location.reload();
         this.saveToFileSystem(res);
       })
     }

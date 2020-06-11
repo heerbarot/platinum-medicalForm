@@ -44,7 +44,7 @@ export class OldFormComponent implements OnInit {
 
 
   heartNcirculatoryCon;
-  heartNcirculatoryConSetails;
+  heartNcirculatoryConDetails;
   respiratoryNlungCon;
   respiratoryNlungConDetails;
   neurologicalCon;
@@ -132,7 +132,7 @@ export class OldFormComponent implements OnInit {
         },
         medHistory: {
           heartNcirculatoryCon: this.heartNcirculatoryCon,
-          heartNcirculatoryConSetails: this.heartNcirculatoryConSetails,
+          heartNcirculatoryConDetails: this.heartNcirculatoryConDetails,
           respiratoryNlungCon: this.respiratoryNlungCon,
           respiratoryNlungConDetails: this.respiratoryNlungConDetails,
           neurologicalCon: this.neurologicalCon,
