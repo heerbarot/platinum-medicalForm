@@ -9,15 +9,18 @@
             <h2>Platinum Rail Services - Medical Assessment Form</h2>
         </div>
     </div>
-
-    <div id="accordion">
+    <!-- <div class=""> -->
+        <app-old-form></app-old-form>
+    <!-- </div> -->
+    
+    <div id="accordianNew">
         <div class="single_accordion">
-            <div class="single_accordion_title" id="heading" data-toggle="collapse" data-target="#collapse"
+            <div class="single_accordion_title collapsed" id="headingNew" data-toggle="collapse" data-target="#collapseNew"
                 aria-expanded="true" aria-controls="collapse">
                 MEDICAL ASSESSMENT RECORD - NETWORK RAIL
             </div>
-            <div id="collapse" class="collapse single_accordion_content show" aria-labelledby="heading"
-                data-parent="#accordion">
+            <div id="collapseNew" class="collapse single_accordion_content" aria-labelledby="headingNew"
+                data-parent="#accordianNew">
                 <div class="single_accordion_content_inner">
                     <form class="induction_pack_component" [formGroup]="form1">
                         <div class="row">
@@ -87,12 +90,12 @@
 
         <div class="single_accordion">
             <div class="single_accordion_title collapsed" id="headingOne" data-toggle="collapse"
-                data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                data-target="#collapseOneNew" aria-expanded="true" aria-controls="collapseOneNew">
                 GENERAL HEALTH
             </div>
             <form [formGroup]="generalHealth">
-                <div id="collapseOne" class="collapse single_accordion_content" aria-labelledby="headingOne"
-                    data-parent="#accordion">
+                <div id="collapseOneNew" class="collapse single_accordion_content" aria-labelledby="headingOne"
+                    data-parent="#accordianNew">
                     <div class="single_accordion_content_inner">
                         <div class="row">
                             <div class="col-md-6">
@@ -126,20 +129,8 @@
                             
                         </div>
 
-                        <!-- <div class="row">
-                            <div class="col-12 text-center bgColor">
-                                <b>Repeat if BP > 160/95 (mm/Hg) Pulse range 60-100</b>
-                            </div>
-                        </div> -->
-
 
                         <div class="row" *ngIf="showSecond">
-
-                            <!-- <div class="col-md-4 d-flex align-items-center">
-                                <mat-checkbox (change)="checkboxChange($event)">2nd Test
-                                    Required
-                                </mat-checkbox>
-                            </div> -->
 
                             <div class="col-md-6">
                                 <mat-form-field>
@@ -162,15 +153,6 @@
                         </div>
 
                         <div class="row" *ngIf="showThird">
-
-                            <!-- <div class="col-md-4 d-flex align-items-center">
-
-                                <mat-checkbox (change)="checkboxChange2($event)">3rd
-                                    Test
-                                    Required
-                                </mat-checkbox>
-
-                            </div> -->
 
                             <div class="col-md-6">
                                 <mat-form-field>
@@ -303,7 +285,6 @@
                                 <div class="col-12 text-center bgColor">
                                     <b>Passed Assessment For</b>
                                 </div>
-                                <!-- <div class="col-12 d-flex"> -->
                                 <div class="col-md-12">
                                     <label>Balance, Mobility and Co-ordination?</label>
                                     <mat-form-field>
@@ -333,7 +314,6 @@
                                     </mat-form-field>
                                 </div>
                             </div>
-                            <!-- </div> -->
                         </div>
                         <div class="row">
                             <div class="col-md-6 ">
@@ -389,12 +369,12 @@
 
         <div class="single_accordion">
             <div class="single_accordion_title collapsed" id="headingTwo" data-toggle="collapse"
-                data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+                data-target="#collapseTwoNew" aria-expanded="true" aria-controls="collapseTwoNew">
                 VISION ASSESSMENT
             </div>
             <form [formGroup]="visionAssessment">
-                <div id="collapseTwo" class="collapse single_accordion_content" aria-labelledby="headingTwo"
-                    data-parent="#accordion">
+                <div id="collapseTwoNew" class="collapse single_accordion_content" aria-labelledby="headingTwo"
+                    data-parent="#accordianNew">
                     <div class="single_accordion_content_inner">
                         <div class="row">
                             <div class="col-12 bgColor text-center">
@@ -705,12 +685,12 @@
 
         <div class="single_accordion">
             <div class="single_accordion_title collapsed" id="headingThree" data-toggle="collapse"
-                data-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
+                data-target="#collapseThreeNew" aria-expanded="true" aria-controls="collapseThreeNew">
                 FITNESS ASSESSMENT SUMMARY
             </div>
             <form [formGroup]="fitnessGrp">
-                <div id="collapseThree" class="collapse single_accordion_content" aria-labelledby="headingThree"
-                    data-parent="#accordion">
+                <div id="collapseThreeNew" class="collapse single_accordion_content" aria-labelledby="headingThree"
+                    data-parent="#accordianNew">
                     <div class="single_accordion_content_inner">
                         <div class="row">
                             <div class="col-12">
@@ -761,27 +741,23 @@
 
         <div class="single_accordion">
             <div class="single_accordion_title collapsed" id="headingFour" data-toggle="collapse"
-                data-target="#collapseFour" aria-expanded="true" aria-controls="collapseFour">
+                data-target="#collapseFourNew" aria-expanded="true" aria-controls="collapseFourNew">
                 MEDICAL EXAMINARS RECOMMENDATION
             </div>
             <form [formGroup]="medicalAssess">
-                <div id="collapseFour" class="collapse single_accordion_content" aria-labelledby="headingFour"
-                    data-parent="#accordion">
+                <div id="collapseFourNew" class="collapse single_accordion_content" aria-labelledby="headingFour"
+                    data-parent="#accordianNew">
                     <div class="single_accordion_content_inner">
                         <div class="row">
-                            <!-- <div class="col-12"> -->
+                            
                             <div class="col-12">
-                                <!-- <table> -->
-                                <!-- <tr> -->
-                                <!-- <td class="col-md-6 col-12"> -->
+                            
                                 <div class="col-md-6">
                                     <input type="checkbox" name="fit" [attr.checked]="" value="Fit"
                                         (change)="fit($event)" />
                                     Fit
                                 </div>
 
-                                <!-- </td> -->
-                                <!-- <td class="col-md-6 col-12"> -->
                                 <div class="col-md-12">
                                     <mat-form-field>
                                         <mat-select formControlName="level" placeholder="Select">
@@ -790,51 +766,34 @@
                                         </mat-select>
                                     </mat-form-field>
                                 </div>
-                                <!-- </td> -->
-                                <!-- </tr> -->
-                                <!-- <tr> -->
-                                <!-- <td class="col-md-6 "> -->
                                 <div class="col-md-6">
                                     <input type="checkbox" name="letterToGp" [attr.checked]="" [value]="letterToGp"
                                         (change)="letterToGp($event)" />
                                     Letter To GP
                                 </div>
-                                <!-- </td> -->
-                                <!-- <td class="col-md-6 "> -->
+
                                 <div class='col-md-12'>
                                     <mat-form-field>
                                         <input matInput placeholder="Reason" formControlName="reason">
                                     </mat-form-field>
                                 </div>
-                                <!-- </td> -->
-                                <!-- </tr> -->
-                                <!-- <tr> -->
-                                <!-- <td class="col-md-6 "> -->
+
                                 <div class="col-md-6">
                                     <input type="checkbox" name="certificate" [attr.checked]=""
                                         value="MonthsCertificate" (change)="sixMonth($event)" />
                                     6 Months Certificate
                                 </div>
-                                <!-- </td> -->
-                                <!-- <td class="col-md-6 "> -->
+
                                 <div class="col-md-6">
                                     (Blood pressure 165/95-180/100)
                                 </div>
-                                <!-- </td> -->
-                                <!-- </tr> -->
-                                <!-- <tr> -->
-                                <!-- <td class="col-md-6 "> -->
+
                                 <div class="col-md-6">
                                     <input type="checkbox" name="referToOH" [attr.checked]="" [value]="referToOH"
                                         (change)="referToOH($event)" />
                                     Refer To OH Physician
                                 </div>
-
-                                <!-- </td> -->
-                                <!-- </tr> -->
-                                <!-- </table> -->
                             </div>
-                            <!-- </div> -->
                         </div>
 
                         <div class="row">
@@ -862,7 +821,6 @@
 
                                 <div class="signCanvas" *ngIf="examinarSign" (click)="redirect('examinar')">
                                     Signature attached.
-                                    <!-- <img src="{{imgData}}"> -->
                                 </div>
                             </div>
                         </div>
@@ -898,7 +856,6 @@
 
                                 <div class="signCanvas" *ngIf="checkedBy" (click)="redirect('checkedby')">
                                     Signature attached.
-                                    <!-- <img src="{{imgData}}"> -->
                                 </div>
                             </div>
                         </div>

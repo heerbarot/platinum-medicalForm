@@ -1,0 +1,111 @@
+.single_accordion_title,
+.single_accordion_title.collapsed:hover {
+  background: #fff;
+  color: #111;
+  margin-top: 15px;
+  cursor: pointer;
+  padding: 15px 20px;
+  font-size: 16px;
+  font-weight: 700;
+  border: 2px solid #111;
+  border-bottom-color: transparent;
+}
+
+.single_accordion_title.collapsed:hover {
+  border-bottom-color: #111;
+}
+
+.single_accordion_title.collapsed {
+  background: #111423;
+  color: #838d9d;
+  border-bottom-color: #111;
+}
+
+.single_accordion_content {
+  border: 2px solid #111;
+  margin: -2px 0px 0px;
+  border-top: none;
+}
+
+.single_accordion_content_inner {
+  padding: 0px 30px 15px;
+}
+
+
+.single_accordion_content_inner label {
+  width: 100%;
+  font-weight: 700;
+}
+
+mat-form-field {
+  width: 100%;
+}
+
+.submit-button {
+  margin-top: 15px;
+}
+
+.signature-img {
+  height: 60px;
+  width: 200px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  overflow: hidden;
+  img {
+    min-width: 100%;
+    min-height: 100%;
+    max-height: 100%;
+    object-fit: cover;
+    max-width: 100%;
+  }
+}
+.main {
+  position: relative;
+  padding: 20px 100px;
+  @media (max-width: 1024px) {
+    padding: 10px !important;
+  }
+}
+
+.logo {
+  // height: 125px;
+  width: 230px;
+  // margin-top: 20px;
+  // margin-bottom: 20px;
+  overflow: hidden;
+}
+.border{
+  border: 1px solid black;
+}
+.heading{
+  display: flex;
+  align-items: center;
+  @media(max-width: 768px){
+    justify-content: center;
+  }
+}
+.headingText{
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  @media(max-width: 768px){
+    margin-top: 70px;
+    justify-content: center;
+  }
+}
+
+.signCanvas{
+  // height: 100px;
+  // width: 400px;
+  background: #e2e7ff;
+}
+.bgColor{
+  background: aliceblue;
+}
+
+.checkRow{
+  @media(max-width: 768px){
+    display: flex;
+    // flex-direction: column-reverse;
+  }
+}

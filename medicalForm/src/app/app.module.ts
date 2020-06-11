@@ -25,12 +25,14 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { AccordionModule } from 'ngx-bootstrap/accordion';
 import { SignCanvasComponent } from './sign-canvas/sign-canvas.component';
 import { NewFormComponent } from './new-form/new-form.component';
+import { OldFormComponent } from './old-form/old-form.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     SignCanvasComponent,
-    NewFormComponent
+    NewFormComponent,
+    OldFormComponent
   ],
   imports: [
     BrowserModule,
