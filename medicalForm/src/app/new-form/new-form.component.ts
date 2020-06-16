@@ -273,7 +273,7 @@ export class NewFormComponent implements OnInit {
     examinarSignature: new FormControl('', Validators.required),
     checkedBy: new FormControl(''),
     checkedByDate: new FormControl(''),
-    checkedSign: new FormControl('', Validators.required),
+    checkedSign: new FormControl(''),
     reasonForReferral: new FormControl('')
   })
 
