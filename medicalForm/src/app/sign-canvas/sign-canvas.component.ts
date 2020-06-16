@@ -24,11 +24,6 @@ export class SignCanvasComponent implements OnInit {
   testdata: any;
   constructor(public dialogRef: MatDialogRef<any>) {
 
-
-
-
-
-
     // this.signaturePad = new SignaturePad(canvas);
   }
 
@@ -73,6 +68,9 @@ export class SignCanvasComponent implements OnInit {
 
 
   clear() {
+
+    console.log('Clear Calling');
+
     this.imgData = null
     this.signaturePad.clear();
   }
@@ -84,72 +82,73 @@ export class SignCanvasComponent implements OnInit {
 
   trimCanvas(c) {
     var ctx = c.getContext('2d'),
-        copy = document.createElement('canvas').getContext('2d'),
-        pixels = ctx.getImageData(0, 0, c.width, c.height),
-        l = pixels.data.length,
-        i,
-        bound = {
-            top: null,
-            left: null,
-            right: null,
-            bottom: null
-        },
-        x, y;
+      copy = document.createElement('canvas').getContext('2d'),
+      pixels = ctx.getImageData(0, 0, c.width, c.height),
+      l = pixels.data.length,
+      i,
+      bound = {
+        top: null,
+        left: null,
+        right: null,
+        bottom: null
+      },
+      x, y;
 
     // Iterate over every pixel to find the highest
     // and where it ends on every axis ()
     for (i = 0; i < l; i += 4) {
-        if (pixels.data[i + 3] !== 0) {
-            x = (i / 4) % c.width;
-            y = ~~((i / 4) / c.width);
+      if (pixels.data[i + 3] !== 0) {
+        x = (i / 4) % c.width;
+        y = ~~((i / 4) / c.width);
 
-            if (bound.top === null) {
-                bound.top = y;
-            }
-
-            if (bound.left === null) {
-                bound.left = x;
-            } else if (x < bound.left) {
-                bound.left = x;
-            }
-
-            if (bound.right === null) {
-                bound.right = x;
-            } else if (bound.right < x) {
-                bound.right = x;
-            }
-
-            if (bound.bottom === null) {
-                bound.bottom = y;
-            } else if (bound.bottom < y) {
-                bound.bottom = y;
-            }
+        if (bound.top === null) {
+          bound.top = y;
         }
+
+        if (bound.left === null) {
+          bound.left = x;
+        } else if (x < bound.left) {
+          bound.left = x;
+        }
+
+        if (bound.right === null) {
+          bound.right = x;
+        } else if (bound.right < x) {
+          bound.right = x;
+        }
+
+        if (bound.bottom === null) {
+          bound.bottom = y;
+        } else if (bound.bottom < y) {
+          bound.bottom = y;
+        }
+      }
     }
 
     // Calculate the height and width of the content
     var trimHeight = bound.bottom - bound.top,
-        trimWidth = bound.right - bound.left,
-        trimmed = ctx.getImageData(bound.left, bound.top, trimWidth, trimHeight);
-         console.log("trimmed",trimmed)
-        //  this.testdata = trimmed.data
+      trimWidth = bound.right - bound.left,
+      trimmed = ctx.getImageData(bound.left, bound.top, trimWidth, trimHeight);
+    console.log("trimmed", trimmed)
+    //  this.testdata = trimmed.data
     copy.canvas.width = trimWidth;
     copy.canvas.height = trimHeight;
     copy.putImageData(trimmed, 0, 0);
 
     // Return trimmed canvas
-    console.log('copy.canvas;',copy.canvas.toDataURL())
+    console.log('copy.canvas;', copy.canvas.toDataURL())
     console.log(" copy.putImageData(trimmed, 0, 0);", copy.putImageData(trimmed, 0, 0))
     this.testdata = copy.canvas.toDataURL()
     return copy.canvas;
-}
+  }
 
-  submit(){
-    if(this.signaturePad.isEmpty()){
-      alert("IS EMPTY")
-    }
-    else{
-      this.dialogRef.close(this.testdata)
-    }
+  submit() {
+    this.dialogRef.close(this.testdata)
+    // if(this.signaturePad.isEmpty()){
+    //   alert("IS EMPTY")
+    // }
+    // else{
+    //   this.dialogRef.close(this.testdata)
+    // }
   }
 }
