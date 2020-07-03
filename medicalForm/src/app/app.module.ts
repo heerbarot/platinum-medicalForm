@@ -16,8 +16,6 @@ import { MatButtonModule } from '@angular/material/button';
 import { HttpClientModule, HttpErrorResponse, HttpParams } from '@angular/common/http';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
-
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -26,6 +24,12 @@ import { AccordionModule } from 'ngx-bootstrap/accordion';
 import { SignCanvasComponent } from './sign-canvas/sign-canvas.component';
 import { NewFormComponent } from './new-form/new-form.component';
 import { OldFormComponent } from './old-form/old-form.component';
+
+
+import { MatMomentDateModule, MAT_MOMENT_DATE_FORMATS } from '@angular/material-moment-adapter';
+import { MAT_DATE_FORMATS, DateAdapter, MAT_DATE_LOCALE } from '@angular/material';
+import { MomentUtcDateAdapter } from './moment-utc-date-adapter';
+
 
 @NgModule({
   declarations: [
@@ -45,6 +49,7 @@ import { OldFormComponent } from './old-form/old-form.component';
     MatDatepickerModule, MatNativeDateModule,
     MatSelectModule,
     MatCheckboxModule,
+    MatMomentDateModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
     AccordionModule.forRoot(),
@@ -52,7 +57,11 @@ import { OldFormComponent } from './old-form/old-form.component';
     SignaturePadModule
   ],
   entryComponents: [SignCanvasComponent],
-  providers: [MatDatepickerModule],
+  providers: [MatDatepickerModule,
+    { provide: MAT_DATE_LOCALE, useValue: 'en-GB' },
+    { provide: MAT_DATE_FORMATS, useValue: MAT_MOMENT_DATE_FORMATS },
+    { provide: DateAdapter, useClass: MomentUtcDateAdapter }
+  ],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

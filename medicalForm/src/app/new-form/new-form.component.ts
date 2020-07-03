@@ -678,6 +678,9 @@ export class NewFormComponent implements OnInit {
     console.log('Final Data to submit', data);
 
 
+    // return;
+
+
     if (this.form1.valid && this.medicalAssess.valid) {
       this.loading = true;
       this._medicalFormService.generatePdf(data).subscribe(res => {

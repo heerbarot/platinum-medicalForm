@@ -188,7 +188,7 @@ export class OldFormComponent implements OnInit {
         confirmation: {
           empSponsor: this.empSponsor,
           confirmDate: this.confirmDate,
-          signature: this.imgData                         
+          signature: this.imgData
         }
       }
       console.log("this.data", this.data)
