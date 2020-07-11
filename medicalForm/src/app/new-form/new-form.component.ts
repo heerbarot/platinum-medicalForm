@@ -25,7 +25,7 @@ export class NewFormComponent implements OnInit {
   ifYes = ['Blood Pressure', 'Smoking', 'Alcohol', 'BMI', 'Hearing']
   bpArray = [{
     id: 0,
-    value: 'Full pass providing Asymptomatic',
+    value: 'Full pass',
     checked: null
   },
   {
@@ -101,7 +101,7 @@ export class NewFormComponent implements OnInit {
     this.disableNewForm();
 
     if (localStorage.getItem("formone") !== null) {
-       this.itemData = JSON.parse(localStorage.getItem("formone"));
+      this.itemData = JSON.parse(localStorage.getItem("formone"));
       console.log('itemData======>', this.itemData);
       let name = this.itemData.medicalQuestionnaire.firstName + ' ' + this.itemData.medicalQuestionnaire.surName
       this.form1.controls['name'].setValue(name);
@@ -167,7 +167,8 @@ export class NewFormComponent implements OnInit {
     dob: new FormControl(''),
     currentSenCard: new FormControl(''),
     natInstNo: new FormControl(''),
-    sentinalNo: new FormControl('')
+    sentinalNo: new FormControl(''),
+    additionalComments: new FormControl(''),
     // body: new FormControl('')
   });
 
@@ -193,7 +194,8 @@ export class NewFormComponent implements OnInit {
     adviceGiven: new FormControl(''),
     lettersIssued: new FormControl(''),
     adviceGivenYes: new FormControl(''),
-    lettersIssuedYes: new FormControl('')
+    lettersIssuedYes: new FormControl(''),
+    additionalComments: new FormControl(''),
   })
 
   visionAssessment = new FormGroup({
@@ -205,7 +207,8 @@ export class NewFormComponent implements OnInit {
     lensesWorn: new FormControl(''),
     visualFields: new FormControl(''),
     colorVision: new FormControl(''),
-    plates: new FormControl('')
+    plates: new FormControl(''),
+    additionalComments: new FormControl(''),
   })
 
 
@@ -227,7 +230,8 @@ export class NewFormComponent implements OnInit {
     rightEar8000: new FormControl(''),
     earWax: new FormControl(''),
     leTotal: new FormControl(''),
-    reTotal: new FormControl('')
+    reTotal: new FormControl(''),
+    additionalComments: new FormControl(''),
   })
 
 
@@ -276,7 +280,8 @@ export class NewFormComponent implements OnInit {
     checkedBy: new FormControl(''),
     checkedByDate: new FormControl(''),
     checkedSign: new FormControl(''),
-    reasonForReferral: new FormControl('')
+    reasonForReferral: new FormControl(''),
+    additionalComments: new FormControl(''),
   })
 
   newOldData(event) {
@@ -689,7 +694,7 @@ export class NewFormComponent implements OnInit {
       this.loading = true;
       this._medicalFormService.generatePdf(data).subscribe(res => {
         console.log("RES", res)
-        
+
         this.loading = false;
         this.saveToFileSystem(res);
       })

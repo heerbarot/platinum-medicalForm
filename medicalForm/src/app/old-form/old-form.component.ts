@@ -33,6 +33,7 @@ export class OldFormComponent implements OnInit {
   homeAdd;
   gpAdd;
   jobTitle;
+  medicalQuestionnaireComment;
 
 
   absentSickness;
@@ -41,6 +42,7 @@ export class OldFormComponent implements OnInit {
   deniedJobDetails;
   illnessByWork;
   illnessByWorkDetails;
+  empHistoryComment;
 
 
   heartNcirculatoryCon;
@@ -85,6 +87,7 @@ export class OldFormComponent implements OnInit {
   testsDetails;
   otherHealthAspects;
   otherHealthAspectsDetails;
+  medHistoryComment;
 
   exercise;
   exerciseDetails;
@@ -95,6 +98,7 @@ export class OldFormComponent implements OnInit {
   exsmokerMonths;
   alcohol;
   alcoholDetails;
+  lifeStyleComment;
 
 
   empSponsor;
@@ -120,7 +124,8 @@ export class OldFormComponent implements OnInit {
           telNumber: this.telNumber,
           homeAdd: this.homeAdd,
           gpAdd: this.gpAdd,
-          jobTitle: this.jobTitle
+          jobTitle: this.jobTitle,
+          medicalQuestionnaireComment: this.medicalQuestionnaireComment
         },
         empHistory: {
           absentSickness: this.absentSickness,
@@ -128,7 +133,8 @@ export class OldFormComponent implements OnInit {
           deniedJob: this.deniedJob,
           deniedJobDetails: this.deniedJobDetails,
           illnessByWork: this.illnessByWork,
-          illnessByWorkDetails: this.illnessByWorkDetails
+          illnessByWorkDetails: this.illnessByWorkDetails,
+          empHistoryComment: this.empHistoryComment,
         },
         medHistory: {
           heartNcirculatoryCon: this.heartNcirculatoryCon,
@@ -172,7 +178,8 @@ export class OldFormComponent implements OnInit {
           tests: this.tests,
           testsDetails: this.testsDetails,
           otherHealthAspects: this.otherHealthAspects,
-          otherHealthAspectsDetails: this.otherHealthAspectsDetails
+          otherHealthAspectsDetails: this.otherHealthAspectsDetails,
+          medHistoryComment: this.medHistoryComment
         },
         lifeStyle: {
           exercise: this.exercise,
@@ -183,7 +190,8 @@ export class OldFormComponent implements OnInit {
           exsmokerYears: this.exsmokerYears,
           exsmokerMonths: this.exsmokerMonths,
           alcohol: this.alcohol,
-          alcoholDetails: this.alcoholDetails
+          alcoholDetails: this.alcoholDetails,
+          lifeStyleComment: this.lifeStyleComment
         },
         confirmation: {
           empSponsor: this.empSponsor,

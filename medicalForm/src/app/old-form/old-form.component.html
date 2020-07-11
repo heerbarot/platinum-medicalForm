@@ -22,8 +22,8 @@
                     <div class="row d-block">
                         <p>
                             <b><u>
-                                Please read carefully - Thank you
-                            </u></b>
+                                    Please read carefully - Thank you
+                                </u></b>
                         </p>
                         <!-- <p>
                             You or your company have requested a Personal Track Safety Medical. The Network Rail
@@ -32,7 +32,8 @@
                         </p> -->
 
                         <p>
-                            You or your company have requested a Personal Track Safety Medical, your examination will ensure that you meet the
+                            You or your company have requested a Personal Track Safety Medical, your examination will
+                            ensure that you meet the
                             requirements to work in the rail industry in line with network rail standard NR/L2/OHS/00124
                         </p>
 
@@ -44,9 +45,12 @@
                             need to be disclosed.
                         </p> -->
                         <p>
-                            The medical will consist of several observations and tests in which you should disclose any pre existing conditions to
-                            our clinical team prior to the examination. Conditions such as epilepsy, diabetes, or any form of disorder to your
-                            balance, co-ordination, blood pressure, heart disease, obesity, sleep disorder, mental health or depression will need to
+                            The medical will consist of several observations and tests in which you should disclose any
+                            pre existing conditions to
+                            our clinical team prior to the examination. Conditions such as epilepsy, diabetes, or any
+                            form of disorder to your
+                            balance, co-ordination, blood pressure, heart disease, obesity, sleep disorder, mental
+                            health or depression will need to
                             be disclosed.
                         </p>
                         <p>
@@ -81,9 +85,12 @@
                             colour vision deficiency and your blood pressure will be measured. A hearing test will
                             also be carried out using an audiometer, in order to pass a PTS medical you will need to
                             pass this part of the examination. -->
-                            The medical examination will consist of an examination of your eyesight (distance) therefore, if needed, please bring
-                            spectacles with you. You will be tested for colour vision deficiency and your blood pressure will be measured. A hearing
-                            test will also be carried out using an audiometer, in order to pass a PTS medical, you will need to pass this part of
+                            The medical examination will consist of an examination of your eyesight (distance)
+                            therefore, if needed, please bring
+                            spectacles with you. You will be tested for colour vision deficiency and your blood pressure
+                            will be measured. A hearing
+                            test will also be carried out using an audiometer, in order to pass a PTS medical, you will
+                            need to pass this part of
                             the examination.
                         </p>
                         <p>
@@ -94,10 +101,14 @@
                             with a letter for you to take to your GP for further management and your certificate of
                             expiry will be issued accordingly. These will not stop you from working but it is
                             important you action any advice given. -->
-                            If you are not having a drug screen test, you will still be asked to provide a sample of urine in order to ensure that
-                            it does not contain glucose (sugar) which would indicate that diabetes is developing. Please note that if on the day the
-                            testing equipment finds that you have high blood pressure or you have glucose in your urine you will be issued with a
-                            letter for you to take to your GP for further management and your certificate of expiry will be issued accordingly.
+                            If you are not having a drug screen test, you will still be asked to provide a sample of
+                            urine in order to ensure that
+                            it does not contain glucose (sugar) which would indicate that diabetes is developing. Please
+                            note that if on the day the
+                            testing equipment finds that you have high blood pressure or you have glucose in your urine
+                            you will be issued with a
+                            letter for you to take to your GP for further management and your certificate of expiry will
+                            be issued accordingly.
                             These will not stop you from working but it is important you action any advice given.
                         </p>
                         <p>
@@ -108,11 +119,16 @@
                             supervised at all times due to colour vision deficiency or a medical problem. Your
                             primary sponsor will have access to your medical certificate via sentinel and no paper
                             copy will be given. -->
-                            Following the examination, the certificate will be uploaded on to the sentinel system by Platinum Rail Services which
-                            creates an online certificate once you have a sentinel profile. Occasionally it may be necessary for your sentinel card
-                            to display a red triangle which indicates you should not work alone and will need to be supervised at all times due to
-                            medical restrictions or a blue circle which indicates colour vision deficiency and in turn will prevent you from
-                            carrying out certain roles on the railway. Your primary sponsor will have access to your medical certificate via
+                            Following the examination, the certificate will be uploaded on to the sentinel system by
+                            Platinum Rail Services which
+                            creates an online certificate once you have a sentinel profile. Occasionally it may be
+                            necessary for your sentinel card
+                            to display a red triangle which indicates you should not work alone and will need to be
+                            supervised at all times due to
+                            medical restrictions or a blue circle which indicates colour vision deficiency and in turn
+                            will prevent you from
+                            carrying out certain roles on the railway. Your primary sponsor will have access to your
+                            medical certificate via
                             sentinel and no paper copy will be given.
                         </p>
                     </div>
@@ -194,6 +210,15 @@
                             <mat-form-field>
                                 <textarea matInput placeholder="GP's Address" [ngModelOptions]="{standalone: true}"
                                     [(ngModel)]="gpAdd"></textarea>
+                            </mat-form-field>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <mat-form-field class="">
+                                <input [ngModelOptions]="{standalone: true}" matInput placeholder="Additional Comments"
+                                    [(ngModel)]="medicalQuestionnaireComment">
                             </mat-form-field>
                         </div>
                     </div>
@@ -291,6 +316,16 @@
 
                         </div>
                     </div>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <mat-form-field class="">
+                                <input [ngModelOptions]="{standalone: true}" matInput placeholder="Additional Comments"
+                                    [(ngModel)]="empHistoryComment">
+                            </mat-form-field>
+                        </div>
+                    </div>
+
                 </div>
             </div>
 
@@ -327,7 +362,7 @@
                                 </mat-form-field>
                                 <!-- class="single_accordion" -->
                             </div>
-                           
+
                         </div>
 
                         <div class="row">
@@ -871,6 +906,16 @@
 
                             </div>
                         </div>
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <mat-form-field class="">
+                                    <input [ngModelOptions]="{standalone: true}" matInput
+                                        placeholder="Additional Comments" [(ngModel)]="medHistoryComment">
+                                </mat-form-field>
+                            </div>
+                        </div>
+
                     </div>
 
                 </div>
@@ -1005,12 +1050,20 @@
                                         [ngModelOptions]="{standalone: true}" [(ngModel)]="alcoholDetails"></textarea>
 
                                 </mat-form-field>
-
-
-
                             </div>
 
                         </div>
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <mat-form-field class="">
+                                    <input [ngModelOptions]="{standalone: true}" matInput
+                                        placeholder="Additional Comments" [(ngModel)]="lifeStyleComment">
+                                </mat-form-field>
+                            </div>
+                        </div>
+
+
                     </div>
                 </div>
             </div>
