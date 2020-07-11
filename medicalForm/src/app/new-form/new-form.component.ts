@@ -77,6 +77,7 @@ export class NewFormComponent implements OnInit {
   oldForm;
   loading;
   hideFirstForm;
+  itemData: any;
 
   constructor(private fb: FormBuilder, public dialog: MatDialog, public _medicalFormService: MedicalFormService) {
     this.pulseList = this.generateRange(40, 180)
@@ -85,6 +86,7 @@ export class NewFormComponent implements OnInit {
     this.distanceVisionList = this.generateRange(0, 60)
     this.platesList = this.generateRange(0, 21)
     this.hearingList = this.generateHearingRange(-10, 80)
+    localStorage.removeItem("formone");
   }
 
 
@@ -99,12 +101,12 @@ export class NewFormComponent implements OnInit {
     this.disableNewForm();
 
     if (localStorage.getItem("formone") !== null) {
-      let itemData = JSON.parse(localStorage.getItem("formone"));
-      console.log('itemData======>', itemData);
-      let name = itemData.medicalQuestionnaire.firstName + ' ' + itemData.medicalQuestionnaire.surName
+       this.itemData = JSON.parse(localStorage.getItem("formone"));
+      console.log('itemData======>', this.itemData);
+      let name = this.itemData.medicalQuestionnaire.firstName + ' ' + this.itemData.medicalQuestionnaire.surName
       this.form1.controls['name'].setValue(name);
-      this.form1.controls['dob'].setValue(itemData.medicalQuestionnaire.dob);
-      this.oldForm = itemData;
+      this.form1.controls['dob'].setValue(this.itemData.medicalQuestionnaire.dob);
+      this.oldForm = this.itemData;
       this.hideFirstForm = true;
       this.hideSecondForm = false;
       this.enableNewForm();
@@ -568,8 +570,10 @@ export class NewFormComponent implements OnInit {
   private saveToFileSystem(response) {
     var byteArray = new Uint8Array(response.data);
     var blob = new Blob([byteArray], { type: 'application/pdf' });
-    saveAs(blob, 'medical-consent');
+    this.itemData = JSON.parse(localStorage.getItem("formone"));
+    saveAs(blob, 'medical-' + this.itemData.medicalQuestionnaire.firstName + this.itemData.medicalQuestionnaire.surName);
     window.location.reload();
+    // localStorage.removeItem("formone");
     // this.loading = false;
   }
 
@@ -685,7 +689,7 @@ export class NewFormComponent implements OnInit {
       this.loading = true;
       this._medicalFormService.generatePdf(data).subscribe(res => {
         console.log("RES", res)
-        localStorage.removeItem("formone");
+        
         this.loading = false;
         this.saveToFileSystem(res);
       })
