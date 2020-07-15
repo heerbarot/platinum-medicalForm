@@ -1,7 +1,7 @@
-// console.log = function () { }
+console.log = function () { }
 
 let envs = [];
-let env = "development";
+let env = "production";
 
 envs['development'] = {
     baseApiUrl: "http://localhost:3000/",
@@ -14,6 +14,5 @@ envs['testing'] = {
 envs['production'] = {
     baseApiUrl: 'https://workspace.platinumrailservices.co.uk:3000/',
 }
-
 
 export const config = envs[env];
