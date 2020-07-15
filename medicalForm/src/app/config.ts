@@ -1,14 +1,14 @@
 console.log = function () { }
 
 let envs = [];
-let env = "production";
+let env = "testing";
 
 envs['development'] = {
     baseApiUrl: "http://localhost:3000/",
 }
 
 envs['testing'] = {
-    baseApiUrl: "https://testing.platinumrailservices.co.uk:4000/",
+    baseApiUrl: "https://platinum.mylionsgroup.com:3000/",
 }
 
 envs['production'] = {
