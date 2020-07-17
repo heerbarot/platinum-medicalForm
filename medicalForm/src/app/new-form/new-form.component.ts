@@ -78,6 +78,11 @@ export class NewFormComponent implements OnInit {
   loading;
   hideFirstForm;
   itemData: any;
+  disableLevel: boolean;
+  disableLevelConditions = [];
+  isChecked: boolean;
+  isChecked2: boolean;
+  bpValidators = [Validators.pattern("^[0-9 /]+$")]
 
   constructor(private fb: FormBuilder, public dialog: MatDialog, public _medicalFormService: MedicalFormService) {
     this.pulseList = this.generateRange(40, 180)
@@ -173,11 +178,11 @@ export class NewFormComponent implements OnInit {
   });
 
   generalHealth = new FormGroup({
-    bp1: new FormControl('', Validators.pattern("^[0-9 /]+$")),
+    bp1: new FormControl('', this.bpValidators ),
     pulse1: new FormControl(''),
-    bp2: new FormControl('', Validators.pattern("^[0-9 /]+$")),
+    bp2: new FormControl('', this.bpValidators),
     pulse2: new FormControl(''),
-    bp3: new FormControl('', Validators.pattern("^[0-9 /]+$")),
+    bp3: new FormControl('', this.bpValidators),
     pulse3: new FormControl(''),
     height: new FormControl(''),
     weight: new FormControl(''),
@@ -279,7 +284,7 @@ export class NewFormComponent implements OnInit {
     examinarSignature: new FormControl('', Validators.required),
     checkedBy: new FormControl(''),
     checkedByDate: new FormControl(''),
-    checkedSign: new FormControl(''),
+    checkedSign: new FormControl('', Validators.required),
     reasonForReferral: new FormControl(''),
     additionalComments: new FormControl(''),
   })
@@ -321,9 +326,11 @@ export class NewFormComponent implements OnInit {
     if (event.checked == true) {
       this.secondTestDisabled = false;
       this.showSecond = true
+      this.generalHealth.get('bp2').setValidators(this.bpValidators.concat(Validators.required))
     } else {
       this.secondTestDisabled = true;
       this.showSecond = false
+      this.generalHealth.get('bp2').setValidators(this.bpValidators)
     }
   }
 
@@ -331,12 +338,61 @@ export class NewFormComponent implements OnInit {
     if (event.checked == true) {
       this.thirdTestDisabled = false;
       this.showThird = true
+      this.generalHealth.get('bp3').setValidators(this.bpValidators.concat(Validators.required))
     } else {
       this.thirdTestDisabled = true;
       this.showThird = false
+      this.generalHealth.get('bp3').setValidators(this.bpValidators)
     }
   }
 
+  // colorVisionChange(e){
+    // console.log('colourVisionChange', e)
+    // if(e.value == 'Abnormal'){
+    //   this.disableLevel = true
+    // }
+    // else{
+    //   this.disableLevel = false
+    // }
+  // }
+  fitnessChange(event,type){
+    console.log(event, type)
+    if (event.value == 'Abnormal'){
+      event.value = 'Not Satisfactory'
+    }
+    let obj = {
+      type: type,
+      value: event.value
+    }
+
+    var index = _.findIndex(this.disableLevelConditions, function(o){return o.type == type})
+    console.log("index",index);
+    
+    if(index == -1){
+      this.disableLevelConditions.push(obj)
+      this.checkCondition()
+    }
+    else{
+      this.disableLevelConditions[index] = obj
+      this.checkCondition()
+    }
+  }
+
+  checkCondition() {
+    console.log("checkCondition called");
+    
+    // if (this.disableLevelConditions && this.disableLevelConditions.length){
+      var index = _.findIndex(this.disableLevelConditions, function (o) { return o.value == 'Not Satisfactory' })
+      console.log("index", index);
+      
+      if (index == -1) {
+        this.disableLevel = false
+      }
+      else {
+        this.disableLevel = true
+      }
+    // }
+  }
   onCheckboxChange(e) {
     // const checkArray: FormArray = this.generalHealth.get('bpCheckBox') as FormArray;
 
@@ -410,8 +466,8 @@ export class NewFormComponent implements OnInit {
   }
 
 
-  bpBlurred(event) {
-
+  bpBlurred(event,reading) {
+    
     console.log('event=====>', event);
 
     this.bpArray.forEach(el => {
@@ -419,6 +475,19 @@ export class NewFormComponent implements OnInit {
     })
     console.log("BP", event.target.value)
     let temp = event.target.value.split('/')
+    if(temp[0] > 160 || temp[1] > 95){
+      let event = {
+        checked : true
+      }
+      if(reading == 'reading1'){
+        this.isChecked = true
+        this.checkboxChange(event)
+      }
+      else if (reading == 'reading2'){
+        this.isChecked2 = true
+        this.checkboxChange2(event)
+      }
+    }
     console.log("temp", temp, Number(temp[0]) >= 90)
     if (temp.length == 2) {
       if ((Number(temp[0]) >= 90 && Number(temp[0]) <= 140) && (Number(temp[1]) >= 60 && Number(temp[1] <= 90))) {
@@ -690,14 +759,19 @@ export class NewFormComponent implements OnInit {
     // return;
 
 
-    if (this.form1.valid && this.medicalAssess.valid) {
-      this.loading = true;
-      this._medicalFormService.generatePdf(data).subscribe(res => {
-        console.log("RES", res)
+    if (this.form1.valid && this.medicalAssess.valid ) {
+      if (this.generalHealth.valid){
+        this.loading = true;
+        this._medicalFormService.generatePdf(data).subscribe(res => {
+          console.log("RES", res)
 
-        this.loading = false;
-        this.saveToFileSystem(res);
-      })
+          this.loading = false;
+          this.saveToFileSystem(res);
+        })
+      }
+      else{
+        alert("Blood Pressure Readings Required")
+      }
     }
 
     else {

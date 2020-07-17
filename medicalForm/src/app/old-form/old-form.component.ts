@@ -111,7 +111,7 @@ export class OldFormComponent implements OnInit {
 
   submit() {
     if (this.firstName == undefined || this.firstName == "" || this.surName == undefined || this.surName == ""
-      || this.dateOfBirth == undefined || this.dateOfBirth == "") {
+      || this.dateOfBirth == undefined || this.dateOfBirth == "" || !this.imgData) {
       alert("Details missing")
     }
     else {
