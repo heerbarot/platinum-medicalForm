@@ -357,9 +357,9 @@ export class NewFormComponent implements OnInit {
   // }
   fitnessChange(event,type){
     console.log(event, type)
-    if (event.value == 'Abnormal'){
-      event.value = 'Not Satisfactory'
-    }
+    // if (event.value == 'Abnormal'){
+    //   event.value = 'Not Satisfactory'
+    // }
     let obj = {
       type: type,
       value: event.value
@@ -379,10 +379,10 @@ export class NewFormComponent implements OnInit {
   }
 
   checkCondition() {
-    console.log("checkCondition called");
+    console.log("checkCondition called", this.disableLevelConditions);
     
     // if (this.disableLevelConditions && this.disableLevelConditions.length){
-      var index = _.findIndex(this.disableLevelConditions, function (o) { return o.value == 'Not Satisfactory' })
+    var index = _.findIndex(this.disableLevelConditions, function (o) { return (o.value == 'Not Satisfactory' || o.value == 'Abnormal') })
       console.log("index", index);
       
       if (index == -1) {
