@@ -1,7 +1,7 @@
 // console.log = function () { }
 
 let envs = [];
-let env = "production";
+let env = "development";
 
 envs['development'] = {
     baseApiUrl: "http://localhost:3000/",

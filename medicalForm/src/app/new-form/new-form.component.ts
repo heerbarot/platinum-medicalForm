@@ -83,6 +83,15 @@ export class NewFormComponent implements OnInit {
   isChecked: boolean;
   isChecked2: boolean;
   bpValidators = [Validators.pattern("^[0-9 /]+$")]
+  bmiStairsDetails: boolean;
+  bmiHillDetails: boolean;
+  bmiWalkDetails: boolean;
+  bmiExerciseDetails: boolean;
+  bmiBreathlessDetails: boolean;
+  bmiHeadacheDetails: boolean;
+  bmiSnoreDetails: boolean;
+  bmiTiredDetails: boolean;
+  bmiRefreshedDetails: boolean;
 
   constructor(private fb: FormBuilder, public dialog: MatDialog, public _medicalFormService: MedicalFormService) {
     this.pulseList = this.generateRange(40, 180)
@@ -165,6 +174,7 @@ export class NewFormComponent implements OnInit {
   }
 
 
+  // tslint:disable-next-line: member-ordering
   form1 = new FormGroup({
     name: new FormControl(''),
     idConfirmed: new FormControl(''),
@@ -177,6 +187,7 @@ export class NewFormComponent implements OnInit {
     // body: new FormControl('')
   });
 
+  // tslint:disable-next-line: member-ordering
   generalHealth = new FormGroup({
     bp1: new FormControl('', this.bpValidators ),
     pulse1: new FormControl(''),
@@ -187,6 +198,25 @@ export class NewFormComponent implements OnInit {
     height: new FormControl(''),
     weight: new FormControl(''),
     bmi: new FormControl(''),
+    isBmiGreater: new FormControl(''),
+    bmiStairs : new FormControl(''),
+    bmiStairsDetails: new FormControl(''),
+    bmiHill : new FormControl(''),
+    bmiHillDetails: new FormControl(''),
+    bmiWalk : new FormControl(''),
+    bmiWalkDetails: new FormControl(''),
+    bmiExercise : new FormControl(''),
+    bmiExerciseDetails: new FormControl(''),
+    bmiRefreshed: new FormControl(''),
+    bmiRefreshedDetails: new FormControl(''),
+    bmiBreathless: new FormControl(''),
+    bmiBreathlessDetails: new FormControl(''),
+    bmiTired: new FormControl(''),
+    bmiTiredDetails: new FormControl(''),
+    bmiHeadache: new FormControl(''),
+    bmiHeadacheDetails: new FormControl(''),
+    bmiSnore: new FormControl(''),
+    bmiSnoreDetails: new FormControl(''),
     mobility: new FormControl(''),
     fitness: new FormControl(''),
     pulseRhythm: new FormControl(''),
@@ -203,6 +233,7 @@ export class NewFormComponent implements OnInit {
     additionalComments: new FormControl(''),
   })
 
+  // tslint:disable-next-line: member-ordering
   visionAssessment = new FormGroup({
     dvlUnaided: new FormControl(''),
     dvrUnaided: new FormControl(''),
@@ -218,6 +249,7 @@ export class NewFormComponent implements OnInit {
 
 
 
+  // tslint:disable-next-line: member-ordering
   hearingGrp = new FormGroup({
     leftEar500: new FormControl(''),
     leftEar1000: new FormControl(''),
@@ -240,38 +272,15 @@ export class NewFormComponent implements OnInit {
   })
 
 
-
+// tslint:disable-next-line: member-ordering
   fitnessGrp = new FormGroup({
     addInfo: new FormControl(''),
     generalHealth: new FormControl(''),
     visual: new FormControl(''),
     colorVision: new FormControl(''),
     hearing: new FormControl(''),
-    // leftEar500: new FormControl(''),
-    // leftEar1000: new FormControl(''),
-    // leftEar2000: new FormControl(''),
-    // leftEar3000: new FormControl(''),
-    // leftEar4000: new FormControl(''),
-    // leftEar6000: new FormControl(''),
-    // leftEar8000: new FormControl(''),
-    // rightEar500: new FormControl(''),
-    // rightEar1000: new FormControl(''),
-    // rightEar2000: new FormControl(''),
-    // rightEar3000: new FormControl(''),
-    // rightEar4000: new FormControl(''),
-    // rightEar6000: new FormControl(''),
-    // rightEar8000: new FormControl(''),
-    // earWax: new FormControl(''),
-    // le500: new FormControl(''),
-    // le1000: new FormControl(''),
-    // le2000: new FormControl(''),
-    // leTotal: new FormControl(''),
-    // re500: new FormControl(''),
-    // re1000: new FormControl(''),
-    // re2000: new FormControl(''),
-    // reTotal: new FormControl('')
   })
-
+// tslint:disable-next-line: member-ordering
   medicalAssess = new FormGroup({
     fit: new FormControl(''),
     letterToGp: new FormControl(''),
@@ -560,6 +569,16 @@ export class NewFormComponent implements OnInit {
         bmi: this.bmi
       });
     }
+    if(this.bmi >= 30){
+      this.generalHealth.patchValue({
+        isBmiGreater: 'Yes'
+      })
+    }
+    else{
+      this.generalHealth.patchValue({
+        isBmiGreater: 'No'
+      })
+    }
   }
   leftEarChange(event, id) {
     console.log("EVENT", event, "id", id)
@@ -649,6 +668,102 @@ export class NewFormComponent implements OnInit {
     window.location.reload();
     // localStorage.removeItem("formone");
     // this.loading = false;
+  }
+
+  bmiQuestions(event,type){
+    console.log('event',event, 'type', type)
+    if(event.value == 'Yes'){
+      switch (type) {
+        case 'bmiStairs':
+          this.bmiStairsDetails = true
+          break;
+        case 'bmiHill':
+          this.bmiHillDetails = true
+          break;
+        case 'bmiWalk':
+          this.bmiWalkDetails = true
+          break;
+        case 'bmiExercise':
+          this.bmiExerciseDetails = true
+          break;
+        case 'bmiBreathless':
+          this.bmiBreathlessDetails = true
+          break;
+        case 'bmiHeadache':
+          this.bmiHeadacheDetails = true
+          break;
+      
+        case 'bmiSnore':
+          this.bmiSnoreDetails = true
+          break;
+        case 'bmiTired':
+          this.bmiTiredDetails = true
+          break;
+        case 'bmiRefreshed':
+          this.bmiRefreshedDetails = true
+          break;
+        default:
+          break;
+      }
+      // if (type == 'bmiStairs'){
+      //   this.bmiStairsDetails = true
+      // } 
+      // else if (type == 'bmiHill'){
+      //   this.bmiHillDetails = true
+      // }
+      // else if (type == 'bmiWalk'){
+      //   this.bmiWalkDetails = true
+      // }
+      // else if (type = 'bmiExercise'){
+      //   this.bmiExerciseDetails = true
+      // }
+    }
+    else{
+      // if (type == 'bmiStairs') {
+      //   this.bmiStairsDetails = false
+      // }
+      // else if (type == 'bmiHill') {
+      //   this.bmiHillDetails = false
+      // }
+      // else if (type == 'bmiWalk') {
+      //   this.bmiWalkDetails = false
+      // }
+      // else if (type = 'bmiExercise') {
+      //   this.bmiExerciseDetails = false
+      // }
+      switch (type) {
+        case 'bmiStairs':
+          this.bmiStairsDetails = false
+          break;
+        case 'bmiHill':
+          this.bmiHillDetails = false
+          break;
+        case 'bmiWalk':
+          this.bmiWalkDetails = false
+          break;
+        case 'bmiExercise':
+          this.bmiExerciseDetails = false
+          break;
+        case 'bmiBreathless':
+          this.bmiBreathlessDetails = false
+          break;
+        case 'bmiHeadache':
+          this.bmiHeadacheDetails = false
+          break;
+
+        case 'bmiSnore':
+          this.bmiSnoreDetails = false
+          break;
+        case 'bmiTired':
+          this.bmiTiredDetails = false
+          break;
+        case 'bmiRefreshed':
+          this.bmiRefreshedDetails = false
+          break;
+        default:
+          break;
+      }
+    }
   }
 
   submit() {

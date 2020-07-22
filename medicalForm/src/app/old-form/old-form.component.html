@@ -365,6 +365,49 @@
 
                         </div>
 
+                        <div class="row m-0 p-0" *ngIf="heartNcirculatoryCon == 'Yes'">
+                            <div class="col-md-4 p-0">
+                                <div class="col-12 p-0">
+                                    <div class="col-12 p-0">
+                                        <p class="extraQuest m-0 p-0">When were you first diagnosed with this condition?</p>
+                                    </div>
+                                    <div class="col-12">
+                                        <mat-form-field>
+                                            <textarea matInput placeholder="Details" [ngModelOptions]="{standalone: true}"
+                                                [(ngModel)]="heartNcirculatoryConQ1"></textarea>
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 p-0">
+                                <div class="col-12 p-0">
+                                    <div class="col-12 p-0">
+                                        <p class="extraQuest m-0 p-0">Is condition stable?</p>
+                                    </div>
+                                    <div class="col-12">
+                                        <mat-form-field>
+                                            <textarea matInput placeholder="Details" [ngModelOptions]="{standalone: true}"
+                                                [(ngModel)]="heartNcirculatoryConQ2"></textarea>
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="col-md-4 p-0">
+                                <div class="col-12 p-0">
+                                    <div class="col-12 p-0">
+                                        <p class="extraQuest m-0 p-0">What symptopms do you still experience?</p>
+                                    </div>
+                                    <div class="col-12">
+                                        <mat-form-field>
+                                            <textarea matInput placeholder="Details" [ngModelOptions]="{standalone: true}"
+                                                [(ngModel)]="heartNcirculatoryConQ3"></textarea>
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="col-12">
@@ -389,6 +432,49 @@
                                         [(ngModel)]="respiratoryNlungConDetails"></textarea>
                                 </mat-form-field>
 
+                            </div>
+                        </div>
+
+                        <div class="row m-0 p-0" *ngIf="respiratoryNlungCon == 'Yes'">
+                            <div class="col-md-4 p-0">
+                                <div class="col-12 p-0">
+                                    <div class="col-12 p-0">
+                                        <p class="extraQuest m-0 p-0">When were you first diagnosed with this condition?</p>
+                                    </div>
+                                    <div class="col-12">
+                                        <mat-form-field>
+                                            <textarea matInput placeholder="Details" [ngModelOptions]="{standalone: true}"
+                                                [(ngModel)]="respiratoryNlungConQ1"></textarea>
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 p-0">
+                                <div class="col-12 p-0">
+                                    <div class="col-12 p-0">
+                                        <p class="extraQuest m-0 p-0">Is condition stable?</p>
+                                    </div>
+                                    <div class="col-12">
+                                        <mat-form-field>
+                                            <textarea matInput placeholder="Details" [ngModelOptions]="{standalone: true}"
+                                                [(ngModel)]="respiratoryNlungConQ2"></textarea>
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                            </div>
+                        
+                            <div class="col-md-4 p-0">
+                                <div class="col-12 p-0">
+                                    <div class="col-12 p-0">
+                                        <p class="extraQuest m-0 p-0">What symptopms do you still experience?</p>
+                                    </div>
+                                    <div class="col-12">
+                                        <mat-form-field>
+                                            <textarea matInput placeholder="Details" [ngModelOptions]="{standalone: true}"
+                                                [(ngModel)]="respiratoryNlungConQ3"></textarea>
+                                        </mat-form-field>
+                                    </div>
+                                </div>
                             </div>
                         </div>
 
@@ -419,6 +505,48 @@
                             </div>
                         </div>
 
+                        <div class="row m-0 p-0" *ngIf="neurologicalCon == 'Yes'">
+                            <div class="col-md-4 p-0">
+                                <div class="col-12 p-0">
+                                    <div class="col-12 p-0">
+                                        <p class="extraQuest m-0 p-0">When were you first diagnosed with this condition?</p>
+                                    </div>
+                                    <div class="col-12">
+                                        <mat-form-field>
+                                            <textarea matInput placeholder="Details" [ngModelOptions]="{standalone: true}"
+                                                [(ngModel)]="neurologicalConQ1"></textarea>
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 p-0">
+                                <div class="col-12 p-0">
+                                    <div class="col-12 p-0">
+                                        <p class="extraQuest m-0 p-0">Is condition stable?</p>
+                                    </div>
+                                    <div class="col-12">
+                                        <mat-form-field>
+                                            <textarea matInput placeholder="Details" [ngModelOptions]="{standalone: true}"
+                                                [(ngModel)]="neurologicalConQ2"></textarea>
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                            </div>
+                        
+                            <div class="col-md-4 p-0">
+                                <div class="col-12 p-0">
+                                    <div class="col-12 p-0">
+                                        <p class="extraQuest m-0 p-0">What symptopms do you still experience?</p>
+                                    </div>
+                                    <div class="col-12">
+                                        <mat-form-field>
+                                            <textarea matInput placeholder="Details" [ngModelOptions]="{standalone: true}"
+                                                [(ngModel)]="neurologicalConQ3"></textarea>
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
                         <div class="row">
                             <div class="col-md-6">
@@ -443,6 +571,49 @@
                                         [(ngModel)]="weeknessConDetails"></textarea>
                                 </mat-form-field>
 
+                            </div>
+                        </div>
+
+                        <div class="row m-0 p-0" *ngIf="weeknessCon == 'Yes'">
+                            <div class="col-md-4 p-0">
+                                <div class="col-12 p-0">
+                                    <div class="col-12 p-0">
+                                        <p class="extraQuest m-0 p-0">When were you first diagnosed with this condition?</p>
+                                    </div>
+                                    <div class="col-12">
+                                        <mat-form-field>
+                                            <textarea matInput placeholder="Details" [ngModelOptions]="{standalone: true}"
+                                                [(ngModel)]="weeknessConQ1"></textarea>
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 p-0">
+                                <div class="col-12 p-0">
+                                    <div class="col-12 p-0">
+                                        <p class="extraQuest m-0 p-0">Is condition stable?</p>
+                                    </div>
+                                    <div class="col-12">
+                                        <mat-form-field>
+                                            <textarea matInput placeholder="Details" [ngModelOptions]="{standalone: true}"
+                                                [(ngModel)]="weeknessConQ2"></textarea>
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                            </div>
+                        
+                            <div class="col-md-4 p-0">
+                                <div class="col-12 p-0">
+                                    <div class="col-12 p-0">
+                                        <p class="extraQuest m-0 p-0">What symptopms do you still experience?</p>
+                                    </div>
+                                    <div class="col-12">
+                                        <mat-form-field>
+                                            <textarea matInput placeholder="Details" [ngModelOptions]="{standalone: true}"
+                                                [(ngModel)]="weeknessConQ3"></textarea>
+                                        </mat-form-field>
+                                    </div>
+                                </div>
                             </div>
                         </div>
 
@@ -473,6 +644,49 @@
                             </div>
                         </div>
 
+                        <div class="row m-0 p-0" *ngIf="mentalHealthCon == 'Yes'">
+                            <div class="col-md-4 p-0">
+                                <div class="col-12 p-0">
+                                    <div class="col-12 p-0">
+                                        <p class="extraQuest m-0 p-0">When were you first diagnosed with this condition?</p>
+                                    </div>
+                                    <div class="col-12">
+                                        <mat-form-field>
+                                            <textarea matInput placeholder="Details" [ngModelOptions]="{standalone: true}"
+                                                [(ngModel)]="mentalHealthConQ1"></textarea>
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                            </div>
+                        <div class="col-md-4 p-0">
+                            <div class="col-12 p-0">
+                                <div class="col-12 p-0">
+                                        <p class="extraQuest m-0 p-0">Is condition stable?</p>
+                                    </div>
+                                    <div class="col-12">
+                                        <mat-form-field>
+                                            <textarea matInput placeholder="Details" [ngModelOptions]="{standalone: true}"
+                                                [(ngModel)]="mentalHealthConQ2"></textarea>
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                            </div>
+                        
+                            <div class="col-md-4 p-0">
+                                <div class="col-12 p-0">
+                                    <div class="col-12 p-0">
+                                        <p class="extraQuest m-0 p-0">What symptopms do you still experience?</p>
+                                    </div>
+                                    <div class="col-12">
+                                        <mat-form-field>
+                                            <textarea matInput placeholder="Details" [ngModelOptions]="{standalone: true}"
+                                                [(ngModel)]="mentalHealthConQ3"></textarea>
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="col-12">
@@ -500,6 +714,48 @@
                             </div>
                         </div>
 
+                        <div class="row m-0 p-0" *ngIf="musculoskeletalCon == 'Yes'">
+                        <div class="col-md-4 p-0">
+                            <div class="col-12 p-0">
+                                <div class="col-12 p-0">
+                                        <p class="extraQuest m-0 p-0">When were you first diagnosed with this condition?</p>
+                                    </div>
+                                    <div class="col-12">
+                                        <mat-form-field>
+                                            <textarea matInput placeholder="Details" [ngModelOptions]="{standalone: true}"
+                                                [(ngModel)]="musculoskeletalConQ1"></textarea>
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                            </div>
+                        <div class="col-md-4 p-0">
+                            <div class="col-12 p-0">
+                                <div class="col-12 p-0">
+                                        <p class="extraQuest m-0 p-0">Is condition stable?</p>
+                                    </div>
+                                    <div class="col-12">
+                                        <mat-form-field>
+                                            <textarea matInput placeholder="Details" [ngModelOptions]="{standalone: true}"
+                                                [(ngModel)]="musculoskeletalConQ2"></textarea>
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                            </div>
+                        
+                        <div class="col-md-4 p-0">
+                            <div class="col-12 p-0">
+                                <div class="col-12 p-0">
+                                        <p class="extraQuest m-0 p-0">What symptopms do you still experience?</p>
+                                    </div>
+                                    <div class="col-12">
+                                        <mat-form-field>
+                                            <textarea matInput placeholder="Details" [ngModelOptions]="{standalone: true}"
+                                                [(ngModel)]="musculoskeletalConQ3"></textarea>
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
                         <div class="row">
                             <div class="col-md-6">
@@ -508,8 +764,34 @@
                                     E.g. Sleep apnoea, Chronic Fatigue Syndrome or Narcolepsy
                                 </div>
                                 <div class="col-12">
+                                    <mat-radio-group [ngModelOptions]="{standalone: true}" [ngModelOptions]="{standalone: true}"
+                                        [(ngModel)]="sleepDisordersCon" aria-label="Select an option" (change)="sleepDisorderChenge($event)">
+                                        <mat-radio-button class="mr-3" value="Yes">Yes</mat-radio-button>
+                                        <mat-radio-button class="mr-3" value="No">No</mat-radio-button>
+                                    </mat-radio-group>
+                                </div>
+                            </div>
+                        
+                            <div class="col-md-6">
+                        
+                                If yes - please record details
+                                <mat-form-field>
+                                    <textarea matInput placeholder="Details" [ngModelOptions]="{standalone: true}"
+                                        [(ngModel)]="sleepDisordersConDetails"></textarea>
+                                </mat-form-field>
+                        
+                            </div>
+                        </div>
+
+                        <div *ngIf="showSleepDisorderQues">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="col-12">
+                                    Do you wake on a morning feeling refreshed?
+                                </div>
+                                <div class="col-12">
                                     <mat-radio-group [ngModelOptions]="{standalone: true}"
-                                        [ngModelOptions]="{standalone: true}" [(ngModel)]="sleepDisordersCon"
+                                        [ngModelOptions]="{standalone: true}" [(ngModel)]="sleepDisorderRefreshed"
                                         aria-label="Select an option">
                                         <mat-radio-button class="mr-3" value="Yes">Yes</mat-radio-button>
                                         <mat-radio-button class="mr-3" value="No">No</mat-radio-button>
@@ -522,10 +804,106 @@
                                 If yes - please record details
                                 <mat-form-field>
                                     <textarea matInput placeholder="Details" [ngModelOptions]="{standalone: true}"
-                                        [(ngModel)]="sleepDisordersConDetails"></textarea>
+                                        [(ngModel)]="sleepDisorderRefreshedDetails"></textarea>
                                 </mat-form-field>
-
                             </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="col-12">
+                                    Has anyone ever told you they have observed you going for periods without breathing whilst you are asleep?
+                                </div>
+                                <div class="col-12">
+                                    <mat-radio-group [ngModelOptions]="{standalone: true}" [ngModelOptions]="{standalone: true}"
+                                        [(ngModel)]="sleepDisorderBreathless" aria-label="Select an option">
+                                        <mat-radio-button class="mr-3" value="Yes">Yes</mat-radio-button>
+                                        <mat-radio-button class="mr-3" value="No">No</mat-radio-button>
+                                    </mat-radio-group>
+                                </div>
+                            </div>
+                        
+                            <div class="col-md-6">
+                        
+                                If yes - please record details
+                                <mat-form-field>
+                                    <textarea matInput placeholder="Details" [ngModelOptions]="{standalone: true}"
+                                        [(ngModel)]="sleepDisorderBreathlessDetails"></textarea>
+                                </mat-form-field>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="col-12">
+                                    Do you wake up with a sore throat or headache?
+                                </div>
+                                <div class="col-12">
+                                    <mat-radio-group [ngModelOptions]="{standalone: true}" [ngModelOptions]="{standalone: true}"
+                                        [(ngModel)]="sleepDisorderHeadache" aria-label="Select an option">
+                                        <mat-radio-button class="mr-3" value="Yes">Yes</mat-radio-button>
+                                        <mat-radio-button class="mr-3" value="No">No</mat-radio-button>
+                                    </mat-radio-group>
+                                </div>
+                            </div>
+                        
+                            <div class="col-md-6">
+                        
+                                If yes - please record details
+                                <mat-form-field>
+                                    <textarea matInput placeholder="Details" [ngModelOptions]="{standalone: true}"
+                                        [(ngModel)]="sleepDisorderHeadacheDetails"></textarea>
+                                </mat-form-field>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="col-12">
+                                    Do you whether you snore?
+                                </div>
+                                <div class="col-12">
+                                    <mat-radio-group [ngModelOptions]="{standalone: true}" [ngModelOptions]="{standalone: true}"
+                                        [(ngModel)]="sleepDisorderSnore" aria-label="Select an option">
+                                        <mat-radio-button class="mr-3" value="Yes">Yes</mat-radio-button>
+                                        <mat-radio-button class="mr-3" value="No">No</mat-radio-button>
+                                    </mat-radio-group>
+                                </div>
+                            </div>
+                        
+                            <div class="col-md-6">
+                        
+                                If yes - please record details
+                                <mat-form-field>
+                                    <textarea matInput placeholder="Details" [ngModelOptions]="{standalone: true}"
+                                        [(ngModel)]="sleepDisorderSnoreDetails"></textarea>
+                                </mat-form-field>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="col-12">
+                                    Do you feel excessively tired during day?
+                                </div>
+                                <div class="col-12">
+                                    <mat-radio-group [ngModelOptions]="{standalone: true}" [ngModelOptions]="{standalone: true}"
+                                        [(ngModel)]="sleepDisorderTired" aria-label="Select an option">
+                                        <mat-radio-button class="mr-3" value="Yes">Yes</mat-radio-button>
+                                        <mat-radio-button class="mr-3" value="No">No</mat-radio-button>
+                                    </mat-radio-group>
+                                </div>
+                            </div>
+                        
+                            <div class="col-md-6">
+                        
+                                If yes - please record details
+                                <mat-form-field>
+                                    <textarea matInput placeholder="Details" [ngModelOptions]="{standalone: true}"
+                                        [(ngModel)]="sleepDisorderTiredDetails"></textarea>
+                                </mat-form-field>
+                            </div>
+                        </div>
                         </div>
 
                         <div class="row">
@@ -556,6 +934,48 @@
                             </div>
                         </div>
 
+                        <div class="row m-0 p-0" *ngIf="endocrineDisordersCon == 'Yes'">
+                        <div class="col-md-4 p-0">
+                            <div class="col-12 p-0">
+                                <div class="col-12 p-0">
+                                        <p class="extraQuest m-0 p-0">When were you first diagnosed with this condition?</p>
+                                    </div>
+                                    <div class="col-12">
+                                        <mat-form-field>
+                                            <textarea matInput placeholder="Details" [ngModelOptions]="{standalone: true}"
+                                                [(ngModel)]="endocrineDisordersConQ1"></textarea>
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                            </div>
+                        <div class="col-md-4 p-0">
+                            <div class="col-12 p-0">
+                                <div class="col-12 p-0">
+                                        <p class="extraQuest m-0 p-0">Is condition stable?</p>
+                                    </div>
+                                    <div class="col-12">
+                                        <mat-form-field>
+                                            <textarea matInput placeholder="Details" [ngModelOptions]="{standalone: true}"
+                                                [(ngModel)]="endocrineDisordersConQ2"></textarea>
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                            </div>
+                        
+                        <div class="col-md-4 p-0">
+                            <div class="col-12 p-0">
+                                <div class="col-12 p-0">
+                                        <p class="extraQuest m-0 p-0">What symptopms do you still experience?</p>
+                                    </div>
+                                    <div class="col-12">
+                                        <mat-form-field>
+                                            <textarea matInput placeholder="Details" [ngModelOptions]="{standalone: true}"
+                                                [(ngModel)]="endocrineDisordersConQ3"></textarea>
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="col-12">
@@ -581,6 +1001,49 @@
                                         [(ngModel)]="behaviouralDisordersConDetails"></textarea>
                                 </mat-form-field>
 
+                            </div>
+                        </div>
+
+                        <div class="row m-0 p-0" *ngIf="behaviouralDisordersCon == 'Yes'">
+                            <div class="col-md-4 p-0">
+                                <div class="col-12 p-0">
+                                    <div class="col-12 p-0">
+                                        <p class="extraQuest m-0 p-0">When were you first diagnosed with this condition?</p>
+                                    </div>
+                                    <div class="col-12">
+                                        <mat-form-field>
+                                            <textarea matInput placeholder="Details" [ngModelOptions]="{standalone: true}"
+                                                [(ngModel)]="behaviouralDisordersConQ1"></textarea>
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="col-12">
+                                    <div class="col-12">
+                                        <p class="extraQuest m-0 p-0">Is condition stable?</p>
+                                    </div>
+                                    <div class="col-12">
+                                        <mat-form-field>
+                                            <textarea matInput placeholder="Details" [ngModelOptions]="{standalone: true}"
+                                                [(ngModel)]="behaviouralDisordersConQ2"></textarea>
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                            </div>
+                        
+                            <div class="col-md-4">
+                                <div class="col-12">
+                                    <div class="col-12">
+                                        <p class="extraQuest m-0 p-0">What symptopms do you still experience?</p>
+                                    </div>
+                                    <div class="col-12">
+                                        <mat-form-field>
+                                            <textarea matInput placeholder="Details" [ngModelOptions]="{standalone: true}"
+                                                [(ngModel)]="behaviouralDisordersConQ3"></textarea>
+                                        </mat-form-field>
+                                    </div>
+                                </div>
                             </div>
                         </div>
 
@@ -612,6 +1075,49 @@
                             </div>
                         </div>
 
+                        <div class="row m-0 p-0" *ngIf="visualCon == 'Yes'">
+                        <div class="col-md-4 p-0">
+                            <div class="col-12 p-0">
+                                <div class="col-12 p-0">
+                                        <p class="extraQuest m-0 p-0">When were you first diagnosed with this condition?</p>
+                                    </div>
+                                    <div class="col-12">
+                                        <mat-form-field>
+                                            <textarea matInput placeholder="Details" [ngModelOptions]="{standalone: true}"
+                                                [(ngModel)]="visualConQ1"></textarea>
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 p-0">
+                                <div class="col-12 p-0">
+                                    <div class="col-12 p-0">
+                                        <p class="extraQuest m-0 p-0">Is condition stable?</p>
+                                    </div>
+                                    <div class="col-12">
+                                        <mat-form-field>
+                                            <textarea matInput placeholder="Details" [ngModelOptions]="{standalone: true}"
+                                                [(ngModel)]="visualConQ2"></textarea>
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                            </div>
+                        
+                            <div class="col-md-4 p-0">
+                                <div class="col-12 p-0">
+                                    <div class="col-12 p-0">
+                                        <p class="extraQuest m-0 p-0">What symptopms do you still experience?</p>
+                                    </div>
+                                    <div class="col-12">
+                                        <mat-form-field>
+                                            <textarea matInput placeholder="Details" [ngModelOptions]="{standalone: true}"
+                                                [(ngModel)]="visualConQ3"></textarea>
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="col-12">
@@ -635,6 +1141,49 @@
                                         [(ngModel)]="hearingConDetails"></textarea>
                                 </mat-form-field>
 
+                            </div>
+                        </div>
+
+                        <div class="row m-0 p-0" *ngIf="hearingCon == 'Yes'">
+                        <div class="col-md-4 p-0">
+                            <div class="col-12 p-0">
+                                <div class="col-12 p-0">
+                                        <p class="extraQuest m-0 p-0">When were you first diagnosed with this condition?</p>
+                                    </div>
+                                    <div class="col-12">
+                                        <mat-form-field>
+                                            <textarea matInput placeholder="Details" [ngModelOptions]="{standalone: true}"
+                                                [(ngModel)]="hearingConQ1"></textarea>
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 p-0">
+                                <div class="col-12 p-0">
+                                    <div class="col-12 p-0">
+                                        <p class="extraQuest m-0 p-0">Is condition stable?</p>
+                                    </div>
+                                    <div class="col-12">
+                                        <mat-form-field>
+                                            <textarea matInput placeholder="Details" [ngModelOptions]="{standalone: true}"
+                                                [(ngModel)]="hearingConQ2"></textarea>
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                            </div>
+                        
+                            <div class="col-md-4 p-0">
+                                <div class="col-12 p-0">
+                                    <div class="col-12 p-0">
+                                        <p class="extraQuest m-0 p-0">What symptopms do you still experience?</p>
+                                    </div>
+                                    <div class="col-12">
+                                        <mat-form-field>
+                                            <textarea matInput placeholder="Details" [ngModelOptions]="{standalone: true}"
+                                                [(ngModel)]="hearingConQ3"></textarea>
+                                        </mat-form-field>
+                                    </div>
+                                </div>
                             </div>
                         </div>
 
@@ -665,6 +1214,49 @@
                             </div>
                         </div>
 
+                        <div class="row m-0 p-0" *ngIf="speechCon == 'Yes'">
+                            <div class="col-md-4 p-0">
+                                <div class="col-12 p-0">
+                                    <div class="col-12 p-0">
+                                        <p class="extraQuest m-0 p-0">When were you first diagnosed with this condition?</p>
+                                    </div>
+                                    <div class="col-12">
+                                        <mat-form-field>
+                                            <textarea matInput placeholder="Details" [ngModelOptions]="{standalone: true}"
+                                                [(ngModel)]="speechConQ1"></textarea>
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 p-0">
+                                <div class="col-12 p-0">
+                                    <div class="col-12 p-0">
+                                        <p class="extraQuest m-0 p-0">Is condition stable?</p>
+                                    </div>
+                                    <div class="col-12">
+                                        <mat-form-field>
+                                            <textarea matInput placeholder="Details" [ngModelOptions]="{standalone: true}"
+                                                [(ngModel)]="speechConQ2"></textarea>
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                            </div>
+                        
+                            <div class="col-md-4 p-0">
+                                <div class="col-12 p-0">
+                                    <div class="col-12 p-0">
+                                        <p class="extraQuest m-0 p-0">What symptopms do you still experience?</p>
+                                    </div>
+                                    <div class="col-12">
+                                        <mat-form-field>
+                                            <textarea matInput placeholder="Details" [ngModelOptions]="{standalone: true}"
+                                                [(ngModel)]="speechConQ3"></textarea>
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="col-12">
@@ -691,6 +1283,49 @@
                             </div>
                         </div>
 
+                        <div class="row m-0 p-0" *ngIf="bowelCon == 'Yes'">
+                            <div class="col-md-4 p-0">
+                                <div class="col-12 p-0">
+                                    <div class="col-12 p-0">
+                                        <p class="extraQuest m-0 p-0">When were you first diagnosed with this condition?</p>
+                                    </div>
+                                    <div class="col-12">
+                                        <mat-form-field>
+                                            <textarea matInput placeholder="Details" [ngModelOptions]="{standalone: true}"
+                                                [(ngModel)]="bowelConQ1"></textarea>
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 p-0">
+                                <div class="col-12 p-0">
+                                    <div class="col-12 p-0">
+                                        <p class="extraQuest m-0 p-0">Is condition stable?</p>
+                                    </div>
+                                    <div class="col-12">
+                                        <mat-form-field>
+                                            <textarea matInput placeholder="Details" [ngModelOptions]="{standalone: true}"
+                                                [(ngModel)]="bowelConQ2"></textarea>
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                            </div>
+                        
+                            <div class="col-md-4 p-0">
+                                <div class="col-12 p-0">
+                                    <div class="col-12 p-0">
+                                        <p class="extraQuest m-0 p-0">What symptopms do you still experience?</p>
+                                    </div>
+                                    <div class="col-12">
+                                        <mat-form-field>
+                                            <textarea matInput placeholder="Details" [ngModelOptions]="{standalone: true}"
+                                                [(ngModel)]="bowelConQ3"></textarea>
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="col-12">
@@ -714,6 +1349,49 @@
                                         [(ngModel)]="kidneyConDetails"></textarea>
                                 </mat-form-field>
 
+                            </div>
+                        </div>
+
+                        <div class="row m-0 p-0" *ngIf="kidneyCon == 'Yes'">
+                            <div class="col-md-4 p-0">
+                                <div class="col-12 p-0">
+                                    <div class="col-12 p-0">
+                                        <p class="extraQuest m-0 p-0">When were you first diagnosed with this condition?</p>
+                                    </div>
+                                    <div class="col-12">
+                                        <mat-form-field>
+                                            <textarea matInput placeholder="Details" [ngModelOptions]="{standalone: true}"
+                                                [(ngModel)]="kidneyConQ1"></textarea>
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 p-0">
+                                <div class="col-12 p-0">
+                                    <div class="col-12 p-0">
+                                        <p class="extraQuest m-0 p-0">Is condition stable?</p>
+                                    </div>
+                                    <div class="col-12">
+                                        <mat-form-field>
+                                            <textarea matInput placeholder="Details" [ngModelOptions]="{standalone: true}"
+                                                [(ngModel)]="kidneyConQ2"></textarea>
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                            </div>
+                        
+                            <div class="col-md-4 p-0">
+                                <div class="col-12 p-0">
+                                    <div class="col-12 p-0">
+                                        <p class="extraQuest m-0 p-0">What symptopms do you still experience?</p>
+                                    </div>
+                                    <div class="col-12">
+                                        <mat-form-field>
+                                            <textarea matInput placeholder="Details" [ngModelOptions]="{standalone: true}"
+                                                [(ngModel)]="kidneyConQ3"></textarea>
+                                        </mat-form-field>
+                                    </div>
+                                </div>
                             </div>
                         </div>
 
@@ -744,6 +1422,48 @@
                             </div>
                         </div>
 
+                        <div class="row m-0 p-0" *ngIf="liverCon == 'Yes'">
+                            <div class="col-md-4 p-0">
+                                <div class="col-12 p-0">
+                                    <div class="col-12 p-0">
+                                        <p class="extraQuest m-0 p-0">When were you first diagnosed with this condition?</p>
+                                    </div>
+                                    <div class="col-12">
+                                        <mat-form-field>
+                                            <textarea matInput placeholder="Details" [ngModelOptions]="{standalone: true}"
+                                                [(ngModel)]="liverConQ1"></textarea>
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 p-0">
+                                <div class="col-12 p-0">
+                                    <div class="col-12 p-0">
+                                        <p class="extraQuest m-0 p-0">Is condition stable?</p>
+                                    </div>
+                                    <div class="col-12">
+                                        <mat-form-field>
+                                            <textarea matInput placeholder="Details" [ngModelOptions]="{standalone: true}"
+                                                [(ngModel)]="liverConQ2"></textarea>
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                            </div>
+                        
+                            <div class="col-md-4 p-0">
+                                <div class="col-12 p-0">
+                                    <div class="col-12 p-0">
+                                        <p class="extraQuest m-0 p-0">What symptopms do you still experience?</p>
+                                    </div>
+                                    <div class="col-12">
+                                        <mat-form-field>
+                                            <textarea matInput placeholder="Details" [ngModelOptions]="{standalone: true}"
+                                                [(ngModel)]="liverConQ3"></textarea>
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
                         <div class="row">
                             <div class="col-md-6">
@@ -771,6 +1491,48 @@
                             </div>
                         </div>
 
+                        <div class="row m-0 p-0" *ngIf="allergiesCon == 'Yes'">
+                            <div class="col-md-4 p-0">
+                                <div class="col-12 p-0">
+                                    <div class="col-12 p-0">
+                                        <p class="extraQuest m-0 p-0">When were you first diagnosed with this condition?</p>
+                                    </div>
+                                    <div class="col-12">
+                                        <mat-form-field>
+                                            <textarea matInput placeholder="Details" [ngModelOptions]="{standalone: true}"
+                                                [(ngModel)]="allergiesConQ1"></textarea>
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 p-0">
+                                <div class="col-12 p-0">
+                                    <div class="col-12 p-0">
+                                        <p class="extraQuest m-0 p-0">Is condition stable?</p>
+                                    </div>
+                                    <div class="col-12">
+                                        <mat-form-field>
+                                            <textarea matInput placeholder="Details" [ngModelOptions]="{standalone: true}"
+                                                [(ngModel)]="allergiesConQ2"></textarea>
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                            </div>
+                        
+                            <div class="col-md-4 p-0">
+                                <div class="col-12 p-0">
+                                    <div class="col-12 p-0">
+                                        <p class="extraQuest m-0 p-0">What symptopms do you still experience?</p>
+                                    </div>
+                                    <div class="col-12">
+                                        <mat-form-field>
+                                            <textarea matInput placeholder="Details" [ngModelOptions]="{standalone: true}"
+                                                [(ngModel)]="allergiesConQ3"></textarea>
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
                         <div class="row">
                             <div class="col-md-6">
@@ -796,6 +1558,49 @@
                                         [(ngModel)]="sleepingConDetails"></textarea>
                                 </mat-form-field>
 
+                            </div>
+                        </div>
+
+                        <div class="row m-0 p-0" *ngIf="sleepingCon == 'Yes'">
+                            <div class="col-md-4 p-0">
+                                <div class="col-12 p-0">
+                                    <div class="col-12 p-0">
+                                        <p class="extraQuest m-0 p-0">When were you first diagnosed with this condition?</p>
+                                    </div>
+                                    <div class="col-12">
+                                        <mat-form-field>
+                                            <textarea matInput placeholder="Details" [ngModelOptions]="{standalone: true}"
+                                                [(ngModel)]="sleepingConQ1"></textarea>
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 p-0">
+                                <div class="col-12 p-0">
+                                    <div class="col-12 p-0">
+                                        <p class="extraQuest m-0 p-0">Is condition stable?</p>
+                                    </div>
+                                    <div class="col-12">
+                                        <mat-form-field>
+                                            <textarea matInput placeholder="Details" [ngModelOptions]="{standalone: true}"
+                                                [(ngModel)]="sleepingConQ2"></textarea>
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                            </div>
+                        
+                            <div class="col-md-4 p-0">
+                                <div class="col-12 p-0">
+                                    <div class="col-12 p-0">
+                                        <p class="extraQuest m-0 p-0">What symptopms do you still experience?</p>
+                                    </div>
+                                    <div class="col-12">
+                                        <mat-form-field>
+                                            <textarea matInput placeholder="Details" [ngModelOptions]="{standalone: true}"
+                                                [(ngModel)]="sleepingConQ3"></textarea>
+                                        </mat-form-field>
+                                    </div>
+                                </div>
                             </div>
                         </div>
 
@@ -825,6 +1630,49 @@
                             </div>
                         </div>
 
+                        <div class="row m-0 p-0" *ngIf="medication == 'Yes'">
+                            <div class="col-md-4 p-0">
+                                <div class="col-12 p-0">
+                                    <div class="col-12 p-0">
+                                        <p class="extraQuest m-0 p-0">When were you first diagnosed with this condition?</p>
+                                    </div>
+                                    <div class="col-12">
+                                        <mat-form-field>
+                                            <textarea matInput placeholder="Details" [ngModelOptions]="{standalone: true}"
+                                                [(ngModel)]="medicationQ1"></textarea>
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 p-0">
+                                <div class="col-12 p-0">
+                                    <div class="col-12 p-0">
+                                        <p class="extraQuest m-0 p-0">Is condition stable?</p>
+                                    </div>
+                                    <div class="col-12">
+                                        <mat-form-field>
+                                            <textarea matInput placeholder="Details" [ngModelOptions]="{standalone: true}"
+                                                [(ngModel)]="medicationQ2"></textarea>
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                            </div>
+                        
+                            <div class="col-md-4 p-0">
+                                <div class="col-12 p-0">
+                                    <div class="col-12 p-0">
+                                        <p class="extraQuest m-0 p-0">What symptopms do you still experience?</p>
+                                    </div>
+                                    <div class="col-12">
+                                        <mat-form-field>
+                                            <textarea matInput placeholder="Details" [ngModelOptions]="{standalone: true}"
+                                                [(ngModel)]="medicationQ3"></textarea>
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="col-12">
@@ -851,6 +1699,48 @@
                             </div>
                         </div>
 
+                        <div class="row m-0 p-0" *ngIf="medicalTreatment == 'Yes'">
+                            <div class="col-md-4 p-0">
+                                <div class="col-12 p-0">
+                                    <div class="col-12 p-0">
+                                        <p class="extraQuest m-0 p-0">When were you first diagnosed with this condition?</p>
+                                    </div>
+                                    <div class="col-12">
+                                        <mat-form-field>
+                                            <textarea matInput placeholder="Details" [ngModelOptions]="{standalone: true}"
+                                                [(ngModel)]="medicalTreatmentQ1"></textarea>
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 p-0">
+                                <div class="col-12 p-0">
+                                    <div class="col-12 p-0">
+                                        <p class="extraQuest m-0 p-0">Is condition stable?</p>
+                                    </div>
+                                    <div class="col-12">
+                                        <mat-form-field>
+                                            <textarea matInput placeholder="Details" [ngModelOptions]="{standalone: true}"
+                                                [(ngModel)]="medicalTreatmentQ2"></textarea>
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                            </div>
+                        
+                            <div class="col-md-4 p-0">
+                                <div class="col-12 p-0">
+                                    <div class="col-12 p-0">
+                                        <p class="extraQuest m-0 p-0">What symptopms do you still experience?</p>
+                                    </div>
+                                    <div class="col-12">
+                                        <mat-form-field>
+                                            <textarea matInput placeholder="Details" [ngModelOptions]="{standalone: true}"
+                                                [(ngModel)]="medicalTreatmentQ3"></textarea>
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
                         <div class="row">
                             <div class="col-md-6">
@@ -879,6 +1769,49 @@
                             </div>
                         </div>
 
+                        <div class="row m-0 p-0" *ngIf="tests == 'Yes'">
+                            <div class="col-md-4 p-0">
+                                <div class="col-12 p-0">
+                                    <div class="col-12 p-0">
+                                        <p class="extraQuest m-0 p-0">When were you first diagnosed with this condition?</p>
+                                    </div>
+                                    <div class="col-12">
+                                        <mat-form-field>
+                                            <textarea matInput placeholder="Details" [ngModelOptions]="{standalone: true}"
+                                                [(ngModel)]="testsQ1"></textarea>
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 p-0">
+                                <div class="col-12 p-0">
+                                    <div class="col-12 p-0">
+                                        <p class="extraQuest m-0 p-0">Is condition stable?</p>
+                                    </div>
+                                    <div class="col-12">
+                                        <mat-form-field>
+                                            <textarea matInput placeholder="Details" [ngModelOptions]="{standalone: true}"
+                                                [(ngModel)]="testsQ2"></textarea>
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                            </div>
+                        
+                            <div class="col-md-4 p-0">
+                                <div class="col-12 p-0">
+                                    <div class="col-12 p-0">
+                                        <p class="extraQuest m-0 p-0">What symptopms do you still experience?</p>
+                                    </div>
+                                    <div class="col-12">
+                                        <mat-form-field>
+                                            <textarea matInput placeholder="Details" [ngModelOptions]="{standalone: true}"
+                                                [(ngModel)]="testsQ3"></textarea>
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="col-12">
@@ -904,6 +1837,49 @@
                                         [(ngModel)]="otherHealthAspectsDetails"></textarea>
                                 </mat-form-field>
 
+                            </div>
+                        </div>
+
+                        <div class="row m-0 p-0" *ngIf="otherHealthAspects == 'Yes'">
+                            <div class="col-md-4 p-0">
+                                <div class="col-12 p-0">
+                                    <div class="col-12 p-0">
+                                        <p class="extraQuest m-0 p-0">When were you first diagnosed with this condition?</p>
+                                    </div>
+                                    <div class="col-12">
+                                        <mat-form-field>
+                                            <textarea matInput placeholder="Details" [ngModelOptions]="{standalone: true}"
+                                                [(ngModel)]="otherHealthAspectsQ1"></textarea>
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 p-0">
+                                <div class="col-12 p-0">
+                                    <div class="col-12 p-0">
+                                        <p class="extraQuest m-0 p-0">Is condition stable?</p>
+                                    </div>
+                                    <div class="col-12">
+                                        <mat-form-field>
+                                            <textarea matInput placeholder="Details" [ngModelOptions]="{standalone: true}"
+                                                [(ngModel)]="otherHealthAspectsQ2"></textarea>
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                            </div>
+                        
+                            <div class="col-md-4 p-0">
+                                <div class="col-12 p-0">
+                                    <div class="col-12 p-0">
+                                        <p class="extraQuest m-0 p-0">What symptopms do you still experience?</p>
+                                    </div>
+                                    <div class="col-12">
+                                        <mat-form-field>
+                                            <textarea matInput placeholder="Details" [ngModelOptions]="{standalone: true}"
+                                                [(ngModel)]="otherHealthAspectsQ3"></textarea>
+                                        </mat-form-field>
+                                    </div>
+                                </div>
                             </div>
                         </div>
 

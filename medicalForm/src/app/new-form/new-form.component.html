@@ -228,6 +228,157 @@
                                 </mat-form-field>
                             </div>
                         </div>
+
+                        <div class="row" *ngIf="bmi && bmi > 30">
+                            <div class="col-md-12">
+                                <label>Do you become breathless after climbing a flight of stairs?</label>
+                                <mat-form-field>
+                                    <mat-select formControlName="bmiStairs" ngModel="bmiStairsDetails" (selectionChange)="bmiQuestions($event,'bmiStairs')" placeholder="Select">
+                                        <mat-option *ngFor="let item of yesNo" [value]="item">{{item}}
+                                        </mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+
+                            <div class="col-md-12" *ngIf="bmiStairsDetails">
+                                <mat-form-field>
+                                  <textarea matInput placeholder="Additional Details" formControlName="bmiStairsDetails"></textarea>
+                                </mat-form-field>
+                            </div>
+
+                            <div class="col-md-12">
+                                <label>Do you become breathless when hurrying or walking up a slight hill?</label>
+                                <mat-form-field>
+                                    <mat-select formControlName="bmiHill" (selectionChange)="bmiQuestions($event,'bmiHill')" placeholder="Select">
+                                        <mat-option *ngFor="let item of yesNo" [value]="item">{{item}}
+                                        </mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+                            
+                            <div class="col-md-12" *ngIf="bmiHillDetails">
+                                <mat-form-field>
+                                    <textarea matInput placeholder="Additional Details" formControlName="bmiHillDetails"></textarea>
+                                </mat-form-field>
+                            </div>
+
+                            <div class="col-md-12">
+                                <label>When walking on level ground, do you walk slower than others your age or have to stop for a breather?</label>
+                                <mat-form-field>
+                                    <mat-select formControlName="bmiWalk" (selectionChange)="bmiQuestions($event,'bmiWalk')" placeholder="Select">
+                                        <mat-option *ngFor="let item of yesNo" [value]="item">{{item}}
+                                        </mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+                            
+                            <div class="col-md-12" *ngIf="bmiWalkDetails">
+                                <mat-form-field>
+                                    <textarea matInput placeholder="Additional Details" formControlName="bmiWalkDetails"></textarea>
+                                </mat-form-field>
+                            </div>
+
+                            <div class="col-md-12">
+                                <label>What exercise do you do that leaves you out of breath?</label>
+                                <mat-form-field>
+                                    <mat-select formControlName="bmiExercise" (selectionChange)="bmiQuestions($event,'bmiExercise')" placeholder="Select">
+                                        <mat-option *ngFor="let item of yesNo" [value]="item">{{item}}
+                                        </mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+
+                            <div class="col-md-12" *ngIf="bmiExerciseDetails">
+                                <mat-form-field>
+                                    <textarea matInput placeholder="Additional Details" formControlName="bmiExerciseDetails"></textarea>
+                                </mat-form-field>
+                            </div>
+
+                            <div class="col-md-12">
+                                <label>Do you wake on a morning feeling refreshed?</label>
+                                <mat-form-field>
+                                    <mat-select formControlName="bmiRefreshed" (selectionChange)="bmiQuestions($event,'bmiRefreshed')"
+                                        placeholder="Select">
+                                        <mat-option *ngFor="let item of yesNo" [value]="item">{{item}}
+                                        </mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+                            
+                            <div class="col-md-12" *ngIf="bmiRefreshedDetails">
+                                <mat-form-field>
+                                    <textarea matInput placeholder="Additional Details" formControlName="bmiRefreshedDetails"></textarea>
+                                </mat-form-field>
+                            </div>
+
+                            <div class="col-md-12">
+                                <label>Has anyone ever told you they have observed you going for periods without breathing whilst you are asleep?</label>
+                                <mat-form-field>
+                                    <mat-select formControlName="bmiBreathless" (selectionChange)="bmiQuestions($event,'bmiBreathless')"
+                                        placeholder="Select">
+                                        <mat-option *ngFor="let item of yesNo" [value]="item">{{item}}
+                                        </mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+                            
+                            <div class="col-md-12" *ngIf="bmiBreathlessDetails">
+                                <mat-form-field>
+                                    <textarea matInput placeholder="Additional Details" formControlName="bmiBreathlessDetails"></textarea>
+                                </mat-form-field>
+                            </div>
+
+                            <div class="col-md-12">
+                                <label>Do you wake up with a sore throat or headache?</label>
+                                <mat-form-field>
+                                    <mat-select formControlName="bmiHeadache" (selectionChange)="bmiQuestions($event,'bmiHeadache')"
+                                        placeholder="Select">
+                                        <mat-option *ngFor="let item of yesNo" [value]="item">{{item}}
+                                        </mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+                            
+                            <div class="col-md-12" *ngIf="bmiHeadacheDetails">
+                                <mat-form-field>
+                                    <textarea matInput placeholder="Additional Details" formControlName="bmiHeadacheDetails"></textarea>
+                                </mat-form-field>
+                            </div>
+
+                            <div class="col-md-12">
+                                <label>Do you whether you snore?</label>
+                                <mat-form-field>
+                                    <mat-select formControlName="bmiSnore" (selectionChange)="bmiQuestions($event,'bmiSnore')"
+                                        placeholder="Select">
+                                        <mat-option *ngFor="let item of yesNo" [value]="item">{{item}}
+                                        </mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+                            
+                            <div class="col-md-12" *ngIf="bmiSnoreDetails">
+                                <mat-form-field>
+                                    <textarea matInput placeholder="Additional Details" formControlName="bmiSnoreDetails"></textarea>
+                                </mat-form-field>
+                            </div>
+
+                            <div class="col-md-12">
+                                <label>Do you feel excessively tired during day?</label>
+                                <mat-form-field>
+                                    <mat-select formControlName="bmiTired" (selectionChange)="bmiQuestions($event,'bmiTired')" placeholder="Select">
+                                        <mat-option *ngFor="let item of yesNo" [value]="item">{{item}}
+                                        </mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+                            
+                            <div class="col-md-12" *ngIf="bmiTiredDetails">
+                                <mat-form-field>
+                                    <textarea matInput placeholder="Additional Details" formControlName="bmiTiredDetails"></textarea>
+                                </mat-form-field>
+                            </div>
+                        </div>
+
                         <div class="row">
                             <div class="col-md-4">
                                 <mat-form-field>
