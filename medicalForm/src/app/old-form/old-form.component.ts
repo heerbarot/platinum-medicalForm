@@ -130,11 +130,11 @@ export class OldFormComponent implements OnInit {
   }
 
   submit() {
-    // if (this.firstName == undefined || this.firstName == "" || this.surName == undefined || this.surName == ""
-      // || this.dateOfBirth == undefined || this.dateOfBirth == "" || !this.imgData) {
-      // alert("Details missing")
-    // }
-    // else {
+    if (this.firstName == undefined || this.firstName == "" || this.surName == undefined || this.surName == ""
+      || this.dateOfBirth == undefined || this.dateOfBirth == "" || !this.imgData) {
+      alert("Details missing")
+    }
+    else {
       this.data = {
         medicalQuestionnaire: {
           firstName: this.firstName,
@@ -299,7 +299,7 @@ export class OldFormComponent implements OnInit {
       //   console.log("RES", res)
       //   this.saveToFileSystem(res);
       // })
-    // }
+    }
 
 
     console.log("THIS.DATA", this.data)

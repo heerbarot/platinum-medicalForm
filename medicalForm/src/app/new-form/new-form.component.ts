@@ -86,7 +86,7 @@ export class NewFormComponent implements OnInit {
   bmiStairsDetails: boolean;
   bmiHillDetails: boolean;
   bmiWalkDetails: boolean;
-  bmiExerciseDetails: boolean;
+  // bmiExerciseDetails: boolean;
   bmiBreathlessDetails: boolean;
   bmiHeadacheDetails: boolean;
   bmiSnoreDetails: boolean;
@@ -205,7 +205,7 @@ export class NewFormComponent implements OnInit {
     bmiHillDetails: new FormControl(''),
     bmiWalk : new FormControl(''),
     bmiWalkDetails: new FormControl(''),
-    bmiExercise : new FormControl(''),
+    // bmiExercise : new FormControl(''),
     bmiExerciseDetails: new FormControl(''),
     bmiRefreshed: new FormControl(''),
     bmiRefreshedDetails: new FormControl(''),
@@ -683,9 +683,9 @@ export class NewFormComponent implements OnInit {
         case 'bmiWalk':
           this.bmiWalkDetails = true
           break;
-        case 'bmiExercise':
-          this.bmiExerciseDetails = true
-          break;
+        // case 'bmiExercise':
+        //   this.bmiExerciseDetails = true
+        //   break;
         case 'bmiBreathless':
           this.bmiBreathlessDetails = true
           break;
@@ -741,9 +741,9 @@ export class NewFormComponent implements OnInit {
         case 'bmiWalk':
           this.bmiWalkDetails = false
           break;
-        case 'bmiExercise':
-          this.bmiExerciseDetails = false
-          break;
+        // case 'bmiExercise':
+        //   this.bmiExerciseDetails = false
+        //   break;
         case 'bmiBreathless':
           this.bmiBreathlessDetails = false
           break;

@@ -233,7 +233,7 @@
                             <div class="col-md-12">
                                 <label>Do you become breathless after climbing a flight of stairs?</label>
                                 <mat-form-field>
-                                    <mat-select formControlName="bmiStairs" ngModel="bmiStairsDetails" (selectionChange)="bmiQuestions($event,'bmiStairs')" placeholder="Select">
+                                    <mat-select formControlName="bmiStairs" (selectionChange)="bmiQuestions($event,'bmiStairs')" placeholder="Select">
                                         <mat-option *ngFor="let item of yesNo" [value]="item">{{item}}
                                         </mat-option>
                                     </mat-select>
@@ -281,18 +281,21 @@
                             <div class="col-md-12">
                                 <label>What exercise do you do that leaves you out of breath?</label>
                                 <mat-form-field>
+                                    <textarea matInput placeholder="Details" formControlName="bmiExerciseDetails"></textarea>
+                                </mat-form-field>
+                                <!-- <mat-form-field>
                                     <mat-select formControlName="bmiExercise" (selectionChange)="bmiQuestions($event,'bmiExercise')" placeholder="Select">
                                         <mat-option *ngFor="let item of yesNo" [value]="item">{{item}}
                                         </mat-option>
                                     </mat-select>
-                                </mat-form-field>
+                                </mat-form-field> -->
                             </div>
 
-                            <div class="col-md-12" *ngIf="bmiExerciseDetails">
+                            <!-- <div class="col-md-12" *ngIf="bmiExerciseDetails">
                                 <mat-form-field>
                                     <textarea matInput placeholder="Additional Details" formControlName="bmiExerciseDetails"></textarea>
                                 </mat-form-field>
-                            </div>
+                            </div> -->
 
                             <div class="col-md-12">
                                 <label>Do you wake on a morning feeling refreshed?</label>
@@ -346,7 +349,7 @@
                             </div>
 
                             <div class="col-md-12">
-                                <label>Do you whether you snore?</label>
+                                <label>Do you snore?</label>
                                 <mat-form-field>
                                     <mat-select formControlName="bmiSnore" (selectionChange)="bmiQuestions($event,'bmiSnore')"
                                         placeholder="Select">
