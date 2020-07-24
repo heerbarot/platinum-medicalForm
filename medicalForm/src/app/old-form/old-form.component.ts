@@ -127,6 +127,9 @@ export class OldFormComponent implements OnInit {
     if(event.value == 'Yes'){
       this.showSleepDisorderQues = true
     }
+    else{
+      this.showSleepDisorderQues = false
+    }
   }
 
   submit() {

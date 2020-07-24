@@ -415,8 +415,8 @@
                                     <b>Blood Pressure</b>
                                 </div>
                                 <div class="d-flex">
-                                    <div class="col-4 d-flex justify-content-center">
-                                        <table>
+                                    <div class="col-6 p-0 d-flex justify-content-center">
+                                        <table class="showTblLines">
                                             <tr>
                                                 <td>90/60 - 140/90</td>
                                             </tr>
@@ -424,15 +424,15 @@
                                                 <td>140/90 - 160/95</td>
                                             </tr>
                                             <tr>
-                                                <td>140/90 - 160/95</td>
+                                                <td>160/95 - 180/100</td>
                                             </tr>
                                             <tr>
                                                 <td>>180/100</td>
                                             </tr>
                                         </table>
                                     </div>
-                                    <div class="col-8 d-flex justify-content-center">
-                                        <table>
+                                    <div class="col-6 d-flex justify-content-center">
+                                        <table class="showTblLines">
                                             <tr *ngFor="let data of bpArray; let i=index">
                                                 <td>
                                                     <input type="checkbox" name="checkButton"

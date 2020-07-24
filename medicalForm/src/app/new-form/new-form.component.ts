@@ -505,6 +505,12 @@ export class NewFormComponent implements OnInit {
       }
       else if ((Number(temp[0]) >= 140 && Number(temp[0]) <= 160) && (Number(temp[1]) >= 90 && Number(temp[1] <= 95))) {
         this.bpArray[1].checked = true
+        // this.bpArray[2].checked = true
+      }
+      else if ((Number(temp[0]) >= 160 && Number(temp[0]) <= 180) && (Number(temp[1]) >= 95 && Number(temp[1] <= 100))) {
+        console.log("%cChecking This Condition", Number(temp[0]), Number(temp[0]), Number(temp[1]), Number(temp[1]), "color: Orange" );
+        
+        // this.bpArray[1].checked = true
         this.bpArray[2].checked = true
       }
       else if (Number(temp[0]) > 180 && Number(temp[1]) > 100) {
@@ -700,7 +706,7 @@ export class NewFormComponent implements OnInit {
           this.bmiTiredDetails = true
           break;
         case 'bmiRefreshed':
-          this.bmiRefreshedDetails = true
+          this.bmiRefreshedDetails = false
           break;
         default:
           break;
@@ -758,7 +764,7 @@ export class NewFormComponent implements OnInit {
           this.bmiTiredDetails = false
           break;
         case 'bmiRefreshed':
-          this.bmiRefreshedDetails = false
+          this.bmiRefreshedDetails = true
           break;
         default:
           break;
