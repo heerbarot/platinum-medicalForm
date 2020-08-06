@@ -188,7 +188,7 @@
                             <div class="col-md-4">
                                 <mat-form-field>
                                     <mat-select formControlName="height" placeholder="Height"
-                                        (selectionChange)="calcBmi($event)">
+                                        (selectionChange)="calcBmi($event)" required>
                                         <mat-option *ngFor="let item of heightList" [value]="item">{{item}} cm
                                         </mat-option>
                                     </mat-select>
@@ -198,7 +198,7 @@
                             <div class="col-md-4">
                                 <mat-form-field>
                                     <mat-select formControlName="weight" placeholder="Weight"
-                                        (selectionChange)="calcBmi($event)">
+                                        (selectionChange)="calcBmi($event)" required>
                                         <mat-option *ngFor="let item of weightList" [value]="item">{{item}} kg
                                         </mat-option>
                                     </mat-select>

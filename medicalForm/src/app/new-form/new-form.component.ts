@@ -195,8 +195,8 @@ export class NewFormComponent implements OnInit {
     pulse2: new FormControl(''),
     bp3: new FormControl('', this.bpValidators),
     pulse3: new FormControl(''),
-    height: new FormControl(''),
-    weight: new FormControl(''),
+    height: new FormControl('', Validators.required),
+    weight: new FormControl('', Validators.required),
     bmi: new FormControl(''),
     isBmiGreater: new FormControl(''),
     bmiStairs : new FormControl(''),
@@ -219,15 +219,15 @@ export class NewFormComponent implements OnInit {
     bmiSnoreDetails: new FormControl(''),
     mobility: new FormControl(''),
     fitness: new FormControl(''),
-    pulseRhythm: new FormControl(''),
-    glucose: new FormControl(''),
-    protein: new FormControl(''),
+    pulseRhythm: new FormControl('', Validators.required),
+    glucose: new FormControl('', Validators.required),
+    protein: new FormControl('', Validators.required),
     bpCheckBox: new FormControl(''),
-    balanceNMobility: new FormControl(''),
-    alertnessNwellbeing: new FormControl(''),
-    speech: new FormControl(''),
-    adviceGiven: new FormControl(''),
-    lettersIssued: new FormControl(''),
+    balanceNMobility: new FormControl('', Validators.required),
+    alertnessNwellbeing: new FormControl('', Validators.required),
+    speech: new FormControl('', Validators.required),
+    adviceGiven: new FormControl('', Validators.required),
+    lettersIssued: new FormControl('', Validators.required),
     adviceGivenYes: new FormControl(''),
     lettersIssuedYes: new FormControl(''),
     additionalComments: new FormControl(''),
@@ -235,15 +235,15 @@ export class NewFormComponent implements OnInit {
 
   // tslint:disable-next-line: member-ordering
   visionAssessment = new FormGroup({
-    dvlUnaided: new FormControl(''),
-    dvrUnaided: new FormControl(''),
-    dvlCorrected: new FormControl(''),
-    dvrCorrected: new FormControl(''),
-    glassesWorn: new FormControl(''),
-    lensesWorn: new FormControl(''),
-    visualFields: new FormControl(''),
-    colorVision: new FormControl(''),
-    plates: new FormControl(''),
+    dvlUnaided: new FormControl('', Validators.required),
+    dvrUnaided: new FormControl('', Validators.required),
+    dvlCorrected: new FormControl('', Validators.required),
+    dvrCorrected: new FormControl('', Validators.required),
+    glassesWorn: new FormControl('', Validators.required),
+    lensesWorn: new FormControl('', Validators.required),
+    visualFields: new FormControl('', Validators.required),
+    colorVision: new FormControl('', Validators.required),
+    plates: new FormControl('', Validators.required),
     additionalComments: new FormControl(''),
   })
 
@@ -251,23 +251,23 @@ export class NewFormComponent implements OnInit {
 
   // tslint:disable-next-line: member-ordering
   hearingGrp = new FormGroup({
-    leftEar500: new FormControl(''),
-    leftEar1000: new FormControl(''),
-    leftEar2000: new FormControl(''),
-    leftEar3000: new FormControl(''),
-    leftEar4000: new FormControl(''),
-    leftEar6000: new FormControl(''),
-    leftEar8000: new FormControl(''),
-    rightEar500: new FormControl(''),
-    rightEar1000: new FormControl(''),
-    rightEar2000: new FormControl(''),
-    rightEar3000: new FormControl(''),
-    rightEar4000: new FormControl(''),
-    rightEar6000: new FormControl(''),
-    rightEar8000: new FormControl(''),
-    earWax: new FormControl(''),
-    leTotal: new FormControl(''),
-    reTotal: new FormControl(''),
+    leftEar500: new FormControl('',Validators.required),
+    leftEar1000: new FormControl('',Validators.required),
+    leftEar2000: new FormControl('',Validators.required),
+    leftEar3000: new FormControl('',Validators.required),
+    leftEar4000: new FormControl('',Validators.required),
+    leftEar6000: new FormControl('',Validators.required),
+    leftEar8000: new FormControl('',Validators.required),
+    rightEar500: new FormControl('',Validators.required),
+    rightEar1000: new FormControl('',Validators.required),
+    rightEar2000: new FormControl('',Validators.required),
+    rightEar3000: new FormControl('',Validators.required),
+    rightEar4000: new FormControl('',Validators.required),
+    rightEar6000: new FormControl('',Validators.required),
+    rightEar8000: new FormControl('',Validators.required),
+    earWax: new FormControl('', Validators.required),
+    leTotal: new FormControl('', Validators.required),
+    reTotal: new FormControl('', Validators.required),
     additionalComments: new FormControl(''),
   })
 
@@ -293,7 +293,7 @@ export class NewFormComponent implements OnInit {
     examinarSignature: new FormControl('', Validators.required),
     checkedBy: new FormControl(''),
     checkedByDate: new FormControl(''),
-    checkedSign: new FormControl('', Validators.required),
+    checkedSign: new FormControl(''),
     reasonForReferral: new FormControl(''),
     additionalComments: new FormControl(''),
   })
@@ -878,26 +878,49 @@ export class NewFormComponent implements OnInit {
 
 
     // return;
-
-
-    if (this.form1.valid && this.medicalAssess.valid ) {
+    if (this.form1.valid && this.medicalAssess.valid){
       if (this.generalHealth.valid){
-        this.loading = true;
-        this._medicalFormService.generatePdf(data).subscribe(res => {
-          console.log("RES", res)
-
-          this.loading = false;
-          this.saveToFileSystem(res);
-        })
+        if (this.visionAssessment.valid){
+          if (this.hearingGrp.valid){
+            this.apiCall(data)
+          }
+          else{
+            alert('Fields in Hearning Missing')      
+          }
+        }
+        else{
+          alert('Fields in Vission Assessment Missing')    
+        }
       }
       else{
-        alert("Blood Pressure Readings Required")
+        alert('Fields in General Health Missing')  
       }
     }
-
-    else {
-      alert('Name and signature are required')
+    else{
+      alert('Name and Signature  Missing')
     }
+
+    // if (this.form1.valid && this.medicalAssess.valid && this.generalHealth.valid && this.visionAssessment.valid && this.hearingGrp.valid ) {
+      // if (this.generalHealth.valid){
+        
+      // }
+      // else{
+        // console.log("this.generalHealth.get('height').status", this.generalHealth.get('height').status);
+        
+        // if (this.generalHealth.get('height').status == 'INVALID' || this.generalHealth.get('weight').status == 'INVALID'){
+        //   alert("Height and Weight is Required")
+        // }
+        // else{
+        //   alert("Blood Pressure Readings Required")
+        // }
+        // alert("Blood Pressure Readings Required")
+      // }
+    // }
+
+    // else {
+    //   alert('Form Details Missing')
+    // }
+
 
     let checked = $('input[name="checkButton"]:checked').val();
     console.log("checkedcheckedchecked", checked)
@@ -906,6 +929,16 @@ export class NewFormComponent implements OnInit {
     console.log("this.examinerSign", this.checkedBy)
 
     console.log("THe data is----------->>>>>>>>>>>>>>>", data)
+  }
+
+  apiCall(data){
+    this.loading = true;
+    this._medicalFormService.generatePdf(data).subscribe(res => {
+      console.log("RES", res)
+
+      this.loading = false;
+      this.saveToFileSystem(res);
+    })
   }
 
 }
