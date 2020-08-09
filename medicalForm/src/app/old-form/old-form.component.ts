@@ -5,6 +5,7 @@ import { saveAs } from "file-saver";
 import { Observable } from 'rxjs';
 import { MatDialog } from '@angular/material';
 import { SignCanvasComponent } from '../sign-canvas/sign-canvas.component';
+import * as _ from 'lodash';
 
 @Component({
   selector: 'app-old-form',
@@ -12,6 +13,7 @@ import { SignCanvasComponent } from '../sign-canvas/sign-canvas.component';
   styleUrls: ['./old-form.component.scss']
 })
 export class OldFormComponent implements OnInit {
+  
   private signaturePadOptions: Object = { // passed through to szimek/signature_pad constructor
     'minWidth': 2,
     'canvasWidth': 500,
@@ -22,14 +24,24 @@ export class OldFormComponent implements OnInit {
   @Output() oldData = new EventEmitter();
   showSleepDisorderQues: boolean;
 
-  constructor(public _medicalFormService: MedicalFormService, public dialog: MatDialog) { }
+  constructor(public _medicalFormService: MedicalFormService, public dialog: MatDialog) {
+    let date = new Date()
+    
+    this.days = this.generateRange(1,31)
+    this.months = this.generateRange(1,12)
+    this.years = this.generateRange(1950, date.getFullYear())
+
+   }
   data;
   imgData;
-
+   day;
+   month;
+   year;
   firstName;
   surName;
   sponsorName;
   dateOfBirth;
+  email;
   telNumber;
   homeAdd;
   gpAdd;
@@ -46,37 +58,37 @@ export class OldFormComponent implements OnInit {
   empHistoryComment;
 
 
-  heartNcirculatoryCon; heartNcirculatoryConQ1; heartNcirculatoryConQ2; heartNcirculatoryConQ3;
+  heartNcirculatoryCon; heartNcirculatoryConQ1; heartNcirculatoryConQ2; heartNcirculatoryConQ3; heartNcirculatoryMed; heartNcirculatoryMedYes;
   heartNcirculatoryConDetails;
-  respiratoryNlungCon; respiratoryNlungConQ1; respiratoryNlungConQ2; respiratoryNlungConQ3;
+  respiratoryNlungCon; respiratoryNlungConQ1; respiratoryNlungConQ2; respiratoryNlungConQ3; respiratoryNlung; respiratoryNlungYes;
   respiratoryNlungConDetails;
-  neurologicalCon; neurologicalConQ1; neurologicalConQ2; neurologicalConQ3;
+  neurologicalCon; neurologicalConQ1; neurologicalConQ2; neurologicalConQ3; neurologicalMed; neurologicalMedYes;
   neurologicalConDetails;
-  weeknessCon; weeknessConQ1; weeknessConQ2; weeknessConQ3;
+  weeknessCon; weeknessConQ1; weeknessConQ2; weeknessConQ3; weeknessMed; weeknessMedYes;
   weeknessConDetails;
-  mentalHealthCon; mentalHealthConQ1; mentalHealthConQ2; mentalHealthConQ3;
+  mentalHealthCon; mentalHealthConQ1; mentalHealthConQ2; mentalHealthConQ3; mentalHealthMed; mentalHealthMedYes;
   mentalHealthConDetails;
-  musculoskeletalCon; musculoskeletalConQ1; musculoskeletalConQ2; musculoskeletalConQ3;
+  musculoskeletalCon; musculoskeletalConQ1; musculoskeletalConQ2; musculoskeletalConQ3; musculoskeletalMed; musculoskeletalMedYes;
   musculoskeletalConDetails;
   sleepDisordersCon;
-  sleepDisordersConDetails;
+  sleepDisordersConDetails; sleepDisordersMedYes; sleepDisordersMed;
   endocrineDisordersCon; endocrineDisordersConQ1; endocrineDisordersConQ2; endocrineDisordersConQ3;
-  endocrineDisordersConDetails;
+  endocrineDisordersConDetails; endocrineDisordersMed; endocrineDisordersMedYes;
   behaviouralDisordersCon; behaviouralDisordersConQ1; behaviouralDisordersConQ2; behaviouralDisordersConQ3;
-  behaviouralDisordersConDetails;
-  visualCon; visualConQ1; visualConQ2; visualConQ3;
+  behaviouralDisordersConDetails; behaviouralDisordersMed; behaviouralDisordersMedYes;
+  visualCon; visualConQ1; visualConQ2; visualConQ3; visualMed; visualMedYes;
   visualConDetails;
-  hearingCon; hearingConQ1; hearingConQ2; hearingConQ3;
-  hearingConDetails;
-  speechCon; speechConQ1; speechConQ2; speechConQ3;
+  hearingCon; hearingConQ1; hearingConQ2; hearingConQ3; hearingMed; hearingMedYes;
+  hearingConDetails; 
+  speechCon; speechConQ1; speechConQ2; speechConQ3; speechMedYes; speechMed;
   speechConDetails;
-  bowelCon; bowelConQ1; bowelConQ2; bowelConQ3;
+  bowelCon; bowelConQ1; bowelConQ2; bowelConQ3; bowelMed; bowelMedYes;
   bowelConDetails;
-  kidneyCon; kidneyConQ1; kidneyConQ2; kidneyConQ3;
+  kidneyCon; kidneyConQ1; kidneyConQ2; kidneyConQ3; kidneyMed; kidneyMedYes;
   kidneyConDetails;
-  liverCon; liverConQ1; liverConQ2; liverConQ3;
+  liverCon; liverConQ1; liverConQ2; liverConQ3; liverMed; liverMedYes;
   liverConDetails;
-  allergiesCon; allergiesConQ1; allergiesConQ2; allergiesConQ3;
+  allergiesCon; allergiesConQ1; allergiesConQ2; allergiesConQ3; allergiesMed; allergiesMedYes;
   allergiesConDetails;
   sleepingCon; sleepingConQ1; sleepingConQ2; sleepingConQ3;
   sleepingConDetails;
@@ -117,9 +129,16 @@ export class OldFormComponent implements OnInit {
   confirmDate;
 
   hideFirstForm: boolean = false;
+  days = []
+  months = []
+  years = []
 
 
   ngOnInit() {
+  }
+
+  generateRange(start, end) {
+    return _.range(start, end + 1, 1)
   }
 
   sleepDisorderChenge(event){
@@ -134,7 +153,7 @@ export class OldFormComponent implements OnInit {
 
   submit() {
     if (this.firstName == undefined || this.firstName == "" || this.surName == undefined || this.surName == ""
-      || this.dateOfBirth == undefined || this.dateOfBirth == "" || !this.imgData) {
+      || !this.day || !this.month || !this.year || !this.imgData) {
       alert("Details missing")
     }
     else {
@@ -143,7 +162,9 @@ export class OldFormComponent implements OnInit {
           firstName: this.firstName,
           surName: this.surName,
           sponsorName: this.sponsorName,
-          dob: this.dateOfBirth,
+          // this.dateOfBirth
+          dob: this.day + "/" + this.month + "/" + this.year ,
+          email: this.email,
           telNumber: this.telNumber,
           homeAdd: this.homeAdd,
           gpAdd: this.gpAdd,
@@ -161,87 +182,135 @@ export class OldFormComponent implements OnInit {
         },
         medHistory: {
           heartNcirculatoryCon: this.heartNcirculatoryCon,
+          heartNcirculatoryMed: this.heartNcirculatoryMed,
+          heartNcirculatoryMedYes: this.heartNcirculatoryMedYes,
           heartNcirculatoryConQ1:this.heartNcirculatoryConQ1,
           heartNcirculatoryConQ2:this.heartNcirculatoryConQ2,
           heartNcirculatoryConQ3:this.heartNcirculatoryConQ3,
           heartNcirculatoryConDetails: this.heartNcirculatoryConDetails,
+
           respiratoryNlungCon: this.respiratoryNlungCon,
+          respiratoryNlung: this.respiratoryNlung,
+          respiratoryNlungYes: this.respiratoryNlung,
           respiratoryNlungConQ1:this.respiratoryNlungConQ1,
           respiratoryNlungConQ2:this.respiratoryNlungConQ2,
           respiratoryNlungConQ3:this.respiratoryNlungConQ3,
           respiratoryNlungConDetails: this.respiratoryNlungConDetails,
+
           neurologicalCon: this.neurologicalCon,
+          neurologicalMed: this.neurologicalMed,
+          neurologicalMedYes: this.neurologicalMedYes,
           neurologicalConQ1:this.neurologicalConQ1,
           neurologicalConQ2:this.neurologicalConQ2,
           neurologicalConQ3:this.neurologicalConQ3,
           neurologicalConDetails: this.neurologicalConDetails,
+
           weeknessCon: this.weeknessCon,
+          weeknessMed: this.weeknessMed,
+          weeknessMedYes: this.weeknessMedYes,
           weeknessConQ1:this.weeknessConQ1,
           weeknessConQ2:this.weeknessConQ2,
           weeknessConQ3:this.weeknessConQ3,
           weeknessConDetails: this.weeknessConDetails,
+
           mentalHealthCon: this.mentalHealthCon,
+          mentalHealthMed: this.mentalHealthMed,
+          mentalHealthMedYes: this.mentalHealthMedYes,
           mentalHealthConQ1:this.mentalHealthConQ1,
           mentalHealthConQ2:this.mentalHealthConQ2,
           mentalHealthConQ3:this.mentalHealthConQ3,
           mentalHealthConDetails: this.mentalHealthConDetails,
+
           musculoskeletalCon: this.musculoskeletalCon,
+          musculoskeletalMed: this.musculoskeletalMed,
+          musculoskeletalMedYes: this.musculoskeletalMedYes,
           musculoskeletalConQ1:this.musculoskeletalConQ1,
           musculoskeletalConQ2:this.musculoskeletalConQ2,
           musculoskeletalConQ3:this.musculoskeletalConQ3,
           musculoskeletalConDetails: this.musculoskeletalConDetails,
+          
           sleepDisordersCon: this.sleepDisordersCon,
           sleepDisordersConDetails: this.sleepDisordersConDetails,
+          sleepDisordersMed: this.sleepDisordersMed,
+          sleepDisordersMedYes: this.sleepDisordersMedYes,
+
           endocrineDisordersCon: this.endocrineDisordersCon,
+          endocrineDisordersMed: this.endocrineDisordersMed,
+          endocrineDisordersMedYes: this.endocrineDisordersMedYes,
           endocrineDisordersConQ1:this.endocrineDisordersConQ1,
           endocrineDisordersConQ2:this.endocrineDisordersConQ2,
           endocrineDisordersConQ3:this.endocrineDisordersConQ3,
           endocrineDisordersConDetails: this.endocrineDisordersConDetails,
+
           behaviouralDisordersCon: this.behaviouralDisordersCon,
+          behaviouralDisordersMed: this.behaviouralDisordersMed,
+          behaviouralDisordersMedYes: this.behaviouralDisordersMedYes,
           behaviouralDisordersConQ1:this.behaviouralDisordersConQ1,
           behaviouralDisordersConQ2:this.behaviouralDisordersConQ2,
           behaviouralDisordersConQ3:this.behaviouralDisordersConQ3,
           behaviouralDisordersConDetails: this.behaviouralDisordersConDetails,
+
           visualCon: this.visualCon,
+          visualMed: this.visualMed,
+          visualMedYes: this.visualMedYes,
           visualConQ1:this.visualConQ1,
           visualConQ2:this.visualConQ2,
           visualConQ3:this.visualConQ3,
           visualConDetails: this.visualConDetails,
+
           hearingCon: this.hearingCon,
+          hearingMed: this.hearingMed,
+          hearingMedYes: this.hearingMedYes,
           hearingConQ1:this.hearingConQ1,
           hearingConQ2:this.hearingConQ2,
           hearingConQ3:this.hearingConQ3,
           hearingConDetails: this.hearingConDetails,
+
           speechCon: this.speechCon,
+          speechMed: this.speechMed,
+          speechMedYes: this.speechMedYes,
           speechConQ1:this.speechConQ1,
           speechConQ2:this.speechConQ2,
           speechConQ3:this.speechConQ3,
           speechConDetails: this.speechConDetails,
+
           bowelCon: this.bowelCon,
+          bowelMed: this.bowelMed,
+          bowelMedYes: this.bowelMedYes,
           bowelConQ1:this.bowelConQ1,
           bowelConQ2:this.bowelConQ2,
           bowelConQ3:this.bowelConQ3,
           bowelConDetails: this.bowelConDetails,
+
           kidneyCon: this.kidneyCon,
+          kidneyMed: this.kidneyMed,
+          kidneyMedYes: this.kidneyMedYes,
           kidneyConQ1:this.kidneyConQ1,
           kidneyConQ2:this.kidneyConQ2,
           kidneyConQ3:this.kidneyConQ3,
           kidneyConDetails: this.kidneyConDetails,
+
           liverCon: this.liverCon,
+          liverMed: this.liverMed,
+          liverMedYes: this.liverMedYes,
           liverConQ1:this.liverConQ1,
           liverConQ2:this.liverConQ2,
           liverConQ3:this.liverConQ3,
           liverConDetails: this.liverConDetails,
+
           allergiesCon: this.allergiesCon,
-          allergiesConQ1:this.allergiesConQ1,
+          // allergiesConQ1:this.allergiesConQ1,
           allergiesConQ2:this.allergiesConQ2,
-          allergiesConQ3:this.allergiesConQ3,
+          allergiesMed: this.allergiesMed,
+          allergiesMedYes: this.allergiesMedYes,
+          // allergiesConQ3:this.allergiesConQ3,
           allergiesConDetails: this.allergiesConDetails,
           sleepingCon: this.sleepingCon,
           sleepingConQ1:this.sleepingConQ1,
           sleepingConQ2:this.sleepingConQ2,
           sleepingConQ3:this.sleepingConQ3,
           sleepingConDetails: this.sleepingConDetails,
+
           medication: this.medication,
           medicationQ1:this.medicationQ1,
           medicationQ2:this.medicationQ2,
@@ -287,7 +356,7 @@ export class OldFormComponent implements OnInit {
           lifeStyleComment: this.lifeStyleComment
         },
         confirmation: {
-          empSponsor: this.empSponsor,
+          // empSponsor: this.empSponsor,
           confirmDate: this.confirmDate,
           signature: this.imgData
         }
