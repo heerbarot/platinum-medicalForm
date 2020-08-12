@@ -35,9 +35,9 @@ export class OldFormComponent implements OnInit {
   data;
   imgData;
   // This three variables are replaced with Single FullDate variable
-   // day;
-   // month;
-   // year;
+   day;
+   month;
+   year;
   fullDate;
   firstName;
   surName;
@@ -154,7 +154,19 @@ export class OldFormComponent implements OnInit {
   }
 
   submit() {
-    if (this.firstName == undefined || this.firstName == "" || this.surName == undefined || this.surName == ""
+
+
+    console.log(" year ", "month" , "day", this.year, this.month, this.day)
+    console.log(" year ", "month" , "day", this.year, this.month, this.day)
+    if(this.year, this.month, this.day){
+      this.fullDate = this.day + '/' + this.month + '/' + this.year
+    }
+
+
+    console.log("this.fullDate", this.fullDate)
+    console.log("this.fullDate", this.confirmDate)
+
+    if (this.firstName == undefined || this.surName == undefined || this.surName == ""
       || !this.fullDate || !this.confirmDate || !this.imgData) {
       alert("Details missing")
     }
