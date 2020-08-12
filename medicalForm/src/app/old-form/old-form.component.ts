@@ -34,9 +34,11 @@ export class OldFormComponent implements OnInit {
    }
   data;
   imgData;
-   day;
-   month;
-   year;
+  // This three variables are replaced with Single FullDate variable
+   // day;
+   // month;
+   // year;
+  fullDate;
   firstName;
   surName;
   sponsorName;
@@ -48,7 +50,7 @@ export class OldFormComponent implements OnInit {
   jobTitle;
   medicalQuestionnaireComment;
 
-
+  respiratoryNlungMed:any;
   absentSickness;
   absentSicknessDetails;
   deniedJob;
@@ -153,7 +155,7 @@ export class OldFormComponent implements OnInit {
 
   submit() {
     if (this.firstName == undefined || this.firstName == "" || this.surName == undefined || this.surName == ""
-      || !this.day || !this.month || !this.year || !this.imgData) {
+      || !this.fullDate || !this.confirmDate || !this.imgData) {
       alert("Details missing")
     }
     else {
@@ -163,7 +165,7 @@ export class OldFormComponent implements OnInit {
           surName: this.surName,
           sponsorName: this.sponsorName,
           // this.dateOfBirth
-          dob: this.day + "/" + this.month + "/" + this.year ,
+          dob: this.fullDate ,
           email: this.email,
           telNumber: this.telNumber,
           homeAdd: this.homeAdd,
@@ -356,7 +358,7 @@ export class OldFormComponent implements OnInit {
           lifeStyleComment: this.lifeStyleComment
         },
         confirmation: {
-          // empSponsor: this.empSponsor,
+          empSponsor: this.sponsorName,
           confirmDate: this.confirmDate,
           signature: this.imgData
         }
@@ -393,6 +395,23 @@ export class OldFormComponent implements OnInit {
       console.log('the form is')
       // this.submit()
     })
+  }
+  finalDate(event, variableName){
+    console.log("event of date ==========++> ", event);
+    switch (variableName) {
+      case "fullDate":
+        this.fullDate = event.finalDate
+        break;
+      case "confirmDate":
+        this.confirmDate = event.finalDate
+        break;
+      default:
+        // code...
+        break;
+    }
+    console.log("this.fullDate ==> ", this.fullDate)
+    console.log("this.confirmDate ==> ", this.confirmDate)
+    
   }
   openDialog(someComponent, data = {}): Observable<any> {
     console.log("OPENDIALOG", "DATA = ", data);

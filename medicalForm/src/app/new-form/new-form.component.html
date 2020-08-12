@@ -32,6 +32,7 @@
                                     <input formControlName="name" (ngModelChange)="onValueChange()" matInput
                                         placeholder="First name" required>
                                 </mat-form-field>
+                                
                             </div>
 
                             <div class="col-md-6">
@@ -53,12 +54,15 @@
 
                         <div class="row">
                             <div class="col-md-6">
-                                <mat-form-field>
+                                <!-- <mat-form-field>
                                     <input matInput (dateChange)="onValueChange()" [matDatepicker]="picker"
                                         formControlName="dob" placeholder="Choose a date" required>
                                     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                                     <mat-datepicker #picker></mat-datepicker>
-                                </mat-form-field>
+                                </mat-form-field> -->
+                                <app-date-picker (finalizedDate)="finalDate($event, 'form1', 'dob')" (dateChange)="onValueChange()">
+
+                                </app-date-picker>
                             </div>
 
                             <div class="col-md-6">
@@ -554,6 +558,22 @@
                     data-parent="#accordianNew">
                     <div class="single_accordion_content_inner">
                         <div class="row">
+                            <div class="col-md-6">
+                                <mat-form-field>
+                                    <mat-select formControlName="glassesWorn" (selectionChange)="isGlassesWorn($event.value)" placeholder="Glasses Worn">
+                                        <mat-option *ngFor="let item of yesNo" [value]="item">{{item}}
+                                        </mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+                            <div class="col-md-6">
+                                <mat-form-field>
+                                    <mat-select formControlName="lensesWorn" placeholder="Lenses Worn">
+                                        <mat-option *ngFor="let item of yesNo" [value]="item">{{item}}
+                                        </mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
                             <div class="col-12 bgColor text-center">
                                 <b>Distance Vision</b>
                             </div>
@@ -574,7 +594,7 @@
                                 </mat-form-field>
                             </div>
                         </div>
-                        <div class="row">
+                        <div class="row" *ngIf="isGlassWorn">
                             <div class="col-md-6">
                                 <mat-form-field>
                                     <mat-select formControlName="dvlCorrected" placeholder="Left(Corrected)">
@@ -598,22 +618,6 @@
                                     Vision Standard
                                     6/9 in better eye and 6/12 in the other eye
                                 </b>
-                            </div>
-                            <div class="col-md-6">
-                                <mat-form-field>
-                                    <mat-select formControlName="glassesWorn" placeholder="Glasses Worn">
-                                        <mat-option *ngFor="let item of yesNo" [value]="item">{{item}}
-                                        </mat-option>
-                                    </mat-select>
-                                </mat-form-field>
-                            </div>
-                            <div class="col-md-6">
-                                <mat-form-field>
-                                    <mat-select formControlName="lensesWorn" placeholder="Lenses Worn">
-                                        <mat-option *ngFor="let item of yesNo" [value]="item">{{item}}
-                                        </mat-option>
-                                    </mat-select>
-                                </mat-form-field>
                             </div>
                         </div>
                         <div class="row">
@@ -673,6 +677,16 @@
                     data-parent="#hearing">
                     <div class="single_accordion_content_inner">
                         <div class="row">
+
+                            <div class="col-12">
+                                <mat-form-field>
+                                    <mat-select formControlName="earWax" placeholder="Are the ears clear of wax?">
+                                        <mat-option *ngFor="let item of yesNo" [value]="item">{{item}}
+                                        </mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+
                             <div class="col-12 bgColor text-center">
                                 <b>Left Ear</b>
                             </div>
@@ -806,18 +820,7 @@
                                 </mat-form-field>
                             </div>
                         </div>
-
-                        <div class="row">
-                            <div class="col-12">
-                                <mat-form-field>
-                                    <mat-select formControlName="earWax" placeholder="Are the ears clear of wax?">
-                                        <mat-option *ngFor="let item of yesNo" [value]="item">{{item}}
-                                        </mat-option>
-                                    </mat-select>
-                                </mat-form-field>
-                            </div>
-                        </div>
-
+                        
                         <div class="row">
                             <div class="col-md-3">
                                 <mat-form-field>
@@ -1000,12 +1003,15 @@
                                 </mat-form-field>
                             </div>
                             <div class="col-md-6">
-                                <mat-form-field>
+                                <!-- <mat-form-field>
                                     <input matInput [matDatepicker]="picker1" formControlName="examinerDate"
                                         placeholder="Choose a date">
                                     <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
                                     <mat-datepicker #picker1></mat-datepicker>
-                                </mat-form-field>
+                                </mat-form-field> -->
+                                <app-date-picker (finalizedDate)="finalDate($event, 'medicalAssess', 'examinerDate')" (dateChange)="onValueChange()">
+                                    
+                                </app-date-picker>
                             </div>
                         </div>
                         <div class="row">
@@ -1035,12 +1041,15 @@
                                 </mat-form-field>
                             </div>
                             <div class="col-md-6">
-                                <mat-form-field>
+                                <!-- <mat-form-field>
                                     <input matInput [matDatepicker]="picker2" formControlName="checkedByDate"
                                         placeholder="Choose a date">
                                     <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
                                     <mat-datepicker #picker2></mat-datepicker>
-                                </mat-form-field>
+                                </mat-form-field> -->
+                                <app-date-picker (finalizedDate)="finalDate($event, 'medicalAssess', 'checkedByDate')" (dateChange)="onValueChange()">
+                                    
+                                </app-date-picker>
                             </div>
                         </div>
                         <div class="row">

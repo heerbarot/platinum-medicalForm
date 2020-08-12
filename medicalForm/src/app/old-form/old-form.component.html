@@ -164,7 +164,7 @@
 
                     <div class="row">
                         <div class="col-md-6">
-                            <mat-form-field class="col-4 p-0 m-0">
+                            <!--<mat-form-field class="col-4 p-0 m-0">
                                 <mat-select placeholder="Day" [(ngModel)]="day" [ngModelOptions]="{standalone: true}">
                                     <mat-option *ngFor="let item of days" [value]="item">{{item}}</mat-option>
                                 </mat-select>
@@ -178,7 +178,10 @@
                                 <mat-select placeholder="Year" [(ngModel)]="year" [ngModelOptions]="{standalone: true}">
                                     <mat-option *ngFor="let item of years" [value]="item">{{item}}</mat-option>
                                 </mat-select>
-                            </mat-form-field>
+                            </mat-form-field> -->
+                            <app-date-picker (finalizedDate)="finalDate($event, 'fullDate')">
+                                
+                            </app-date-picker>
                             <!-- <mat-form-field>
                                 <input matInput [matDatepicker]="picker" [ngModelOptions]="{standalone: true}"
                                     placeholder="Date Of Birth" [(ngModel)]="dateOfBirth" required>
@@ -2561,14 +2564,20 @@
                                     Signature attached.
                                 </div>
                             </div>
-
                             <div class="col-md-6">
-                                <mat-form-field>
+                                <!--<mat-form-field>
                                     <input matInput [matDatepicker]="picker1" [ngModelOptions]="{standalone: true}"
                                         placeholder="Date" [(ngModel)]="confirmDate">
                                     <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
                                     <mat-datepicker #picker1></mat-datepicker>
-                                </mat-form-field>
+                                </mat-form-field>-->
+                                <app-date-picker (finalizedDate)="finalDate($event, 'confirmDate')">
+
+                                </app-date-picker>
+                            </div>
+                            <div class="col-md-6" *ngIf="sponsorName">
+                                <label>SPONSOR NAME</label>
+                                <p>{{sponsorName}}</p>
                             </div>
                         </div>
                         <!-- <div class="row">

@@ -93,6 +93,9 @@ export class NewFormComponent implements OnInit {
   bmiTiredDetails: boolean;
   bmiRefreshedDetails: boolean;
 
+
+  // To show aided and correct field based on glass worn selection
+  isGlassWorn:boolean;
   constructor(private fb: FormBuilder, public dialog: MatDialog, public _medicalFormService: MedicalFormService) {
     this.pulseList = this.generateRange(40, 180)
     this.heightList = this.generateRange(120, 200)
@@ -237,8 +240,8 @@ export class NewFormComponent implements OnInit {
   visionAssessment = new FormGroup({
     dvlUnaided: new FormControl('', Validators.required),
     dvrUnaided: new FormControl('', Validators.required),
-    dvlCorrected: new FormControl('', Validators.required),
-    dvrCorrected: new FormControl('', Validators.required),
+    dvlCorrected: new FormControl(''),
+    dvrCorrected: new FormControl(''),
     glassesWorn: new FormControl('', Validators.required),
     lensesWorn: new FormControl('', Validators.required),
     visualFields: new FormControl('', Validators.required),
@@ -254,17 +257,17 @@ export class NewFormComponent implements OnInit {
     leftEar500: new FormControl('',Validators.required),
     leftEar1000: new FormControl('',Validators.required),
     leftEar2000: new FormControl('',Validators.required),
-    leftEar3000: new FormControl('',Validators.required),
-    leftEar4000: new FormControl('',Validators.required),
-    leftEar6000: new FormControl('',Validators.required),
-    leftEar8000: new FormControl('',Validators.required),
+    leftEar3000: new FormControl(''),
+    leftEar4000: new FormControl(''),
+    leftEar6000: new FormControl(''),
+    leftEar8000: new FormControl(''),
     rightEar500: new FormControl('',Validators.required),
     rightEar1000: new FormControl('',Validators.required),
     rightEar2000: new FormControl('',Validators.required),
-    rightEar3000: new FormControl('',Validators.required),
-    rightEar4000: new FormControl('',Validators.required),
-    rightEar6000: new FormControl('',Validators.required),
-    rightEar8000: new FormControl('',Validators.required),
+    rightEar3000: new FormControl(''),
+    rightEar4000: new FormControl(''),
+    rightEar6000: new FormControl(''),
+    rightEar8000: new FormControl(''),
     earWax: new FormControl('', Validators.required),
     leTotal: new FormControl('', Validators.required),
     reTotal: new FormControl('', Validators.required),
@@ -319,7 +322,43 @@ export class NewFormComponent implements OnInit {
     this.hideFirstForm = true;
     this.hideSecondForm = false;
   }
-
+  finalDate(event, formName, fieldName?){
+    console.log("evemt ==> ",event , "<======> ", formName);
+    switch (formName) {
+      case "form1":
+        this.form1.controls[fieldName].setValue(event.finalDate)
+        break;
+      case "medicalAssess":
+        switch (fieldName) {
+          case "examinerDate":
+            this.medicalAssess.controls[fieldName].setValue(event.finalDate)
+            this.medicalAssess.updateValueAndValidity();
+            console.log("mediacall examiner date setted ===> ", this.medicalAssess.controls)
+            break;
+          case "checkedByDate":
+            this.medicalAssess.controls[fieldName].setValue(event.finalDate)
+            this.medicalAssess.updateValueAndValidity();
+            console.log("mediacall cehckby date setted ===> ", this.medicalAssess.controls)
+            break;
+          default:
+            break;
+        }
+        break;
+      default:
+        break;
+    }
+    console.log("Form  1 ======> ", this.form1);
+    console.log("Form  1 ======> ", this.medicalAssess);
+  }
+  isGlassesWorn(event){
+    console.log("event.target.value ", event);
+    if(event == 'No'){
+      this.isGlassWorn = false;
+    }
+    else{
+      this.isGlassWorn = true
+    }
+  }
   idChanged(event) {
     console.log("Id confirm changed", event)
 
