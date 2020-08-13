@@ -123,7 +123,7 @@
 
                             <div class="col-md-6">
                                 <mat-form-field>
-                                    <mat-select (selectionChange)="checkBp()" formControlName="pulse1"
+                                    <mat-select (selectionChange)="checkBp(); completeAsFailReferToGP()" formControlName="pulse1"
                                         placeholder="Pulse - First Reading">
                                         <mat-option *ngFor="let item of pulseList" [value]="item">{{item}}
                                         </mat-option>
@@ -158,7 +158,7 @@
 
                             <div class="col-md-6">
                                 <mat-form-field>
-                                    <mat-select formControlName="pulse2" placeholder="Pulse - Second Reading">
+                                    <mat-select (selectionChange)="completeAsFailReferToGP()" formControlName="pulse2" placeholder="Pulse - Second Reading">
                                         <mat-option [disabled]="secondTestDisabled" *ngFor="let item of pulseList"
                                             [value]="item">
                                             {{item}}
@@ -180,7 +180,7 @@
 
                             <div class="col-md-6">
                                 <mat-form-field>
-                                    <mat-select formControlName="pulse3" placeholder="Pulse - Third Reading">
+                                    <mat-select (selectionChange)="completeAsFailReferToGP()" formControlName="pulse3" placeholder="Pulse - Third Reading">
                                         <mat-option [disabled]="thirdTestDisabled" *ngFor="let item of pulseList"
                                             [value]="item">{{item}}
                                         </mat-option>
@@ -389,7 +389,7 @@
                         <div class="row">
                             <div class="col-md-4">
                                 <mat-form-field>
-                                    <mat-select formControlName="pulseRhythm" placeholder="Pulse Rhythm">
+                                    <mat-select (selectionChange)="completeAsFailReferToGP()"  formControlName="pulseRhythm" placeholder="Pulse Rhythm">
                                         <mat-option *ngFor="let item of normality" [value]="item">{{item}}
                                         </mat-option>
                                     </mat-select>
@@ -436,7 +436,6 @@
                                             <tr>
                                                 <td>>180/100</td>
                                             </tr>
-                                            
                                         </table>
                                     </div>
                                     <div class="col-6 d-flex justify-content-center">
@@ -452,6 +451,95 @@
                                         </table>
                                     </div>
                                 </div>
+                            </div>
+                        </div>
+                        <div class="row" *ngIf="doYouSuffer">
+                            <div class="col-md-12">
+                                <div class="col-12 text-center bgColor">
+                                    <b>Do you suffer from any of the following;</b>
+                                </div>
+                            </div>
+                            <div class="col-md-12"> 
+                                <div class="col-md-4">
+                                <label>Fatigue</label>
+                                <mat-form-field>
+                                    <mat-select formControlName="fatigue" placeholder="Select">
+                                        <mat-option *ngFor="let item of yesNo" [value]="item">{{item}}
+                                        </mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <label>Light-headedness</label>
+                                    <mat-form-field>
+                                        <mat-select formControlName="lightHeadedness" placeholder="Select">
+                                            <mat-option *ngFor="let item of yesNo" [value]="item">{{item}}
+                                            </mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <label>Dizziness</label>
+                                    <mat-form-field>
+                                        <mat-select formControlName="dizziness" placeholder="Select">
+                                            <mat-option *ngFor="let item of yesNo" [value]="item">{{item}}
+                                            </mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <label>Nausea</label>
+                                    <mat-form-field>
+                                        <mat-select formControlName="nausea" placeholder="Select">
+                                            <mat-option *ngFor="let item of yesNo" [value]="item">{{item}}
+                                            </mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <label>Clammy skin</label>
+                                    <mat-form-field>
+                                        <mat-select formControlName="clammySkin" placeholder="Select">
+                                            <mat-option *ngFor="let item of yesNo" [value]="item">{{item}}
+                                            </mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <label>Depression</label>
+                                    <mat-form-field>
+                                        <mat-select formControlName="depression" placeholder="Select">
+                                            <mat-option *ngFor="let item of yesNo" [value]="item">{{item}}
+                                            </mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <label>Loss of Consciousness</label>
+                                    <mat-form-field>
+                                        <mat-select formControlName="lossOfConsciousness" placeholder="Select">
+                                            <mat-option *ngFor="let item of yesNo" [value]="item">{{item}}
+                                            </mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <label>Blurred vision</label>
+                                    <mat-form-field>
+                                        <mat-select formControlName="blurredVision" placeholder="Select">
+                                            <mat-option *ngFor="let item of yesNo" [value]="item">{{item}}
+                                            </mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </div>
+
                             </div>
                         </div>
                         <div class='row'>

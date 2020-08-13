@@ -50,7 +50,7 @@ export class NewFormComponent implements OnInit {
     checked: null
   }
 ]
-
+  doYouSuffer: boolean = false;
   pulseList;
   heightList;
   weightList;
@@ -241,6 +241,15 @@ export class NewFormComponent implements OnInit {
     adviceGivenYes: new FormControl(''),
     lettersIssuedYes: new FormControl(''),
     additionalComments: new FormControl(''),
+    fatigue: new FormControl(''),
+    lightHeadedness: new FormControl(''),
+    dizziness: new FormControl(''),
+    nausea: new FormControl(''),
+    clammySkin: new FormControl(''),
+    depression: new FormControl(''),
+    lossOfConsciousness : new FormControl(''),
+    blurredVision: new FormControl(''),
+    doYouSuffer: new FormControl('')
   })
 
   // tslint:disable-next-line: member-ordering
@@ -543,7 +552,7 @@ export class NewFormComponent implements OnInit {
         this.checkboxChange2(event)
       }
     }
-    console.log("temp", temp, Number(temp[0]) >= 90)
+    // console.log("temp", temp, Number(temp[0]) >= 90)
     if (temp.length == 2) {
       if ((Number(temp[0]) >= 90 && Number(temp[0]) <= 140) && (Number(temp[1]) >= 60 && Number(temp[1] <= 90))) {
         console.log("!!!!!!!!!!!!")
@@ -568,6 +577,23 @@ export class NewFormComponent implements OnInit {
       this.generalHealth.patchValue({
         bpCheckBox: this.bpArray
       })
+
+      console.log(Number(temp[0]))
+      console.log(Number(temp[1]))
+
+      if(Number(temp[0]) < 90 && Number(temp[1]) < 60){
+        this.doYouSuffer = true;
+        this.generalHealth.patchValue({
+          doYouSuffer: "Yes"
+        }) 
+      }
+      else{
+        this.doYouSuffer = false;
+        this.generalHealth.patchValue({
+          doYouSuffer: null
+        }) 
+      }
+
     }
   }
 
@@ -990,4 +1016,22 @@ export class NewFormComponent implements OnInit {
     })
   }
 
+  completeAsFailReferToGP(){
+    console.log(" ****** completeAsFailReferToGP ******")
+    console.log(" ****** Hey Yash ", this.generalHealth.value['pulse2'])
+    console.log(" ****** Hey Yash ", this.generalHealth.value['pulse3'])
+
+
+    if(this.generalHealth.value && (this.generalHealth.value['pulseRhythm'] == "Abnormal" || this.generalHealth.value['pulse1'] > 100 || this.generalHealth.value['pulse2'] > 100 || this.generalHealth.value['pulse3'] > 100 ) ){
+      console.log("Yash Pulse1")
+      this.bpArray[4].checked = true
+    }
+    else if( (this.generalHealth.value['glucose'] == '++' || this.generalHealth.value['glucose'] == '+++') && this.generalHealth.value['protein'] == '+++'){
+      this.bpArray[4].checked = true
+    }
+    else{
+      console.log("Yash Pulse Else")
+      this.bpArray[4].checked = null
+    }
+  } 
 }
