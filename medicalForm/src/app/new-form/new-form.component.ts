@@ -58,6 +58,7 @@ export class NewFormComponent implements OnInit {
   platesList;
   hearingList;
   showSpecifyOthers: boolean = false;
+  letterToGpCheck: any;
   bmi: any;
   selectedIndex = -1
   showAdviceYes: boolean;
@@ -249,7 +250,19 @@ export class NewFormComponent implements OnInit {
     depression: new FormControl(''),
     lossOfConsciousness : new FormControl(''),
     blurredVision: new FormControl(''),
-    doYouSuffer: new FormControl('')
+    bmiFatigue: new FormControl(''),
+    bmiLightHeadedness: new FormControl(''),
+    bmiDizziness: new FormControl(''),
+    bmiNausea: new FormControl(''),
+    bmiClammySkin: new FormControl(''),
+    bmiDepression: new FormControl(''),
+    bmiLossOfConsciousness : new FormControl(''),
+    bmiBlurredVision: new FormControl(''),
+    bmiNormalDiet: new FormControl(''),
+    bmiChangesWeight:new FormControl(''),
+    bmiGastric: new FormControl(''),
+    doYouSuffer: new FormControl(''),
+    bmiLess: new FormControl('')
   })
 
   // tslint:disable-next-line: member-ordering
@@ -655,6 +668,11 @@ export class NewFormComponent implements OnInit {
         isBmiGreater: 'Yes'
       })
     }
+    else if(this.bmi <= 19){
+      this.generalHealth.patchValue({
+        bmiLess: 'Yes'
+      })
+    }
     else{
       this.generalHealth.patchValue({
         isBmiGreater: 'No'
@@ -746,9 +764,8 @@ export class NewFormComponent implements OnInit {
     var blob = new Blob([byteArray], { type: 'application/pdf' });
     this.itemData = JSON.parse(localStorage.getItem("formone"));
     saveAs(blob, 'medical-' + this.itemData.medicalQuestionnaire.firstName + this.itemData.medicalQuestionnaire.surName);
-    window.location.reload();
-    // localStorage.removeItem("formone");
-    // this.loading = false;
+    // window.location.reload();
+
   }
 
   bmiQuestions(event,type){
@@ -1025,13 +1042,16 @@ export class NewFormComponent implements OnInit {
     if(this.generalHealth.value && (this.generalHealth.value['pulseRhythm'] == "Abnormal" || this.generalHealth.value['pulse1'] > 100 || this.generalHealth.value['pulse2'] > 100 || this.generalHealth.value['pulse3'] > 100 ) ){
       console.log("Yash Pulse1")
       this.bpArray[4].checked = true
+      this.letterToGpCheck = true
     }
     else if( (this.generalHealth.value['glucose'] == '++' || this.generalHealth.value['glucose'] == '+++') && this.generalHealth.value['protein'] == '+++'){
       this.bpArray[4].checked = true
+      this.letterToGpCheck = true
     }
     else{
       console.log("Yash Pulse Else")
       this.bpArray[4].checked = null
+      this.letterToGpCheck = null
     }
   } 
 }

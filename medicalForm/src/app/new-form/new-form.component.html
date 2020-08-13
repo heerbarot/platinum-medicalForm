@@ -32,7 +32,7 @@
                                     <input formControlName="name" (ngModelChange)="onValueChange()" matInput
                                         placeholder="First name" required>
                                 </mat-form-field>
-                                
+
                             </div>
 
                             <div class="col-md-6">
@@ -60,7 +60,8 @@
                                     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                                     <mat-datepicker #picker></mat-datepicker>
                                 </mat-form-field> -->
-                                <app-date-picker (finalizedDate)="finalDate($event, 'form1', 'dob')" (dateChange)="onValueChange()">
+                                <app-date-picker (finalizedDate)="finalDate($event, 'form1', 'dob')"
+                                    (dateChange)="onValueChange()">
 
                                 </app-date-picker>
                             </div>
@@ -116,15 +117,16 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <mat-form-field>
-                                    <input (ngModelChange)="checkBp()" formControlName="bp1" (blur)="bpBlurred($event,'reading1')"
-                                        matInput placeholder="Blood Pressure - First Reading (mm/Hg)">
+                                    <input (ngModelChange)="checkBp()" formControlName="bp1"
+                                        (blur)="bpBlurred($event,'reading1')" matInput
+                                        placeholder="Blood Pressure - First Reading (mm/Hg)">
                                 </mat-form-field>
                             </div>
 
                             <div class="col-md-6">
                                 <mat-form-field>
-                                    <mat-select (selectionChange)="checkBp(); completeAsFailReferToGP()" formControlName="pulse1"
-                                        placeholder="Pulse - First Reading">
+                                    <mat-select (selectionChange)="checkBp(); completeAsFailReferToGP()"
+                                        formControlName="pulse1" placeholder="Pulse - First Reading">
                                         <mat-option *ngFor="let item of pulseList" [value]="item">{{item}}
                                         </mat-option>
                                     </mat-select>
@@ -137,10 +139,12 @@
                                 <b>Please enter 2nd and 3rd reading if Blood Pressure > 160/95 (mm/Hg)</b>
                             </div>
                             <div class="col-md-3 col-6 d-flex align-items-center">
-                                <mat-checkbox (change)="checkboxChange($event)" [checked]="isChecked ? true : null">2nd Test</mat-checkbox>
+                                <mat-checkbox (change)="checkboxChange($event)" [checked]="isChecked ? true : null">2nd
+                                    Test</mat-checkbox>
                             </div>
                             <div class="col-md-3 col-6 d-flex align-items-center">
-                                <mat-checkbox (change)="checkboxChange2($event)" [checked]="isChecked2 ? true : null">3rd Test</mat-checkbox>
+                                <mat-checkbox (change)="checkboxChange2($event)" [checked]="isChecked2 ? true : null">
+                                    3rd Test</mat-checkbox>
                             </div>
 
                         </div>
@@ -158,7 +162,8 @@
 
                             <div class="col-md-6">
                                 <mat-form-field>
-                                    <mat-select (selectionChange)="completeAsFailReferToGP()" formControlName="pulse2" placeholder="Pulse - Second Reading">
+                                    <mat-select (selectionChange)="completeAsFailReferToGP()" formControlName="pulse2"
+                                        placeholder="Pulse - Second Reading">
                                         <mat-option [disabled]="secondTestDisabled" *ngFor="let item of pulseList"
                                             [value]="item">
                                             {{item}}
@@ -180,7 +185,8 @@
 
                             <div class="col-md-6">
                                 <mat-form-field>
-                                    <mat-select (selectionChange)="completeAsFailReferToGP()" formControlName="pulse3" placeholder="Pulse - Third Reading">
+                                    <mat-select (selectionChange)="completeAsFailReferToGP()" formControlName="pulse3"
+                                        placeholder="Pulse - Third Reading">
                                         <mat-option [disabled]="thirdTestDisabled" *ngFor="let item of pulseList"
                                             [value]="item">{{item}}
                                         </mat-option>
@@ -232,12 +238,130 @@
                                 </mat-form-field>
                             </div>
                         </div>
+                        <div class="row" *ngIf="bmi && bmi < 19">
+                            <div class="col-md-12">
+                                <label>Do you consider your diet to be a normal, healthy diet?</label>
+                                <mat-form-field>
+                                    <mat-select formControlName="bmiNormalDiet" placeholder="Select">
+                                        <mat-option *ngFor="let item of yesNo" [value]="item">{{item}}
+                                        </mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+
+                            <div class="col-md-12">
+                                <label>Have you noticed any unexplained or sudden changes in their weight? </label>
+                                <mat-form-field>
+                                    <mat-select formControlName="bmiChangesWeight" placeholder="Select">
+                                        <mat-option *ngFor="let item of yesNo" [value]="item">{{item}}
+                                        </mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+
+                            <div class="col-md-12">
+                                <label>have you ever suffered from gastric symptoms such as discomfort or
+                                    diarrhoea</label>
+                                <mat-form-field>
+                                    <mat-select formControlName="bmiGastric" placeholder="Select">
+                                        <mat-option *ngFor="let item of yesNo" [value]="item">{{item}}
+                                        </mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+
+                            <div class="col-md-12">
+                                <div class="col-12 text-center bgColor">
+                                    <b>Do you suffer from any of the following;</b>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <label>Fatigue</label>
+                                <mat-form-field>
+                                    <mat-select formControlName="bmiFatigue" placeholder="Select">
+                                        <mat-option *ngFor="let item of yesNo" [value]="item">{{item}}
+                                        </mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+                            <div class="col-md-4">
+                                <label>Light-headedness</label>
+                                <mat-form-field>
+                                    <mat-select formControlName="bmiLightHeadedness" placeholder="Select">
+                                        <mat-option *ngFor="let item of yesNo" [value]="item">{{item}}
+                                        </mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+
+                            <div class="col-md-4">
+                                <label>Dizziness</label>
+                                <mat-form-field>
+                                    <mat-select formControlName="bmiDizziness" placeholder="Select">
+                                        <mat-option *ngFor="let item of yesNo" [value]="item">{{item}}
+                                        </mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+
+                            <div class="col-md-4">
+                                <label>Nausea</label>
+                                <mat-form-field>
+                                    <mat-select formControlName="bmiNausea" placeholder="Select">
+                                        <mat-option *ngFor="let item of yesNo" [value]="item">{{item}}
+                                        </mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+
+                            <div class="col-md-4">
+                                <label>Clammy skin</label>
+                                <mat-form-field>
+                                    <mat-select formControlName="bmiClammySkin" placeholder="Select">
+                                        <mat-option *ngFor="let item of yesNo" [value]="item">{{item}}
+                                        </mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+
+                            <div class="col-md-4">
+                                <label>Depression</label>
+                                <mat-form-field>
+                                    <mat-select formControlName="bmiDepression" placeholder="Select">
+                                        <mat-option *ngFor="let item of yesNo" [value]="item">{{item}}
+                                        </mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+
+                            <div class="col-md-4">
+                                <label>Loss of Consciousness</label>
+                                <mat-form-field>
+                                    <mat-select formControlName="bmiLossOfConsciousness" placeholder="Select">
+                                        <mat-option *ngFor="let item of yesNo" [value]="item">{{item}}
+                                        </mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+
+                            <div class="col-md-4">
+                                <label>Blurred vision</label>
+                                <mat-form-field>
+                                    <mat-select formControlName="blurredVision" placeholder="Select">
+                                        <mat-option *ngFor="let item of yesNo" [value]="item">{{item}}
+                                        </mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+                        </div>
+
 
                         <div class="row" *ngIf="bmi && bmi > 30">
                             <div class="col-md-12">
                                 <label>Do you become breathless after climbing a flight of stairs?</label>
                                 <mat-form-field>
-                                    <mat-select formControlName="bmiStairs" (selectionChange)="bmiQuestions($event,'bmiStairs')" placeholder="Select">
+                                    <mat-select formControlName="bmiStairs"
+                                        (selectionChange)="bmiQuestions($event,'bmiStairs')" placeholder="Select">
                                         <mat-option *ngFor="let item of yesNo" [value]="item">{{item}}
                                         </mat-option>
                                     </mat-select>
@@ -246,46 +370,53 @@
 
                             <div class="col-md-12" *ngIf="bmiStairsDetails">
                                 <mat-form-field>
-                                  <textarea matInput placeholder="Additional Details" formControlName="bmiStairsDetails"></textarea>
+                                    <textarea matInput placeholder="Additional Details"
+                                        formControlName="bmiStairsDetails"></textarea>
                                 </mat-form-field>
                             </div>
 
                             <div class="col-md-12">
                                 <label>Do you become breathless when hurrying or walking up a slight hill?</label>
                                 <mat-form-field>
-                                    <mat-select formControlName="bmiHill" (selectionChange)="bmiQuestions($event,'bmiHill')" placeholder="Select">
+                                    <mat-select formControlName="bmiHill"
+                                        (selectionChange)="bmiQuestions($event,'bmiHill')" placeholder="Select">
                                         <mat-option *ngFor="let item of yesNo" [value]="item">{{item}}
                                         </mat-option>
                                     </mat-select>
                                 </mat-form-field>
                             </div>
-                            
+
                             <div class="col-md-12" *ngIf="bmiHillDetails">
                                 <mat-form-field>
-                                    <textarea matInput placeholder="Additional Details" formControlName="bmiHillDetails"></textarea>
+                                    <textarea matInput placeholder="Additional Details"
+                                        formControlName="bmiHillDetails"></textarea>
                                 </mat-form-field>
                             </div>
 
                             <div class="col-md-12">
-                                <label>When walking on level ground, do you walk slower than others your age or have to stop for a breather?</label>
+                                <label>When walking on level ground, do you walk slower than others your age or have to
+                                    stop for a breather?</label>
                                 <mat-form-field>
-                                    <mat-select formControlName="bmiWalk" (selectionChange)="bmiQuestions($event,'bmiWalk')" placeholder="Select">
+                                    <mat-select formControlName="bmiWalk"
+                                        (selectionChange)="bmiQuestions($event,'bmiWalk')" placeholder="Select">
                                         <mat-option *ngFor="let item of yesNo" [value]="item">{{item}}
                                         </mat-option>
                                     </mat-select>
                                 </mat-form-field>
                             </div>
-                            
+
                             <div class="col-md-12" *ngIf="bmiWalkDetails">
                                 <mat-form-field>
-                                    <textarea matInput placeholder="Additional Details" formControlName="bmiWalkDetails"></textarea>
+                                    <textarea matInput placeholder="Additional Details"
+                                        formControlName="bmiWalkDetails"></textarea>
                                 </mat-form-field>
                             </div>
 
                             <div class="col-md-12">
                                 <label>What exercise do you do that leaves you out of breath?</label>
                                 <mat-form-field>
-                                    <textarea matInput placeholder="Details" formControlName="bmiExerciseDetails"></textarea>
+                                    <textarea matInput placeholder="Details"
+                                        formControlName="bmiExerciseDetails"></textarea>
                                 </mat-form-field>
                                 <!-- <mat-form-field>
                                     <mat-select formControlName="bmiExercise" (selectionChange)="bmiQuestions($event,'bmiExercise')" placeholder="Select">
@@ -304,84 +435,91 @@
                             <div class="col-md-12">
                                 <label>Do you wake on a morning feeling refreshed?</label>
                                 <mat-form-field>
-                                    <mat-select formControlName="bmiRefreshed" (selectionChange)="bmiQuestions($event,'bmiRefreshed')"
-                                        placeholder="Select">
+                                    <mat-select formControlName="bmiRefreshed"
+                                        (selectionChange)="bmiQuestions($event,'bmiRefreshed')" placeholder="Select">
                                         <mat-option *ngFor="let item of yesNo" [value]="item">{{item}}
                                         </mat-option>
                                     </mat-select>
                                 </mat-form-field>
                             </div>
-                            
+
                             <div class="col-md-12" *ngIf="bmiRefreshedDetails">
                                 <mat-form-field>
-                                    <textarea matInput placeholder="Additional Details" formControlName="bmiRefreshedDetails"></textarea>
+                                    <textarea matInput placeholder="Additional Details"
+                                        formControlName="bmiRefreshedDetails"></textarea>
                                 </mat-form-field>
                             </div>
 
                             <div class="col-md-12">
-                                <label>Has anyone ever told you they have observed you going for periods without breathing whilst you are asleep?</label>
+                                <label>Has anyone ever told you they have observed you going for periods without
+                                    breathing whilst you are asleep?</label>
                                 <mat-form-field>
-                                    <mat-select formControlName="bmiBreathless" (selectionChange)="bmiQuestions($event,'bmiBreathless')"
-                                        placeholder="Select">
+                                    <mat-select formControlName="bmiBreathless"
+                                        (selectionChange)="bmiQuestions($event,'bmiBreathless')" placeholder="Select">
                                         <mat-option *ngFor="let item of yesNo" [value]="item">{{item}}
                                         </mat-option>
                                     </mat-select>
                                 </mat-form-field>
                             </div>
-                            
+
                             <div class="col-md-12" *ngIf="bmiBreathlessDetails">
                                 <mat-form-field>
-                                    <textarea matInput placeholder="Additional Details" formControlName="bmiBreathlessDetails"></textarea>
+                                    <textarea matInput placeholder="Additional Details"
+                                        formControlName="bmiBreathlessDetails"></textarea>
                                 </mat-form-field>
                             </div>
 
                             <div class="col-md-12">
                                 <label>Do you wake up with a sore throat or headache?</label>
                                 <mat-form-field>
-                                    <mat-select formControlName="bmiHeadache" (selectionChange)="bmiQuestions($event,'bmiHeadache')"
-                                        placeholder="Select">
+                                    <mat-select formControlName="bmiHeadache"
+                                        (selectionChange)="bmiQuestions($event,'bmiHeadache')" placeholder="Select">
                                         <mat-option *ngFor="let item of yesNo" [value]="item">{{item}}
                                         </mat-option>
                                     </mat-select>
                                 </mat-form-field>
                             </div>
-                            
+
                             <div class="col-md-12" *ngIf="bmiHeadacheDetails">
                                 <mat-form-field>
-                                    <textarea matInput placeholder="Additional Details" formControlName="bmiHeadacheDetails"></textarea>
+                                    <textarea matInput placeholder="Additional Details"
+                                        formControlName="bmiHeadacheDetails"></textarea>
                                 </mat-form-field>
                             </div>
 
                             <div class="col-md-12">
                                 <label>Do you snore?</label>
                                 <mat-form-field>
-                                    <mat-select formControlName="bmiSnore" (selectionChange)="bmiQuestions($event,'bmiSnore')"
-                                        placeholder="Select">
+                                    <mat-select formControlName="bmiSnore"
+                                        (selectionChange)="bmiQuestions($event,'bmiSnore')" placeholder="Select">
                                         <mat-option *ngFor="let item of yesNo" [value]="item">{{item}}
                                         </mat-option>
                                     </mat-select>
                                 </mat-form-field>
                             </div>
-                            
+
                             <div class="col-md-12" *ngIf="bmiSnoreDetails">
                                 <mat-form-field>
-                                    <textarea matInput placeholder="Additional Details" formControlName="bmiSnoreDetails"></textarea>
+                                    <textarea matInput placeholder="Additional Details"
+                                        formControlName="bmiSnoreDetails"></textarea>
                                 </mat-form-field>
                             </div>
 
                             <div class="col-md-12">
                                 <label>Do you feel excessively tired during day?</label>
                                 <mat-form-field>
-                                    <mat-select formControlName="bmiTired" (selectionChange)="bmiQuestions($event,'bmiTired')" placeholder="Select">
+                                    <mat-select formControlName="bmiTired"
+                                        (selectionChange)="bmiQuestions($event,'bmiTired')" placeholder="Select">
                                         <mat-option *ngFor="let item of yesNo" [value]="item">{{item}}
                                         </mat-option>
                                     </mat-select>
                                 </mat-form-field>
                             </div>
-                            
+
                             <div class="col-md-12" *ngIf="bmiTiredDetails">
                                 <mat-form-field>
-                                    <textarea matInput placeholder="Additional Details" formControlName="bmiTiredDetails"></textarea>
+                                    <textarea matInput placeholder="Additional Details"
+                                        formControlName="bmiTiredDetails"></textarea>
                                 </mat-form-field>
                             </div>
                         </div>
@@ -389,7 +527,8 @@
                         <div class="row">
                             <div class="col-md-4">
                                 <mat-form-field>
-                                    <mat-select (selectionChange)="completeAsFailReferToGP()"  formControlName="pulseRhythm" placeholder="Pulse Rhythm">
+                                    <mat-select (selectionChange)="completeAsFailReferToGP()"
+                                        formControlName="pulseRhythm" placeholder="Pulse Rhythm">
                                         <mat-option *ngFor="let item of normality" [value]="item">{{item}}
                                         </mat-option>
                                     </mat-select>
@@ -422,7 +561,8 @@
                                     <div class="col-6 p-0 d-flex justify-content-center">
                                         <table class="showTblLines">
                                             <tr>
-                                                <td> < 90/60 </td>
+                                                <td>
+                                                    < 90/60 </td>
                                             </tr>
                                             <tr>
                                                 <td>90/60 - 140/90</td>
@@ -453,21 +593,57 @@
                                 </div>
                             </div>
                         </div>
+                        
+                        <div class='row'>
+                            <div class="col-md-12">
+                                <div class="col-12 text-center bgColor">
+                                    <b>Passed Assessment For</b>
+                                </div>
+                                <div class="col-md-12">
+                                    <label>Balance, Mobility and Co-ordination?</label>
+                                    <mat-form-field>
+                                        <mat-select formControlName="balanceNMobility" placeholder="Select">
+                                            <mat-option *ngFor="let item of yesNo" [value]="item">{{item}}
+                                            </mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </div>
+
+                                <div class="col-md-12">
+                                    <label>Alertness & Psychological Wellbeing?</label>
+                                    <mat-form-field>
+                                        <mat-select formControlName="alertnessNwellbeing" placeholder="Select">
+                                            <mat-option *ngFor="let item of yesNo" [value]="item">{{item}}
+                                            </mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-md-12">
+                                    <label>Speech and Ability to Communicate?</label>
+                                    <mat-form-field>
+                                        <mat-select formControlName="speech" placeholder="Select">
+                                            <mat-option *ngFor="let item of yesNo" [value]="item">{{item}}
+                                            </mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                        </div>
                         <div class="row" *ngIf="doYouSuffer">
                             <div class="col-md-12">
                                 <div class="col-12 text-center bgColor">
                                     <b>Do you suffer from any of the following;</b>
                                 </div>
                             </div>
-                            <div class="col-md-12"> 
+
                                 <div class="col-md-4">
-                                <label>Fatigue</label>
-                                <mat-form-field>
-                                    <mat-select formControlName="fatigue" placeholder="Select">
-                                        <mat-option *ngFor="let item of yesNo" [value]="item">{{item}}
-                                        </mat-option>
-                                    </mat-select>
-                                </mat-form-field>
+                                    <label>Fatigue</label>
+                                    <mat-form-field>
+                                        <mat-select formControlName="fatigue" placeholder="Select">
+                                            <mat-option *ngFor="let item of yesNo" [value]="item">{{item}}
+                                            </mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
                                 </div>
 
                                 <div class="col-md-4">
@@ -539,43 +715,6 @@
                                         </mat-select>
                                     </mat-form-field>
                                 </div>
-
-                            </div>
-                        </div>
-                        <div class='row'>
-                            <div class="col-md-12">
-                                <div class="col-12 text-center bgColor">
-                                    <b>Passed Assessment For</b>
-                                </div>
-                                <div class="col-md-12">
-                                    <label>Balance, Mobility and Co-ordination?</label>
-                                    <mat-form-field>
-                                        <mat-select formControlName="balanceNMobility" placeholder="Select">
-                                            <mat-option *ngFor="let item of yesNo" [value]="item">{{item}}
-                                            </mat-option>
-                                        </mat-select>
-                                    </mat-form-field>
-                                </div>
-
-                                <div class="col-md-12">
-                                    <label>Alertness & Psychological Wellbeing?</label>
-                                    <mat-form-field>
-                                        <mat-select formControlName="alertnessNwellbeing" placeholder="Select">
-                                            <mat-option *ngFor="let item of yesNo" [value]="item">{{item}}
-                                            </mat-option>
-                                        </mat-select>
-                                    </mat-form-field>
-                                </div>
-                                <div class="col-md-12">
-                                    <label>Speech and Ability to Communicate?</label>
-                                    <mat-form-field>
-                                        <mat-select formControlName="speech" placeholder="Select">
-                                            <mat-option *ngFor="let item of yesNo" [value]="item">{{item}}
-                                            </mat-option>
-                                        </mat-select>
-                                    </mat-form-field>
-                                </div>
-                            </div>
                         </div>
                         <div class="row">
                             <div class="col-md-6 ">
@@ -652,7 +791,8 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <mat-form-field>
-                                    <mat-select formControlName="glassesWorn" (selectionChange)="isGlassesWorn($event.value)" placeholder="Glasses Worn">
+                                    <mat-select formControlName="glassesWorn"
+                                        (selectionChange)="isGlassesWorn($event.value)" placeholder="Glasses Worn">
                                         <mat-option *ngFor="let item of yesNo" [value]="item">{{item}}
                                         </mat-option>
                                     </mat-select>
@@ -723,7 +863,8 @@
                             </div>
                             <div class="col-md-6">
                                 <mat-form-field>
-                                    <mat-select formControlName="colorVision" (selectionChange)="fitnessChange($event,'vision')" placeholder="Colour Vision">
+                                    <mat-select formControlName="colorVision"
+                                        (selectionChange)="fitnessChange($event,'vision')" placeholder="Colour Vision">
                                         <mat-option *ngFor="let item of normality" [value]="item">{{item}}
                                         </mat-option>
                                     </mat-select>
@@ -912,7 +1053,7 @@
                                 </mat-form-field>
                             </div>
                         </div>
-                        
+
                         <div class="row">
                             <div class="col-md-3">
                                 <mat-form-field>
@@ -986,7 +1127,9 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <mat-form-field>
-                                    <mat-select formControlName="generalHealth" (selectionChange)="fitnessChange($event,'generalHealth')" placeholder="General Health">
+                                    <mat-select formControlName="generalHealth"
+                                        (selectionChange)="fitnessChange($event,'generalHealth')"
+                                        placeholder="General Health">
                                         <mat-option *ngFor="let item of satisfactory" [value]="item">{{item}}
                                         </mat-option>
                                     </mat-select>
@@ -994,7 +1137,8 @@
                             </div>
                             <div class="col-md-6">
                                 <mat-form-field>
-                                    <mat-select formControlName="visual" (selectionChange)="fitnessChange($event,'visual')" placeholder="Visual Acuity">
+                                    <mat-select formControlName="visual"
+                                        (selectionChange)="fitnessChange($event,'visual')" placeholder="Visual Acuity">
                                         <mat-option *ngFor="let item of satisfactory" [value]="item">{{item}}
                                         </mat-option>
                                     </mat-select>
@@ -1004,7 +1148,9 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <mat-form-field>
-                                    <mat-select formControlName="colorVision" (selectionChange)="fitnessChange($event,'colourVision')" placeholder="Colour Vision">
+                                    <mat-select formControlName="colorVision"
+                                        (selectionChange)="fitnessChange($event,'colourVision')"
+                                        placeholder="Colour Vision">
                                         <mat-option *ngFor="let item of satisfactory" [value]="item">{{item}}
                                         </mat-option>
                                     </mat-select>
@@ -1012,7 +1158,8 @@
                             </div>
                             <div class="col-md-6">
                                 <mat-form-field>
-                                    <mat-select formControlName="hearing" (selectionChange)="fitnessChange($event,'hearing')" placeholder="Hearing">
+                                    <mat-select formControlName="hearing"
+                                        (selectionChange)="fitnessChange($event,'hearing')" placeholder="Hearing">
                                         <mat-option *ngFor="let item of satisfactory" [value]="item">{{item}}
                                         </mat-option>
                                     </mat-select>
@@ -1054,13 +1201,14 @@
                                 <div class="col-md-12">
                                     <mat-form-field>
                                         <mat-select formControlName="level" placeholder="Select">
-                                            <mat-option [value]="'level1'" [disabled]="disableLevel">Level 1</mat-option>
+                                            <mat-option [value]="'level1'" [disabled]="disableLevel">Level 1
+                                            </mat-option>
                                             <mat-option [value]="'level3'">Level 3</mat-option>
                                         </mat-select>
                                     </mat-form-field>
                                 </div>
                                 <div class="col-md-6">
-                                    <input type="checkbox" name="letterToGp" [attr.checked]="" [value]="letterToGp"
+                                    <input type="checkbox" name="letterToGp" [attr.checked]="letterToGpCheck" [value]="letterToGp"
                                         (change)="letterToGp($event)" />
                                     Letter To GP/Opticion
                                 </div>
@@ -1103,8 +1251,9 @@
                                     <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
                                     <mat-datepicker #picker1></mat-datepicker>
                                 </mat-form-field> -->
-                                <app-date-picker (finalizedDate)="finalDate($event, 'medicalAssess', 'examinerDate')" (dateChange)="onValueChange()">
-                                    
+                                <app-date-picker (finalizedDate)="finalDate($event, 'medicalAssess', 'examinerDate')"
+                                    (dateChange)="onValueChange()">
+
                                 </app-date-picker>
                             </div>
                         </div>
@@ -1141,8 +1290,9 @@
                                     <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
                                     <mat-datepicker #picker2></mat-datepicker>
                                 </mat-form-field> -->
-                                <app-date-picker (finalizedDate)="finalDate($event, 'medicalAssess', 'checkedByDate')" (dateChange)="onValueChange()">
-                                    
+                                <app-date-picker (finalizedDate)="finalDate($event, 'medicalAssess', 'checkedByDate')"
+                                    (dateChange)="onValueChange()">
+
                                 </app-date-picker>
                             </div>
                         </div>
