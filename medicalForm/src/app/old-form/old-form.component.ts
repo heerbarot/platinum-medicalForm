@@ -78,7 +78,7 @@ export class OldFormComponent implements OnInit {
   endocrineDisordersConDetails; endocrineDisordersMed; endocrineDisordersMedYes;
   behaviouralDisordersCon; behaviouralDisordersConQ1; behaviouralDisordersConQ2; behaviouralDisordersConQ3;
   behaviouralDisordersConDetails; behaviouralDisordersMed; behaviouralDisordersMedYes;
-  visualCon; visualConQ1; visualConQ2; visualConQ3; visualMed; visualMedYes;
+  visualCon; visualConQ1; visualConQ2; visualConQ3; visualMed; visualMedYes;visualMed1; visualMed1Yes;
   visualConDetails;
   hearingCon; hearingConQ1; hearingConQ2; hearingConQ3; hearingMed; hearingMedYes;
   hearingConDetails; 
@@ -267,6 +267,8 @@ export class OldFormComponent implements OnInit {
           visualCon: this.visualCon,
           visualMed: this.visualMed,
           visualMedYes: this.visualMedYes,
+          visualMed1: this.visualMed1,
+          visualMed1Yes: this.visualMed1Yes,
           visualConQ1:this.visualConQ1,
           visualConQ2:this.visualConQ2,
           visualConQ3:this.visualConQ3,
