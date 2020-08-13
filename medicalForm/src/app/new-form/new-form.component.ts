@@ -23,26 +23,33 @@ export class NewFormComponent implements OnInit {
   normality = ['Normal', 'Abnormal']
   urinanalysis = ['NAD', '+', '++', '+++']
   ifYes = ['Blood Pressure', 'Smoking', 'Alcohol', 'BMI', 'Hearing']
-  bpArray = [{
-    id: 0,
+  bpArray = [
+    {
+      id: 0,
+      value: 'Full pass providing asymptomatic, Fail and refer to GP if symptomatic',
+      checked: null
+    },
+  {
+    id: 1,
     value: 'Full pass',
     checked: null
   },
   {
-    id: 1,
+    id: 2,
     value: 'Full pass with advice',
     checked: null
   },
   {
-    id: 2,
+    id: 3,
     value: 'Full pass providing Asymptomatic',
     checked: null
   },
   {
-    id: 3,
+    id: 4,
     value: 'Fail & referral to GP',
     checked: null
-  }]
+  }
+]
 
   pulseList;
   heightList;
@@ -540,20 +547,23 @@ export class NewFormComponent implements OnInit {
     if (temp.length == 2) {
       if ((Number(temp[0]) >= 90 && Number(temp[0]) <= 140) && (Number(temp[1]) >= 60 && Number(temp[1] <= 90))) {
         console.log("!!!!!!!!!!!!")
-        this.bpArray[0].checked = true
+        this.bpArray[1].checked = true
       }
       else if ((Number(temp[0]) >= 140 && Number(temp[0]) <= 160) && (Number(temp[1]) >= 90 && Number(temp[1] <= 95))) {
-        this.bpArray[1].checked = true
+        this.bpArray[2].checked = true
         // this.bpArray[2].checked = true
       }
       else if ((Number(temp[0]) >= 160 && Number(temp[0]) <= 180) && (Number(temp[1]) >= 95 && Number(temp[1] <= 100))) {
         console.log("%cChecking This Condition", Number(temp[0]), Number(temp[0]), Number(temp[1]), Number(temp[1]), "color: Orange" );
         
         // this.bpArray[1].checked = true
-        this.bpArray[2].checked = true
+        this.bpArray[3].checked = true
       }
       else if (Number(temp[0]) > 180 && Number(temp[1]) > 100) {
-        this.bpArray[3].checked = true
+        this.bpArray[4].checked = true
+      }
+      else if(Number(temp[0]) < 90){
+        this.bpArray[0].checked = true
       }
       this.generalHealth.patchValue({
         bpCheckBox: this.bpArray
