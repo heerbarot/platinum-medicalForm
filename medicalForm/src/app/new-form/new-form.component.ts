@@ -764,7 +764,7 @@ export class NewFormComponent implements OnInit {
     var blob = new Blob([byteArray], { type: 'application/pdf' });
     this.itemData = JSON.parse(localStorage.getItem("formone"));
     saveAs(blob, 'medical-' + this.itemData.medicalQuestionnaire.firstName + this.itemData.medicalQuestionnaire.surName);
-    // window.location.reload();
+    window.location.reload();
 
   }
 
@@ -1043,15 +1043,24 @@ export class NewFormComponent implements OnInit {
       console.log("Yash Pulse1")
       this.bpArray[4].checked = true
       this.letterToGpCheck = true
+      this.medicalAssess.patchValue({
+        letterToGp: 'true'
+      })
     }
     else if( (this.generalHealth.value['glucose'] == '++' || this.generalHealth.value['glucose'] == '+++') && this.generalHealth.value['protein'] == '+++'){
       this.bpArray[4].checked = true
       this.letterToGpCheck = true
+      this.medicalAssess.patchValue({
+        letterToGp: 'true'
+      })
     }
     else{
       console.log("Yash Pulse Else")
       this.bpArray[4].checked = null
       this.letterToGpCheck = null
+      this.medicalAssess.patchValue({
+        letterToGp: null
+      })
     }
   } 
 }
