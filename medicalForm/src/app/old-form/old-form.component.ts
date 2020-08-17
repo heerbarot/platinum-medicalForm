@@ -38,6 +38,9 @@ export class OldFormComponent implements OnInit {
    day;
    month;
    year;
+   confDay;
+   confMonth;
+   confYear;
   fullDate;
   firstName;
   surName;
@@ -156,10 +159,15 @@ export class OldFormComponent implements OnInit {
   submit() {
 
 
-    console.log(" year ", "month" , "day", this.year, this.month, this.day)
-    console.log(" year ", "month" , "day", this.year, this.month, this.day)
+    // console.log(" year ", "month" , "day", this.year, this.month, this.day)
+    // console.log(" year ", "month" , "day", this.year, this.month, this.day)
+    
     if(this.year, this.month, this.day){
       this.fullDate = this.day + '/' + this.month + '/' + this.year
+    }
+
+    if(this.confYear , this.confMonth, this.confDay){
+      this.confirmDate = this.confDay + '/' + this.confMonth + '/' + this.confYear
     }
 
 
