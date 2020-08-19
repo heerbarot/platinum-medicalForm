@@ -143,12 +143,12 @@ export class SignCanvasComponent implements OnInit {
   }
 
   submit() {
-    this.dialogRef.close(this.testdata)
-    // if(this.signaturePad.isEmpty()){
-    //   alert("IS EMPTY")
-    // }
-    // else{
-    //   this.dialogRef.close(this.testdata)
-    // }
+    // this.dialogRef.close(this.testdata)
+    if(this.signaturePad.isEmpty()){
+      alert("Please add signature")
+    }
+    else{
+      this.dialogRef.close(this.testdata)
+    }
   }
 }

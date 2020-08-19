@@ -29,6 +29,7 @@ import { OldFormComponent } from './old-form/old-form.component';
 import { MatMomentDateModule, MAT_MOMENT_DATE_FORMATS } from '@angular/material-moment-adapter';
 import { MAT_DATE_FORMATS, DateAdapter, MAT_DATE_LOCALE } from '@angular/material';
 import { MomentUtcDateAdapter } from './moment-utc-date-adapter';
+import { DatePickerComponent } from './date-picker/date-picker.component';
 
 
 @NgModule({
@@ -36,7 +37,8 @@ import { MomentUtcDateAdapter } from './moment-utc-date-adapter';
     AppComponent,
     SignCanvasComponent,
     NewFormComponent,
-    OldFormComponent
+    OldFormComponent,
+    DatePickerComponent
   ],
   imports: [
     BrowserModule,

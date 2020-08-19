@@ -1,0 +1,20 @@
+	<mat-form-field class="col-4 p-0 m-0">
+		<input (input)="dayChange()" id="date"  [ngModelOptions]="{standalone: true}" matInput type="number" placeholder="date" [(ngModel)]="day" required>
+		<span class="text-danger" *ngIf="dateError">
+			ENTER PROPER FORMAT DATE.
+		</span>
+	</mat-form-field>
+	<mat-form-field class="col-4 p-0 m-0">
+		<input type="number" (input)="monthChange()" [ngModelOptions]="{standalone: true}" matInput placeholder="month"
+		[(ngModel)]="month" required>
+		<span class="text-danger" *ngIf="monthError">
+			ENTER PROPER FORMAT MONTH.
+		</span>
+	</mat-form-field>
+	<mat-form-field class="col-4 p-0 m-0">
+		<input type="number" (input)="yearChange()" [ngModelOptions]="{standalone: true}" matInput placeholder="Year"
+		[(ngModel)]="year" required>
+		<span class="text-danger" *ngIf="yearError">
+			ENTER PROPER FORMAT YEAR.
+		</span>
+	</mat-form-field>
