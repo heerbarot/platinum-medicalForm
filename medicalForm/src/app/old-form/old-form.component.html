@@ -148,14 +148,14 @@
                         <div class="col-md-6">
                             <!-- <label>First name</label> -->
                             <mat-form-field class="">
-                                <input [ngModelOptions]="{standalone: true}" matInput placeholder="First name"
+                                <input id="firstName" [ngModelOptions]="{standalone: true}" matInput placeholder="First name"
                                     [(ngModel)]="firstName" required>
                             </mat-form-field>
                         </div>
                         <div class="col-md-6">
                             <!-- <label>First name</label> -->
                             <mat-form-field>
-                                <input [ngModelOptions]="{standalone: true}" matInput placeholder="Surname"
+                                <input id="surName" [ngModelOptions]="{standalone: true}" matInput placeholder="Surname"
                                     [(ngModel)]="surName" required>
                             </mat-form-field>
 
@@ -1123,7 +1123,7 @@
 
 
     <div class="mt-3">
-        <button mat-raised-button color="primary" (click)="submit()">Next</button>
+        <button id="next" mat-raised-button color="primary" (click)="submit()">Next</button>
     </div>
 
 

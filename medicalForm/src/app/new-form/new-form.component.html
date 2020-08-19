@@ -11,12 +11,12 @@
     </div>
     <!-- <div class=""> -->
 
-    <div class="form-one" [hidden]="hideFirstForm">
+<!--     <div class="form-one" [hidden]="hideFirstForm">
         <app-old-form (oldData)="newOldData($event)"></app-old-form>
-    </div>
+    </div> -->
     <!-- </div> -->
 
-    <div id="accordianNew" [hidden]="hideSecondForm">
+    <div id="accordianNew" >
         <div class="single_accordion">
             <div class="single_accordion_title collapsed" id="headingNew" data-toggle="collapse"
                 data-target="#collapseNew" aria-expanded="true" aria-controls="collapse">
@@ -29,14 +29,14 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <mat-form-field>
-                                    <input formControlName="name" (ngModelChange)="onValueChange()" matInput
+                                    <input id="name" formControlName="name" (ngModelChange)="onValueChange()" matInput
                                         placeholder="First name" required>
                                 </mat-form-field>
                             </div>
 
                             <div class="col-md-6">
                                 <mat-form-field>
-                                    <mat-select formControlName="idConfirmed" placeholder="ID Confirmed"
+                                    <mat-select id="idConfirmed" formControlName="idConfirmed" placeholder="ID Confirmed"
                                         (selectionChange)="idChanged($event);onValueChange()" required multiple>
                                         <mat-option *ngFor="let item of idConfirmList" [value]="item">{{item}}
                                         </mat-option>
@@ -45,7 +45,7 @@
                             </div>
                             <div class="col-12" *ngIf="showSpecifyOthers">
                                 <mat-form-field>
-                                    <input formControlName="idConfirmOther" matInput
+                                    <input id="idConfirmOther" formControlName="idConfirmOther" matInput
                                         placeholder="Please Specify the ID confirmed" required>
                                 </mat-form-field>
                             </div>
