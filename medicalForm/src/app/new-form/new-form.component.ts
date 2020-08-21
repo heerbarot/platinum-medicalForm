@@ -16,40 +16,52 @@ declare var $: any;
   styleUrls: ['./new-form.component.scss']
 })
 export class NewFormComponent implements OnInit {
-
+  addTextPastEarProblem: boolean = false
+  addTextDeafnessFamily: boolean = false
+  addTextSufferedHead: boolean = false
+  addTextExposureGunfire: boolean = false
+  addTextHadWax: boolean = false
+  addTextEarDisease: boolean = false
+  addTextSufferedInjury: boolean = false
   idConfirmList = ['Sentinel Card', 'Driving Licence', 'Passport', 'Company ID', 'Other'];
+  noisyHobbiesList = ['Motor sports', 'Ride a motorcycle', 'DIY', 'Discos/loud music', 'Shooting', 'Other']
   yesNo = ['Yes', 'No']
   satisfactory = ['Satisfactory', 'Not Satisfactory']
   normality = ['Normal', 'Abnormal']
   urinanalysis = ['NAD', '+', '++', '+++']
   ifYes = ['Blood Pressure', 'Smoking', 'Alcohol', 'BMI', 'Hearing']
+  strength = ['Good', 'Fair', 'Poor']
+  betterWorse = ['BETTER', 'WORSE']
+  types = ['Glass wool / earplugs', 'inserts / earmuffs']
+  totalRightEar: Number;
+  totalLeftEar: Number;
   bpArray = [
     {
       id: 0,
       value: 'Full pass providing asymptomatic, Fail and refer to GP if symptomatic',
       checked: null
     },
-  {
-    id: 1,
-    value: 'Full pass',
-    checked: null
-  },
-  {
-    id: 2,
-    value: 'Full pass with advice',
-    checked: null
-  },
-  {
-    id: 3,
-    value: 'Full pass providing Asymptomatic',
-    checked: null
-  },
-  {
-    id: 4,
-    value: 'Fail & referral to GP',
-    checked: null
-  }
-]
+    {
+      id: 1,
+      value: 'Full pass',
+      checked: null
+    },
+    {
+      id: 2,
+      value: 'Full pass with advice',
+      checked: null
+    },
+    {
+      id: 3,
+      value: '6 Month Medical Certificate and referral to GP',
+      checked: null
+    },
+    {
+      id: 4,
+      value: 'Fail & referral to GP',
+      checked: null
+    }
+  ]
   doYouSuffer: boolean = false;
   pulseList;
   heightList;
@@ -103,7 +115,7 @@ export class NewFormComponent implements OnInit {
 
 
   // To show aided and correct field based on glass worn selection
-  isGlassWorn:boolean;
+  isGlassWorn: boolean;
   constructor(private fb: FormBuilder, public dialog: MatDialog, public _medicalFormService: MedicalFormService) {
     this.pulseList = this.generateRange(40, 180)
     this.heightList = this.generateRange(120, 200)
@@ -200,8 +212,8 @@ export class NewFormComponent implements OnInit {
 
   // tslint:disable-next-line: member-ordering
   generalHealth = new FormGroup({
-    bp1: new FormControl('', this.bpValidators ),
-    pulse1: new FormControl(''),
+    bp1: new FormControl('', this.bpValidators.concat(Validators.required)),
+    pulse1: new FormControl('', Validators.required),
     bp2: new FormControl('', this.bpValidators),
     pulse2: new FormControl(''),
     bp3: new FormControl('', this.bpValidators),
@@ -210,11 +222,11 @@ export class NewFormComponent implements OnInit {
     weight: new FormControl('', Validators.required),
     bmi: new FormControl(''),
     isBmiGreater: new FormControl(''),
-    bmiStairs : new FormControl(''),
+    bmiStairs: new FormControl(''),
     bmiStairsDetails: new FormControl(''),
-    bmiHill : new FormControl(''),
+    bmiHill: new FormControl(''),
     bmiHillDetails: new FormControl(''),
-    bmiWalk : new FormControl(''),
+    bmiWalk: new FormControl(''),
     bmiWalkDetails: new FormControl(''),
     // bmiExercise : new FormControl(''),
     bmiExerciseDetails: new FormControl(''),
@@ -248,18 +260,18 @@ export class NewFormComponent implements OnInit {
     nausea: new FormControl(''),
     clammySkin: new FormControl(''),
     depression: new FormControl(''),
-    lossOfConsciousness : new FormControl(''),
-    blurredVision: new FormControl(''),
+    lossOfConsciousness: new FormControl(''),
+    // blurredVision: new FormControl(''),
     bmiFatigue: new FormControl(''),
     bmiLightHeadedness: new FormControl(''),
     bmiDizziness: new FormControl(''),
     bmiNausea: new FormControl(''),
     bmiClammySkin: new FormControl(''),
     bmiDepression: new FormControl(''),
-    bmiLossOfConsciousness : new FormControl(''),
+    bmiLossOfConsciousness: new FormControl(''),
     bmiBlurredVision: new FormControl(''),
     bmiNormalDiet: new FormControl(''),
-    bmiChangesWeight:new FormControl(''),
+    bmiChangesWeight: new FormControl(''),
     bmiGastric: new FormControl(''),
     doYouSuffer: new FormControl(''),
     bmiLess: new FormControl('')
@@ -283,16 +295,16 @@ export class NewFormComponent implements OnInit {
 
   // tslint:disable-next-line: member-ordering
   hearingGrp = new FormGroup({
-    leftEar500: new FormControl('',Validators.required),
-    leftEar1000: new FormControl('',Validators.required),
-    leftEar2000: new FormControl('',Validators.required),
+    leftEar500: new FormControl('', Validators.required),
+    leftEar1000: new FormControl('', Validators.required),
+    leftEar2000: new FormControl('', Validators.required),
     leftEar3000: new FormControl(''),
     leftEar4000: new FormControl(''),
     leftEar6000: new FormControl(''),
     leftEar8000: new FormControl(''),
-    rightEar500: new FormControl('',Validators.required),
-    rightEar1000: new FormControl('',Validators.required),
-    rightEar2000: new FormControl('',Validators.required),
+    rightEar500: new FormControl('', Validators.required),
+    rightEar1000: new FormControl('', Validators.required),
+    rightEar2000: new FormControl('', Validators.required),
     rightEar3000: new FormControl(''),
     rightEar4000: new FormControl(''),
     rightEar6000: new FormControl(''),
@@ -300,11 +312,45 @@ export class NewFormComponent implements OnInit {
     earWax: new FormControl('', Validators.required),
     leTotal: new FormControl('', Validators.required),
     reTotal: new FormControl('', Validators.required),
+    total90: new FormControl(''),
+    rightStrength: new FormControl(''),
+    leftStrength: new FormControl(''),
+    hearingAid: new FormControl(''),
+    sufferedInjury: new FormControl(''),
+    sufferedInjuryText: new FormControl(''),
+    earDisease: new FormControl(''),
+    earDiseaseText: new FormControl(''),
+    deafnessFamily: new FormControl(''),
+    deafnessFamilyText: new FormControl(''),
+    sufferedHead: new FormControl(''),
+    sufferedHeadText: new FormControl(''),
+    sufferRinging: new FormControl(''),
+    sufferFromDizziness: new FormControl(''),
     additionalComments: new FormControl(''),
+    ototoxicDrugs: new FormControl(''),
+    exposureGunfire: new FormControl(''),
+    exposureGunfireText: new FormControl(''),
+    noisyHobbies: new FormControl(''),
+    noisyHobbiesConfirm: new FormControl(''),
+    hearNoise: new FormControl(''),
+    hadWax: new FormControl(''),
+    hadWaxWhen: new FormControl(''),
+    pastEarProblem: new FormControl(''),
+    previousJob: new FormControl(''),
+    longYear: new FormControl(''),
+    longMonth: new FormControl(''),
+    protectionProvided: new FormControl(''),
+    type: new FormControl(''),
+    motorSports: new FormControl(''),
+    rideMotorcycle: new FormControl(''),
+    DIY: new FormControl(''),
+    discos: new FormControl(''),
+    shooting: new FormControl(''),
+    Other: new FormControl()
   })
 
 
-// tslint:disable-next-line: member-ordering
+  // tslint:disable-next-line: member-ordering
   fitnessGrp = new FormGroup({
     addInfo: new FormControl(''),
     generalHealth: new FormControl(''),
@@ -312,13 +358,13 @@ export class NewFormComponent implements OnInit {
     colorVision: new FormControl(''),
     hearing: new FormControl(''),
   })
-// tslint:disable-next-line: member-ordering
+  // tslint:disable-next-line: member-ordering
   medicalAssess = new FormGroup({
     fit: new FormControl(''),
     letterToGp: new FormControl(''),
     sixMonthCerti: new FormControl(''),
     referToOHPhysician: new FormControl(''),
-    level: new FormControl('',Validators.required),
+    level: new FormControl('', Validators.required),
     reason: new FormControl(''),
     examinerName: new FormControl(''),
     examinerDate: new FormControl(''),
@@ -351,8 +397,8 @@ export class NewFormComponent implements OnInit {
     this.hideFirstForm = true;
     this.hideSecondForm = false;
   }
-  finalDate(event, formName, fieldName?){
-    console.log("evemt ==> ",event , "<======> ", formName);
+  finalDate(event, formName, fieldName?) {
+    console.log("evemt ==> ", event, "<======> ", formName);
     switch (formName) {
       case "form1":
         this.form1.controls[fieldName].setValue(event.finalDate)
@@ -379,19 +425,22 @@ export class NewFormComponent implements OnInit {
     console.log("Form  1 ======> ", this.form1);
     console.log("Form  1 ======> ", this.medicalAssess);
   }
-  isGlassesWorn(event){
+  isGlassesWorn(event) {
     console.log("event.target.value ", event);
-    if(event == 'No'){
+    if (event == 'No') {
       this.isGlassWorn = false;
     }
-    else{
+    else {
       this.isGlassWorn = true
     }
   }
+
   idChanged(event) {
-    console.log("Id confirm changed", event)
+    console.log("Id confirm changed", event.value)
 
     let temp = event.value.forEach(element => {
+      console.log(" yash check this ", element)
+
       if (element == 'Other') {
         console.log("element", element)
         this.showSpecifyOthers = true
@@ -424,15 +473,15 @@ export class NewFormComponent implements OnInit {
   }
 
   // colorVisionChange(e){
-    // console.log('colourVisionChange', e)
-    // if(e.value == 'Abnormal'){
-    //   this.disableLevel = true
-    // }
-    // else{
-    //   this.disableLevel = false
-    // }
+  // console.log('colourVisionChange', e)
+  // if(e.value == 'Abnormal'){
+  //   this.disableLevel = true
   // }
-  fitnessChange(event,type){
+  // else{
+  //   this.disableLevel = false
+  // }
+  // }
+  fitnessChange(event, type) {
     console.log(event, type)
     // if (event.value == 'Abnormal'){
     //   event.value = 'Not Satisfactory'
@@ -442,14 +491,14 @@ export class NewFormComponent implements OnInit {
       value: event.value
     }
 
-    var index = _.findIndex(this.disableLevelConditions, function(o){return o.type == type})
-    console.log("index",index);
-    
-    if(index == -1){
+    var index = _.findIndex(this.disableLevelConditions, function (o) { return o.type == type })
+    console.log("index", index);
+
+    if (index == -1) {
       this.disableLevelConditions.push(obj)
       this.checkCondition()
     }
-    else{
+    else {
       this.disableLevelConditions[index] = obj
       this.checkCondition()
     }
@@ -457,17 +506,17 @@ export class NewFormComponent implements OnInit {
 
   checkCondition() {
     console.log("checkCondition called", this.disableLevelConditions);
-    
+
     // if (this.disableLevelConditions && this.disableLevelConditions.length){
     var index = _.findIndex(this.disableLevelConditions, function (o) { return (o.value == 'Not Satisfactory' || o.value == 'Abnormal') })
-      console.log("index", index);
-      
-      if (index == -1) {
-        this.disableLevel = false
-      }
-      else {
-        this.disableLevel = true
-      }
+    console.log("index", index);
+
+    if (index == -1) {
+      this.disableLevel = false
+    }
+    else {
+      this.disableLevel = true
+    }
     // }
   }
   onCheckboxChange(e) {
@@ -543,8 +592,8 @@ export class NewFormComponent implements OnInit {
   }
 
 
-  bpBlurred(event,reading) {
-    
+  bpBlurred(event, reading) {
+
     console.log('event=====>', event);
 
     this.bpArray.forEach(el => {
@@ -552,15 +601,15 @@ export class NewFormComponent implements OnInit {
     })
     console.log("BP", event.target.value)
     let temp = event.target.value.split('/')
-    if(temp[0] > 160 || temp[1] > 95){
+    if (temp[0] > 160 || temp[1] > 95) {
       let event = {
-        checked : true
+        checked: true
       }
-      if(reading == 'reading1'){
+      if (reading == 'reading1') {
         this.isChecked = true
         this.checkboxChange(event)
       }
-      else if (reading == 'reading2'){
+      else if (reading == 'reading2') {
         this.isChecked2 = true
         this.checkboxChange2(event)
       }
@@ -576,15 +625,15 @@ export class NewFormComponent implements OnInit {
         // this.bpArray[2].checked = true
       }
       else if ((Number(temp[0]) >= 160 && Number(temp[0]) <= 180) && (Number(temp[1]) >= 95 && Number(temp[1] <= 100))) {
-        console.log("%cChecking This Condition", Number(temp[0]), Number(temp[0]), Number(temp[1]), Number(temp[1]), "color: Orange" );
-        
+        // console.log("%cChecking This Condition", Number(temp[0]), Number(temp[0]), Number(temp[1]), Number(temp[1]), "color: Orange");
+
         // this.bpArray[1].checked = true
         this.bpArray[3].checked = true
       }
       else if (Number(temp[0]) > 180 && Number(temp[1]) > 100) {
         this.bpArray[4].checked = true
       }
-      else if(Number(temp[0]) < 90){
+      else if (Number(temp[0]) < 90) {
         this.bpArray[0].checked = true
       }
       this.generalHealth.patchValue({
@@ -594,17 +643,17 @@ export class NewFormComponent implements OnInit {
       console.log(Number(temp[0]))
       console.log(Number(temp[1]))
 
-      if(Number(temp[0]) < 90 && Number(temp[1]) < 60){
+      if (Number(temp[0]) < 90 && Number(temp[1]) < 60) {
         this.doYouSuffer = true;
         this.generalHealth.patchValue({
           doYouSuffer: "Yes"
-        }) 
+        })
       }
-      else{
+      else {
         this.doYouSuffer = false;
         this.generalHealth.patchValue({
           doYouSuffer: null
-        }) 
+        })
       }
 
     }
@@ -663,32 +712,38 @@ export class NewFormComponent implements OnInit {
         bmi: this.bmi
       });
     }
-    if(this.bmi >= 30){
+    if (this.bmi >= 30) {
       this.generalHealth.patchValue({
         isBmiGreater: 'Yes'
       })
     }
-    else if(this.bmi <= 19){
+    else if (this.bmi <= 19) {
       this.generalHealth.patchValue({
         bmiLess: 'Yes'
       })
     }
-    else{
+    else {
       this.generalHealth.patchValue({
         isBmiGreater: 'No'
       })
     }
   }
   leftEarChange(event, id) {
+    this.totalLeftEar = 0
     console.log("EVENT", event, "id", id)
     if (id == 500) {
       this.lear500 = event.value
+      this.totalLeftEar = this.totalLeftEar + event.value
     }
     else if (id == 1000) {
       this.lear1000 = event.value
+      this.totalLeftEar = this.totalLeftEar + event.value
+
     }
     else if (id == 2000) {
       this.lear2000 = event.value
+      this.totalLeftEar = this.totalLeftEar + event.value
+
     }
 
     console.log("EVENT", this.lear500, this.lear1000, this.lear2000)
@@ -699,10 +754,23 @@ export class NewFormComponent implements OnInit {
       this.hearingGrp.patchValue({
         leTotal: this.learTotal
       })
+
+      if (this.learTotal > 89 || this.rearTotal > 89) {
+        this.hearingGrp.patchValue({
+          total90: true
+        })
+      }
+      else {
+        this.hearingGrp.patchValue({
+          total90: false
+        })
+      }
     }
   }
+
   rightEarChange(event, id) {
     console.log("EVENT", event, "id", id)
+    this.totalRightEar = 0
     if (id == 500) {
       this.rear500 = event.value
     }
@@ -720,6 +788,18 @@ export class NewFormComponent implements OnInit {
         reTotal: this.rearTotal
       })
     }
+
+    if (this.rearTotal > 89 || this.learTotal > 89) {
+      this.hearingGrp.patchValue({
+        total90: true
+      })
+    }
+    else {
+      this.hearingGrp.patchValue({
+        total90: false
+      })
+    }
+
   }
 
   generateRange(start, end) {
@@ -768,9 +848,9 @@ export class NewFormComponent implements OnInit {
 
   }
 
-  bmiQuestions(event,type){
-    console.log('event',event, 'type', type)
-    if(event.value == 'Yes'){
+  bmiQuestions(event, type) {
+    console.log('event', event, 'type', type)
+    if (event.value == 'Yes') {
       switch (type) {
         case 'bmiStairs':
           this.bmiStairsDetails = true
@@ -790,7 +870,7 @@ export class NewFormComponent implements OnInit {
         case 'bmiHeadache':
           this.bmiHeadacheDetails = true
           break;
-      
+
         case 'bmiSnore':
           this.bmiSnoreDetails = true
           break;
@@ -816,7 +896,7 @@ export class NewFormComponent implements OnInit {
       //   this.bmiExerciseDetails = true
       // }
     }
-    else{
+    else {
       // if (type == 'bmiStairs') {
       //   this.bmiStairsDetails = false
       // }
@@ -970,43 +1050,43 @@ export class NewFormComponent implements OnInit {
 
 
     // return;
-    if (this.form1.valid && this.medicalAssess.valid){
-      if (this.generalHealth.valid){
-        if (this.visionAssessment.valid){
-          if (this.hearingGrp.valid){
+    if (this.form1.valid && this.medicalAssess.valid) {
+      if (this.generalHealth.valid) {
+        if (this.visionAssessment.valid) {
+          if (this.hearingGrp.valid) {
             this.apiCall(data)
           }
-          else{
-            alert('Fields in Hearning Missing')      
+          else {
+            alert('Fields in Hearning Missing')
           }
         }
-        else{
-          alert('Fields in Vission Assessment Missing')    
+        else {
+          alert('Fields in Vission Assessment Missing')
         }
       }
-      else{
-        alert('Fields in General Health Missing')  
+      else {
+        alert('Fields in General Health Missing')
       }
     }
-    else{
+    else {
       alert('Level, Name and Signature  Missing')
     }
 
     // if (this.form1.valid && this.medicalAssess.valid && this.generalHealth.valid && this.visionAssessment.valid && this.hearingGrp.valid ) {
-      // if (this.generalHealth.valid){
-        
-      // }
-      // else{
-        // console.log("this.generalHealth.get('height').status", this.generalHealth.get('height').status);
-        
-        // if (this.generalHealth.get('height').status == 'INVALID' || this.generalHealth.get('weight').status == 'INVALID'){
-        //   alert("Height and Weight is Required")
-        // }
-        // else{
-        //   alert("Blood Pressure Readings Required")
-        // }
-        // alert("Blood Pressure Readings Required")
-      // }
+    // if (this.generalHealth.valid){
+
+    // }
+    // else{
+    // console.log("this.generalHealth.get('height').status", this.generalHealth.get('height').status);
+
+    // if (this.generalHealth.get('height').status == 'INVALID' || this.generalHealth.get('weight').status == 'INVALID'){
+    //   alert("Height and Weight is Required")
+    // }
+    // else{
+    //   alert("Blood Pressure Readings Required")
+    // }
+    // alert("Blood Pressure Readings Required")
+    // }
     // }
 
     // else {
@@ -1023,7 +1103,7 @@ export class NewFormComponent implements OnInit {
     console.log("THe data is----------->>>>>>>>>>>>>>>", data)
   }
 
-  apiCall(data){
+  apiCall(data) {
     this.loading = true;
     this._medicalFormService.generatePdf(data).subscribe(res => {
       console.log("RES", res)
@@ -1033,13 +1113,28 @@ export class NewFormComponent implements OnInit {
     })
   }
 
-  completeAsFailReferToGP(){
+  completeAsFailReferToGP() {
     console.log(" ****** completeAsFailReferToGP ******")
     console.log(" ****** Hey Yash ", this.generalHealth.value['pulse2'])
     console.log(" ****** Hey Yash ", this.generalHealth.value['pulse3'])
 
 
-    if(this.generalHealth.value && (this.generalHealth.value['pulseRhythm'] == "Abnormal" || this.generalHealth.value['pulse1'] > 100 || this.generalHealth.value['pulse2'] > 100 || this.generalHealth.value['pulse3'] > 100 ) ){
+    // if(this.generalHealth.value && (this.generalHealth.value['pulseRhythm'] == "Abnormal" || this.generalHealth.value['pulse1'] > 100 || this.generalHealth.value['pulse2'] > 100 || this.generalHealth.value['pulse3'] > 100 ) ){
+    //   console.log("Yash Pulse1")
+    //   this.bpArray[4].checked = true
+    //   this.letterToGpCheck = true
+    //   this.medicalAssess.patchValue({
+    //     letterToGp: 'true'
+    //   })
+    // }
+    // else if( (this.generalHealth.value['glucose'] == '++' || this.generalHealth.value['glucose'] == '+++') && this.generalHealth.value['protein'] == '+++'){
+    //   this.bpArray[4].checked = true
+    //   this.letterToGpCheck = true
+    //   this.medicalAssess.patchValue({
+    //     letterToGp: 'true'
+    //   })
+    // }
+    if (this.generalHealth.value && (this.generalHealth.value['pulse1'] < 40 || this.generalHealth.value['pulse2'] < 40 || this.generalHealth.value['pulse3'] < 40 || this.generalHealth.value['pulse1'] > 100 || this.generalHealth.value['pulse2'] > 100 || this.generalHealth.value['pulse3'] > 100)) {
       console.log("Yash Pulse1")
       this.bpArray[4].checked = true
       this.letterToGpCheck = true
@@ -1047,14 +1142,7 @@ export class NewFormComponent implements OnInit {
         letterToGp: 'true'
       })
     }
-    else if( (this.generalHealth.value['glucose'] == '++' || this.generalHealth.value['glucose'] == '+++') && this.generalHealth.value['protein'] == '+++'){
-      this.bpArray[4].checked = true
-      this.letterToGpCheck = true
-      this.medicalAssess.patchValue({
-        letterToGp: 'true'
-      })
-    }
-    else{
+    else {
       console.log("Yash Pulse Else")
       this.bpArray[4].checked = null
       this.letterToGpCheck = null
@@ -1062,5 +1150,138 @@ export class NewFormComponent implements OnInit {
         letterToGp: null
       })
     }
-  } 
+  }
+
+  earProblems() {
+    // if(this.generalHealth.value['pulse2'])
+    console.log("Ear case", this.hearingGrp.value['sufferedInjury'])
+
+    if (this.hearingGrp.value['sufferedInjury'] && this.hearingGrp.value['sufferedInjury'] == 'Yes') {
+      this.addTextSufferedInjury = true
+    }
+    else {
+      this.addTextSufferedInjury = false
+    }
+
+    if (this.hearingGrp.value['earDisease'] && this.hearingGrp.value['earDisease'] == 'Yes') {
+      this.addTextEarDisease = true
+    }
+    else {
+      this.addTextEarDisease = false
+    }
+
+
+    if (this.hearingGrp.value['deafnessFamily'] && this.hearingGrp.value['deafnessFamily'] == 'Yes') {
+      this.addTextDeafnessFamily = true
+    }
+    else {
+      this.addTextDeafnessFamily = false
+    }
+
+    if (this.hearingGrp.value['sufferedHead'] && this.hearingGrp.value['sufferedHead'] == 'Yes') {
+      this.addTextSufferedHead = true
+    }
+    else {
+      this.addTextSufferedHead = false
+    }
+
+
+    if (this.hearingGrp.value['exposureGunfire'] && this.hearingGrp.value['exposureGunfire'] == 'Yes') {
+      this.addTextExposureGunfire = true
+    }
+    else {
+      this.addTextExposureGunfire = false
+    }
+
+
+    if (this.hearingGrp.value['hadWax'] && this.hearingGrp.value['hadWax'] == 'Yes') {
+      this.addTextHadWax = true
+    }
+    else {
+      this.addTextHadWax = false
+    }
+
+    if (this.hearingGrp.value['pastEarProblem'] && this.hearingGrp.value['pastEarProblem'] == 'Yes') {
+      this.addTextPastEarProblem = true
+    }
+    else {
+      this.addTextPastEarProblem = false
+    }
+
+  }
+
+  noisyHobbiesChanged(event) {
+    console.log("Id confirm changed", event)
+
+    this.hearingGrp.patchValue({
+      motorSports: false
+    })
+
+    this.hearingGrp.patchValue({
+      rideMotorcycle: false
+    })
+
+    this.hearingGrp.patchValue({
+      DIY: false
+    })
+
+    this.hearingGrp.patchValue({
+      discos: false
+    })
+
+    this.hearingGrp.patchValue({
+      shooting: false
+    })
+
+    this.hearingGrp.patchValue({
+      Other: false
+    })
+
+
+    this.hearingGrp.value['noisyHobbiesConfirm'].forEach(element => {
+      console.log(" ELEment ", element)
+      if (element == 'Motor sports') {
+        console.log("element", element)
+        this.hearingGrp.patchValue({
+          motorSports: true
+        })
+
+      }
+
+      if (element == 'Ride a motorcycle') {
+        this.hearingGrp.patchValue({
+          rideMotorcycle: true
+        })
+        console.log("element", element)
+      }
+
+      if (element == 'DIY') {
+        this.hearingGrp.patchValue({
+          DIY: true
+        })
+        console.log("element", element)
+      }
+
+      if (element == 'Discos/loud music') {
+        console.log("element", element)
+        this.hearingGrp.patchValue({
+          discos: true
+        })
+      }
+
+      if (element == 'Shooting') {
+        console.log("element", element)
+        this.hearingGrp.patchValue({
+          shooting: true
+        })
+      }
+
+      if (element == 'Other') {
+        console.log("element", element)
+        this.hearingGrp.patchValue({
+          Other: true
+        })
+      }
+    })
+  }
 }

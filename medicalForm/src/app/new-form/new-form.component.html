@@ -125,11 +125,14 @@
 
                             <div class="col-md-6">
                                 <mat-form-field>
-                                    <mat-select (selectionChange)="checkBp(); completeAsFailReferToGP()"
+                                    <!-- <mat-select (selectionChange)="checkBp(); completeAsFailReferToGP()"
                                         formControlName="pulse1" placeholder="Pulse - First Reading">
                                         <mat-option *ngFor="let item of pulseList" [value]="item">{{item}}
                                         </mat-option>
-                                    </mat-select>
+                                    </mat-select> -->
+                                    <input type="number" (ngModelChange)="checkBp(); completeAsFailReferToGP()" formControlName="pulse1"
+                                     matInput
+                                    placeholder="Pulse - First Reading">
                                 </mat-form-field>
                             </div>
                         </div>
@@ -162,14 +165,17 @@
 
                             <div class="col-md-6">
                                 <mat-form-field>
-                                    <mat-select (selectionChange)="completeAsFailReferToGP()" formControlName="pulse2"
+                                    <!-- <mat-select (selectionChange)="completeAsFailReferToGP()" formControlName="pulse2"
                                         placeholder="Pulse - Second Reading">
                                         <mat-option [disabled]="secondTestDisabled" *ngFor="let item of pulseList"
                                             [value]="item">
                                             {{item}}
                                         </mat-option>
-                                    </mat-select>
+                                    </mat-select> -->
+                                    <input type="number" [disabled]="secondTestDisabled" (ngModelChange)="completeAsFailReferToGP()" formControlName="pulse2"
+                                matInput placeholder="Pulse - Second Reading">
                                 </mat-form-field>
+                                
                             </div>
                         </div>
 
@@ -346,7 +352,7 @@
                             <div class="col-md-4">
                                 <label>Blurred vision</label>
                                 <mat-form-field>
-                                    <mat-select formControlName="blurredVision" placeholder="Select">
+                                    <mat-select formControlName="bmiBlurredVision" placeholder="Select">
                                         <mat-option *ngFor="let item of yesNo" [value]="item">{{item}}
                                         </mat-option>
                                     </mat-select>
@@ -705,7 +711,7 @@
                                     </mat-form-field>
                                 </div>
 
-                                <div class="col-md-4">
+                                <!-- <div class="col-md-4">
                                     <label>Blurred vision</label>
                                     <mat-form-field>
                                         <mat-select formControlName="blurredVision" placeholder="Select">
@@ -713,7 +719,7 @@
                                             </mat-option>
                                         </mat-select>
                                     </mat-form-field>
-                                </div>
+                                </div> -->
                         </div>
                         <div class="row">
                             <div class="col-md-6 ">
@@ -1098,7 +1104,235 @@
                                 </mat-form-field>
                             </div>
                         </div>
+                        <div class="row" *ngIf="learTotal > 89 || rearTotal > 89">
 
+                            <div class="col-md-12">
+                                <p class="bgColor text-center"> Medical history :  </p>
+                            </div> 
+                            <div class="col-md-12">
+                                <p>
+                                    Do you consider your hearing to be: 
+                                </p>
+                            </div>
+                            <div class="col-md-6">
+                                <mat-form-field>
+                                    <mat-select formControlName="leftStrength" placeholder="Left ear:">
+                                        <mat-option *ngFor="let item of strength" [value]="item">{{item}}
+                                        </mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+                            <div class="col-md-6">
+                                <mat-form-field>
+                                    <mat-select formControlName="rightStrength" placeholder="Right ear:">
+                                        <mat-option *ngFor="let item of strength" [value]="item">{{item}}
+                                        </mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+                            <div class="col-md-12">
+                                <mat-form-field>
+                                    <mat-select formControlName="hearingAid" placeholder="Do you wear a hearing aid?">
+                                        <mat-option *ngFor="let item of yesNo" [value]="item">{{item}}
+                                        </mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+                            <div class="col-md-6">
+                                <mat-form-field>
+                                    <mat-select formControlName="sufferedInjury" (selectionChange)="earProblems()" placeholder="Have you suffered any injury/trauma to your ears?">
+                                        <mat-option *ngFor="let item of yesNo" [value]="item">{{item}}
+                                        </mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+                            <div class="col-md-6">
+                                <mat-form-field class="" *ngIf="addTextSufferedInjury">
+                                    <input matInput formControlName="sufferedInjuryText"
+                                        placeholder="If so describe:">
+                                </mat-form-field>
+                            </div>
+
+                            <div class="col-md-6">
+                                <mat-form-field>
+                                    <mat-select formControlName="earDisease" (selectionChange)="earProblems()" placeholder="Earache, discharging ears or other ear disease as child or adult?">
+                                        <mat-option *ngFor="let item of yesNo" [value]="item">{{item}}
+                                        </mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+                            <div class="col-md-6">
+                                <mat-form-field class="" *ngIf="addTextEarDisease">
+                                    <input matInput formControlName="earDiseaseText"
+                                        placeholder="If so describe:">
+                                </mat-form-field>
+                            </div>
+
+                            <div class="col-md-6">
+                                <mat-form-field>
+                                    <mat-select formControlName="deafnessFamily" (selectionChange)="earProblems()" placeholder="Any ear disease or deafness in the family?">
+                                        <mat-option *ngFor="let item of yesNo" [value]="item">{{item}}
+                                        </mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+                            <div class="col-md-6">
+                                <mat-form-field class="" *ngIf="addTextDeafnessFamily">
+                                    <input matInput formControlName="deafnessFamilyText"
+                                        placeholder="If so describe:">
+                                </mat-form-field>
+                            </div>
+
+                            <div class="col-md-6">
+                                <mat-form-field>
+                                    <mat-select formControlName="sufferedHead" (selectionChange)="earProblems()" placeholder="Ever suffered head injury/concussion/unconsciousness?">
+                                        <mat-option *ngFor="let item of yesNo" [value]="item">{{item}}
+                                        </mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>   
+                            <div class="col-md-6">
+                                <mat-form-field class="" *ngIf="addTextSufferedHead">
+                                    <input matInput formControlName="sufferedHeadText"
+                                        placeholder="If so describe:">
+                                </mat-form-field>
+                            </div>
+
+                            <div class="col-md-12">
+                                <mat-form-field>
+                                    <mat-select formControlName="sufferRinging" placeholder="Do you suffer ringing in the ear/head?">
+                                        <mat-option *ngFor="let item of yesNo" [value]="item">{{item}}
+                                        </mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>   
+                            <div class="col-md-12">
+                                <mat-form-field>
+                                    <mat-select formControlName="sufferFromDizziness" placeholder="Do you suffer from dizziness/giddiness?">
+                                        <mat-option *ngFor="let item of yesNo" [value]="item">{{item}}
+                                        </mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>   
+                            <div class="col-md-12">
+                                <mat-form-field>
+                                    <mat-select formControlName="ototoxicDrugs" placeholder="Exposure to ototoxic drugs or solvents eg streptomycin, otosporin, quinine, toluene?">
+                                        <mat-option *ngFor="let item of yesNo" [value]="item">{{item}}
+                                        </mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>   
+                            <div class="col-md-6">
+                                <mat-form-field>
+                                    <mat-select formControlName="exposureGunfire" (selectionChange)="earProblems()" placeholder="Exposure to gunfire/blasts/explosions?">
+                                        <mat-option *ngFor="let item of yesNo" [value]="item">{{item}}
+                                        </mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>   
+                            <div class="col-md-6">
+                                <mat-form-field class="" *ngIf="addTextExposureGunfire">
+                                    <input matInput formControlName="exposureGunfireText"
+                                        placeholder="If so describe:">
+                                </mat-form-field>
+                            </div>
+
+
+                            <div class="col-md-6">
+                                <mat-form-field>
+                                    <mat-select formControlName="noisyHobbies" placeholder="Do you have any noisy hobbies?">
+                                        <mat-option *ngFor="let item of yesNo" [value]="item">{{item}}
+                                        </mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+                            <div class="col-md-6">
+                                <mat-form-field>
+                                    <mat-select formControlName="noisyHobbiesConfirm" placeholder="Tick all that apply:"
+                                        (selectionChange)="noisyHobbiesChanged($event);" required multiple>
+                                        <mat-option *ngFor="let item of noisyHobbiesList" [value]="item">{{item}}
+                                        </mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+
+                            
+                            <div class="col-md-12">
+                                <mat-form-field>
+                                    <mat-select formControlName="hearNoise" placeholder="Do you hear better or worse in noise?">
+                                        <mat-option *ngFor="let item of betterWorse" [value]="item">{{item}}
+                                        </mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+
+
+                            <div class="col-md-6">
+                                <mat-form-field>
+                                    <mat-select formControlName="hadWax" (selectionChange)="earProblems()" placeholder="Have you had wax removed from your ears?">
+                                        <mat-option *ngFor="let item of yesNo" [value]="item">{{item}}
+                                        </mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+                            <div class="col-md-6">
+                                <mat-form-field *ngIf="addTextHadWax">
+                                    <input matInput formControlName="hadWaxWhen"
+                                        placeholder="If YES, when?">
+                                </mat-form-field>
+                            </div>
+                            
+                        </div>
+
+                        <div class="row" *ngIf="learTotal > 89 || rearTotal > 89">
+                            <div class="col-md-12">
+                                <p class="bgColor text-center">Previous noise exposure</p>
+                            </div>
+                            
+                            <div class="col-md-12">
+                                <mat-form-field>
+                                    <mat-select formControlName="pastEarProblem" (selectionChange)="earProblems()" placeholder="In the past have you had any jobs where the environment is noisy where you have had to shout to be heard?">
+                                        <mat-option *ngFor="let item of yesNo" [value]="item">{{item}}
+                                        </mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+                            <div class="col-md-6" *ngIf="addTextPastEarProblem">
+                                <mat-form-field>
+                                    <input matInput formControlName="previousJob"
+                                        placeholder="Previous job:">
+                                </mat-form-field>
+                            </div>
+                            <div class="col-md-3" *ngIf="addTextPastEarProblem">
+                                <mat-form-field>
+                                    <input matInput formControlName="longYear"
+                                        placeholder="For how long year?">
+                                </mat-form-field>
+                            </div>
+                            <div class="col-md-3" *ngIf="addTextPastEarProblem">
+                                <mat-form-field>
+                                    <input matInput formControlName="longMonth"
+                                        placeholder="For how long month?">
+                                </mat-form-field>
+                            </div>
+                            <div class="col-md-6" *ngIf="addTextPastEarProblem">
+                                <mat-form-field>
+                                    <mat-select formControlName="protectionProvided" placeholder="Ear protection provided?">
+                                        <mat-option *ngFor="let item of yesNo" [value]="item">{{item}}
+                                        </mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+                            <div class="col-md-6" *ngIf="addTextPastEarProblem">
+                                <mat-form-field>
+                                    <mat-select formControlName="type" placeholder="Type: ">
+                                        <mat-option *ngFor="let item of types" [value]="item">{{item}}
+                                        </mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        
                         <div class="row">
                             <div class="col-md-12">
                                 <mat-form-field class="">
@@ -1107,8 +1341,8 @@
                                 </mat-form-field>
                             </div>
                         </div>
-
                     </div>
+                    <!-- </div> -->
                 </div>
             </form>
 

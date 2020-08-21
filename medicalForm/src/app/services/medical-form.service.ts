@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, from } from 'rxjs';
 import { HttpClient, HttpErrorResponse, HttpParams } from '@angular/common/http';
-import { config } from '../config';
-
+import { config } from './../config'
 @Injectable({
   providedIn: 'root'
 })
