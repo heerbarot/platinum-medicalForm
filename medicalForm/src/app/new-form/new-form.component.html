@@ -11,12 +11,12 @@
     </div>
     <!-- <div class=""> -->
 
-<!--     <div class="form-one" [hidden]="hideFirstForm">
+    <div class="form-one" [hidden]="hideFirstForm">
         <app-old-form (oldData)="newOldData($event)"></app-old-form>
-    </div> -->
+    </div>
     <!-- </div> -->
 
-    <div id="accordianNew" >
+    <div id="accordianNew" [hidden]="hideSecondForm">
         <div class="single_accordion">
             <div class="single_accordion_title collapsed" id="headingNew" data-toggle="collapse"
                 data-target="#collapseNew" aria-expanded="true" aria-controls="collapse">
@@ -764,6 +764,32 @@
                                     <mat-form-field>
                                         <mat-select formControlName="lettersIssuedYes" placeholder="Select" multiple>
                                             <mat-option *ngFor="let item of ifYes" [value]="item">{{item}}
+                                            </mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="col-12 bgColor text-center">
+                                    <b>Leaflets Sent</b>
+                                </div>
+
+                                <div class="col-12">
+                                    <mat-form-field>
+                                        <mat-select formControlName="leafletsSent" (selectionChange)="leafletsSentChanged($event)" placeholder="Select">
+                                            <mat-option *ngFor="let item of yesNo" [value]="item">{{item}}
+                                            </mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-12" *ngIf="showleafletsSentYes">
+                                    <mat-form-field>
+                                        <mat-select formControlName="leafletsSentYes" placeholder="Select" multiple>
+                                            <mat-option *ngFor="let item of leafletsIfYes" [value]="item">
+                                                {{item}}
                                             </mat-option>
                                         </mat-select>
                                     </mat-form-field>

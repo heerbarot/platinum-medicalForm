@@ -30,6 +30,7 @@ export class NewFormComponent implements OnInit {
   normality = ['Normal', 'Abnormal']
   urinanalysis = ['NAD', '+', '++', '+++']
   ifYes = ['Blood Pressure', 'Smoking', 'Alcohol', 'BMI', 'Hearing']
+  leafletsIfYes = ['Blood Pressure', 'Smoking', 'Alcohol', 'BMI']
   strength = ['Good', 'Fair', 'Poor']
   betterWorse = ['BETTER', 'WORSE']
   types = ['Glass wool / earplugs', 'inserts / earmuffs']
@@ -112,14 +113,16 @@ export class NewFormComponent implements OnInit {
   bmiSnoreDetails: boolean;
   bmiTiredDetails: boolean;
   bmiRefreshedDetails: boolean;
+  leafletsSentYes;
 
 
   // To show aided and correct field based on glass worn selection
   isGlassWorn: boolean;
+  showleafletsSentYes: boolean;
   constructor(private fb: FormBuilder, public dialog: MatDialog, public _medicalFormService: MedicalFormService) {
     this.pulseList = this.generateRange(40, 180)
     this.heightList = this.generateRange(120, 200)
-    this.weightList = this.generateRange(30, 200)
+    this.weightList = this.generateRange(30, 250)
     this.distanceVisionList = this.generateRange(0, 60)
     this.platesList = this.generateRange(0, 21)
     this.hearingList = this.generateHearingRange(-10, 80)
@@ -251,6 +254,8 @@ export class NewFormComponent implements OnInit {
     speech: new FormControl('', Validators.required),
     adviceGiven: new FormControl('', Validators.required),
     lettersIssued: new FormControl('', Validators.required),
+    leafletsSent: new FormControl(''),
+    leafletsSentYes:new FormControl(''),
     adviceGivenYes: new FormControl(''),
     lettersIssuedYes: new FormControl(''),
     additionalComments: new FormControl(''),
@@ -694,6 +699,18 @@ export class NewFormComponent implements OnInit {
       this.showlettersIssuedYes = false
       this.generalHealth.patchValue({
         lettersIssuedYes: ''
+      })
+    }
+  }
+  leafletsSentChanged(event){
+    console.log('event in leafletsSentChanged($event)', event)
+    if (this.generalHealth.value.leafletsSent != '' && this.generalHealth.value.leafletsSent == 'Yes') {
+      this.showleafletsSentYes = true
+    }
+    else {
+      this.showleafletsSentYes = false
+      this.generalHealth.patchValue({
+        leafletsSentYes: ''
       })
     }
   }

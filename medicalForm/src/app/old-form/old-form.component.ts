@@ -23,6 +23,7 @@ export class OldFormComponent implements OnInit {
   @ViewChild(SignaturePad, { static: true }) signaturePad: SignaturePad;
   @Output() oldData = new EventEmitter();
   showSleepDisorderQues: boolean;
+  respiratoryNlungMedYes: any;
 
   constructor(public _medicalFormService: MedicalFormService, public dialog: MatDialog) {
     let date = new Date()
@@ -175,7 +176,7 @@ export class OldFormComponent implements OnInit {
     console.log("this.fullDate", this.confirmDate)
 
     if (this.firstName == undefined || this.surName == undefined || this.surName == ""
-      || !this.fullDate || !this.confirmDate || !this.imgData) {
+      || !this.fullDate || !this.confirmDate || !this.imgData || !this.email) {
       alert("Details missing")
     }
     else {
@@ -212,6 +213,8 @@ export class OldFormComponent implements OnInit {
           heartNcirculatoryConDetails: this.heartNcirculatoryConDetails,
 
           respiratoryNlungCon: this.respiratoryNlungCon,
+          respiratoryNlungMed: this.respiratoryNlungMed,
+          respiratoryNlungMedYes: this.respiratoryNlungMedYes,
           respiratoryNlung: this.respiratoryNlung,
           respiratoryNlungYes: this.respiratoryNlung,
           respiratoryNlungConQ1:this.respiratoryNlungConQ1,

@@ -223,7 +223,7 @@
                         <div class="col-md-6">
                             <mat-form-field>
                                 <input matInput type="email" [ngModelOptions]="{standalone: true}" placeholder="Email"
-                                    [(ngModel)]="email">
+                                    [(ngModel)]="email" required>
                             </mat-form-field>
                         </div>
 
@@ -540,7 +540,7 @@
                             <div class="col-12 p-0" *ngIf="respiratoryNlungMed == 'Yes'">
                                 <mat-form-field>
                                     <input matInput placeholder="Type of medication" [ngModelOptions]="{standalone: true}"
-                                        [(ngModel)]="respiratoryNlungYes">
+                                        [(ngModel)]="respiratoryNlungMedYes">
                                 </mat-form-field>
                             </div>
                             <div class="col-md-4 p-0">
