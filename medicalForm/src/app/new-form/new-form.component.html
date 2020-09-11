@@ -39,7 +39,7 @@
                                 <mat-form-field>
                                     <mat-select id="idConfirmed" formControlName="idConfirmed" placeholder="ID Confirmed"
                                         (selectionChange)="idChanged($event);onValueChange()" required multiple>
-                                        <mat-option *ngFor="let item of idConfirmList" [value]="item">{{item}}
+                                        <mat-option *ngFor="let item of idConfirmList; let i = index" id="idConfirmed{{i}}" [value]="item">{{item}}
                                         </mat-option>
                                     </mat-select>
                                 </mat-form-field>
@@ -68,7 +68,7 @@
 
                             <div class="col-md-6">
                                 <mat-form-field>
-                                    <input formControlName="natInstNo" matInput placeholder="National Insurance No.">
+                                    <input id="170" formControlName="natInstNo" matInput placeholder="National Insurance No.">
                                 </mat-form-field>
                             </div>
 
@@ -78,8 +78,8 @@
 
                             <div class="col-md-6">
                                 <mat-form-field>
-                                    <mat-select formControlName="currentSenCard" placeholder="Current Sentinel Card?">
-                                        <mat-option *ngFor="let item of yesNo" [value]="item">{{item}}
+                                    <mat-select id="171" formControlName="currentSenCard" placeholder="Current Sentinel Card?">
+                                        <mat-option *ngFor="let item of yesNo; let i = index" id="171{{i}}" [value]="item">{{item}}
                                         </mat-option>
                                     </mat-select>
                                 </mat-form-field>
@@ -87,7 +87,7 @@
 
                             <div class="col-md-6">
                                 <mat-form-field>
-                                    <input formControlName="sentinalNo" matInput placeholder="Sentinel No.">
+                                    <input id="172" formControlName="sentinalNo" matInput placeholder="Sentinel No.">
                                 </mat-form-field>
                             </div>
                         </div>
@@ -95,7 +95,7 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <mat-form-field>
-                                    <input formControlName="additionalComments" matInput
+                                    <input id="173" formControlName="additionalComments" matInput
                                         placeholder="Additional Comments">
                                 </mat-form-field>
                             </div>

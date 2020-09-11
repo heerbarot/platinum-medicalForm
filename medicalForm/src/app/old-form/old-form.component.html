@@ -162,9 +162,9 @@
             </div>
         </div>
         <!-- MEDICAL QUESTIONNAIRE AND CONSENT FORM Start Here -->
-        <div class="single_accordion">
+        <div class="single_accordion" id="page_1_accordian_2">
             <div class="single_accordion_title collapsed" id="headingOne" data-toggle="collapse"
-                data-target="#collapseOne" aria-expanded="truw" aria-controls="collapseOne">
+                data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                 MEDICAL QUESTIONNAIRE AND CONSENT FORM
             </div>
             <div id="collapseOne" class="collapse single_accordion_content" aria-labelledby="headingOne"
@@ -172,14 +172,14 @@
                 <div class="single_accordion_content_inner">
                     <div class="row">
                         <div class="col-md-6">
-                            <!-- <label>First name</label> -->
+                            
                             <mat-form-field class="">
                                 <input id="firstName" [ngModelOptions]="{standalone: true}" matInput placeholder="First name"
                                     [(ngModel)]="firstName" required>
                             </mat-form-field>
                         </div>
                         <div class="col-md-6">
-                            <!-- <label>First name</label> -->
+                            
                             <mat-form-field>
                                 <input id="surName" [ngModelOptions]="{standalone: true}" matInput placeholder="Surname"
                                     [(ngModel)]="surName" required>
@@ -192,37 +192,29 @@
                         <div class="col-md-6">
                             
                             <mat-form-field class="col-4 p-0 m-0">
-                                <mat-select placeholder="Month" [(ngModel)]="month" [ngModelOptions]="{standalone: true}">
-                                    <mat-option *ngFor="let item of months" [value]="item">{{item}}</mat-option>
+                                <mat-select id="page_1_accordian_2_select_1_month"   placeholder="Month" [(ngModel)]="month" [ngModelOptions]="{standalone: true}">
+                                    <mat-option *ngFor="let item of months; let i = index" id="page_1_accordian_2_select_1_month_{{i}}" [value]="item">{{item}}</mat-option>
                                 </mat-select>
                             </mat-form-field>
 
                             <mat-form-field class="col-4 p-0 m-0">
-                                <mat-select placeholder="Day" [(ngModel)]="day" [ngModelOptions]="{standalone: true}">
-                                    <mat-option *ngFor="let item of days" [value]="item">{{item}}</mat-option>
+                                <mat-select placeholder="Day" [(ngModel)]="day" id="page_1_accordian_2_select_1_day" [ngModelOptions]="{standalone: true}">
+                                    <mat-option *ngFor="let item of days; let i = index" id="page_1_accordian_2_select_1_day_{{i}}" [value]="item">{{item}}</mat-option>
                                 </mat-select>
                             </mat-form-field>
 
                             <mat-form-field class="col-4 p-0 m-0">
-                                <mat-select placeholder="Year" [(ngModel)]="year" [ngModelOptions]="{standalone: true}">
-                                    <mat-option *ngFor="let item of years" [value]="item">{{item}}</mat-option>
+                                <mat-select placeholder="Year" id="page_1_accordian_2_select_1_year"  [(ngModel)]="year" [ngModelOptions]="{standalone: true}">
+                                    <mat-option *ngFor="let item of years; let i = index" id="page_1_accordian_2_select_1_year_{{i}}" [value]="item">{{item}}</mat-option>
                                 </mat-select>
                             </mat-form-field>
                             
-                            <!-- <app-date-picker (finalizedDate)="finalDate($event, 'fullDate')">
-                                
-                            </app-date-picker> -->
-                            <!-- <mat-form-field>
-                                <input matInput [matDatepicker]="picker" [ngModelOptions]="{standalone: true}"
-                                    placeholder="Date Of Birth" [(ngModel)]="dateOfBirth" required>
-                                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                                <mat-datepicker #picker></mat-datepicker>
-                            </mat-form-field> -->
+                            
                         </div>
 
                         <div class="col-md-6">
                             <mat-form-field>
-                                <input matInput type="email" [ngModelOptions]="{standalone: true}" placeholder="Email"
+                                <input matInput type="email" id="page_1_accordian_2_select_1_email" [ngModelOptions]="{standalone: true}" placeholder="Email"
                                     [(ngModel)]="email" required>
                             </mat-form-field>
                         </div>
@@ -232,15 +224,15 @@
                     <div class="row">
                         <div class="col-md-6">
                             <mat-form-field>
-                                <input matInput type="number" [ngModelOptions]="{standalone: true}"
+                                <input matInput type="number" id="page_1_accordian_2_select_1_telephone" [ngModelOptions]="{standalone: true}"
                                     placeholder="Telephone Number" [(ngModel)]="telNumber">
                             </mat-form-field>
                         </div>
 
                         <div class="col-md-6">
-                            <!-- <label>First name</label> -->
+                            
                             <mat-form-field class="">
-                                <input [ngModelOptions]="{standalone: true}" matInput placeholder="Sponsor's Name"
+                                <input [ngModelOptions]="{standalone: true}" id="page_1_accordian_2_select_1_sponserName" matInput placeholder="Sponsor's Name"
                                     [(ngModel)]="sponsorName">
                             </mat-form-field>
                         </div>
@@ -248,16 +240,16 @@
 
                     <div class="row">
                         <div class="col-md-6">
-                            <!-- <label>First name</label> -->
+                            
                             <mat-form-field class="">
-                                <input [ngModelOptions]="{standalone: true}" matInput placeholder="Job Title"
+                                <input [ngModelOptions]="{standalone: true}" id="page_1_accordian_2_select_1_jobTitle" matInput placeholder="Job Title"
                                     [(ngModel)]="jobTitle">
                             </mat-form-field>
                         </div>
 
                         <div class="col-md-6">
                             <mat-form-field>
-                                <textarea matInput placeholder="Home Address" [ngModelOptions]="{standalone: true}"
+                                <textarea matInput placeholder="Home Address" id="page_1_accordian_2_select_1_homeAddress" [ngModelOptions]="{standalone: true}"
                                     [(ngModel)]="homeAdd"></textarea>
                             </mat-form-field>
                         </div>
@@ -266,7 +258,7 @@
                     <div class="row">
                         <div class="col-md-12">
                             <mat-form-field>
-                                <textarea matInput placeholder="GP's Address" [ngModelOptions]="{standalone: true}"
+                                <textarea matInput placeholder="GP's Address" id="page_1_accordian_2_select_1_gpHomeAddress" [ngModelOptions]="{standalone: true}"
                                     [(ngModel)]="gpAdd"></textarea>
                             </mat-form-field>
                         </div>
@@ -275,7 +267,7 @@
                     <div class="row">
                         <div class="col-md-12">
                             <mat-form-field class="">
-                                <input [ngModelOptions]="{standalone: true}" matInput placeholder="Additional Comments"
+                                <input [ngModelOptions]="{standalone: true}" id="page_1_accordian_2_select_1_addtionalComments" matInput placeholder="Additional Comments"
                                     [(ngModel)]="medicalQuestionnaireComment">
                             </mat-form-field>
                         </div>
@@ -284,7 +276,7 @@
             </div>
         </div>
         <!-- EMPLOYMENT HISTORY -->
-        <div class="single_accordion">
+        <div class="single_accordion" id="page_1_accordian_3">
             <div class="single_accordion_title collapsed" id="headingTwo" data-toggle="collapse"
                 data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
                 EMPLOYMENT HISTORY
@@ -301,7 +293,7 @@
                                 <mat-radio-group [ngModelOptions]="{standalone: true}"
                                     [ngModelOptions]="{standalone: true}" [(ngModel)]="absentSickness"
                                     aria-label="Select an option">
-                                    <mat-radio-button class="mr-3" value="Yes">Yes</mat-radio-button>
+                                    <mat-radio-button id="page_1_accordian_3_radio_1" class="mr-3" value="Yes">Yes</mat-radio-button>
                                     <mat-radio-button class="mr-3" value="No">No</mat-radio-button>
                                 </mat-radio-group>
                             </div>
@@ -311,7 +303,7 @@
 
                             If yes - please record details
                             <mat-form-field>
-                                <textarea matInput placeholder="Details" [ngModelOptions]="{standalone: true}"
+                                <textarea id="page_1_accordian_3_radio_1_text_area" matInput placeholder="Details" [ngModelOptions]="{standalone: true}"
                                     [(ngModel)]="absentSicknessDetails"></textarea>
                             </mat-form-field>
 
@@ -331,7 +323,7 @@
                                 <mat-radio-group [ngModelOptions]="{standalone: true}"
                                     [ngModelOptions]="{standalone: true}" [(ngModel)]="deniedJob"
                                     aria-label="Select an option">
-                                    <mat-radio-button class="mr-3" value="Yes">Yes</mat-radio-button>
+                                    <mat-radio-button id="page_1_accordian_3_radio_2" class="mr-3" value="Yes">Yes</mat-radio-button>
                                     <mat-radio-button class="mr-3" value="No">No</mat-radio-button>
                                 </mat-radio-group>
                             </div>
@@ -341,7 +333,7 @@
 
                             If yes - please record details
                             <mat-form-field>
-                                <textarea matInput placeholder="Details" [ngModelOptions]="{standalone: true}"
+                                <textarea id="page_1_accordian_3_radio_2_text_area" matInput placeholder="Details" [ngModelOptions]="{standalone: true}"
                                     [(ngModel)]="deniedJobDetails"></textarea>
                             </mat-form-field>
 
@@ -358,7 +350,7 @@
                                 <mat-radio-group [ngModelOptions]="{standalone: true}"
                                     [ngModelOptions]="{standalone: true}" [(ngModel)]="illnessByWork"
                                     aria-label="Select an option">
-                                    <mat-radio-button class="mr-3" value="Yes">Yes</mat-radio-button>
+                                    <mat-radio-button id="page_1_accordian_3_radio_3" class="mr-3" value="Yes">Yes</mat-radio-button>
                                     <mat-radio-button class="mr-3" value="No">No</mat-radio-button>
                                 </mat-radio-group>
                             </div>
@@ -368,7 +360,7 @@
 
                             If yes - please record details
                             <mat-form-field>
-                                <textarea matInput placeholder="Details" [ngModelOptions]="{standalone: true}"
+                                <textarea id="page_1_accordian_3_radio_3_text_area" matInput placeholder="Details" [ngModelOptions]="{standalone: true}"
                                     [(ngModel)]="illnessByWorkDetails"></textarea>
                             </mat-form-field>
 
@@ -378,7 +370,7 @@
                     <div class="row">
                         <div class="col-md-12">
                             <mat-form-field class="">
-                                <input [ngModelOptions]="{standalone: true}" matInput placeholder="Additional Comments"
+                                <input [ngModelOptions]="{standalone: true}" id="page_1_accordian_3_additonalComments" matInput placeholder="Additional Comments"
                                     [(ngModel)]="empHistoryComment">
                             </mat-form-field>
                         </div>
@@ -405,7 +397,7 @@
                                     <mat-radio-group [ngModelOptions]="{standalone: true}"
                                         [ngModelOptions]="{standalone: true}" [(ngModel)]="heartNcirculatoryCon"
                                         aria-label="Select an option">
-                                        <mat-radio-button class="mr-3" value="Yes">Yes</mat-radio-button>
+                                        <mat-radio-button  class="mr-3" id="page_1_accordian_4_radio_1_please" value="Yes">Yes</mat-radio-button>
                                         <mat-radio-button class="mr-3" value="No">No</mat-radio-button>
                                     </mat-radio-group>
                                 </div>
@@ -415,7 +407,7 @@
 
                                 If yes - please record details
                                 <mat-form-field>
-                                    <textarea matInput placeholder="Details" [ngModelOptions]="{standalone: true}"
+                                    <textarea id="page_1_accordian_4_radio_1_textarea" matInput placeholder="Details" [ngModelOptions]="{standalone: true}"
                                         [(ngModel)]="heartNcirculatoryConDetails"></textarea>
                                 </mat-form-field>
                                 <!-- class="single_accordion" -->
@@ -431,8 +423,8 @@
                                     </div>
                                     <div class="col-12">
                                         <mat-form-field>
-                                            <mat-select [ngModelOptions]="{standalone: true}" [(ngModel)]="heartNcirculatoryMed" placeholder="Select">
-                                                <mat-option [value]="'Yes'">Yes</mat-option>
+                                            <mat-select id="page_1_accordian_4_radio_1_select"  [ngModelOptions]="{standalone: true}" [(ngModel)]="heartNcirculatoryMed" placeholder="Select">
+                                                <mat-option id="page_1_accordian_4_radio_1_option" [value]="'Yes'">Yes</mat-option>
                                                 <mat-option [value]="'No'">No</mat-option>
                                             </mat-select>
                                         </mat-form-field>
@@ -442,7 +434,7 @@
 
                             <div class="col-12 p-0" *ngIf="heartNcirculatoryMed == 'Yes'">
                                 <mat-form-field>
-                                    <input matInput placeholder="Type of medication" [ngModelOptions]="{standalone: true}"
+                                    <input matInput placeholder="Type of medication" id="page_1_accordian_4_radio_1_textarea_0"  [ngModelOptions]="{standalone: true}"
                                         [(ngModel)]="heartNcirculatoryMedYes">
                                 </mat-form-field>
                             </div>
@@ -456,7 +448,7 @@
                                         <mat-form-field>
                                             <textarea matInput placeholder="Details"
                                                 [ngModelOptions]="{standalone: true}"
-                                                [(ngModel)]="heartNcirculatoryConQ1"></textarea>
+                                                [(ngModel)]="heartNcirculatoryConQ1" id="page_1_accordian_4_radio_1_textarea_1"></textarea>
                                         </mat-form-field>
                                     </div>
                                 </div>
@@ -470,7 +462,7 @@
                                         <mat-form-field>
                                             <textarea matInput placeholder="Details"
                                                 [ngModelOptions]="{standalone: true}"
-                                                [(ngModel)]="heartNcirculatoryConQ2"></textarea>
+                                                [(ngModel)]="heartNcirculatoryConQ2" id="page_1_accordian_4_radio_1_textarea_2"></textarea>
                                         </mat-form-field>
                                     </div>
                                 </div>
@@ -485,7 +477,7 @@
                                         <mat-form-field>
                                             <textarea matInput placeholder="Details"
                                                 [ngModelOptions]="{standalone: true}"
-                                                [(ngModel)]="heartNcirculatoryConQ3"></textarea>
+                                                [(ngModel)]="heartNcirculatoryConQ3" id="page_1_accordian_4_radio_1_textarea_3"></textarea>
                                         </mat-form-field>
                                     </div>
                                 </div>
@@ -502,7 +494,7 @@
                                     <mat-radio-group [ngModelOptions]="{standalone: true}"
                                         [ngModelOptions]="{standalone: true}" [(ngModel)]="respiratoryNlungCon"
                                         aria-label="Select an option">
-                                        <mat-radio-button class="mr-3" value="Yes">Yes</mat-radio-button>
+                                        <mat-radio-button id="1" class="mr-3" value="Yes">Yes</mat-radio-button>
                                         <mat-radio-button class="mr-3" value="No">No</mat-radio-button>
                                     </mat-radio-group>
                                 </div>
@@ -512,7 +504,7 @@
 
                                 If yes - please record details
                                 <mat-form-field>
-                                    <textarea matInput placeholder="Details" [ngModelOptions]="{standalone: true}"
+                                    <textarea matInput id="2" placeholder="Details" [ngModelOptions]="{standalone: true}"
                                         [(ngModel)]="respiratoryNlungConDetails"></textarea>
                                 </mat-form-field>
 
@@ -527,9 +519,9 @@
                                     </div>
                                     <div class="col-12">
                                         <mat-form-field>
-                                            <mat-select [ngModelOptions]="{standalone: true}" [(ngModel)]="respiratoryNlungMed"
+                                            <mat-select id="3" [ngModelOptions]="{standalone: true}" [(ngModel)]="respiratoryNlungMed"
                                                 placeholder="Select">
-                                                <mat-option [value]="'Yes'">Yes</mat-option>
+                                                <mat-option id="4" [value]="'Yes'">Yes</mat-option>
                                                 <mat-option [value]="'No'">No</mat-option>
                                             </mat-select>
                                         </mat-form-field>
@@ -539,7 +531,7 @@
                             
                             <div class="col-12 p-0" *ngIf="respiratoryNlungMed == 'Yes'">
                                 <mat-form-field>
-                                    <input matInput placeholder="Type of medication" [ngModelOptions]="{standalone: true}"
+                                    <input matInput id="5" placeholder="Type of medication" [ngModelOptions]="{standalone: true}"
                                         [(ngModel)]="respiratoryNlungMedYes">
                                 </mat-form-field>
                             </div>
@@ -551,7 +543,7 @@
                                     </div>
                                     <div class="col-12">
                                         <mat-form-field>
-                                            <textarea matInput placeholder="Details"
+                                            <textarea id="6" matInput placeholder="Details"
                                                 [ngModelOptions]="{standalone: true}"
                                                 [(ngModel)]="respiratoryNlungConQ1"></textarea>
                                         </mat-form-field>
@@ -565,7 +557,7 @@
                                     </div>
                                     <div class="col-12">
                                         <mat-form-field>
-                                            <textarea matInput placeholder="Details"
+                                            <textarea id="7" matInput placeholder="Details"
                                                 [ngModelOptions]="{standalone: true}"
                                                 [(ngModel)]="respiratoryNlungConQ2"></textarea>
                                         </mat-form-field>
@@ -580,7 +572,7 @@
                                     </div>
                                     <div class="col-12">
                                         <mat-form-field>
-                                            <textarea matInput placeholder="Details"
+                                            <textarea id="8" matInput placeholder="Details"
                                                 [ngModelOptions]="{standalone: true}"
                                                 [(ngModel)]="respiratoryNlungConQ3"></textarea>
                                         </mat-form-field>
@@ -599,7 +591,7 @@
                                     <mat-radio-group [ngModelOptions]="{standalone: true}"
                                         [ngModelOptions]="{standalone: true}" [(ngModel)]="neurologicalCon"
                                         aria-label="Select an option">
-                                        <mat-radio-button class="mr-3" value="Yes">Yes</mat-radio-button>
+                                        <mat-radio-button id="9" class="mr-3" value="Yes">Yes</mat-radio-button>
                                         <mat-radio-button class="mr-3" value="No">No</mat-radio-button>
                                     </mat-radio-group>
                                 </div>
@@ -609,7 +601,7 @@
 
                                 If yes - please record details
                                 <mat-form-field>
-                                    <textarea matInput placeholder="Details" [ngModelOptions]="{standalone: true}"
+                                    <textarea id="10" matInput placeholder="Details" [ngModelOptions]="{standalone: true}"
                                         [(ngModel)]="neurologicalConDetails"></textarea>
                                 </mat-form-field>
 
@@ -624,9 +616,9 @@
                                     </div>
                                     <div class="col-12">
                                         <mat-form-field>
-                                            <mat-select [ngModelOptions]="{standalone: true}" [(ngModel)]="neurologicalMed"
+                                            <mat-select id="11" [ngModelOptions]="{standalone: true}" [(ngModel)]="neurologicalMed"
                                                 placeholder="Select">
-                                                <mat-option [value]="'Yes'">Yes</mat-option>
+                                                <mat-option id="12" [value]="'Yes'">Yes</mat-option>
                                                 <mat-option [value]="'No'">No</mat-option>
                                             </mat-select>
                                         </mat-form-field>
@@ -636,7 +628,7 @@
                             
                             <div class="col-12 p-0" *ngIf="neurologicalMed == 'Yes'">
                                 <mat-form-field>
-                                    <input matInput placeholder="Type of medication" [ngModelOptions]="{standalone: true}"
+                                    <input matInput id="13" placeholder="Type of medication" [ngModelOptions]="{standalone: true}"
                                         [(ngModel)]="neurologicalMedYes">
                                 </mat-form-field>
                             </div>
@@ -648,7 +640,7 @@
                                     </div>
                                     <div class="col-12">
                                         <mat-form-field>
-                                            <textarea matInput placeholder="Details"
+                                            <textarea id="14" matInput placeholder="Details"
                                                 [ngModelOptions]="{standalone: true}"
                                                 [(ngModel)]="neurologicalConQ1"></textarea>
                                         </mat-form-field>
@@ -662,7 +654,7 @@
                                     </div>
                                     <div class="col-12">
                                         <mat-form-field>
-                                            <textarea matInput placeholder="Details"
+                                            <textarea id="15" matInput placeholder="Details"
                                                 [ngModelOptions]="{standalone: true}"
                                                 [(ngModel)]="neurologicalConQ2"></textarea>
                                         </mat-form-field>
@@ -677,7 +669,7 @@
                                     </div>
                                     <div class="col-12">
                                         <mat-form-field>
-                                            <textarea matInput placeholder="Details"
+                                            <textarea id="16" matInput placeholder="Details"
                                                 [ngModelOptions]="{standalone: true}"
                                                 [(ngModel)]="neurologicalConQ3"></textarea>
                                         </mat-form-field>
@@ -695,7 +687,7 @@
                                     <mat-radio-group [ngModelOptions]="{standalone: true}"
                                         [ngModelOptions]="{standalone: true}" [(ngModel)]="weeknessCon"
                                         aria-label="Select an option">
-                                        <mat-radio-button class="mr-3" value="Yes">Yes</mat-radio-button>
+                                        <mat-radio-button id="17" class="mr-3" value="Yes">Yes</mat-radio-button>
                                         <mat-radio-button class="mr-3" value="No">No</mat-radio-button>
                                     </mat-radio-group>
                                 </div>
@@ -705,7 +697,7 @@
 
                                 If yes - please record details
                                 <mat-form-field>
-                                    <textarea matInput placeholder="Details" [ngModelOptions]="{standalone: true}"
+                                    <textarea id="18" matInput placeholder="Details" [ngModelOptions]="{standalone: true}"
                                         [(ngModel)]="weeknessConDetails"></textarea>
                                 </mat-form-field>
 
@@ -720,8 +712,8 @@
                                     </div>
                                     <div class="col-12">
                                         <mat-form-field>
-                                            <mat-select [ngModelOptions]="{standalone: true}" [(ngModel)]="weeknessMed" placeholder="Select">
-                                                <mat-option [value]="'Yes'">Yes</mat-option>
+                                            <mat-select id="19" [ngModelOptions]="{standalone: true}" [(ngModel)]="weeknessMed" placeholder="Select">
+                                                <mat-option id="20" [value]="'Yes'">Yes</mat-option>
                                                 <mat-option [value]="'No'">No</mat-option>
                                             </mat-select>
                                         </mat-form-field>
@@ -731,7 +723,7 @@
                             
                             <div class="col-12 p-0" *ngIf="weeknessMed == 'Yes'">
                                 <mat-form-field>
-                                    <input matInput placeholder="Type of medication" [ngModelOptions]="{standalone: true}"
+                                    <input matInput id="21" placeholder="Type of medication" [ngModelOptions]="{standalone: true}"
                                         [(ngModel)]="weeknessMedYes">
                                 </mat-form-field>
                             </div>
@@ -743,7 +735,7 @@
                                     </div>
                                     <div class="col-12">
                                         <mat-form-field>
-                                            <textarea matInput placeholder="Details"
+                                            <textarea id="22" matInput placeholder="Details"
                                                 [ngModelOptions]="{standalone: true}"
                                                 [(ngModel)]="weeknessConQ1"></textarea>
                                         </mat-form-field>
@@ -757,7 +749,7 @@
                                     </div>
                                     <div class="col-12">
                                         <mat-form-field>
-                                            <textarea matInput placeholder="Details"
+                                            <textarea id="23" matInput placeholder="Details"
                                                 [ngModelOptions]="{standalone: true}"
                                                 [(ngModel)]="weeknessConQ2"></textarea>
                                         </mat-form-field>
@@ -772,7 +764,7 @@
                                     </div>
                                     <div class="col-12">
                                         <mat-form-field>
-                                            <textarea matInput placeholder="Details"
+                                            <textarea id="24" matInput placeholder="Details"
                                                 [ngModelOptions]="{standalone: true}"
                                                 [(ngModel)]="weeknessConQ3"></textarea>
                                         </mat-form-field>
@@ -791,7 +783,7 @@
                                     <mat-radio-group [ngModelOptions]="{standalone: true}"
                                         [ngModelOptions]="{standalone: true}" [(ngModel)]="mentalHealthCon"
                                         aria-label="Select an option">
-                                        <mat-radio-button class="mr-3" value="Yes">Yes</mat-radio-button>
+                                        <mat-radio-button id="25" class="mr-3" value="Yes">Yes</mat-radio-button>
                                         <mat-radio-button class="mr-3" value="No">No</mat-radio-button>
                                     </mat-radio-group>
                                 </div>
@@ -801,7 +793,7 @@
 
                                 If yes - please record details
                                 <mat-form-field>
-                                    <textarea matInput placeholder="Details" [ngModelOptions]="{standalone: true}"
+                                    <textarea id="26" matInput placeholder="Details" [ngModelOptions]="{standalone: true}"
                                         [(ngModel)]="mentalHealthConDetails"></textarea>
                                 </mat-form-field>
 
@@ -816,8 +808,8 @@
                                     </div>
                                     <div class="col-12">
                                         <mat-form-field>
-                                            <mat-select [ngModelOptions]="{standalone: true}" [(ngModel)]="mentalHealthMed" placeholder="Select">
-                                                <mat-option [value]="'Yes'">Yes</mat-option>
+                                            <mat-select id="27" [ngModelOptions]="{standalone: true}" [(ngModel)]="mentalHealthMed" placeholder="Select">
+                                                <mat-option id="28" [value]="'Yes'">Yes</mat-option>
                                                 <mat-option [value]="'No'">No</mat-option>
                                             </mat-select>
                                         </mat-form-field>
@@ -827,7 +819,7 @@
                             
                             <div class="col-12 p-0" *ngIf="mentalHealthMed == 'Yes'">
                                 <mat-form-field>
-                                    <input matInput placeholder="Type of medication" [ngModelOptions]="{standalone: true}"
+                                    <input matInput id="29" placeholder="Type of medication" [ngModelOptions]="{standalone: true}"
                                         [(ngModel)]="mentalHealthMedYes">
                                 </mat-form-field>
                             </div>
@@ -839,7 +831,7 @@
                                     </div>
                                     <div class="col-12">
                                         <mat-form-field>
-                                            <textarea matInput placeholder="Details"
+                                            <textarea id="30" matInput placeholder="Details"
                                                 [ngModelOptions]="{standalone: true}"
                                                 [(ngModel)]="mentalHealthConQ1"></textarea>
                                         </mat-form-field>
@@ -853,7 +845,7 @@
                                     </div>
                                     <div class="col-12">
                                         <mat-form-field>
-                                            <textarea matInput placeholder="Details"
+                                            <textarea id="31" matInput placeholder="Details"
                                                 [ngModelOptions]="{standalone: true}"
                                                 [(ngModel)]="mentalHealthConQ2"></textarea>
                                         </mat-form-field>
@@ -868,7 +860,7 @@
                                     </div>
                                     <div class="col-12">
                                         <mat-form-field>
-                                            <textarea matInput placeholder="Details"
+                                            <textarea id="32" matInput placeholder="Details"
                                                 [ngModelOptions]="{standalone: true}"
                                                 [(ngModel)]="mentalHealthConQ3"></textarea>
                                         </mat-form-field>
@@ -887,7 +879,7 @@
                                     <mat-radio-group [ngModelOptions]="{standalone: true}"
                                         [ngModelOptions]="{standalone: true}" [(ngModel)]="musculoskeletalCon"
                                         aria-label="Select an option">
-                                        <mat-radio-button class="mr-3" value="Yes">Yes</mat-radio-button>
+                                        <mat-radio-button id="33" class="mr-3" value="Yes">Yes</mat-radio-button>
                                         <mat-radio-button class="mr-3" value="No">No</mat-radio-button>
                                     </mat-radio-group>
                                 </div>
@@ -897,7 +889,7 @@
 
                                 If yes - please record details
                                 <mat-form-field>
-                                    <textarea matInput placeholder="Details" [ngModelOptions]="{standalone: true}"
+                                    <textarea id="34" matInput placeholder="Details" [ngModelOptions]="{standalone: true}"
                                         [(ngModel)]="musculoskeletalConDetails"></textarea>
                                 </mat-form-field>
 
@@ -912,8 +904,8 @@
                                     </div>
                                     <div class="col-12">
                                         <mat-form-field>
-                                            <mat-select [ngModelOptions]="{standalone: true}" [(ngModel)]="musculoskeletalMed" placeholder="Select">
-                                                <mat-option [value]="'Yes'">Yes</mat-option>
+                                            <mat-select id="35" [ngModelOptions]="{standalone: true}" [(ngModel)]="musculoskeletalMed" placeholder="Select">
+                                                <mat-option id="36" [value]="'Yes'">Yes</mat-option>
                                                 <mat-option [value]="'No'">No</mat-option>
                                             </mat-select>
                                         </mat-form-field>
@@ -923,7 +915,7 @@
                             
                             <div class="col-12 p-0" *ngIf="musculoskeletalMed == 'Yes'">
                                 <mat-form-field>
-                                    <input matInput placeholder="Type of medication" [ngModelOptions]="{standalone: true}"
+                                    <input id="37" matInput placeholder="Type of medication" [ngModelOptions]="{standalone: true}"
                                         [(ngModel)]="musculoskeletalMedYes">
                                 </mat-form-field>
                             </div>
@@ -935,7 +927,7 @@
                                     </div>
                                     <div class="col-12">
                                         <mat-form-field>
-                                            <textarea matInput placeholder="Details"
+                                            <textarea id="38" matInput placeholder="Details"
                                                 [ngModelOptions]="{standalone: true}"
                                                 [(ngModel)]="musculoskeletalConQ1"></textarea>
                                         </mat-form-field>
@@ -949,7 +941,7 @@
                                     </div>
                                     <div class="col-12">
                                         <mat-form-field>
-                                            <textarea matInput placeholder="Details"
+                                            <textarea id="39" matInput placeholder="Details"
                                                 [ngModelOptions]="{standalone: true}"
                                                 [(ngModel)]="musculoskeletalConQ2"></textarea>
                                         </mat-form-field>
@@ -964,7 +956,7 @@
                                     </div>
                                     <div class="col-12">
                                         <mat-form-field>
-                                            <textarea matInput placeholder="Details"
+                                            <textarea id="40" matInput placeholder="Details"
                                                 [ngModelOptions]="{standalone: true}"
                                                 [(ngModel)]="musculoskeletalConQ3"></textarea>
                                         </mat-form-field>
@@ -983,7 +975,7 @@
                                     <mat-radio-group [ngModelOptions]="{standalone: true}"
                                         [ngModelOptions]="{standalone: true}" [(ngModel)]="sleepDisordersCon"
                                         aria-label="Select an option" (change)="sleepDisorderChenge($event)">
-                                        <mat-radio-button class="mr-3" value="Yes">Yes</mat-radio-button>
+                                        <mat-radio-button id="41" class="mr-3" value="Yes">Yes</mat-radio-button>
                                         <mat-radio-button class="mr-3" value="No">No</mat-radio-button>
                                     </mat-radio-group>
                                 </div>
@@ -993,7 +985,7 @@
 
                                 If yes - please record details
                                 <mat-form-field>
-                                    <textarea matInput placeholder="Details" [ngModelOptions]="{standalone: true}"
+                                    <textarea id="42" matInput placeholder="Details" [ngModelOptions]="{standalone: true}"
                                         [(ngModel)]="sleepDisordersConDetails"></textarea>
                                 </mat-form-field>
 
@@ -1008,8 +1000,8 @@
                                     </div>
                                     <div class="col-12">
                                         <mat-form-field>
-                                            <mat-select [ngModelOptions]="{standalone: true}" [(ngModel)]="sleepDisordersMed" placeholder="Select">
-                                                <mat-option [value]="'Yes'">Yes</mat-option>
+                                            <mat-select id="43" [ngModelOptions]="{standalone: true}" [(ngModel)]="sleepDisordersMed" placeholder="Select">
+                                                <mat-option id="44" [value]="'Yes'">Yes</mat-option>
                                                 <mat-option [value]="'No'">No</mat-option>
                                             </mat-select>
                                         </mat-form-field>
@@ -1019,7 +1011,7 @@
                             
                             <div class="col-12 p-0" *ngIf="sleepDisordersMed == 'Yes'">
                                 <mat-form-field>
-                                    <input matInput placeholder="Type of medication" [ngModelOptions]="{standalone: true}"
+                                    <input id="45" matInput placeholder="Type of medication" [ngModelOptions]="{standalone: true}"
                                         [(ngModel)]="sleepDisordersMedYes">
                                 </mat-form-field>
                             </div>
@@ -1033,7 +1025,7 @@
                                             [ngModelOptions]="{standalone: true}" [(ngModel)]="sleepDisorderRefreshed"
                                             aria-label="Select an option">
                                             <mat-radio-button class="mr-3" value="Yes">Yes</mat-radio-button>
-                                            <mat-radio-button class="mr-3" value="No">No</mat-radio-button>
+                                            <mat-radio-button id="46" class="mr-3" value="No">No</mat-radio-button>
                                         </mat-radio-group>
                                     </div>
                                 </div>
@@ -1042,7 +1034,7 @@
 
                                     If <b> NO </b>- please record details
                                     <mat-form-field>
-                                        <textarea matInput placeholder="Details" [ngModelOptions]="{standalone: true}"
+                                        <textarea id="47" matInput placeholder="Details" [ngModelOptions]="{standalone: true}"
                                             [(ngModel)]="sleepDisorderRefreshedDetails"></textarea>
                                     </mat-form-field>
                                 </div>
@@ -1055,10 +1047,10 @@
                                         breathing whilst you are asleep?
                                     </div>
                                     <div class="col-12">
-                                        <mat-radio-group [ngModelOptions]="{standalone: true}"
+                                        <mat-radio-group  [ngModelOptions]="{standalone: true}"
                                             [ngModelOptions]="{standalone: true}" [(ngModel)]="sleepDisorderBreathless"
                                             aria-label="Select an option">
-                                            <mat-radio-button class="mr-3" value="Yes">Yes</mat-radio-button>
+                                            <mat-radio-button id="48" class="mr-3" value="Yes">Yes</mat-radio-button>
                                             <mat-radio-button class="mr-3" value="No">No</mat-radio-button>
                                         </mat-radio-group>
                                     </div>
@@ -1068,7 +1060,7 @@
 
                                     If yes - please record details
                                     <mat-form-field>
-                                        <textarea matInput placeholder="Details" [ngModelOptions]="{standalone: true}"
+                                        <textarea id="49" matInput placeholder="Details" [ngModelOptions]="{standalone: true}"
                                             [(ngModel)]="sleepDisorderBreathlessDetails"></textarea>
                                     </mat-form-field>
                                 </div>
@@ -1083,7 +1075,7 @@
                                         <mat-radio-group [ngModelOptions]="{standalone: true}"
                                             [ngModelOptions]="{standalone: true}" [(ngModel)]="sleepDisorderHeadache"
                                             aria-label="Select an option">
-                                            <mat-radio-button class="mr-3" value="Yes">Yes</mat-radio-button>
+                                            <mat-radio-button id="50" class="mr-3" value="Yes">Yes</mat-radio-button>
                                             <mat-radio-button class="mr-3" value="No">No</mat-radio-button>
                                         </mat-radio-group>
                                     </div>
@@ -1093,7 +1085,7 @@
 
                                     If yes - please record details
                                     <mat-form-field>
-                                        <textarea matInput placeholder="Details" [ngModelOptions]="{standalone: true}"
+                                        <textarea matInput id="51" placeholder="Details" [ngModelOptions]="{standalone: true}"
                                             [(ngModel)]="sleepDisorderHeadacheDetails"></textarea>
                                     </mat-form-field>
                                 </div>
@@ -1108,7 +1100,7 @@
                                         <mat-radio-group [ngModelOptions]="{standalone: true}"
                                             [ngModelOptions]="{standalone: true}" [(ngModel)]="sleepDisorderSnore"
                                             aria-label="Select an option">
-                                            <mat-radio-button class="mr-3" value="Yes">Yes</mat-radio-button>
+                                            <mat-radio-button id="52" class="mr-3" value="Yes">Yes</mat-radio-button>
                                             <mat-radio-button class="mr-3" value="No">No</mat-radio-button>
                                         </mat-radio-group>
                                     </div>
@@ -1118,7 +1110,7 @@
 
                                     If yes - please record details
                                     <mat-form-field>
-                                        <textarea matInput placeholder="Details" [ngModelOptions]="{standalone: true}"
+                                        <textarea matInput id="53" placeholder="Details" [ngModelOptions]="{standalone: true}"
                                             [(ngModel)]="sleepDisorderSnoreDetails"></textarea>
                                     </mat-form-field>
                                 </div>
@@ -1133,7 +1125,7 @@
                                         <mat-radio-group [ngModelOptions]="{standalone: true}"
                                             [ngModelOptions]="{standalone: true}" [(ngModel)]="sleepDisorderTired"
                                             aria-label="Select an option">
-                                            <mat-radio-button class="mr-3" value="Yes">Yes</mat-radio-button>
+                                            <mat-radio-button id="54" class="mr-3" value="Yes">Yes</mat-radio-button>
                                             <mat-radio-button class="mr-3" value="No">No</mat-radio-button>
                                         </mat-radio-group>
                                     </div>
@@ -1143,7 +1135,7 @@
 
                                     If yes - please record details
                                     <mat-form-field>
-                                        <textarea matInput placeholder="Details" [ngModelOptions]="{standalone: true}"
+                                        <textarea matInput id="55" placeholder="Details" [ngModelOptions]="{standalone: true}"
                                             [(ngModel)]="sleepDisorderTiredDetails"></textarea>
                                     </mat-form-field>
                                 </div>
@@ -1161,8 +1153,8 @@
                                     <mat-radio-group [ngModelOptions]="{standalone: true}"
                                         [ngModelOptions]="{standalone: true}" [(ngModel)]="endocrineDisordersCon"
                                         aria-label="Select an option">
-                                        <mat-radio-button class="mr-3" value="Yes">Yes</mat-radio-button>
-                                        <mat-radio-button class="mr-3" value="No">No</mat-radio-button>
+                                        <mat-radio-button id="56" class="mr-3" value="Yes">Yes</mat-radio-button>
+                                        <mat-radio-button  class="mr-3" value="No">No</mat-radio-button>
                                     </mat-radio-group>
                                 </div>
                             </div>
@@ -1171,7 +1163,7 @@
 
                                 If yes - please record details
                                 <mat-form-field>
-                                    <textarea matInput placeholder="Details" [ngModelOptions]="{standalone: true}"
+                                    <textarea id="57" matInput placeholder="Details" [ngModelOptions]="{standalone: true}"
                                         [(ngModel)]="endocrineDisordersConDetails"></textarea>
                                 </mat-form-field>
 
@@ -1186,8 +1178,8 @@
                                     </div>
                                     <div class="col-12">
                                         <mat-form-field>
-                                            <mat-select [ngModelOptions]="{standalone: true}" [(ngModel)]="endocrineDisordersMed" placeholder="Select">
-                                                <mat-option [value]="'Yes'">Yes</mat-option>
+                                            <mat-select id="58" [ngModelOptions]="{standalone: true}" [(ngModel)]="endocrineDisordersMed" placeholder="Select">
+                                                <mat-option id="59" [value]="'Yes'">Yes</mat-option>
                                                 <mat-option [value]="'No'">No</mat-option>
                                             </mat-select>
                                         </mat-form-field>
@@ -1197,7 +1189,7 @@
                             
                             <div class="col-12 p-0" *ngIf="endocrineDisordersMed == 'Yes'">
                                 <mat-form-field>
-                                    <input matInput placeholder="Type of medication" [ngModelOptions]="{standalone: true}"
+                                    <input id="60" matInput placeholder="Type of medication" [ngModelOptions]="{standalone: true}"
                                         [(ngModel)]="endocrineDisordersMedYes">
                                 </mat-form-field>
                             </div>
@@ -1209,7 +1201,7 @@
                                     </div>
                                     <div class="col-12">
                                         <mat-form-field>
-                                            <textarea matInput placeholder="Details"
+                                            <textarea id="61" matInput placeholder="Details"
                                                 [ngModelOptions]="{standalone: true}"
                                                 [(ngModel)]="endocrineDisordersConQ1"></textarea>
                                         </mat-form-field>
@@ -1223,7 +1215,7 @@
                                     </div>
                                     <div class="col-12">
                                         <mat-form-field>
-                                            <textarea matInput placeholder="Details"
+                                            <textarea id="62" matInput placeholder="Details"
                                                 [ngModelOptions]="{standalone: true}"
                                                 [(ngModel)]="endocrineDisordersConQ2"></textarea>
                                         </mat-form-field>
@@ -1238,7 +1230,7 @@
                                     </div>
                                     <div class="col-12">
                                         <mat-form-field>
-                                            <textarea matInput placeholder="Details"
+                                            <textarea id="63" matInput placeholder="Details"
                                                 [ngModelOptions]="{standalone: true}"
                                                 [(ngModel)]="endocrineDisordersConQ3"></textarea>
                                         </mat-form-field>
@@ -1257,7 +1249,7 @@
                                     <mat-radio-group [ngModelOptions]="{standalone: true}"
                                         [ngModelOptions]="{standalone: true}" [(ngModel)]="behaviouralDisordersCon"
                                         aria-label="Select an option">
-                                        <mat-radio-button class="mr-3" value="Yes">Yes</mat-radio-button>
+                                        <mat-radio-button id="64" class="mr-3" value="Yes">Yes</mat-radio-button>
                                         <mat-radio-button class="mr-3" value="No">No</mat-radio-button>
                                     </mat-radio-group>
                                 </div>
@@ -1267,7 +1259,7 @@
 
                                 If yes - please record details
                                 <mat-form-field>
-                                    <textarea matInput placeholder="Details" [ngModelOptions]="{standalone: true}"
+                                    <textarea id="65" matInput placeholder="Details" [ngModelOptions]="{standalone: true}"
                                         [(ngModel)]="behaviouralDisordersConDetails"></textarea>
                                 </mat-form-field>
 
@@ -1282,9 +1274,9 @@
                                     </div>
                                     <div class="col-12">
                                         <mat-form-field>
-                                            <mat-select [ngModelOptions]="{standalone: true}" [(ngModel)]="behaviouralDisordersMed"
+                                            <mat-select id="66" [ngModelOptions]="{standalone: true}" [(ngModel)]="behaviouralDisordersMed"
                                                 placeholder="Select">
-                                                <mat-option [value]="'Yes'">Yes</mat-option>
+                                                <mat-option id="67"  [value]="'Yes'">Yes</mat-option>
                                                 <mat-option [value]="'No'">No</mat-option>
                                             </mat-select>
                                         </mat-form-field>
@@ -1294,7 +1286,7 @@
                             
                             <div class="col-12 p-0" *ngIf="behaviouralDisordersMed == 'Yes'">
                                 <mat-form-field>
-                                    <input matInput placeholder="Type of medication" [ngModelOptions]="{standalone: true}"
+                                    <input id="68" matInput placeholder="Type of medication" [ngModelOptions]="{standalone: true}"
                                         [(ngModel)]="behaviouralDisordersMedYes">
                                 </mat-form-field>
                             </div>
@@ -1306,7 +1298,7 @@
                                     </div>
                                     <div class="col-12">
                                         <mat-form-field>
-                                            <textarea matInput placeholder="Details"
+                                            <textarea id="69" matInput placeholder="Details"
                                                 [ngModelOptions]="{standalone: true}"
                                                 [(ngModel)]="behaviouralDisordersConQ1"></textarea>
                                         </mat-form-field>
@@ -1320,7 +1312,7 @@
                                     </div>
                                     <div class="col-12">
                                         <mat-form-field>
-                                            <textarea matInput placeholder="Details"
+                                            <textarea id="70" matInput placeholder="Details"
                                                 [ngModelOptions]="{standalone: true}"
                                                 [(ngModel)]="behaviouralDisordersConQ2"></textarea>
                                         </mat-form-field>
@@ -1335,7 +1327,7 @@
                                     </div>
                                     <div class="col-12">
                                         <mat-form-field>
-                                            <textarea matInput placeholder="Details"
+                                            <textarea id="71"  matInput placeholder="Details"
                                                 [ngModelOptions]="{standalone: true}"
                                                 [(ngModel)]="behaviouralDisordersConQ3"></textarea>
                                         </mat-form-field>
@@ -1355,7 +1347,7 @@
                                     <mat-radio-group [ngModelOptions]="{standalone: true}"
                                         [ngModelOptions]="{standalone: true}" [(ngModel)]="visualCon"
                                         aria-label="Select an option">
-                                        <mat-radio-button class="mr-3" value="Yes">Yes</mat-radio-button>
+                                        <mat-radio-button id="72" class="mr-3" value="Yes">Yes</mat-radio-button>
                                         <mat-radio-button class="mr-3" value="No">No</mat-radio-button>
                                     </mat-radio-group>
                                 </div>
@@ -1365,7 +1357,7 @@
 
                                 If yes - please record details
                                 <mat-form-field>
-                                    <textarea matInput placeholder="Details" [ngModelOptions]="{standalone: true}"
+                                    <textarea id="73" matInput placeholder="Details" [ngModelOptions]="{standalone: true}"
                                         [(ngModel)]="visualConDetails"></textarea>
                                 </mat-form-field>
 
@@ -1380,9 +1372,9 @@
                                     </div>
                                     <div class="col-12">
                                         <mat-form-field>
-                                            <mat-select [ngModelOptions]="{standalone: true}" [(ngModel)]="visualMed"
+                                            <mat-select id="74" [ngModelOptions]="{standalone: true}" [(ngModel)]="visualMed"
                                                 placeholder="Select">
-                                                <mat-option [value]="'Yes'">Yes</mat-option>
+                                                <mat-option id="75" [value]="'Yes'">Yes</mat-option>
                                                 <mat-option [value]="'No'">No</mat-option>
                                             </mat-select>
                                         </mat-form-field>
@@ -1392,7 +1384,7 @@
                             
                             <div class="col-12 p-0" *ngIf="visualMed == 'Yes'">
                                 <mat-form-field>
-                                    <input matInput placeholder="Details" [ngModelOptions]="{standalone: true}"
+                                    <input id="76" matInput placeholder="Details" [ngModelOptions]="{standalone: true}"
                                         [(ngModel)]="visualMedYes">
                                 </mat-form-field>
                             </div>
@@ -1407,7 +1399,7 @@
                                             <mat-radio-group [ngModelOptions]="{standalone: true}"
                                             [ngModelOptions]="{standalone: true}" [(ngModel)]="visualConQ1"
                                             aria-label="Select an option">
-                                            <mat-radio-button class="mr-3" value="Yes">Yes</mat-radio-button>
+                                            <mat-radio-button id="77" class="mr-3" value="Yes">Yes</mat-radio-button>
                                             <mat-radio-button class="mr-3" value="No">No</mat-radio-button>
                                         </mat-radio-group>
                                     </div>
@@ -1427,7 +1419,7 @@
                                         <mat-radio-group [ngModelOptions]="{standalone: true}"
                                             [ngModelOptions]="{standalone: true}" [(ngModel)]="visualConQ2"
                                             aria-label="Select an option">
-                                            <mat-radio-button class="mr-3" value="Yes">Yes</mat-radio-button>
+                                            <mat-radio-button id="78" class="mr-3" value="Yes">Yes</mat-radio-button>
                                             <mat-radio-button class="mr-3" value="No">No</mat-radio-button>
                                         </mat-radio-group>
                                     </div>
@@ -1445,10 +1437,10 @@
                                                 [ngModelOptions]="{standalone: true}"
                                                 [(ngModel)]="visualConQ3"></textarea>
                                         </mat-form-field> -->
-                                        <mat-radio-group [ngModelOptions]="{standalone: true}"
+                                        <mat-radio-group  [ngModelOptions]="{standalone: true}"
                                             [ngModelOptions]="{standalone: true}" [(ngModel)]="visualConQ3"
                                             aria-label="Select an option">
-                                            <mat-radio-button class="mr-3" value="Yes">Yes</mat-radio-button>
+                                            <mat-radio-button class="mr-3" id="79" value="Yes">Yes</mat-radio-button>
                                             <mat-radio-button class="mr-3" value="No">No</mat-radio-button>
                                         </mat-radio-group>
                                     </div>
@@ -1462,9 +1454,9 @@
                                     </div>
                                     <div class="col-12">
                                         <mat-form-field>
-                                            <mat-select [ngModelOptions]="{standalone: true}" [(ngModel)]="visualMed1"
+                                            <mat-select id="80" [ngModelOptions]="{standalone: true}" [(ngModel)]="visualMed1"
                                                 placeholder="Select">
-                                                <mat-option [value]="'Yes'">Yes</mat-option>
+                                                <mat-option id="81" [value]="'Yes'">Yes</mat-option>
                                                 <mat-option [value]="'No'">No</mat-option>
                                             </mat-select>
                                         </mat-form-field>
@@ -1474,7 +1466,7 @@
                             
                             <div class="col-12 p-0" *ngIf="visualMed1 == 'Yes'">
                                 <mat-form-field>
-                                    <input matInput placeholder="Details" [ngModelOptions]="{standalone: true}"
+                                    <input matInput placeholder="Details" id="82" [ngModelOptions]="{standalone: true}"
                                         [(ngModel)]="visualMed1Yes">
                                 </mat-form-field>
                             </div>
@@ -1489,7 +1481,7 @@
                                     <mat-radio-group [ngModelOptions]="{standalone: true}"
                                         [ngModelOptions]="{standalone: true}" [(ngModel)]="hearingCon"
                                         aria-label="Select an option">
-                                        <mat-radio-button class="mr-3" value="Yes">Yes</mat-radio-button>
+                                        <mat-radio-button id="83" class="mr-3" value="Yes">Yes</mat-radio-button>
                                         <mat-radio-button class="mr-3" value="No">No</mat-radio-button>
                                     </mat-radio-group>
                                 </div>
@@ -1499,7 +1491,7 @@
 
                                 If yes - please record details
                                 <mat-form-field>
-                                    <textarea matInput placeholder="Details" [ngModelOptions]="{standalone: true}"
+                                    <textarea id="84" matInput placeholder="Details" [ngModelOptions]="{standalone: true}"
                                         [(ngModel)]="hearingConDetails"></textarea>
                                 </mat-form-field>
 
@@ -1514,8 +1506,8 @@
                                     </div>
                                     <div class="col-12">
                                         <mat-form-field>
-                                            <mat-select [ngModelOptions]="{standalone: true}" [(ngModel)]="hearingMed" placeholder="Select">
-                                                <mat-option [value]="'Yes'">Yes</mat-option>
+                                            <mat-select id="85" [ngModelOptions]="{standalone: true}" [(ngModel)]="hearingMed" placeholder="Select">
+                                                <mat-option id="86" [value]="'Yes'">Yes</mat-option>
                                                 <mat-option [value]="'No'">No</mat-option>
                                             </mat-select>
                                         </mat-form-field>
@@ -1525,7 +1517,7 @@
                             
                             <div class="col-12 p-0" *ngIf="hearingMed == 'Yes'">
                                 <mat-form-field>
-                                    <input matInput placeholder="Type of medication" [ngModelOptions]="{standalone: true}"
+                                    <input matInput id="87" placeholder="Type of medication" [ngModelOptions]="{standalone: true}"
                                         [(ngModel)]="hearingMedYes">
                                 </mat-form-field>
                             </div>
@@ -1537,7 +1529,7 @@
                                     </div>
                                     <div class="col-12">
                                         <mat-form-field>
-                                            <textarea matInput placeholder="Details"
+                                            <textarea id="88" matInput placeholder="Details"
                                                 [ngModelOptions]="{standalone: true}"
                                                 [(ngModel)]="hearingConQ1"></textarea>
                                         </mat-form-field>
@@ -1551,7 +1543,7 @@
                                     </div>
                                     <div class="col-12">
                                         <mat-form-field>
-                                            <textarea matInput placeholder="Details"
+                                            <textarea id="89" matInput placeholder="Details"
                                                 [ngModelOptions]="{standalone: true}"
                                                 [(ngModel)]="hearingConQ2"></textarea>
                                         </mat-form-field>
@@ -1566,7 +1558,7 @@
                                     </div>
                                     <div class="col-12">
                                         <mat-form-field>
-                                            <textarea matInput placeholder="Details"
+                                            <textarea id="90" matInput placeholder="Details"
                                                 [ngModelOptions]="{standalone: true}"
                                                 [(ngModel)]="hearingConQ3"></textarea>
                                         </mat-form-field>
@@ -1585,7 +1577,7 @@
                                     <mat-radio-group [ngModelOptions]="{standalone: true}"
                                         [ngModelOptions]="{standalone: true}" [(ngModel)]="speechCon"
                                         aria-label="Select an option">
-                                        <mat-radio-button class="mr-3" value="Yes">Yes</mat-radio-button>
+                                        <mat-radio-button id="91" class="mr-3" value="Yes">Yes</mat-radio-button>
                                         <mat-radio-button class="mr-3" value="No">No</mat-radio-button>
                                     </mat-radio-group>
                                 </div>
@@ -1595,7 +1587,7 @@
 
                                 If yes - please record details
                                 <mat-form-field>
-                                    <textarea matInput placeholder="Details" [ngModelOptions]="{standalone: true}"
+                                    <textarea id="92" matInput placeholder="Details" [ngModelOptions]="{standalone: true}"
                                         [(ngModel)]="speechConDetails"></textarea>
                                 </mat-form-field>
 
@@ -1610,8 +1602,8 @@
                                     </div>
                                     <div class="col-12">
                                         <mat-form-field>
-                                            <mat-select [ngModelOptions]="{standalone: true}" [(ngModel)]="speechMed" placeholder="Select">
-                                                <mat-option [value]="'Yes'">Yes</mat-option>
+                                            <mat-select id="93" [ngModelOptions]="{standalone: true}" [(ngModel)]="speechMed" placeholder="Select">
+                                                <mat-option id="94"  [value]="'Yes'">Yes</mat-option>
                                                 <mat-option [value]="'No'">No</mat-option>
                                             </mat-select>
                                         </mat-form-field>
@@ -1621,7 +1613,7 @@
                             
                             <div class="col-12 p-0" *ngIf="speechMed == 'Yes'">
                                 <mat-form-field>
-                                    <input matInput placeholder="Type of medication" [ngModelOptions]="{standalone: true}"
+                                    <input matInput id="95" placeholder="Type of medication" [ngModelOptions]="{standalone: true}"
                                         [(ngModel)]="speechMedYes">
                                 </mat-form-field>
                             </div>
@@ -1633,7 +1625,7 @@
                                     </div>
                                     <div class="col-12">
                                         <mat-form-field>
-                                            <textarea matInput placeholder="Details"
+                                            <textarea id="96" matInput placeholder="Details"
                                                 [ngModelOptions]="{standalone: true}"
                                                 [(ngModel)]="speechConQ1"></textarea>
                                         </mat-form-field>
@@ -1647,7 +1639,7 @@
                                     </div>
                                     <div class="col-12">
                                         <mat-form-field>
-                                            <textarea matInput placeholder="Details"
+                                            <textarea id="97" matInput placeholder="Details"
                                                 [ngModelOptions]="{standalone: true}"
                                                 [(ngModel)]="speechConQ2"></textarea>
                                         </mat-form-field>
@@ -1662,7 +1654,7 @@
                                     </div>
                                     <div class="col-12">
                                         <mat-form-field>
-                                            <textarea matInput placeholder="Details"
+                                            <textarea id="98" matInput placeholder="Details"
                                                 [ngModelOptions]="{standalone: true}"
                                                 [(ngModel)]="speechConQ3"></textarea>
                                         </mat-form-field>
@@ -1680,7 +1672,7 @@
                                     <mat-radio-group [ngModelOptions]="{standalone: true}"
                                         [ngModelOptions]="{standalone: true}" [(ngModel)]="bowelCon"
                                         aria-label="Select an option">
-                                        <mat-radio-button class="mr-3" value="Yes">Yes</mat-radio-button>
+                                        <mat-radio-button id="99" class="mr-3" value="Yes">Yes</mat-radio-button>
                                         <mat-radio-button class="mr-3" value="No">No</mat-radio-button>
                                     </mat-radio-group>
                                 </div>
@@ -1690,7 +1682,7 @@
 
                                 If yes - please record details
                                 <mat-form-field>
-                                    <textarea matInput placeholder="Details" [ngModelOptions]="{standalone: true}"
+                                    <textarea id="100" matInput placeholder="Details" [ngModelOptions]="{standalone: true}"
                                         [(ngModel)]="bowelConDetails"></textarea>
                                 </mat-form-field>
 
@@ -1705,8 +1697,8 @@
                                     </div>
                                     <div class="col-12">
                                         <mat-form-field>
-                                            <mat-select [ngModelOptions]="{standalone: true}" [(ngModel)]="bowelMed" placeholder="Select">
-                                                <mat-option [value]="'Yes'">Yes</mat-option>
+                                            <mat-select id="101" [ngModelOptions]="{standalone: true}" [(ngModel)]="bowelMed" placeholder="Select">
+                                                <mat-option id="102" [value]="'Yes'">Yes</mat-option>
                                                 <mat-option [value]="'No'">No</mat-option>
                                             </mat-select>
                                         </mat-form-field>
@@ -1716,7 +1708,7 @@
                             
                             <div class="col-12 p-0" *ngIf="bowelMed == 'Yes'">
                                 <mat-form-field>
-                                    <input matInput placeholder="Type of medication" [ngModelOptions]="{standalone: true}"
+                                    <input matInput id="103" placeholder="Type of medication" [ngModelOptions]="{standalone: true}"
                                         [(ngModel)]="bowelMedYes">
                                 </mat-form-field>
                             </div>
@@ -1728,7 +1720,7 @@
                                     </div>
                                     <div class="col-12">
                                         <mat-form-field>
-                                            <textarea matInput placeholder="Details"
+                                            <textarea id="104" matInput placeholder="Details"
                                                 [ngModelOptions]="{standalone: true}"
                                                 [(ngModel)]="bowelConQ1"></textarea>
                                         </mat-form-field>
@@ -1742,7 +1734,7 @@
                                     </div>
                                     <div class="col-12">
                                         <mat-form-field>
-                                            <textarea matInput placeholder="Details"
+                                            <textarea id="105" matInput placeholder="Details"
                                                 [ngModelOptions]="{standalone: true}"
                                                 [(ngModel)]="bowelConQ2"></textarea>
                                         </mat-form-field>
@@ -1757,7 +1749,7 @@
                                     </div>
                                     <div class="col-12">
                                         <mat-form-field>
-                                            <textarea matInput placeholder="Details"
+                                            <textarea id="106" matInput placeholder="Details"
                                                 [ngModelOptions]="{standalone: true}"
                                                 [(ngModel)]="bowelConQ3"></textarea>
                                         </mat-form-field>
@@ -1772,7 +1764,7 @@
                                     Disease of the Kidney?
                                 </div>
                                 <div class="col-12">
-                                    <mat-radio-group [ngModelOptions]="{standalone: true}"
+                                    <mat-radio-group id="107" [ngModelOptions]="{standalone: true}"
                                         [ngModelOptions]="{standalone: true}" [(ngModel)]="kidneyCon"
                                         aria-label="Select an option">
                                         <mat-radio-button class="mr-3" value="Yes">Yes</mat-radio-button>
@@ -1785,7 +1777,7 @@
 
                                 If yes - please record details
                                 <mat-form-field>
-                                    <textarea matInput placeholder="Details" [ngModelOptions]="{standalone: true}"
+                                    <textarea id="108" matInput placeholder="Details" [ngModelOptions]="{standalone: true}"
                                         [(ngModel)]="kidneyConDetails"></textarea>
                                 </mat-form-field>
 
@@ -1800,8 +1792,8 @@
                                     </div>
                                     <div class="col-12">
                                         <mat-form-field>
-                                            <mat-select [ngModelOptions]="{standalone: true}" [(ngModel)]="kidneyMed" placeholder="Select">
-                                                <mat-option [value]="'Yes'">Yes</mat-option>
+                                            <mat-select id="109" [ngModelOptions]="{standalone: true}" [(ngModel)]="kidneyMed" placeholder="Select">
+                                                <mat-option id="110" [value]="'Yes'">Yes</mat-option>
                                                 <mat-option [value]="'No'">No</mat-option>
                                             </mat-select>
                                         </mat-form-field>
@@ -1811,7 +1803,7 @@
                             
                             <div class="col-12 p-0" *ngIf="kidneyMed == 'Yes'">
                                 <mat-form-field>
-                                    <input matInput placeholder="Type of medication" [ngModelOptions]="{standalone: true}"
+                                    <input id="111" matInput placeholder="Type of medication" [ngModelOptions]="{standalone: true}"
                                         [(ngModel)]="kidneyMedYes">
                                 </mat-form-field>
                             </div>
@@ -1823,7 +1815,7 @@
                                     </div>
                                     <div class="col-12">
                                         <mat-form-field>
-                                            <textarea matInput placeholder="Details"
+                                            <textarea id="112" matInput placeholder="Details"
                                                 [ngModelOptions]="{standalone: true}"
                                                 [(ngModel)]="kidneyConQ1"></textarea>
                                         </mat-form-field>
@@ -1837,7 +1829,7 @@
                                     </div>
                                     <div class="col-12">
                                         <mat-form-field>
-                                            <textarea matInput placeholder="Details"
+                                            <textarea id="113" matInput placeholder="Details"
                                                 [ngModelOptions]="{standalone: true}"
                                                 [(ngModel)]="kidneyConQ2"></textarea>
                                         </mat-form-field>
@@ -1852,7 +1844,7 @@
                                     </div>
                                     <div class="col-12">
                                         <mat-form-field>
-                                            <textarea matInput placeholder="Details"
+                                            <textarea id="114" matInput placeholder="Details"
                                                 [ngModelOptions]="{standalone: true}"
                                                 [(ngModel)]="kidneyConQ3"></textarea>
                                         </mat-form-field>
@@ -1871,7 +1863,7 @@
                                     <mat-radio-group [ngModelOptions]="{standalone: true}"
                                         [ngModelOptions]="{standalone: true}" [(ngModel)]="liverCon"
                                         aria-label="Select an option">
-                                        <mat-radio-button class="mr-3" value="Yes">Yes</mat-radio-button>
+                                        <mat-radio-button id="115" class="mr-3" value="Yes">Yes</mat-radio-button>
                                         <mat-radio-button class="mr-3" value="No">No</mat-radio-button>
                                     </mat-radio-group>
                                 </div>
@@ -1881,7 +1873,7 @@
 
                                 If yes - please record details
                                 <mat-form-field>
-                                    <textarea matInput placeholder="Details" [ngModelOptions]="{standalone: true}"
+                                    <textarea id="116" matInput placeholder="Details" [ngModelOptions]="{standalone: true}"
                                         [(ngModel)]="liverConDetails"></textarea>
                                 </mat-form-field>
 
@@ -1896,8 +1888,8 @@
                                     </div>
                                     <div class="col-12">
                                         <mat-form-field>
-                                            <mat-select [ngModelOptions]="{standalone: true}" [(ngModel)]="liverMed" placeholder="Select">
-                                                <mat-option [value]="'Yes'">Yes</mat-option>
+                                            <mat-select id="117" [ngModelOptions]="{standalone: true}" [(ngModel)]="liverMed" placeholder="Select">
+                                                <mat-option id="118"  [value]="'Yes'">Yes</mat-option>
                                                 <mat-option [value]="'No'">No</mat-option>
                                             </mat-select>
                                         </mat-form-field>
@@ -1907,7 +1899,7 @@
                             
                             <div class="col-12 p-0" *ngIf="liverMed == 'Yes'">
                                 <mat-form-field>
-                                    <input matInput placeholder="Type of medication" [ngModelOptions]="{standalone: true}"
+                                    <input matInput id="119" placeholder="Type of medication" [ngModelOptions]="{standalone: true}"
                                         [(ngModel)]="liverMedYes">
                                 </mat-form-field>
                             </div>
@@ -1919,7 +1911,7 @@
                                     </div>
                                     <div class="col-12">
                                         <mat-form-field>
-                                            <textarea matInput placeholder="Details"
+                                            <textarea id="120" matInput placeholder="Details"
                                                 [ngModelOptions]="{standalone: true}"
                                                 [(ngModel)]="liverConQ1"></textarea>
                                         </mat-form-field>
@@ -1933,7 +1925,7 @@
                                     </div>
                                     <div class="col-12">
                                         <mat-form-field>
-                                            <textarea matInput placeholder="Details"
+                                            <textarea id="121" matInput placeholder="Details"
                                                 [ngModelOptions]="{standalone: true}"
                                                 [(ngModel)]="liverConQ2"></textarea>
                                         </mat-form-field>
@@ -1948,7 +1940,7 @@
                                     </div>
                                     <div class="col-12">
                                         <mat-form-field>
-                                            <textarea matInput placeholder="Details"
+                                            <textarea id="122" matInput placeholder="Details"
                                                 [ngModelOptions]="{standalone: true}"
                                                 [(ngModel)]="liverConQ3"></textarea>
                                         </mat-form-field>
@@ -1966,7 +1958,7 @@
                                     <mat-radio-group [ngModelOptions]="{standalone: true}"
                                         [ngModelOptions]="{standalone: true}" [(ngModel)]="allergiesCon"
                                         aria-label="Select an option">
-                                        <mat-radio-button class="mr-3" value="Yes">Yes</mat-radio-button>
+                                        <mat-radio-button id="123" class="mr-3" value="Yes">Yes</mat-radio-button>
                                         <mat-radio-button class="mr-3" value="No">No</mat-radio-button>
                                     </mat-radio-group>
                                 </div>
@@ -1976,7 +1968,7 @@
 
                                 If yes - please record details
                                 <mat-form-field>
-                                    <textarea matInput placeholder="Details" [ngModelOptions]="{standalone: true}"
+                                    <textarea id="124" matInput placeholder="Details" [ngModelOptions]="{standalone: true}"
                                         [(ngModel)]="allergiesConDetails"></textarea>
                                 </mat-form-field>
 
@@ -2004,9 +1996,9 @@
                                     </div>
                                     <div class="col-12">
                                         <mat-form-field>
-                                            <mat-select [ngModelOptions]="{standalone: true}" [(ngModel)]="allergiesMed"
+                                            <mat-select id="125" [ngModelOptions]="{standalone: true}" [(ngModel)]="allergiesMed"
                                                 placeholder="Select">
-                                                <mat-option [value]="'Yes'">Yes</mat-option>
+                                                <mat-option id="126" [value]="'Yes'">Yes</mat-option>
                                                 <mat-option [value]="'No'">No</mat-option>
                                             </mat-select>
                                         </mat-form-field>
@@ -2021,7 +2013,7 @@
                                     </div>
                                     <div class="col-12">
                                         <mat-form-field>
-                                            <textarea matInput placeholder="Details"
+                                            <textarea id="127" matInput placeholder="Details"
                                                 [ngModelOptions]="{standalone: true}"
                                                 [(ngModel)]="allergiesConQ2"></textarea>
                                         </mat-form-field>
@@ -2031,7 +2023,7 @@
 
                             <div class="col-12 p-0" *ngIf="allergiesMed == 'Yes'">
                                 <mat-form-field>
-                                    <input matInput placeholder="Type of medication"
+                                    <input id="128" matInput placeholder="Type of medication"
                                         [ngModelOptions]="{standalone: true}" [(ngModel)]="allergiesMedYes">
                                 </mat-form-field>
                             </div>
@@ -2061,7 +2053,7 @@
                                     <mat-radio-group [ngModelOptions]="{standalone: true}"
                                         [ngModelOptions]="{standalone: true}" [(ngModel)]="sleepingCon"
                                         aria-label="Select an option">
-                                        <mat-radio-button class="mr-3" value="Yes">Yes</mat-radio-button>
+                                        <mat-radio-button id="129" class="mr-3" value="Yes">Yes</mat-radio-button>
                                         <mat-radio-button class="mr-3" value="No">No</mat-radio-button>
                                     </mat-radio-group>
                                 </div>
@@ -2071,7 +2063,7 @@
 
                                 If yes - please record details
                                 <mat-form-field>
-                                    <textarea matInput placeholder="Details" [ngModelOptions]="{standalone: true}"
+                                    <textarea id="130" matInput placeholder="Details" [ngModelOptions]="{standalone: true}"
                                         [(ngModel)]="sleepingConDetails"></textarea>
                                 </mat-form-field>
 
@@ -2089,7 +2081,7 @@
                                     </div>
                                     <div class="col-12">
                                         <mat-form-field>
-                                            <textarea matInput placeholder="Details"
+                                            <textarea id="131" matInput placeholder="Details"
                                                 [ngModelOptions]="{standalone: true}"
                                                 [(ngModel)]="sleepingConQ1"></textarea>
                                         </mat-form-field>
@@ -2103,7 +2095,7 @@
                                     </div>
                                     <div class="col-12">
                                         <mat-form-field>
-                                            <textarea matInput placeholder="Details"
+                                            <textarea id="132" matInput placeholder="Details"
                                                 [ngModelOptions]="{standalone: true}"
                                                 [(ngModel)]="sleepingConQ2"></textarea>
                                         </mat-form-field>
@@ -2118,7 +2110,7 @@
                                     </div>
                                     <div class="col-12">
                                         <mat-form-field>
-                                            <textarea matInput placeholder="Details"
+                                            <textarea id="133" matInput placeholder="Details"
                                                 [ngModelOptions]="{standalone: true}"
                                                 [(ngModel)]="sleepingConQ3"></textarea>
                                         </mat-form-field>
@@ -2136,7 +2128,7 @@
                                     <mat-radio-group [ngModelOptions]="{standalone: true}"
                                         [ngModelOptions]="{standalone: true}" [(ngModel)]="medication"
                                         aria-label="Select an option">
-                                        <mat-radio-button class="mr-3" value="Yes">Yes</mat-radio-button>
+                                        <mat-radio-button id="134" class="mr-3" value="Yes">Yes</mat-radio-button>
                                         <mat-radio-button class="mr-3" value="No">No</mat-radio-button>
                                     </mat-radio-group>
                                 </div>
@@ -2146,7 +2138,7 @@
 
                                 If yes - please record details
                                 <mat-form-field>
-                                    <textarea matInput placeholder="Details" [ngModelOptions]="{standalone: true}"
+                                    <textarea id="135" matInput placeholder="Details" [ngModelOptions]="{standalone: true}"
                                         [(ngModel)]="medicationDetails"></textarea>
                                 </mat-form-field>
 
@@ -2164,7 +2156,7 @@
                                     </div>
                                     <div class="col-12">
                                         <mat-form-field>
-                                            <textarea matInput placeholder="Details"
+                                            <textarea id="136" matInput placeholder="Details"
                                                 [ngModelOptions]="{standalone: true}"
                                                 [(ngModel)]="medicationQ1"></textarea>
                                         </mat-form-field>
@@ -2179,7 +2171,7 @@
                                     </div>
                                     <div class="col-12">
                                         <mat-form-field>
-                                            <textarea matInput placeholder="Details"
+                                            <textarea id="137"  matInput placeholder="Details"
                                                 [ngModelOptions]="{standalone: true}"
                                                 [(ngModel)]="medicationQ2"></textarea>
                                         </mat-form-field>
@@ -2195,7 +2187,7 @@
                                     </div>
                                     <div class="col-12">
                                         <mat-form-field>
-                                            <textarea matInput placeholder="Details"
+                                            <textarea id="138" matInput placeholder="Details"
                                                 [ngModelOptions]="{standalone: true}"
                                                 [(ngModel)]="medicationQ3"></textarea>
                                         </mat-form-field>
@@ -2214,7 +2206,7 @@
                                     <mat-radio-group [ngModelOptions]="{standalone: true}"
                                         [ngModelOptions]="{standalone: true}" [(ngModel)]="medicalTreatment"
                                         aria-label="Select an option">
-                                        <mat-radio-button class="mr-3" value="Yes">Yes</mat-radio-button>
+                                        <mat-radio-button id="139" class="mr-3" value="Yes">Yes</mat-radio-button>
                                         <mat-radio-button class="mr-3" value="No">No</mat-radio-button>
                                     </mat-radio-group>
                                 </div>
@@ -2224,7 +2216,7 @@
 
                                 If yes - please record details
                                 <mat-form-field>
-                                    <textarea matInput placeholder="Details" [ngModelOptions]="{standalone: true}"
+                                    <textarea id="140" matInput placeholder="Details" [ngModelOptions]="{standalone: true}"
                                         [(ngModel)]="medicalTreatmentDetails"></textarea>
                                 </mat-form-field>
 
@@ -2241,7 +2233,7 @@
                                     </div>
                                     <div class="col-12">
                                         <mat-form-field>
-                                            <textarea matInput placeholder="Details"
+                                            <textarea id="141" matInput placeholder="Details"
                                                 [ngModelOptions]="{standalone: true}"
                                                 [(ngModel)]="medicalTreatmentQ1"></textarea>
                                         </mat-form-field>
@@ -2256,7 +2248,7 @@
                                     </div>
                                     <div class="col-12">
                                         <mat-form-field>
-                                            <textarea matInput placeholder="Details"
+                                            <textarea id="142"  matInput placeholder="Details"
                                                 [ngModelOptions]="{standalone: true}"
                                                 [(ngModel)]="medicalTreatmentQ2"></textarea>
                                         </mat-form-field>
@@ -2272,7 +2264,7 @@
                                     </div>
                                     <div class="col-12">
                                         <mat-form-field>
-                                            <textarea matInput placeholder="Details"
+                                            <textarea id="143" matInput placeholder="Details"
                                                 [ngModelOptions]="{standalone: true}"
                                                 [(ngModel)]="medicalTreatmentQ3"></textarea>
                                         </mat-form-field>
@@ -2291,7 +2283,7 @@
                                     <mat-radio-group [ngModelOptions]="{standalone: true}"
                                         [ngModelOptions]="{standalone: true}" [(ngModel)]="tests"
                                         aria-label="Select an option">
-                                        <mat-radio-button class="mr-3" value="Yes">Yes</mat-radio-button>
+                                        <mat-radio-button id="144" class="mr-3" value="Yes">Yes</mat-radio-button>
                                         <mat-radio-button class="mr-3" value="No">No</mat-radio-button>
                                     </mat-radio-group>
                                 </div>
@@ -2301,7 +2293,7 @@
 
                                 If yes - please record details
                                 <mat-form-field>
-                                    <textarea matInput placeholder="Details" [ngModelOptions]="{standalone: true}"
+                                    <textarea id="145" matInput placeholder="Details" [ngModelOptions]="{standalone: true}"
                                         [(ngModel)]="testsDetails"></textarea>
                                 </mat-form-field>
 
@@ -2318,7 +2310,7 @@
                                     </div>
                                     <div class="col-12">
                                         <mat-form-field>
-                                            <textarea matInput placeholder="Details"
+                                            <textarea id="146" matInput placeholder="Details"
                                                 [ngModelOptions]="{standalone: true}" [(ngModel)]="testsQ1"></textarea>
                                         </mat-form-field>
                                     </div>
@@ -2332,7 +2324,7 @@
                                     </div>
                                     <div class="col-12">
                                         <mat-form-field>
-                                            <textarea matInput placeholder="Details"
+                                            <textarea id="147"  matInput placeholder="Details"
                                                 [ngModelOptions]="{standalone: true}" [(ngModel)]="testsQ2"></textarea>
                                         </mat-form-field>
                                     </div>
@@ -2347,7 +2339,7 @@
                                     </div>
                                     <div class="col-12">
                                         <mat-form-field>
-                                            <textarea matInput placeholder="Details"
+                                            <textarea id="148"  matInput placeholder="Details"
                                                 [ngModelOptions]="{standalone: true}" [(ngModel)]="testsQ3"></textarea>
                                         </mat-form-field>
                                     </div>
@@ -2367,7 +2359,7 @@
                                     <mat-radio-group [ngModelOptions]="{standalone: true}"
                                         [ngModelOptions]="{standalone: true}" [(ngModel)]="otherHealthAspects"
                                         aria-label="Select an option">
-                                        <mat-radio-button class="mr-3" value="Yes">Yes</mat-radio-button>
+                                        <mat-radio-button id="149" class="mr-3" value="Yes">Yes</mat-radio-button>
                                         <mat-radio-button class="mr-3" value="No">No</mat-radio-button>
                                     </mat-radio-group>
                                 </div>
@@ -2377,7 +2369,7 @@
 
                                 If yes - please record details
                                 <mat-form-field>
-                                    <textarea matInput placeholder="Details" [ngModelOptions]="{standalone: true}"
+                                    <textarea id="150" matInput placeholder="Details" [ngModelOptions]="{standalone: true}"
                                         [(ngModel)]="otherHealthAspectsDetails"></textarea>
                                 </mat-form-field>
 
@@ -2395,7 +2387,7 @@
                                     </div>
                                     <div class="col-12">
                                         <mat-form-field>
-                                            <textarea matInput placeholder="Details"
+                                            <textarea id="151" matInput placeholder="Details"
                                                 [ngModelOptions]="{standalone: true}"
                                                 [(ngModel)]="otherHealthAspectsQ1"></textarea>
                                         </mat-form-field>
@@ -2410,7 +2402,7 @@
                                     </div>
                                     <div class="col-12">
                                         <mat-form-field>
-                                            <textarea matInput placeholder="Details"
+                                            <textarea id="152" matInput placeholder="Details"
                                                 [ngModelOptions]="{standalone: true}"
                                                 [(ngModel)]="otherHealthAspectsQ2"></textarea>
                                         </mat-form-field>
@@ -2426,7 +2418,7 @@
                                     </div>
                                     <div class="col-12">
                                         <mat-form-field>
-                                            <textarea matInput placeholder="Details"
+                                            <textarea id="153" matInput placeholder="Details"
                                                 [ngModelOptions]="{standalone: true}"
                                                 [(ngModel)]="otherHealthAspectsQ3"></textarea>
                                         </mat-form-field>
@@ -2438,7 +2430,7 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <mat-form-field class="">
-                                    <input [ngModelOptions]="{standalone: true}" matInput
+                                    <input id="154" [ngModelOptions]="{standalone: true}" matInput
                                         placeholder="Additional Comments" [(ngModel)]="medHistoryComment">
                                 </mat-form-field>
                             </div>
@@ -2467,7 +2459,7 @@
                                     <mat-radio-group [ngModelOptions]="{standalone: true}"
                                         [ngModelOptions]="{standalone: true}" [(ngModel)]="exercise"
                                         aria-label="Select an option">
-                                        <mat-radio-button class="mr-3" value="Yes">Yes</mat-radio-button>
+                                        <mat-radio-button id="155" class="mr-3" value="Yes">Yes</mat-radio-button>
                                         <mat-radio-button class="mr-3" value="No">No</mat-radio-button>
                                     </mat-radio-group>
                                 </div>
@@ -2477,7 +2469,7 @@
 
                                 If yes - please record details
                                 <mat-form-field>
-                                    <textarea matInput placeholder="Details" [ngModelOptions]="{standalone: true}"
+                                    <textarea id="156" matInput placeholder="Details" [ngModelOptions]="{standalone: true}"
                                         [(ngModel)]="exerciseDetails"></textarea>
                                 </mat-form-field>
 
@@ -2496,7 +2488,7 @@
                                     <mat-radio-group [ngModelOptions]="{standalone: true}"
                                         [ngModelOptions]="{standalone: true}" [(ngModel)]="smoke"
                                         aria-label="Select an option">
-                                        <mat-radio-button class="mr-3" value="Yes">Yes</mat-radio-button>
+                                        <mat-radio-button id="157" class="mr-3" value="Yes">Yes</mat-radio-button>
                                         <mat-radio-button class="mr-3" value="No">No</mat-radio-button>
                                     </mat-radio-group>
                                 </div>
@@ -2506,7 +2498,7 @@
 
                                 If yes - please record details
                                 <mat-form-field>
-                                    <textarea matInput placeholder="Details" [ngModelOptions]="{standalone: true}"
+                                    <textarea id="158" matInput placeholder="Details" [ngModelOptions]="{standalone: true}"
                                         [(ngModel)]="smokeDetails"></textarea>
                                 </mat-form-field>
 
@@ -2524,7 +2516,7 @@
                                     <mat-radio-group [ngModelOptions]="{standalone: true}"
                                         [ngModelOptions]="{standalone: true}" [(ngModel)]="exsmoker"
                                         aria-label="Select an option">
-                                        <mat-radio-button class="mr-3" value="Yes">Yes</mat-radio-button>
+                                        <mat-radio-button id="159" class="mr-3" value="Yes">Yes</mat-radio-button>
                                         <mat-radio-button class="mr-3" value="No">No</mat-radio-button>
                                     </mat-radio-group>
                                 </div>
@@ -2536,7 +2528,7 @@
                                 <div class="d-flex">
                                     <div class="col-md-6 pl-0">
                                         <mat-form-field>
-                                            <input matInput type="number" [ngModelOptions]="{standalone: true}"
+                                            <input matInput id="160" type="number" [ngModelOptions]="{standalone: true}"
                                                 placeholder="Years" [(ngModel)]="exsmokerYears">
 
                                         </mat-form-field>
@@ -2544,7 +2536,7 @@
 
                                     <div class="col-md-6 pr-0">
                                         <mat-form-field>
-                                            <input matInput type="number" [ngModelOptions]="{standalone: true}"
+                                            <input matInput id="161" type="number" [ngModelOptions]="{standalone: true}"
                                                 placeholder="Months" [(ngModel)]="exsmokerMonths">
                                         </mat-form-field>
                                     </div>
@@ -2563,7 +2555,7 @@
                                     <mat-radio-group [ngModelOptions]="{standalone: true}"
                                         [ngModelOptions]="{standalone: true}" [(ngModel)]="alcohol"
                                         aria-label="Select an option">
-                                        <mat-radio-button class="mr-3" value="Yes">Yes</mat-radio-button>
+                                        <mat-radio-button id="162" class="mr-3" value="Yes">Yes</mat-radio-button>
                                         <mat-radio-button class="mr-3" value="No">No</mat-radio-button>
                                     </mat-radio-group>
                                 </div>
@@ -2573,7 +2565,7 @@
 
                                 If yes - please record details
                                 <mat-form-field>
-                                    <textarea matInput
+                                    <textarea id="163"  matInput
                                         placeholder="One unit is half a pint of beer, a small glass of wine or a single shot"
                                         [ngModelOptions]="{standalone: true}" [(ngModel)]="alcoholDetails"></textarea>
 
@@ -2585,7 +2577,7 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <mat-form-field class="">
-                                    <input [ngModelOptions]="{standalone: true}" matInput
+                                    <input id="164" [ngModelOptions]="{standalone: true}" matInput
                                         placeholder="Additional Comments" [(ngModel)]="lifeStyleComment">
                                 </mat-form-field>
                             </div>
@@ -2624,7 +2616,7 @@
 
                             <div class="col-md-6">
                                 <label>SIGNATURE</label>
-                                <div class="signCanvas" *ngIf="!imgData" (click)="redirect('consent')">
+                                <div class="signCanvas" id="165" *ngIf="!imgData" (click)="redirect('consent')">
                                     Click to sign
                                 </div>
 
@@ -2643,20 +2635,20 @@
 
                                 </app-date-picker> -->
                                 <mat-form-field class="col-4 p-0 m-0">
-                                    <mat-select placeholder="Month" [(ngModel)]="confMonth" [ngModelOptions]="{standalone: true}">
-                                        <mat-option *ngFor="let item of months" [value]="item">{{item}}</mat-option>
+                                    <mat-select id="166" placeholder="Month" [(ngModel)]="confMonth" [ngModelOptions]="{standalone: true}">
+                                        <mat-option *ngFor="let item of months; let i = index" id="confMonth{{i}}"  [value]="item">{{item}}</mat-option>
                                     </mat-select>
                                 </mat-form-field>
     
                                 <mat-form-field class="col-4 p-0 m-0">
-                                    <mat-select placeholder="Day" [(ngModel)]="confDay" [ngModelOptions]="{standalone: true}">
-                                        <mat-option *ngFor="let item of days" [value]="item">{{item}}</mat-option>
+                                    <mat-select placeholder="Day" id="167" [(ngModel)]="confDay" [ngModelOptions]="{standalone: true}">
+                                        <mat-option *ngFor="let item of days; let i = index" id="confDay{{i}}" [value]="item">{{item}}</mat-option>
                                     </mat-select>
                                 </mat-form-field>
     
                                 <mat-form-field class="col-4 p-0 m-0">
-                                    <mat-select placeholder="Year" [(ngModel)]="confYear" [ngModelOptions]="{standalone: true}">
-                                        <mat-option *ngFor="let item of years" [value]="item">{{item}}</mat-option>
+                                    <mat-select id="168" placeholder="Year" [(ngModel)]="confYear" [ngModelOptions]="{standalone: true}">
+                                        <mat-option *ngFor="let item of years; let i = index" id="confYear{{i}}" [value]="item">{{item}}</mat-option>
                                     </mat-select>
                                 </mat-form-field>
                             </div>
@@ -2685,7 +2677,7 @@
 
 
     <div class="mt-3">
-        <button id="next" mat-raised-button color="primary" (click)="submit()">Next</button>
+        <button id="next" id="169" mat-raised-button color="primary" (click)="submit()">Next</button>
     </div>
 
 
