@@ -106,18 +106,18 @@
         </div>
 
         <div class="single_accordion">
-            <div class="single_accordion_title collapsed" id="headingOne" data-toggle="collapse"
+            <div class="single_accordion_title collapsed" id="headingOne1" data-toggle="collapse"
                 data-target="#collapseOneNew" aria-expanded="true" aria-controls="collapseOneNew">
                 GENERAL HEALTH
             </div>
             <form [formGroup]="generalHealth">
-                <div id="collapseOneNew" class="collapse single_accordion_content" aria-labelledby="headingOne"
+                <div id="collapseOneNew" class="collapse single_accordion_content" aria-labelledby="headingOne1"
                     data-parent="#accordianNew">
                     <div class="single_accordion_content_inner">
                         <div class="row">
                             <div class="col-md-6">
                                 <mat-form-field>
-                                    <input (ngModelChange)="checkBp()" formControlName="bp1"
+                                    <input id="174" (ngModelChange)="checkBp()" formControlName="bp1"
                                         (blur)="bpBlurred($event,'reading1')" matInput
                                         placeholder="Blood Pressure - First Reading (mm/Hg)">
                                 </mat-form-field>
@@ -130,7 +130,7 @@
                                         <mat-option *ngFor="let item of pulseList" [value]="item">{{item}}
                                         </mat-option>
                                     </mat-select> -->
-                                    <input type="number" (ngModelChange)="checkBp(); completeAsFailReferToGP()" formControlName="pulse1"
+                                    <input type="number" id="175" (ngModelChange)="checkBp(); completeAsFailReferToGP()" formControlName="pulse1"
                                      matInput
                                     placeholder="Pulse - First Reading">
                                 </mat-form-field>
@@ -142,11 +142,11 @@
                                 <b>Please enter 2nd and 3rd reading if Blood Pressure > 160/95 (mm/Hg)</b>
                             </div>
                             <div class="col-md-3 col-6 d-flex align-items-center">
-                                <mat-checkbox (change)="checkboxChange($event)" [checked]="isChecked ? true : null">2nd
+                                <mat-checkbox id="176" (change)="checkboxChange($event)" [checked]="isChecked ? true : null">2nd
                                     Test</mat-checkbox>
                             </div>
                             <div class="col-md-3 col-6 d-flex align-items-center">
-                                <mat-checkbox (change)="checkboxChange2($event)" [checked]="isChecked2 ? true : null">
+                                <mat-checkbox id="177" (change)="checkboxChange2($event)" [checked]="isChecked2 ? true : null">
                                     3rd Test</mat-checkbox>
                             </div>
 
@@ -157,7 +157,7 @@
 
                             <div class="col-md-6">
                                 <mat-form-field>
-                                    <input [readonly]="secondTestDisabled" formControlName="bp2"
+                                    <input id="178" [readonly]="secondTestDisabled" formControlName="bp2"
                                         (blur)="bpBlurred($event,'reading2')" matInput
                                         placeholder="Blood Pressure - Second Reading (mm/Hg)">
                                 </mat-form-field>
@@ -172,7 +172,7 @@
                                             {{item}}
                                         </mat-option>
                                     </mat-select> -->
-                                    <input type="number" [disabled]="secondTestDisabled" (ngModelChange)="completeAsFailReferToGP()" formControlName="pulse2"
+                                    <input id="179" type="number" [disabled]="secondTestDisabled" (ngModelChange)="completeAsFailReferToGP()" formControlName="pulse2"
                                 matInput placeholder="Pulse - Second Reading">
                                 </mat-form-field>
                                 
@@ -183,7 +183,7 @@
 
                             <div class="col-md-6">
                                 <mat-form-field>
-                                    <input [readonly]="thirdTestDisabled" formControlName="bp3"
+                                    <input id="180" [readonly]="thirdTestDisabled" formControlName="bp3"
                                         (blur)="bpBlurred($event,'reading3')" matInput
                                         placeholder="Blood Pressure - Third Reading (mm/Hg)">
                                 </mat-form-field>
@@ -191,10 +191,9 @@
 
                             <div class="col-md-6">
                                 <mat-form-field>
-                                    <mat-select (selectionChange)="completeAsFailReferToGP()" formControlName="pulse3"
+                                    <mat-select id="181" (selectionChange)="completeAsFailReferToGP()" formControlName="pulse3"
                                         placeholder="Pulse - Third Reading">
-                                        <mat-option [disabled]="thirdTestDisabled" *ngFor="let item of pulseList"
-                                            [value]="item">{{item}}
+                                        <mat-option [disabled]="thirdTestDisabled" *ngFor="let item of pulseList; let i = index" id="181{{i}}" [value]="item">{{item}}
                                         </mat-option>
                                     </mat-select>
                                 </mat-form-field>
@@ -203,9 +202,9 @@
                         <div class="row">
                             <div class="col-md-4">
                                 <mat-form-field>
-                                    <mat-select formControlName="height" placeholder="Height"
+                                    <mat-select id="182" formControlName="height" placeholder="Height"
                                         (selectionChange)="calcBmi($event)" required>
-                                        <mat-option *ngFor="let item of heightList" [value]="item">{{item}} cm
+                                        <mat-option  *ngFor="let item of heightList; let i = index;" id="182{{i}}" [value]="item">{{item}} cm
                                         </mat-option>
                                     </mat-select>
                                 </mat-form-field>
@@ -213,9 +212,9 @@
 
                             <div class="col-md-4">
                                 <mat-form-field>
-                                    <mat-select formControlName="weight" placeholder="Weight"
+                                    <mat-select id="183" formControlName="weight" placeholder="Weight"
                                         (selectionChange)="calcBmi($event)" required>
-                                        <mat-option *ngFor="let item of weightList" [value]="item">{{item}} kg
+                                        <mat-option *ngFor="let item of weightList; let i = index" id="183{{i}}" [value]="item">{{item}} kg
                                         </mat-option>
                                     </mat-select>
                                 </mat-form-field>
@@ -229,16 +228,16 @@
                         <div class="row" *ngIf="bmi && bmi > 33">
                             <div class="col-md-6">
                                 <mat-form-field>
-                                    <mat-select formControlName="mobility" placeholder="Mobility">
-                                        <mat-option *ngFor="let item of satisfactory" [value]="item">{{item}}
+                                    <mat-select id="241" formControlName="mobility" placeholder="Mobility">
+                                        <mat-option id="241{{i}}" *ngFor="let item of satisfactory; let i = index" [value]="item">{{item}}
                                         </mat-option>
                                     </mat-select>
                                 </mat-form-field>
                             </div>
                             <div class="col-md-6">
                                 <mat-form-field>
-                                    <mat-select formControlName="fitness" placeholder="Fitness">
-                                        <mat-option [value]="'Good'">Good</mat-option>
+                                    <mat-select id="242" formControlName="fitness" placeholder="Fitness">
+                                        <mat-option id="243" [value]="'Good'">Good</mat-option>
                                         <mat-option [value]="'Poor'">Poor</mat-option>
                                     </mat-select>
                                 </mat-form-field>
@@ -365,9 +364,9 @@
                             <div class="col-md-12">
                                 <!-- <label>Do you become breathless after climbing a flight of stairs?</label> -->
                                 <mat-form-field>
-                                    <mat-select formControlName="bmiStairs"
+                                    <mat-select id="244" formControlName="bmiStairs"
                                         (selectionChange)="bmiQuestions($event,'bmiStairs')" placeholder="Do you become breathless after climbing a flight of stairs?">
-                                        <mat-option *ngFor="let item of yesNo" [value]="item">{{item}}
+                                        <mat-option id="244{{i}}" *ngFor="let item of yesNo; let i = index;" [value]="item">{{item}}
                                         </mat-option>
                                     </mat-select>
                                 </mat-form-field>
@@ -375,7 +374,7 @@
 
                             <div class="col-md-12" *ngIf="bmiStairsDetails">
                                 <mat-form-field>
-                                    <textarea matInput placeholder="Additional Details"
+                                    <textarea id="245" matInput placeholder="Additional Details"
                                         formControlName="bmiStairsDetails"></textarea>
                                 </mat-form-field>
                             </div>
@@ -383,9 +382,9 @@
                             <div class="col-md-12">
                                 <!-- <label>Do you become breathless when hurrying or walking up a slight hill?</label> -->
                                 <mat-form-field>
-                                    <mat-select formControlName="bmiHill"
+                                    <mat-select id="246" formControlName="bmiHill"
                                         (selectionChange)="bmiQuestions($event,'bmiHill')" placeholder="Do you become breathless when hurrying or walking up a slight hill?">
-                                        <mat-option *ngFor="let item of yesNo" [value]="item">{{item}}
+                                        <mat-option id="246{{i}}" *ngFor="let item of yesNo; let i = index;" [value]="item">{{item}}
                                         </mat-option>
                                     </mat-select>
                                 </mat-form-field>
@@ -393,7 +392,7 @@
 
                             <div class="col-md-12" *ngIf="bmiHillDetails">
                                 <mat-form-field>
-                                    <textarea matInput placeholder="Additional Details"
+                                    <textarea id="247" matInput placeholder="Additional Details"
                                         formControlName="bmiHillDetails"></textarea>
                                 </mat-form-field>
                             </div>
@@ -402,10 +401,10 @@
                                 <!-- <label>When walking on level ground, do you walk slower than others your age or have to
                                     stop for a breather?</label> -->
                                 <mat-form-field>
-                                    <mat-select formControlName="bmiWalk"
+                                    <mat-select id="248" formControlName="bmiWalk"
                                         (selectionChange)="bmiQuestions($event,'bmiWalk')" placeholder="When walking on level ground, do you walk slower than others your age or have to
                                         stop for a breather?">
-                                        <mat-option *ngFor="let item of yesNo" [value]="item">{{item}}
+                                        <mat-option id="248{{i}}" *ngFor="let item of yesNo; let i = index;" [value]="item">{{item}}
                                         </mat-option>
                                     </mat-select>
                                 </mat-form-field>
@@ -413,7 +412,7 @@
 
                             <div class="col-md-12" *ngIf="bmiWalkDetails">
                                 <mat-form-field>
-                                    <textarea matInput placeholder="Additional Details"
+                                    <textarea id="249" matInput placeholder="Additional Details"
                                         formControlName="bmiWalkDetails"></textarea>
                                 </mat-form-field>
                             </div>
@@ -421,12 +420,12 @@
                             <div class="col-md-12">
                                 <!-- <label>What exercise do you do that leaves you out of breath?</label> -->
                                 <mat-form-field>
-                                    <textarea matInput placeholder="What exercise do you do that leaves you out of breath?"
+                                    <textarea id="250" matInput placeholder="What exercise do you do that leaves you out of breath?"
                                         formControlName="bmiExerciseDetails"></textarea>
                                 </mat-form-field>
                                 <!-- <mat-form-field>
                                     <mat-select formControlName="bmiExercise" (selectionChange)="bmiQuestions($event,'bmiExercise')" placeholder="Select">
-                                        <mat-option *ngFor="let item of yesNo" [value]="item">{{item}}
+                                        <mat-option *ngFor="let item of yesNo; let i = index;" [value]="item">{{item}}
                                         </mat-option>
                                     </mat-select>
                                 </mat-form-field> -->
@@ -441,9 +440,9 @@
                             <div class="col-md-12">
                                 <!-- <label>Do you wake on a morning feeling refreshed?</label> -->
                                 <mat-form-field>
-                                    <mat-select formControlName="bmiRefreshed"
+                                    <mat-select id="251" formControlName="bmiRefreshed"
                                         (selectionChange)="bmiQuestions($event,'bmiRefreshed')" placeholder="Do you wake on a morning feeling refreshed?">
-                                        <mat-option *ngFor="let item of yesNo" [value]="item">{{item}}
+                                        <mat-option id="251{{i}}" *ngFor="let item of yesNo; let i = index;" [value]="item">{{item}}
                                         </mat-option>
                                     </mat-select>
                                 </mat-form-field>
@@ -451,7 +450,7 @@
 
                             <div class="col-md-12" *ngIf="bmiRefreshedDetails">
                                 <mat-form-field>
-                                    <textarea matInput placeholder="Additional Details"
+                                    <textarea id="252" matInput placeholder="Additional Details"
                                         formControlName="bmiRefreshedDetails"></textarea>
                                 </mat-form-field>
                             </div>
@@ -460,10 +459,10 @@
                                 <!-- <label>Has anyone ever told you they have observed you going for periods without
                                     breathing whilst you are asleep?</label> -->
                                 <mat-form-field>
-                                    <mat-select formControlName="bmiBreathless"
+                                    <mat-select id="253" formControlName="bmiBreathless"
                                         (selectionChange)="bmiQuestions($event,'bmiBreathless')" placeholder="Has anyone ever told you they have observed you going for periods without
                                         breathing whilst you are asleep?">
-                                        <mat-option *ngFor="let item of yesNo" [value]="item">{{item}}
+                                        <mat-option id="253{{i}}" *ngFor="let item of yesNo; let i = index;" [value]="item">{{item}}
                                         </mat-option>
                                     </mat-select>
                                 </mat-form-field>
@@ -471,7 +470,7 @@
 
                             <div class="col-md-12" *ngIf="bmiBreathlessDetails">
                                 <mat-form-field>
-                                    <textarea matInput placeholder="Additional Details"
+                                    <textarea id="254" matInput placeholder="Additional Details"
                                         formControlName="bmiBreathlessDetails"></textarea>
                                 </mat-form-field>
                             </div>
@@ -479,9 +478,9 @@
                             <div class="col-md-12">
                                 <!-- <label>Do you wake up with a sore throat or headache?</label> -->
                                 <mat-form-field>
-                                    <mat-select formControlName="bmiHeadache"
+                                    <mat-select id="255" formControlName="bmiHeadache"
                                         (selectionChange)="bmiQuestions($event,'bmiHeadache')" placeholder="Do you wake up with a sore throat or headache?">
-                                        <mat-option *ngFor="let item of yesNo" [value]="item">{{item}}
+                                        <mat-option id="255{{i}}" *ngFor="let item of yesNo; let i = index;" [value]="item">{{item}}
                                         </mat-option>
                                     </mat-select>
                                 </mat-form-field>
@@ -489,7 +488,7 @@
 
                             <div class="col-md-12" *ngIf="bmiHeadacheDetails">
                                 <mat-form-field>
-                                    <textarea matInput placeholder="Additional Details"
+                                    <textarea id="256" matInput placeholder="Additional Details"
                                         formControlName="bmiHeadacheDetails"></textarea>
                                 </mat-form-field>
                             </div>
@@ -497,9 +496,9 @@
                             <div class="col-md-12">
                                 <!-- <label>Do you snore?</label> -->
                                 <mat-form-field>
-                                    <mat-select formControlName="bmiSnore"
+                                    <mat-select id="257" formControlName="bmiSnore"
                                         (selectionChange)="bmiQuestions($event,'bmiSnore')" placeholder="Do you snore?">
-                                        <mat-option *ngFor="let item of yesNo" [value]="item">{{item}}
+                                        <mat-option id="257{{i}}" *ngFor="let item of yesNo; let i = index;" [value]="item">{{item}}
                                         </mat-option>
                                     </mat-select>
                                 </mat-form-field>
@@ -507,7 +506,7 @@
 
                             <div class="col-md-12" *ngIf="bmiSnoreDetails">
                                 <mat-form-field>
-                                    <textarea matInput placeholder="Additional Details"
+                                    <textarea id="258" matInput placeholder="Additional Details"
                                         formControlName="bmiSnoreDetails"></textarea>
                                 </mat-form-field>
                             </div>
@@ -515,9 +514,9 @@
                             <div class="col-md-12">
                                 <!-- <label>Do you feel excessively tired during day?</label> -->
                                 <mat-form-field>
-                                    <mat-select formControlName="bmiTired"
+                                    <mat-select id="259" formControlName="bmiTired"
                                         (selectionChange)="bmiQuestions($event,'bmiTired')" placeholder="Do you feel excessively tired during day?">
-                                        <mat-option *ngFor="let item of yesNo" [value]="item">{{item}}
+                                        <mat-option id="259{{i}}" *ngFor="let item of yesNo; let i = index;" [value]="item">{{item}}
                                         </mat-option>
                                     </mat-select>
                                 </mat-form-field>
@@ -525,7 +524,7 @@
 
                             <div class="col-md-12" *ngIf="bmiTiredDetails">
                                 <mat-form-field>
-                                    <textarea matInput placeholder="Additional Details"
+                                    <textarea id="260" matInput placeholder="Additional Details"
                                         formControlName="bmiTiredDetails"></textarea>
                                 </mat-form-field>
                             </div>
@@ -534,25 +533,25 @@
                         <div class="row">
                             <div class="col-md-4">
                                 <mat-form-field>
-                                    <mat-select (selectionChange)="completeAsFailReferToGP()"
+                                    <mat-select id="184" (selectionChange)="completeAsFailReferToGP()"
                                         formControlName="pulseRhythm" placeholder="Pulse Rhythm">
-                                        <mat-option *ngFor="let item of normality" [value]="item">{{item}}
+                                        <mat-option *ngFor="let item of normality; let i = index" id="184{{i}}" [value]="item">{{item}}
                                         </mat-option>
                                     </mat-select>
                                 </mat-form-field>
                             </div>
                             <div class="col-md-4">
                                 <mat-form-field>
-                                    <mat-select formControlName="glucose" placeholder="Urine Analysis - Glucose">
-                                        <mat-option *ngFor="let item of urinanalysis" [value]="item">{{item}}
+                                    <mat-select id="185" formControlName="glucose" placeholder="Urine Analysis - Glucose">
+                                        <mat-option *ngFor="let item of urinanalysis; let i = index"  [value]="item" id="185{{i}}">{{item}}
                                         </mat-option>
                                     </mat-select>
                                 </mat-form-field>
                             </div>
                             <div class="col-md-4">
                                 <mat-form-field>
-                                    <mat-select formControlName="protein" placeholder="Urine Analysis - Protein">
-                                        <mat-option *ngFor="let item of urinanalysis" [value]="item">{{item}}
+                                    <mat-select id="186" formControlName="protein" placeholder="Urine Analysis - Protein">
+                                        <mat-option id="186{{i}}" *ngFor="let item of urinanalysis ; let i = index"  [value]="item">{{item}}
                                         </mat-option>
                                     </mat-select>
                                 </mat-form-field>
@@ -587,7 +586,7 @@
                                     </div>
                                     <div class="col-6 d-flex justify-content-center">
                                         <table class="showTblLines">
-                                            <tr *ngFor="let data of bpArray; let i=index">
+                                            <tr *ngFor="let data of bpArray;  let i=index">
                                                 <td>
                                                     <input type="checkbox" name="checkButton"
                                                         [attr.checked]="data.checked" [value]="data.value"
@@ -609,8 +608,8 @@
                                 <div class="col-md-12">
                                     <!-- <label>Balance, Mobility and Co-ordination?</label> -->
                                     <mat-form-field>
-                                        <mat-select formControlName="balanceNMobility" placeholder="Balance, Mobility and Co-ordination?">
-                                            <mat-option *ngFor="let item of yesNo" [value]="item">{{item}}
+                                        <mat-select id="187" formControlName="balanceNMobility" placeholder="Balance, Mobility and Co-ordination?">
+                                            <mat-option id="187{{i}}" *ngFor="let item of yesNo; let i = index"  [value]="item">{{item}}
                                             </mat-option>
                                         </mat-select>
                                     </mat-form-field>
@@ -619,8 +618,8 @@
                                 <div class="col-md-12">
                                     <!-- <label>Alertness & Psychological Wellbeing?</label> -->
                                     <mat-form-field>
-                                        <mat-select formControlName="alertnessNwellbeing" placeholder="Alertness & Psychological Wellbeing?">
-                                            <mat-option *ngFor="let item of yesNo" [value]="item">{{item}}
+                                        <mat-select id="188" formControlName="alertnessNwellbeing" placeholder="Alertness & Psychological Wellbeing?">
+                                            <mat-option id="188{{i}}" *ngFor="let item of yesNo; let i = index"  [value]="item">{{item}}
                                             </mat-option>
                                         </mat-select>
                                     </mat-form-field>
@@ -628,8 +627,8 @@
                                 <div class="col-md-12">
                                     <!-- <label>Speech and Ability to Communicate?</label> -->
                                     <mat-form-field>
-                                        <mat-select formControlName="speech" placeholder="Speech and Ability to Communicate?">
-                                            <mat-option *ngFor="let item of yesNo" [value]="item">{{item}}
+                                        <mat-select id="189" formControlName="speech" placeholder="Speech and Ability to Communicate?">
+                                            <mat-option id="189{{i}}" *ngFor="let item of yesNo; let i = index"  [value]="item">{{item}}
                                             </mat-option>
                                         </mat-select>
                                     </mat-form-field>
@@ -730,17 +729,17 @@
                                 </div>
                                 <div class="col-12">
                                     <mat-form-field>
-                                        <mat-select formControlName="adviceGiven"
+                                        <mat-select id="190" formControlName="adviceGiven"
                                             (selectionChange)="adviceGivenChanged($event)" placeholder="Select">
-                                            <mat-option *ngFor="let item of yesNo" [value]="item">{{item}}
+                                            <mat-option id="190{{i}}" *ngFor="let item of yesNo; let i = index" [value]="item">{{item}}
                                             </mat-option>
                                         </mat-select>
                                     </mat-form-field>
                                 </div>
                                 <div class="col-12" *ngIf="showAdviceYes">
                                     <mat-form-field>
-                                        <mat-select formControlName="adviceGivenYes" placeholder="Select" multiple>
-                                            <mat-option *ngFor="let item of ifYes" [value]="item">{{item}}
+                                        <mat-select id="191" formControlName="adviceGivenYes" placeholder="Select" multiple>
+                                            <mat-option id="191{{i}}" *ngFor="let item of ifYes; let i = index" [value]="item">{{item}}
                                             </mat-option>
                                         </mat-select>
                                     </mat-form-field>
@@ -753,17 +752,17 @@
                                 </div>
                                 <div class="col-12">
                                     <mat-form-field>
-                                        <mat-select formControlName="lettersIssued"
+                                        <mat-select id="192" formControlName="lettersIssued"
                                             (selectionChange)="lettersIssuedChanged($event)" placeholder="Select">
-                                            <mat-option *ngFor="let item of yesNo" [value]="item">{{item}}
+                                            <mat-option id="192{{i}}" *ngFor="let item of yesNo; let i = index" [value]="item">{{item}}
                                             </mat-option>
                                         </mat-select>
                                     </mat-form-field>
                                 </div>
                                 <div class="col-12" *ngIf="showlettersIssuedYes">
                                     <mat-form-field>
-                                        <mat-select formControlName="lettersIssuedYes" placeholder="Select" multiple>
-                                            <mat-option *ngFor="let item of ifYes" [value]="item">{{item}}
+                                        <mat-select id="193" formControlName="lettersIssuedYes" placeholder="Select" multiple>
+                                            <mat-option id="193{{i}}" *ngFor="let item of ifYes; let i = index" [value]="item">{{item}}
                                             </mat-option>
                                         </mat-select>
                                     </mat-form-field>
@@ -779,16 +778,16 @@
 
                                 <div class="col-12">
                                     <mat-form-field>
-                                        <mat-select formControlName="leafletsSent" (selectionChange)="leafletsSentChanged($event)" placeholder="Select">
-                                            <mat-option *ngFor="let item of yesNo" [value]="item">{{item}}
+                                        <mat-select id="194" formControlName="leafletsSent" (selectionChange)="leafletsSentChanged($event)" placeholder="Select">
+                                            <mat-option id="194{{i}}" *ngFor="let item of yesNo; let i = index" [value]="item">{{item}}
                                             </mat-option>
                                         </mat-select>
                                     </mat-form-field>
                                 </div>
                                 <div class="col-12" *ngIf="showleafletsSentYes">
                                     <mat-form-field>
-                                        <mat-select formControlName="leafletsSentYes" placeholder="Select" multiple>
-                                            <mat-option *ngFor="let item of leafletsIfYes" [value]="item">
+                                        <mat-select id="195" formControlName="leafletsSentYes" placeholder="Select" multiple>
+                                            <mat-option id="195{{i}}" *ngFor="let item of leafletsIfYes" [value]="item">
                                                 {{item}}
                                             </mat-option>
                                         </mat-select>
@@ -800,7 +799,7 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <mat-form-field class="">
-                                    <input matInput formControlName="additionalComments"
+                                    <input id="196" matInput formControlName="additionalComments"
                                         placeholder="Additional Comments">
                                 </mat-form-field>
                             </div>
@@ -813,28 +812,28 @@
         </div>
 
         <div class="single_accordion">
-            <div class="single_accordion_title collapsed" id="headingTwo" data-toggle="collapse"
+            <div class="single_accordion_title collapsed" id="headingTwo_1" data-toggle="collapse"
                 data-target="#collapseTwoNew" aria-expanded="true" aria-controls="collapseTwoNew">
                 VISION ASSESSMENT
             </div>
             <form [formGroup]="visionAssessment">
-                <div id="collapseTwoNew" class="collapse single_accordion_content" aria-labelledby="headingTwo"
+                <div id="collapseTwoNew" class="collapse single_accordion_content" aria-labelledby="headingTwo_1"
                     data-parent="#accordianNew">
                     <div class="single_accordion_content_inner">
                         <div class="row">
                             <div class="col-md-6">
                                 <mat-form-field>
-                                    <mat-select formControlName="glassesWorn"
+                                    <mat-select id="197" formControlName="glassesWorn"
                                         (selectionChange)="isGlassesWorn($event.value)" placeholder="Glasses Worn">
-                                        <mat-option *ngFor="let item of yesNo" [value]="item">{{item}}
+                                        <mat-option id="197{{i}}" *ngFor="let item of yesNo;let i = index"  [value]="item">{{item}}
                                         </mat-option>
                                     </mat-select>
                                 </mat-form-field>
                             </div>
                             <div class="col-md-6">
                                 <mat-form-field>
-                                    <mat-select formControlName="lensesWorn" placeholder="Lenses Worn">
-                                        <mat-option *ngFor="let item of yesNo" [value]="item">{{item}}
+                                    <mat-select id="198" formControlName="lensesWorn" placeholder="Lenses Worn">
+                                        <mat-option id="198{{i}}" *ngFor="let item of yesNo;let i = index"  [value]="item">{{item}}
                                         </mat-option>
                                     </mat-select>
                                 </mat-form-field>
@@ -844,16 +843,16 @@
                             </div>
                             <div class="col-md-6">
                                 <mat-form-field>
-                                    <mat-select formControlName="dvlUnaided" placeholder="Left(Unaided)">
-                                        <mat-option *ngFor="let item of distanceVisionList" [value]="item">6/{{item}}
+                                    <mat-select id="199" formControlName="dvlUnaided" placeholder="Left(Unaided)">
+                                        <mat-option id="199{{i}}" *ngFor="let item of distanceVisionList;let i = index"  [value]="item">6/{{item}}
                                         </mat-option>
                                     </mat-select>
                                 </mat-form-field>
                             </div>
                             <div class="col-md-6">
                                 <mat-form-field>
-                                    <mat-select formControlName="dvrUnaided" placeholder="Right(Unaided)">
-                                        <mat-option *ngFor="let item of distanceVisionList" [value]="item">6/{{item}}
+                                    <mat-select id="200" formControlName="dvrUnaided" placeholder="Right(Unaided)">
+                                        <mat-option id="200{{i}}" *ngFor="let item of distanceVisionList;let i = index"  [value]="item">6/{{item}}
                                         </mat-option>
                                     </mat-select>
                                 </mat-form-field>
@@ -862,16 +861,16 @@
                         <div class="row" *ngIf="isGlassWorn">
                             <div class="col-md-6">
                                 <mat-form-field>
-                                    <mat-select formControlName="dvlCorrected" placeholder="Left(Corrected)">
-                                        <mat-option *ngFor="let item of distanceVisionList" [value]="item">6/{{item}}
+                                    <mat-select id="201" formControlName="dvlCorrected" placeholder="Left(Corrected)">
+                                        <mat-option id="201{{i}}" *ngFor="let item of distanceVisionList;let i = index"  [value]="item">6/{{item}}
                                         </mat-option>
                                     </mat-select>
                                 </mat-form-field>
                             </div>
                             <div class="col-md-6">
                                 <mat-form-field>
-                                    <mat-select formControlName="dvrCorrected" placeholder="Right(Corrected)">
-                                        <mat-option *ngFor="let item of distanceVisionList" [value]="item">6/{{item}}
+                                    <mat-select id="202" formControlName="dvrCorrected" placeholder="Right(Corrected)">
+                                        <mat-option id="202{{i}}" *ngFor="let item of distanceVisionList;let i = index"  [value]="item">6/{{item}}
                                         </mat-option>
                                     </mat-select>
                                 </mat-form-field>
@@ -888,17 +887,17 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <mat-form-field>
-                                    <mat-select formControlName="visualFields" placeholder="Visual Fields">
-                                        <mat-option *ngFor="let item of normality" [value]="item">{{item}}
+                                    <mat-select id="203" formControlName="visualFields" placeholder="Visual Fields">
+                                        <mat-option id="203{{i}}" *ngFor="let item of normality;let i = index"  [value]="item">{{item}}
                                         </mat-option>
                                     </mat-select>
                                 </mat-form-field>
                             </div>
                             <div class="col-md-6">
                                 <mat-form-field>
-                                    <mat-select formControlName="colorVision"
+                                    <mat-select id="204" formControlName="colorVision"
                                         (selectionChange)="fitnessChange($event,'vision')" placeholder="Colour Vision">
-                                        <mat-option *ngFor="let item of normality" [value]="item">{{item}}
+                                        <mat-option id="204{{i}}" *ngFor="let item of normality;let i = index"  [value]="item">{{item}}
                                         </mat-option>
                                     </mat-select>
                                 </mat-form-field>
@@ -911,8 +910,8 @@
                             </div>
                             <div class="col-md-6">
                                 <mat-form-field>
-                                    <mat-select formControlName="plates" placeholder="No. of plates read correctly">
-                                        <mat-option *ngFor="let item of platesList" [value]="item">{{item}}
+                                    <mat-select id="205" formControlName="plates" placeholder="No. of plates read correctly">
+                                        <mat-option id="205{{i}}" *ngFor="let item of platesList;let i = index"  [value]="item">{{item}}
                                         </mat-option>
                                     </mat-select>
                                 </mat-form-field>
@@ -922,7 +921,7 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <mat-form-field class="">
-                                    <input matInput formControlName="additionalComments"
+                                    <input id="206" matInput formControlName="additionalComments"
                                         placeholder="Additional Comments">
                                 </mat-form-field>
                             </div>
@@ -946,8 +945,8 @@
 
                             <div class="col-12">
                                 <mat-form-field>
-                                    <mat-select formControlName="earWax" placeholder="Are the ears clear of wax?">
-                                        <mat-option *ngFor="let item of yesNo" [value]="item">{{item}}
+                                    <mat-select id="207" formControlName="earWax" placeholder="Are the ears clear of wax?">
+                                        <mat-option id="207{{i}}" *ngFor="let item of yesNo;let i = index" [value]="item">{{item}}
                                         </mat-option>
                                     </mat-select>
                                 </mat-form-field>
@@ -958,35 +957,35 @@
                             </div>
                             <div class="col-md-3">
                                 <mat-form-field>
-                                    <mat-select formControlName="leftEar500"
+                                    <mat-select  id="208" formControlName="leftEar500"
                                         (selectionChange)="leftEarChange($event, 500)" placeholder="500">
-                                        <mat-option *ngFor="let item of hearingList" [value]="item">{{item}}
+                                        <mat-option id="208{{i}}" *ngFor="let item of hearingList;let i = index" [value]="item">{{item}}
                                         </mat-option>
                                     </mat-select>
                                 </mat-form-field>
                             </div>
                             <div class="col-md-3">
                                 <mat-form-field>
-                                    <mat-select formControlName="leftEar1000"
+                                    <mat-select id="209" formControlName="leftEar1000"
                                         (selectionChange)="leftEarChange($event, 1000)" placeholder="1000">
-                                        <mat-option *ngFor="let item of hearingList" [value]="item">{{item}}
+                                        <mat-option id="209{{i}}" *ngFor="let item of hearingList;let i = index" [value]="item">{{item}}
                                         </mat-option>
                                     </mat-select>
                                 </mat-form-field>
                             </div>
                             <div class="col-md-3">
                                 <mat-form-field>
-                                    <mat-select formControlName="leftEar2000"
+                                    <mat-select id="210" formControlName="leftEar2000"
                                         (selectionChange)="leftEarChange($event, 2000)" placeholder="2000">
-                                        <mat-option *ngFor="let item of hearingList" [value]="item">{{item}}
+                                        <mat-option id="210{{i}}" *ngFor="let item of hearingList;let i = index" [value]="item">{{item}}
                                         </mat-option>
                                     </mat-select>
                                 </mat-form-field>
                             </div>
                             <div class="col-md-3">
                                 <mat-form-field>
-                                    <mat-select formControlName="leftEar3000" placeholder="3000">
-                                        <mat-option *ngFor="let item of hearingList" [value]="item">{{item}}
+                                    <mat-select id="211" formControlName="leftEar3000" placeholder="3000">
+                                        <mat-option id="211{{i}}" *ngFor="let item of hearingList;let i = index" [value]="item">{{item}}
                                         </mat-option>
                                     </mat-select>
                                 </mat-form-field>
@@ -995,24 +994,24 @@
                         <div class="row">
                             <div class="col-md-3">
                                 <mat-form-field>
-                                    <mat-select formControlName="leftEar4000" placeholder="4000">
-                                        <mat-option *ngFor="let item of hearingList" [value]="item">{{item}}
+                                    <mat-select id="212" formControlName="leftEar4000" placeholder="4000">
+                                        <mat-option id="212{{i}}" *ngFor="let item of hearingList;let i = index" [value]="item">{{item}}
                                         </mat-option>
                                     </mat-select>
                                 </mat-form-field>
                             </div>
                             <div class="col-md-3">
                                 <mat-form-field>
-                                    <mat-select formControlName="leftEar6000" placeholder="6000">
-                                        <mat-option *ngFor="let item of hearingList" [value]="item">{{item}}
+                                    <mat-select id="213" formControlName="leftEar6000" placeholder="6000">
+                                        <mat-option id="213{{i}}" *ngFor="let item of hearingList;let i = index" [value]="item">{{item}}
                                         </mat-option>
                                     </mat-select>
                                 </mat-form-field>
                             </div>
                             <div class="col-md-3">
                                 <mat-form-field>
-                                    <mat-select formControlName="leftEar8000" placeholder="8000">
-                                        <mat-option *ngFor="let item of hearingList" [value]="item">{{item}}
+                                    <mat-select id="214" formControlName="leftEar8000" placeholder="8000">
+                                        <mat-option id="214{{i}}" *ngFor="let item of hearingList;let i = index" [value]="item">{{item}}
                                         </mat-option>
                                     </mat-select>
                                 </mat-form-field>
@@ -1026,35 +1025,35 @@
                             </div>
                             <div class="col-md-3">
                                 <mat-form-field>
-                                    <mat-select formControlName="rightEar500"
+                                    <mat-select id="215" formControlName="rightEar500"
                                         (selectionChange)="rightEarChange($event, 500)" placeholder="500">
-                                        <mat-option *ngFor="let item of hearingList" [value]="item">{{item}}
+                                        <mat-option id="215{{i}}" *ngFor="let item of hearingList;let i = index" [value]="item">{{item}}
                                         </mat-option>
                                     </mat-select>
                                 </mat-form-field>
                             </div>
                             <div class="col-md-3">
                                 <mat-form-field>
-                                    <mat-select formControlName="rightEar1000"
+                                    <mat-select id="216" formControlName="rightEar1000"
                                         (selectionChange)="rightEarChange($event, 1000)" placeholder="1000">
-                                        <mat-option *ngFor="let item of hearingList" [value]="item">{{item}}
+                                        <mat-option id="216{{i}}" *ngFor="let item of hearingList;let i = index" [value]="item">{{item}}
                                         </mat-option>
                                     </mat-select>
                                 </mat-form-field>
                             </div>
                             <div class="col-md-3">
                                 <mat-form-field>
-                                    <mat-select formControlName="rightEar2000"
+                                    <mat-select id="217" formControlName="rightEar2000"
                                         (selectionChange)="rightEarChange($event, 2000)" placeholder="2000">
-                                        <mat-option *ngFor="let item of hearingList" [value]="item">{{item}}
+                                        <mat-option id="217{{i}}" *ngFor="let item of hearingList;let i = index" [value]="item">{{item}}
                                         </mat-option>
                                     </mat-select>
                                 </mat-form-field>
                             </div>
                             <div class="col-md-3">
                                 <mat-form-field>
-                                    <mat-select formControlName="rightEar3000" placeholder="3000">
-                                        <mat-option *ngFor="let item of hearingList" [value]="item">{{item}}
+                                    <mat-select id="218" formControlName="rightEar3000" placeholder="3000">
+                                        <mat-option id="218{{i}}" *ngFor="let item of hearingList;let i = index" [value]="item">{{item}}
                                         </mat-option>
                                     </mat-select>
                                 </mat-form-field>
@@ -1063,24 +1062,24 @@
                         <div class="row">
                             <div class="col-md-3">
                                 <mat-form-field>
-                                    <mat-select formControlName="rightEar4000" placeholder="4000">
-                                        <mat-option *ngFor="let item of hearingList" [value]="item">{{item}}
+                                    <mat-select id="219" formControlName="rightEar4000" placeholder="4000">
+                                        <mat-option id="219{{i}}" *ngFor="let item of hearingList;let i = index" [value]="item">{{item}}
                                         </mat-option>
                                     </mat-select>
                                 </mat-form-field>
                             </div>
                             <div class="col-md-3">
                                 <mat-form-field>
-                                    <mat-select formControlName="rightEar6000" placeholder="6000">
-                                        <mat-option *ngFor="let item of hearingList" [value]="item">{{item}}
+                                    <mat-select id="220" formControlName="rightEar6000" placeholder="6000">
+                                        <mat-option id="220{{i}}" *ngFor="let item of hearingList;let i = index" [value]="item">{{item}}
                                         </mat-option>
                                     </mat-select>
                                 </mat-form-field>
                             </div>
                             <div class="col-md-3">
                                 <mat-form-field>
-                                    <mat-select formControlName="rightEar8000" placeholder="8000">
-                                        <mat-option *ngFor="let item of hearingList" [value]="item">{{item}}
+                                    <mat-select id="221" formControlName="rightEar8000" placeholder="8000">
+                                        <mat-option id="221{{i}}" *ngFor="let item of hearingList;let i = index" [value]="item">{{item}}
                                         </mat-option>
                                     </mat-select>
                                 </mat-form-field>
@@ -1364,7 +1363,7 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <mat-form-field class="">
-                                    <input matInput formControlName="additionalComments"
+                                    <input id="222" matInput formControlName="additionalComments"
                                         placeholder="Additional Comments">
                                 </mat-form-field>
                             </div>
@@ -1377,30 +1376,30 @@
         </div>
 
         <div class="single_accordion">
-            <div class="single_accordion_title collapsed" id="headingThree" data-toggle="collapse"
+            <div class="single_accordion_title collapsed" id="headingThree_1" data-toggle="collapse"
                 data-target="#collapseThreeNew" aria-expanded="true" aria-controls="collapseThreeNew">
                 FITNESS ASSESSMENT SUMMARY
             </div>
             <form [formGroup]="fitnessGrp">
-                <div id="collapseThreeNew" class="collapse single_accordion_content" aria-labelledby="headingThree"
+                <div id="collapseThreeNew" class="collapse single_accordion_content" aria-labelledby="headingThree_1"
                     data-parent="#accordianNew">
                     <div class="single_accordion_content_inner">
                         <div class="row">
                             <div class="col-md-6">
                                 <mat-form-field>
-                                    <mat-select formControlName="generalHealth"
+                                    <mat-select id="223" formControlName="generalHealth"
                                         (selectionChange)="fitnessChange($event,'generalHealth')"
                                         placeholder="General Health">
-                                        <mat-option *ngFor="let item of satisfactory" [value]="item">{{item}}
+                                        <mat-option id="223{{i}}" *ngFor="let item of satisfactory; let i = index" [value]="item">{{item}}
                                         </mat-option>
                                     </mat-select>
                                 </mat-form-field>
                             </div>
                             <div class="col-md-6">
                                 <mat-form-field>
-                                    <mat-select formControlName="visual"
+                                    <mat-select id="224" formControlName="visual"
                                         (selectionChange)="fitnessChange($event,'visual')" placeholder="Visual Acuity">
-                                        <mat-option *ngFor="let item of satisfactory" [value]="item">{{item}}
+                                        <mat-option id="224{{i}}" *ngFor="let item of satisfactory; let i = index" [value]="item">{{item}}
                                         </mat-option>
                                     </mat-select>
                                 </mat-form-field>
@@ -1409,19 +1408,19 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <mat-form-field>
-                                    <mat-select formControlName="colorVision"
+                                    <mat-select id="225" formControlName="colorVision"
                                         (selectionChange)="fitnessChange($event,'colourVision')"
                                         placeholder="Colour Vision">
-                                        <mat-option *ngFor="let item of satisfactory" [value]="item">{{item}}
+                                        <mat-option id="225{{i}}" *ngFor="let item of satisfactory; let i = index" [value]="item">{{item}}
                                         </mat-option>
                                     </mat-select>
                                 </mat-form-field>
                             </div>
                             <div class="col-md-6">
                                 <mat-form-field>
-                                    <mat-select formControlName="hearing"
+                                    <mat-select id="226" formControlName="hearing"
                                         (selectionChange)="fitnessChange($event,'hearing')" placeholder="Hearing">
-                                        <mat-option *ngFor="let item of satisfactory" [value]="item">{{item}}
+                                        <mat-option id="226{{i}}" *ngFor="let item of satisfactory; let i = index" [value]="item">{{item}}
                                         </mat-option>
                                     </mat-select>
                                 </mat-form-field>
@@ -1430,7 +1429,7 @@
                         <div class="row">
                             <div class="col-12">
                                 <mat-form-field>
-                                    <textarea formControlName="addInfo" placeholder="Additional Information"
+                                    <textarea id="227" formControlName="addInfo" placeholder="Additional Information"
                                         matInput></textarea>
                                 </mat-form-field>
                             </div>
@@ -1441,12 +1440,12 @@
         </div>
 
         <div class="single_accordion">
-            <div class="single_accordion_title collapsed" id="headingFour" data-toggle="collapse"
+            <div class="single_accordion_title collapsed" id="headingFour_1" data-toggle="collapse"
                 data-target="#collapseFourNew" aria-expanded="true" aria-controls="collapseFourNew">
                 MEDICAL EXAMINARS RECOMMENDATION
             </div>
             <form [formGroup]="medicalAssess">
-                <div id="collapseFourNew" class="collapse single_accordion_content" aria-labelledby="headingFour"
+                <div id="collapseFourNew" class="collapse single_accordion_content" aria-labelledby="headingFour_1"
                     data-parent="#accordianNew">
                     <div class="single_accordion_content_inner">
                         <div class="row">
@@ -1454,34 +1453,34 @@
                             <div class="col-12">
 
                                 <div class="col-md-6">
-                                    <input type="checkbox" name="fit" [attr.checked]="" value="Fit"
+                                    <input id="228" type="checkbox" name="fit" [attr.checked]="" value="Fit"
                                         (change)="fit($event)" />
                                     Fit
                                 </div>
 
                                 <div class="col-md-12">
                                     <mat-form-field>
-                                        <mat-select formControlName="level" placeholder="Select" required>
+                                        <mat-select id="229" formControlName="level" placeholder="Select" required>
                                             <mat-option [value]="'level1'" [disabled]="disableLevel">Level 1
                                             </mat-option>
-                                            <mat-option [value]="'level3'">Level 3</mat-option>
+                                            <mat-option id="230" [value]="'level3'">Level 3</mat-option>
                                         </mat-select>
                                     </mat-form-field>
                                 </div>
                                 <div class="col-md-6">
-                                    <input type="checkbox" name="letterToGp" [attr.checked]="letterToGpCheck" [value]="letterToGp"
+                                    <input id="231" type="checkbox" name="letterToGp" [attr.checked]="letterToGpCheck" [value]="letterToGp"
                                         (change)="letterToGp($event)" />
                                     Letter To GP/Opticion
                                 </div>
 
                                 <div class='col-md-12'>
                                     <mat-form-field>
-                                        <input matInput placeholder="Reason" formControlName="reason">
+                                        <input id="232" matInput placeholder="Reason" formControlName="reason">
                                     </mat-form-field>
                                 </div>
 
                                 <div class="col-md-6">
-                                    <input type="checkbox" name="certificate" [attr.checked]=""
+                                    <input id="233" type="checkbox" name="certificate" [attr.checked]=""
                                         value="MonthsCertificate" (change)="sixMonth($event)" />
                                     6 Months Certificate
                                 </div>
@@ -1491,7 +1490,7 @@
                                 </div>
 
                                 <div class="col-md-6">
-                                    <input type="checkbox" name="referToOH" [attr.checked]="" [value]="referToOH"
+                                    <input id="234" type="checkbox" name="referToOH" [attr.checked]="" [value]="referToOH"
                                         (change)="referToOH($event)" />
                                     Refer To OH Physician
                                 </div>
@@ -1501,7 +1500,7 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <mat-form-field>
-                                    <input formControlName="examinerName" matInput
+                                    <input id="235" formControlName="examinerName" matInput
                                         placeholder="Medical Examinar's Name" required>
                                 </mat-form-field>
                             </div>
@@ -1521,7 +1520,7 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <label>SIGNATURE</label>
-                                <div class="signCanvas" *ngIf="!examinarSign" (click)="redirect('examinar')">
+                                <div class="signCanvas" id="236" *ngIf="!examinarSign" (click)="redirect('examinar')">
                                     Click to sign
                                 </div>
 
@@ -1533,7 +1532,7 @@
                         <div class="row">
                             <div class="col-12">
                                 <mat-form-field>
-                                    <textarea matInput formControlName="reasonForReferral"
+                                    <textarea id="237" matInput formControlName="reasonForReferral"
                                         placeholder="Reason for referral"></textarea>
                                 </mat-form-field>
                             </div>
@@ -1541,7 +1540,7 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <mat-form-field>
-                                    <input formControlName="checkedBy" matInput placeholder="Checked By" required>
+                                    <input id="238" formControlName="checkedBy" matInput placeholder="Checked By" required>
                                 </mat-form-field>
                             </div>
                             <div class="col-md-6">
@@ -1560,7 +1559,7 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <label>SIGNATURE</label>
-                                <div class="signCanvas" *ngIf="!checkedBy" (click)="redirect('checkedby')">
+                                <div class="signCanvas" id="239" *ngIf="!checkedBy" (click)="redirect('checkedby')">
                                     Click to sign
                                 </div>
 
@@ -1572,7 +1571,7 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <mat-form-field class="">
-                                    <input matInput formControlName="additionalComments"
+                                    <input id="240" matInput formControlName="additionalComments"
                                         placeholder="Additional Comments">
                                 </mat-form-field>
                             </div>
@@ -1615,7 +1614,7 @@
         </div>
     </div>
     <div class="mt-3" [hidden]="hideSecondForm">
-        <button [disabled]="submitDisabled" mat-raised-button color="primary" (click)="submit()">Submit</button>
+        <button id="submitFinalButton" [disabled]="submitDisabled" mat-raised-button color="primary" (click)="submit()">Submit</button>
     </div>
 </div>
 
