@@ -119,6 +119,8 @@ export class NewFormComponent implements OnInit {
   // To show aided and correct field based on glass worn selection
   isGlassWorn: boolean;
   showleafletsSentYes: boolean;
+  isFailedReason: any;
+  isFailed: any;
   constructor(private fb: FormBuilder, public dialog: MatDialog, public _medicalFormService: MedicalFormService) {
     this.pulseList = this.generateRange(40, 180)
     this.heightList = this.generateRange(120, 200)
@@ -144,8 +146,8 @@ export class NewFormComponent implements OnInit {
       this.itemData = JSON.parse(localStorage.getItem("formone"));
       console.log('itemData======>', this.itemData);
       let name = this.itemData.medicalQuestionnaire.firstName + ' ' + this.itemData.medicalQuestionnaire.surName
-      this.form1.controls['name'].setValue(name);
-      this.form1.controls['dob'].setValue(this.itemData.medicalQuestionnaire.dob);
+      // this.form1.controls['name'].setValue(name);
+      // this.form1.controls['dob'].setValue(this.itemData.medicalQuestionnaire.dob);
       this.oldForm = this.itemData;
       this.hideFirstForm = true;
       this.hideSecondForm = false;
@@ -158,7 +160,7 @@ export class NewFormComponent implements OnInit {
   }
 
   enableNewForm() {
-    this.form1.enable();
+    // this.form1.enable();
     this.generalHealth.enable();
     this.visionAssessment.enable();
     this.hearingGrp.enable();
@@ -167,7 +169,7 @@ export class NewFormComponent implements OnInit {
   }
 
   disableNewForm() {
-    this.form1.disable();
+    // this.form1.disable();
     this.generalHealth.disable();
     this.visionAssessment.disable();
     this.hearingGrp.disable();
@@ -176,27 +178,27 @@ export class NewFormComponent implements OnInit {
   }
 
   onValueChange() {
-    console.log('Function Calling', this.form1.value);
+    // console.log('Function Calling', this.form1.value);
 
-    let formValue = this.form1.value;
+    // let formValue = this.form1.value;
 
-    if (formValue.name && formValue.idConfirmed && formValue.idConfirmed.length && formValue.dob) {
-      console.log('Inside If');
-      this.submitDisabled = false;
-      this.generalHealth.enable();
-      this.visionAssessment.enable();
-      this.hearingGrp.enable();
-      this.fitnessGrp.enable();
-      this.medicalAssess.enable();
-    } else {
-      console.log('Inside Else');
-      this.submitDisabled = true;
-      this.generalHealth.disable();
-      this.visionAssessment.disable();
-      this.hearingGrp.disable();
-      this.fitnessGrp.disable();
-      this.medicalAssess.disable();
-    }
+    // if (formValue.name && formValue.idConfirmed && formValue.idConfirmed.length && formValue.dob) {
+    //   console.log('Inside If');
+    //   this.submitDisabled = false;
+    //   this.generalHealth.enable();
+    //   this.visionAssessment.enable();
+    //   this.hearingGrp.enable();
+    //   this.fitnessGrp.enable();
+    //   this.medicalAssess.enable();
+    // } else {
+    //   console.log('Inside Else');
+    //   this.submitDisabled = true;
+    //   this.generalHealth.disable();
+    //   this.visionAssessment.disable();
+    //   this.hearingGrp.disable();
+    //   this.fitnessGrp.disable();
+    //   this.medicalAssess.disable();
+    // }
   }
 
 
@@ -379,11 +381,22 @@ export class NewFormComponent implements OnInit {
     checkedSign: new FormControl(''),
     reasonForReferral: new FormControl(''),
     additionalComments: new FormControl(''),
+    isFailed: new FormControl(''),
+    isFailedReason: new FormControl('')
   })
-
+  failedChange(event){
+    console.log("event=============", event)
+    if (event && event.target.checked){
+      this.isFailed = true
+    } else{
+      this.isFailed = false
+    }
+  }
   newOldData(event) {
     this.oldForm = event;
     console.log('Old Form Data Here', this.oldForm);
+
+    
 
     if (this.oldForm.medicalQuestionnaire && this.oldForm.medicalQuestionnaire.dob) {
       this.form1.controls['dob'].setValue(this.oldForm.medicalQuestionnaire.dob);
@@ -395,8 +408,19 @@ export class NewFormComponent implements OnInit {
       this.form1.controls['name'].setValue(name);
     }
 
-
-
+    if (this.oldForm.personalDetails){
+      this.submitDisabled = false
+      this.form1.patchValue({
+        idConfirmed: this.oldForm.personalDetails.idConfirmed,
+        idConfirmOther: this.oldForm.personalDetails.idConfirmOther,
+        currentSenCard: this.oldForm.personalDetails.currentSenCard,
+        natInstNo: this.oldForm.personalDetails.natInstNo,
+        sentinalNo: this.oldForm.personalDetails.sentinalNo,
+        additionalComments: this.oldForm.personalDetails.additionalComments
+      })
+    } else {
+      this.submitDisabled = true
+    }
 
     this.enableNewForm();
     this.hideFirstForm = true;
@@ -406,7 +430,7 @@ export class NewFormComponent implements OnInit {
     console.log("evemt ==> ", event, "<======> ", formName);
     switch (formName) {
       case "form1":
-        this.form1.controls[fieldName].setValue(event.finalDate)
+        // this.form1.controls[fieldName].setValue(event.finalDate)
         break;
       case "medicalAssess":
         switch (fieldName) {
@@ -427,7 +451,7 @@ export class NewFormComponent implements OnInit {
       default:
         break;
     }
-    console.log("Form  1 ======> ", this.form1);
+    // console.log("Form  1 ======> ", this.form1);
     console.log("Form  1 ======> ", this.medicalAssess);
   }
   isGlassesWorn(event) {
@@ -524,7 +548,7 @@ export class NewFormComponent implements OnInit {
     }
     // }
   }
-  onCheckboxChange(e) {
+  // onCheckboxChange(e) {
     // const checkArray: FormArray = this.generalHealth.get('bpCheckBox') as FormArray;
 
     // if (e.target.checked) {
@@ -540,6 +564,30 @@ export class NewFormComponent implements OnInit {
     //   });
     // }
     // console.log("const checkArray", checkArray)
+  // }
+  onCheckboxChange(e, i) {
+    const checkArray: FormArray = this.generalHealth.get('bpCheckBox') as FormArray;
+
+    if (e.target.checked) {
+      this.bpArray[i].checked = true
+      //   checkArray.push(new FormControl(e.target.value));
+      // } else {
+      //   let i: number = 0;
+      //   checkArray.controls.forEach((item: FormControl) => {
+      //     if (item.value == e.target.value) {
+      //       checkArray.removeAt(i);
+      //       return;
+      //     }
+      //     i++;
+      //   });
+    }
+    else {
+      this.bpArray[i].checked = null
+    }
+    this.generalHealth.patchValue({
+      bpCheckBox: this.bpArray
+    })
+    console.log("const checkArray", checkArray, e)
   }
   fit(event) {
     console.log("ecent on fir check", event)
@@ -1021,6 +1069,23 @@ export class NewFormComponent implements OnInit {
         }
       })
     }
+    let tempLeaflets = this.generalHealth.controls.leafletsSentYes.value
+    if (tempLeaflets) {
+      tempLeaflets.forEach(el => {
+        if (el == 'Blood Pressure') {
+          this.generalHealth.value['bloodPleaf'] = "Bloop Pressure"
+        }
+        else if (el == 'Smoking') {
+          this.generalHealth.value['smokeInleaf'] = "Smoking"
+        }
+        else if (el == 'Alcohol') {
+          this.generalHealth.value['alcoleaf'] = "Alcohol"
+        }
+        else if (el == 'BMI') {
+          this.generalHealth.value['bmiYesleaf'] = "BMI"
+        }
+      })
+    }
     let temp3 = this.medicalAssess.controls.level.value
     if (temp3 && temp3 == 'level1') {
       this.medicalAssess.value['level1'] = "level1"
@@ -1060,14 +1125,14 @@ export class NewFormComponent implements OnInit {
       empHistory: this.oldForm.empHistory,
       medHistory: this.oldForm.medHistory,
       lifeStyle: this.oldForm.lifeStyle,
-      confirmation: this.oldForm.confirmation
+      confirmation: this.oldForm.confirmation,
     }
 
     console.log('Final Data to submit', data);
 
 
     // return;
-    if (this.form1.valid && this.medicalAssess.valid) {
+    if (this.medicalAssess.valid) {
       if (this.generalHealth.valid) {
         if (this.visionAssessment.valid) {
           if (this.hearingGrp.valid) {
@@ -1086,7 +1151,7 @@ export class NewFormComponent implements OnInit {
       }
     }
     else {
-      alert('Level, Name and Signature  Missing')
+      alert('Level, Name or Examiner Signature  Missing')
     }
 
     // if (this.form1.valid && this.medicalAssess.valid && this.generalHealth.valid && this.visionAssessment.valid && this.hearingGrp.valid ) {
@@ -1136,23 +1201,40 @@ export class NewFormComponent implements OnInit {
     console.log(" ****** Hey Yash ", this.generalHealth.value['pulse3'])
 
 
-    // if(this.generalHealth.value && (this.generalHealth.value['pulseRhythm'] == "Abnormal" || this.generalHealth.value['pulse1'] > 100 || this.generalHealth.value['pulse2'] > 100 || this.generalHealth.value['pulse3'] > 100 ) ){
-    //   console.log("Yash Pulse1")
-    //   this.bpArray[4].checked = true
-    //   this.letterToGpCheck = true
-    //   this.medicalAssess.patchValue({
-    //     letterToGp: 'true'
-    //   })
-    // }
-    // else if( (this.generalHealth.value['glucose'] == '++' || this.generalHealth.value['glucose'] == '+++') && this.generalHealth.value['protein'] == '+++'){
-    //   this.bpArray[4].checked = true
-    //   this.letterToGpCheck = true
-    //   this.medicalAssess.patchValue({
-    //     letterToGp: 'true'
-    //   })
-    // }
-    if (this.generalHealth.value && (this.generalHealth.value['pulse1'] < 40 || this.generalHealth.value['pulse2'] < 40 || this.generalHealth.value['pulse3'] < 40 || this.generalHealth.value['pulse1'] > 100 || this.generalHealth.value['pulse2'] > 100 || this.generalHealth.value['pulse3'] > 100)) {
+    if(this.generalHealth.value && (this.generalHealth.value['pulseRhythm'] == "Abnormal" || this.generalHealth.value['pulse1'] > 100 || this.generalHealth.value['pulse2'] > 100 || this.generalHealth.value['pulse3'] > 100 ) ){
       console.log("Yash Pulse1")
+      this.bpArray[4].checked = true
+      this.letterToGpCheck = true
+      this.medicalAssess.patchValue({
+        letterToGp: 'true'
+      })
+    }
+    else if( (this.generalHealth.value['glucose'] == '++' || this.generalHealth.value['glucose'] == '+++') && this.generalHealth.value['protein'] == '+++'){
+      this.bpArray[4].checked = true
+      this.letterToGpCheck = true
+      this.medicalAssess.patchValue({
+        letterToGp: 'true'
+      })
+    }
+    
+    if (this.generalHealth.value && (this.generalHealth.value['pulse1'] < 40 || this.generalHealth.value['pulse1'] > 100 )) {
+      console.log("Yash Pulse1", this.generalHealth.value['pulse1'])
+      this.bpArray[4].checked = true
+      this.letterToGpCheck = true
+      this.medicalAssess.patchValue({
+        letterToGp: 'true'
+      })
+    }
+    else if (this.generalHealth.value && this.generalHealth.value['pulse2'] && (this.generalHealth.value['pulse2'] < 40 || this.generalHealth.value['pulse2'] > 100)) {
+      console.log("Yash Pulse2", this.generalHealth.value['pulse1'])
+      this.bpArray[4].checked = true
+      this.letterToGpCheck = true
+      this.medicalAssess.patchValue({
+        letterToGp: 'true'
+      })
+    }
+    else if (this.generalHealth.value && this.generalHealth.value['pulse2'] && (this.generalHealth.value['pulse3'] < 40 || this.generalHealth.value['pulse3'] > 100)) {
+      console.log("Yash Pulse3", this.generalHealth.value['pulse1'])
       this.bpArray[4].checked = true
       this.letterToGpCheck = true
       this.medicalAssess.patchValue({

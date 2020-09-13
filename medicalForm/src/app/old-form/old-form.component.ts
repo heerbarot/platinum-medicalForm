@@ -6,6 +6,8 @@ import { Observable } from 'rxjs';
 import { MatDialog } from '@angular/material';
 import { SignCanvasComponent } from '../sign-canvas/sign-canvas.component';
 import * as _ from 'lodash';
+import { FormGroup, FormControl, Validators, FormBuilder, FormArray } from '@angular/forms';
+// import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-old-form',
@@ -19,19 +21,21 @@ export class OldFormComponent implements OnInit {
     'canvasWidth': 500,
     'canvasHeight': 300
   };
-
+  idConfirmList = ['Sentinel Card', 'Driving Licence', 'Passport', 'Company ID', 'Other'];
   @ViewChild(SignaturePad, { static: true }) signaturePad: SignaturePad;
   @Output() oldData = new EventEmitter();
   showSleepDisorderQues: boolean;
   respiratoryNlungMedYes: any;
+  showSpecifyOthers: boolean;
 
-  constructor(public _medicalFormService: MedicalFormService, public dialog: MatDialog) {
+  constructor(public _medicalFormService: MedicalFormService, public dialog: MatDialog, private fb: FormBuilder) {
     let date = new Date()
     
     this.days = this.generateRange(1,31)
     this.months = this.generateRange(1,12)
     this.years = this.generateRange(1950, date.getFullYear())
 
+    // this.
    }
   data;
   imgData;
@@ -138,9 +142,35 @@ export class OldFormComponent implements OnInit {
   days = []
   months = []
   years = []
+  yesNo = ['Yes', 'No']
 
+  // form1: FormGroup;
 
-  ngOnInit() {
+  form1 = new FormGroup({
+      // name: new FormControl(''),
+      idConfirmed: new FormControl('',Validators.required),
+      idConfirmOther: new FormControl(''),
+      // dob: new FormControl(''),
+      currentSenCard: new FormControl(''),
+      natInstNo: new FormControl(''),
+      sentinalNo: new FormControl(''),
+      additionalComments: new FormControl(''),
+      // body: new FormControl('')
+    });
+
+  ngOnInit() {}
+
+  idChanged(event) {
+    console.log("Id confirm changed", event.value)
+
+    let temp = event.value.forEach(element => {
+      console.log(" yash check this ", element)
+
+      if (element == 'Other') {
+        console.log("element", element)
+        this.showSpecifyOthers = true
+      }
+    });
   }
 
   generateRange(start, end) {
@@ -176,11 +206,12 @@ export class OldFormComponent implements OnInit {
     console.log("this.fullDate", this.confirmDate)
 
     if (this.firstName == undefined || this.surName == undefined || this.surName == ""
-      || !this.fullDate || !this.confirmDate || !this.imgData || !this.email) {
+      || !this.fullDate || !this.confirmDate || !this.imgData || !this.email || this.form1.invalid) {
       alert("Details missing")
     }
     else {
       this.data = {
+        personalDetails: this.form1.value,
         medicalQuestionnaire: {
           firstName: this.firstName,
           surName: this.surName,

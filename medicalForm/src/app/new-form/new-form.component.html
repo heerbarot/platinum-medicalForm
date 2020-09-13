@@ -17,7 +17,7 @@
     <!-- </div> -->
 
     <div id="accordianNew" [hidden]="hideSecondForm">
-        <div class="single_accordion">
+        <!-- <div class="single_accordion" [hidden]="true">
             <div class="single_accordion_title collapsed" id="headingNew" data-toggle="collapse"
                 data-target="#collapseNew" aria-expanded="true" aria-controls="collapse">
                 MEDICAL ASSESSMENT RECORD - NETWORK RAIL
@@ -54,15 +54,8 @@
 
                         <div class="row">
                             <div class="col-md-6">
-                                <!-- <mat-form-field>
-                                    <input matInput (dateChange)="onValueChange()" [matDatepicker]="picker"
-                                        formControlName="dob" placeholder="Choose a date" required>
-                                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                                    <mat-datepicker #picker></mat-datepicker>
-                                </mat-form-field> -->
                                 <app-date-picker (finalizedDate)="finalDate($event, 'form1', 'dob')"
                                     (dateChange)="onValueChange()">
-
                                 </app-date-picker>
                             </div>
 
@@ -103,7 +96,7 @@
                     </form>
                 </div>
             </div>
-        </div>
+        </div> -->
 
         <div class="single_accordion">
             <div class="single_accordion_title collapsed" id="headingOne" data-toggle="collapse"
@@ -130,7 +123,7 @@
                                         <mat-option *ngFor="let item of pulseList" [value]="item">{{item}}
                                         </mat-option>
                                     </mat-select> -->
-                                    <input type="number" (ngModelChange)="checkBp(); completeAsFailReferToGP()" formControlName="pulse1"
+                                    <input type="number" (ngModelChange)="checkBp();" (blur)=" completeAsFailReferToGP()" formControlName="pulse1"
                                      matInput
                                     placeholder="Pulse - First Reading">
                                 </mat-form-field>
@@ -172,7 +165,7 @@
                                             {{item}}
                                         </mat-option>
                                     </mat-select> -->
-                                    <input type="number" [disabled]="secondTestDisabled" (ngModelChange)="completeAsFailReferToGP()" formControlName="pulse2"
+                                    <input type="number" [disabled]="secondTestDisabled" (blur)="completeAsFailReferToGP()" formControlName="pulse2"
                                 matInput placeholder="Pulse - Second Reading">
                                 </mat-form-field>
                                 
@@ -591,7 +584,7 @@
                                                 <td>
                                                     <input type="checkbox" name="checkButton"
                                                         [attr.checked]="data.checked" [value]="data.value"
-                                                        (change)="onCheckboxChange($event)" />
+                                                        (change)="onCheckboxChange($event,i)" />
                                                     {{data.value}}
                                                 </td>
                                             </tr>
@@ -1135,7 +1128,7 @@
                         <div class="row" *ngIf="learTotal > 89 || rearTotal > 89">
 
                             <div class="col-md-12">
-                                <p class="bgColor text-center"> Medical history :  </p>
+                                <p class="bgColor text-center"> <b>Medical history :</b>   </p>
                             </div> 
                             <div class="col-md-12">
                                 <p>
@@ -1314,7 +1307,7 @@
 
                         <div class="row" *ngIf="learTotal > 89 || rearTotal > 89">
                             <div class="col-md-12">
-                                <p class="bgColor text-center">Previous noise exposure</p>
+                                <p class="bgColor text-center"><b>Previous noise exposure:</b></p>
                             </div>
                             
                             <div class="col-md-12">
@@ -1498,6 +1491,20 @@
                             </div>
                         </div>
 
+                        <div class="row justify-content-center align-items-center">
+                            <div class="col-12 bgColor text-center">
+                                <b>Final Assessment:</b>
+                            </div>
+                            <div class="col-md-6">
+                                <input type="checkbox" formControlName="isFailed" (change)="failedChange($event)"> Failed
+                            </div>
+                            <div class="col-md-6" *ngIf="isFailed">
+                                <mat-form-field>
+                                    <input matInput type="text" placeholder="Reason" formControlName="isFailedReason">
+                                </mat-form-field>
+                            </div>
+                        </div>
+
                         <div class="row">
                             <div class="col-md-6">
                                 <mat-form-field>
@@ -1541,7 +1548,7 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <mat-form-field>
-                                    <input formControlName="checkedBy" matInput placeholder="Checked By" required>
+                                    <input formControlName="checkedBy" matInput placeholder="Checked By">
                                 </mat-form-field>
                             </div>
                             <div class="col-md-6">
