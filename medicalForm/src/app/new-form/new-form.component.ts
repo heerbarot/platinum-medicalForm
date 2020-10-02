@@ -371,7 +371,7 @@ export class NewFormComponent implements OnInit {
     letterToGp: new FormControl(''),
     sixMonthCerti: new FormControl(''),
     referToOHPhysician: new FormControl(''),
-    level: new FormControl('', Validators.required),
+    level: new FormControl(''),
     reason: new FormControl(''),
     examinerName: new FormControl(''),
     examinerDate: new FormControl(''),
@@ -1151,7 +1151,7 @@ export class NewFormComponent implements OnInit {
       }
     }
     else {
-      alert('Level, Name or Examiner Signature  Missing')
+      alert('Examiner Signature  Missing')
     }
 
     // if (this.form1.valid && this.medicalAssess.valid && this.generalHealth.valid && this.visionAssessment.valid && this.hearingGrp.valid ) {
